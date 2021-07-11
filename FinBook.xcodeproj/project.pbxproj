@@ -14,6 +14,7 @@
 		7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */; };
 		7DADB3BC269B478E0041156D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DADB3BB269B478E0041156D /* Assets.xcassets */; };
 		7DADB3BF269B478E0041156D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */; };
+		7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3C6269B5C0F0041156D /* TransactionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7DADB3BB269B478E0041156D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DADB3BE269B478E0041156D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DADB3C0269B478E0041156D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DADB3C6269B5C0F0041156D /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
 				7DADB3B3269B478C0041156D /* ViewController.swift */,
 				7DADB3B5269B478C0041156D /* Main.storyboard */,
+				7DADB3C6269B5C0F0041156D /* TransactionModel.swift */,
 				7DADB3BB269B478E0041156D /* Assets.xcassets */,
 				7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */,
 				7DADB3C0269B478E0041156D /* Info.plist */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */,
 				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* ViewController.swift in Sources */,
 				7DADB3B0269B478C0041156D /* AppDelegate.swift in Sources */,
