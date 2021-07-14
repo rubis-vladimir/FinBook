@@ -9,10 +9,10 @@ import UIKit
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
-    override func viewDidAppear(_ animated: Bool) {
-        self.delegate = self
-    }
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if viewController is
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        self.delegate = self
+//    }
+//    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//        if viewController is
+//    }
 }
