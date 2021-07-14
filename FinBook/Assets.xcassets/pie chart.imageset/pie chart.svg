@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="240px" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>pie chart</title>
+    <desc>Created with Sketch.</desc>
+    <g id="pie-chart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bounding-box">
+            <polygon id="shape" points="0 0 240 0 240 240 0 240"></polygon>
+        </g>
+        <path d="M214.870679,125 L115,125 L115,25.1293206 C64.8571764,27.7293852 25,69.2101214 25,120 C25,172.467051 67.5329488,215 120,215 C170.789879,215 212.270615,175.142824 214.870679,125 Z" id="Combined-Shape" stroke="#46AAF7" stroke-width="10"></path>
+        <path d="M135,15.1293206 L135,105 L224.870679,105 C222.356474,56.5129822 183.487018,17.6435264 135,15.1293206 Z" id="Combined-Shape-Copy" stroke="#46AAF7" stroke-width="10" fill="#E8F7FF"></path>
+    </g>
+</svg>

@@ -7,11 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AccountViewController: UIViewController {
 
+    @IBOutlet weak var viewNew: UIView!
+    @IBOutlet weak var button: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
 
