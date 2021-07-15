@@ -7,6 +7,23 @@
 
 import Foundation
 
+struct Transaction {
+    var cost: Double
+    var label: String
+    var category: Category
+    var date: Date
+    var note: String = ""
+    
+//    чтобы понять проходит трата или доход - если доход то "true", а если трата "false"
+    var incomeTransaction = false
+    
+    
+//    static func getTransaction() -> Transaction {
+//        Transaction(cost: 100, label: "Траты", category: .car, data: 22.05.2021)
+//    }
+}
+
+
 enum Category: String {
     case products = "Продукты"
     case clothes = "Одежда"
@@ -22,10 +39,3 @@ enum Category: String {
     case other = "Другое"
 }
 
-struct Transaction {
-    var cost: Double
-    var label: String
-    var category: Category
-    var note: String
-    var data: Data
-}

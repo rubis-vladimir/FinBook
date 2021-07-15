@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="2986" y="-65"/>
         </scene>
-        <!--View Controller-->
+        <!--Transaction View Controller-->
         <scene sceneID="2wr-El-SQR">
             <objects>
-                <viewController id="A3i-py-pm1" sceneMemberID="viewController">
+                <viewController id="A3i-py-pm1" customClass="TransactionViewController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hZT-ES-X5R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,8 +258,9 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="TKX-gF-tlO">
+                                            <datePicker contentMode="right" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="TKX-gF-tlO">
                                                 <rect key="frame" x="196" y="0.0" width="186" height="50"/>
+                                                <locale key="locale" localeIdentifier="ru_RU"/>
                                             </datePicker>
                                         </subviews>
                                     </stackView>
@@ -278,6 +279,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Дополнительно"/>
+                                <connections>
+                                    <action selector="noteButtonAction" destination="A3i-py-pm1" eventType="touchUpInside" id="hgv-Ms-oJ9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C4E-1m-qLQ"/>
@@ -295,7 +299,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="ECc-r5-MQA">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Назад" id="ncB-Do-2xD"/>
+                        <barButtonItem key="leftBarButtonItem" title="Назад" id="ncB-Do-2xD">
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="A3i-py-pm1" id="bed-IL-tJo"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Pdg-97-HvW">
                             <rect key="frame" x="87" y="5.5" width="240" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -305,8 +313,19 @@
                             </segments>
                             <color key="selectedSegmentTintColor" systemColor="placeholderTextColor"/>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Готово" style="done" id="8qb-Ed-zhe"/>
+                        <barButtonItem key="rightBarButtonItem" title="Готово" style="done" id="8qb-Ed-zhe">
+                            <connections>
+                                <action selector="doneButtonAction:" destination="A3i-py-pm1" id="bWR-D7-emI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="categoryTextField" destination="ogp-D3-SaP" id="Xay-Pw-mBy"/>
+                        <outlet property="costTextField" destination="Tlg-5O-Irc" id="gLX-KU-L31"/>
+                        <outlet property="dataPicker" destination="TKX-gF-tlO" id="2cI-YP-gFp"/>
+                        <outlet property="labelTextField" destination="pyp-qr-N2N" id="1sG-SX-WEY"/>
+                        <outlet property="noteTextField" destination="kWb-r7-UV9" id="2VC-Ll-Ayt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wmz-ca-7IC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
