@@ -11,6 +11,15 @@ enum Category: String {
     case products = "Продукты"
     case clothes = "Одежда"
     case house = "Дом"
+    case health = "Здоровье"
+    case car = "Машина"
+    case ticket = "Билеты"
+    case travelling = "Путешествия"
+    case credits = "Кредиты"
+    case study = "Oбучение"
+    case family = "Семья"
+    case taxes = "Налоги"
+    case other = "Другое"
 }
 
 struct Transaction {

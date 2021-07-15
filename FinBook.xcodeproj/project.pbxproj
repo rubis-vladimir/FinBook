@@ -55,6 +55,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		6813DEE626A07C7500AA408F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7DADB3C6269B5C0F0041156D /* TransactionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7DADB3A3269B478C0041156D = {
 			isa = PBXGroup;
 			children = (
@@ -80,9 +88,9 @@
 				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
 				7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */,
 				6813DEE5269F711000AA408F /* ViewControllers */,
+				6813DEE626A07C7500AA408F /* Models */,
 				7DADB3CA269D84070041156D /* MainTabBarController.swift */,
 				7DADB3C8269CD19E0041156D /* CustomTabBar.swift */,
-				7DADB3C6269B5C0F0041156D /* TransactionModel.swift */,
 				7DADB3BB269B478E0041156D /* Assets.xcassets */,
 				7DADB3C0269B478E0041156D /* Info.plist */,
 				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
