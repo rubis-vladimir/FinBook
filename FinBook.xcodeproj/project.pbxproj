@@ -50,6 +50,7 @@
 		6813DEE5269F711000AA408F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7DADB3B3269B478C0041156D /* AccountViewController.swift */,
 				688BA66126A0AE21009F4727 /* TransactionViewController.swift */,
 			);
 			path = ViewControllers;
@@ -83,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				7DADB3B5269B478C0041156D /* Main.storyboard */,
-				7DADB3B3269B478C0041156D /* AccountViewController.swift */,
 				7DADB3AF269B478C0041156D /* AppDelegate.swift */,
 				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
 				7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */,
