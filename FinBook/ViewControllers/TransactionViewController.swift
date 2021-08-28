@@ -28,7 +28,7 @@ class TransactionViewController: UIViewController {
         costTextField.becomeFirstResponder()
         costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
         categoryPickerView.dataSource = self
-        categoryPickerView.delegate = self
+//        categoryPickerView.delegate = self
         
         costTextField.addTarget(
             self,
@@ -98,12 +98,12 @@ extension TransactionViewController: UIPickerViewDataSource {
     }
 }
 
-extension TransactionViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let category = Category.allCases[row]
-        return category.rawValue
-    }
-}
+//extension TransactionViewController: UIPickerViewDelegate {
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        let category = Category.allCases[row]
+//        return category.rawValue
+//    }
+//}
 
 // MARK: - CostTextField Settings
 extension TransactionViewController: UITextFieldDelegate {

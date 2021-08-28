@@ -10,7 +10,7 @@ import Foundation
 struct Transaction {
     var cost: Double = 0.0
     var label: String?
-    var category: Category = .none
+    var category: (String, String) = Category.products
     var date: Date = Date()
     var note: String = ""
     
@@ -25,19 +25,21 @@ struct Transaction {
 }
 
 
-enum Category: String, CaseIterable {
-    case none = "Не выбран"
-    case products = "Продукты"
-    case clothes = "Одежда"
-    case house = "Дом"
-    case health = "Здоровье"
-    case car = "Машина"
-    case ticket = "Билеты"
-    case travelling = "Путешествия"
-    case credits = "Кредиты"
-    case study = "Oбучение"
-    case family = "Семья"
-    case taxes = "Налоги"
-    case other = "Другое"
+enum Category: CaseIterable {
+//    typealias RawValue = (Int, Int)
+    static let products = (label: "Продукты", image: "plus")
+//    case none(Int, Int) = (1.0, 2.0)
+//    case products = "Продукты"
+//    case clothes = "Одежда"
+//    case house = "Дом"
+//    case health = "Здоровье"
+//    case car = "Машина"
+//    case ticket = "Билеты"
+//    case travelling = "Путешествия"
+//    case credits = "Кредиты"
+//    case study = "Oбучение"
+//    case family = "Семья"
+//    case taxes = "Налоги"
+//    case other = "Другое"
 }
 
