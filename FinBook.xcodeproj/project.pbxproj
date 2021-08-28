@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BA66126A0AE21009F4727 /* TransactionViewController.swift */; };
 		7DADB3B0269B478C0041156D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3AF269B478C0041156D /* AppDelegate.swift */; };
 		7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B1269B478C0041156D /* SceneDelegate.swift */; };
 		7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B3269B478C0041156D /* AccountViewController.swift */; };
@@ -17,10 +18,10 @@
 		7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3C6269B5C0F0041156D /* TransactionModel.swift */; };
 		7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3C8269CD19E0041156D /* CustomTabBar.swift */; };
 		7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3CA269D84070041156D /* MainTabBarController.swift */; };
-		7DADB3F0269EEE810041156D /* Extension + UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3EF269EEE800041156D /* Extension + UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		688BA66126A0AE21009F4727 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		7DADB3AC269B478C0041156D /* FinBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DADB3AF269B478C0041156D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DADB3B1269B478C0041156D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +34,6 @@
 		7DADB3C6269B5C0F0041156D /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		7DADB3C8269CD19E0041156D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		7DADB3CA269D84070041156D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		7DADB3EF269EEE800041156D /* Extension + UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIButton.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +47,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6813DEE5269F711000AA408F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7DADB3B3269B478C0041156D /* AccountViewController.swift */,
+				688BA66126A0AE21009F4727 /* TransactionViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6813DEE626A07C7500AA408F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7DADB3C6269B5C0F0041156D /* TransactionModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7DADB3A3269B478C0041156D = {
 			isa = PBXGroup;
 			children = (
@@ -66,16 +83,15 @@
 		7DADB3AE269B478C0041156D /* FinBook */ = {
 			isa = PBXGroup;
 			children = (
+				7DADB3B5269B478C0041156D /* Main.storyboard */,
 				7DADB3AF269B478C0041156D /* AppDelegate.swift */,
 				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
-				7DADB3B3269B478C0041156D /* AccountViewController.swift */,
-				7DADB3EF269EEE800041156D /* Extension + UIButton.swift */,
-				7DADB3B5269B478C0041156D /* Main.storyboard */,
+				7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */,
+				6813DEE5269F711000AA408F /* ViewControllers */,
+				6813DEE626A07C7500AA408F /* Models */,
 				7DADB3CA269D84070041156D /* MainTabBarController.swift */,
 				7DADB3C8269CD19E0041156D /* CustomTabBar.swift */,
-				7DADB3C6269B5C0F0041156D /* TransactionModel.swift */,
 				7DADB3BB269B478E0041156D /* Assets.xcassets */,
-				7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */,
 				7DADB3C0269B478E0041156D /* Info.plist */,
 				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
 			);
@@ -156,10 +172,10 @@
 				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */,
 				7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */,
+				688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */,
 				7DADB3B0269B478C0041156D /* AppDelegate.swift in Sources */,
 				7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */,
 				7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */,
-				7DADB3F0269EEE810041156D /* Extension + UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,13 +323,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WJM24K3YHR;
+				DEVELOPMENT_TEAM = PK5GMP355X;
 				INFOPLIST_FILE = FinBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rubisVladimir.FinBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Kelevra.FinBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -326,13 +342,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WJM24K3YHR;
+				DEVELOPMENT_TEAM = PK5GMP355X;
 				INFOPLIST_FILE = FinBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.rubisVladimir.FinBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Kelevra.FinBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
