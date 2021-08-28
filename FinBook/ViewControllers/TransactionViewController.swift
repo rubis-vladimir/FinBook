@@ -17,9 +17,9 @@ class TransactionViewController: UIViewController {
     @IBOutlet var dataPicker: UIDatePicker!
     
     @IBOutlet var noteTextField: UITextField!
+    @IBOutlet var doneButton: UIBarButtonItem!
     
 // MARK: - Properties
-
     var currentTransaction = Transaction()
     
 // MARK: - Override func
@@ -29,10 +29,30 @@ class TransactionViewController: UIViewController {
         costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self
+        
+        costTextField.addTarget(
+            self,
+            action: #selector(costTextFieldDidChanged),
+            for: .editingChanged
+        )
     }
     
 // MARK: - IBActions
     @IBAction func doneButtonAction(_ sender: Any) {
+        
+        
+//
+//        print("Дан сработал")
+//
+//        if let cost = Double(costTextField.text!) {
+//            currentTransaction.cost = Double(cost)
+//            print("стоимость извлеклась!!!!!!!!!!!!!!!!!!!!!!!")
+//            return
+//        } else {
+//            print("Нельзя извлечь стоимость!!!!!!!!!!!!!!!!!")
+//            showAlert(title: "Стоимость введена не корректно", message: "Введите корректное значение")
+//            return
+//        }
         
     }
     
@@ -41,13 +61,32 @@ class TransactionViewController: UIViewController {
     }
     
     
-    
     @IBAction func costTFChange(_ sender: UITextField) {
 
         }
+    
+    @IBAction func showTransaction(_ sender: Any) {
+        
+    }
 }
 
 // MARK: - Navigation
+
+
+
+// MARK: - TableView Settings - пример транзакции
+extension TransactionViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        50
+    }
+}
 
 
 // MARK: - PickerControl Settings
@@ -76,9 +115,13 @@ extension TransactionViewController: UITextFieldDelegate {
             return false
         }
         if textFieldText.contains(".") && string == "." { return false }
+        
+       
+        
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 15
+        
     }
     
     //скрыть клавиатуру после редактирования
@@ -86,6 +129,13 @@ extension TransactionViewController: UITextFieldDelegate {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
+    
+    // Чтобы кнопка Done была активна только в когда поле цены заполнено
+    @objc private func costTextFieldDidChanged() {
+        guard let costName = costTextField.text else { return }
+        doneButton.isEnabled = !costName.isEmpty ? true : false
+    }
+    
     
     
     
@@ -103,7 +153,7 @@ extension TransactionViewController: UITextFieldDelegate {
 }
 
 
-// MARK: - Alert Controller
+// MARK: - Alert Controller - пока не используется
 extension TransactionViewController {
     private func showAlert(title: String, message: String, textField: UITextField? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
