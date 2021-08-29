@@ -39,20 +39,19 @@ struct Transaction {
 
 
 enum Category: CaseIterable {
-//    typealias RawValue = (Int, Int)
+    
+    static let none =  (label: "Продукты", image: "plus")
     static let products = (label: "Продукты", image: "plus")
-//    case none(
-//    case products = "Продукты"
-//    case clothes = "Одежда"
-//    case house = "Дом"
-//    case health = "Здоровье"
-//    case car = "Машина"
-//    case ticket = "Билеты"
-//    case travelling = "Путешествия"
-//    case credits = "Кредиты"
-//    case study = "Oбучение"
-//    case family = "Семья"
-//    case taxes = "Налоги"
-//    case other = "Другое"
+    static let clothes = "Одежда"
+    static let house = "Дом"
+    static let health = "Здоровье"
+    static let car = "Машина"
+    static let ticket = "Билеты"
+    static let travelling = "Путешествия"
+    static let credits = "Кредиты"
+    static let study = "Oбучение"
+    static let family = "Семья"
+    static let taxes = "Налоги"
+    static let other = "Другое"
 }
 

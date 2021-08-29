@@ -74,7 +74,7 @@ class TransactionViewController: UIViewController {
 
 
 
-// MARK: - TableView Settings - пример транзакции
+// MARK: - TableView Settings - реализация примера транзакции
 extension TransactionViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
     
