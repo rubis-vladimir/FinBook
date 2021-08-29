@@ -248,6 +248,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Uyc-uP-0VH" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="30s-EW-RYD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lh6-Mp-mdk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
