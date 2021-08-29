@@ -79,6 +79,14 @@ class CustomTabBar: UITabBar {
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let buttonRadius: CGFloat = circleRadius
-        return abs(self.center.x - point.x) > buttonRadius || abs(point.y) > buttonRadius
+        let pointIsInside = super.point(inside: point, with: event)
+        if pointIsInside == true {
+            for _ in subviews {
+                if abs(self.center.x - point.x) < buttonRadius && abs(point.y) < buttonRadius {
+                    return false
+                }
+            }
+        }
+        return pointIsInside
     }
 }

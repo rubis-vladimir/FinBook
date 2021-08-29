@@ -8,7 +8,7 @@
 import Foundation
 
 struct Transaction {
-    var cost: Double = 0.0
+    var cost: Double
     var label: String?
     var category: (String, String) = Category.products
     var date: Date = Date()
@@ -24,11 +24,24 @@ struct Transaction {
 //    }
 }
 
+//extension Transaction {
+//    static func getTransactionList() -> [Transaction] {
+//        
+//    }
+//}
+
+
+//struct Category {
+//    var label: String
+//    var image: String
+//}
+
+
 
 enum Category: CaseIterable {
 //    typealias RawValue = (Int, Int)
     static let products = (label: "Продукты", image: "plus")
-//    case none(Int, Int) = (1.0, 2.0)
+//    case none(
 //    case products = "Продукты"
 //    case clothes = "Одежда"
 //    case house = "Дом"
