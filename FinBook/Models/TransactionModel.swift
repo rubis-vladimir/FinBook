@@ -18,6 +18,11 @@ struct Transaction {
     var incomeTransaction = false
 }
 
+enum Category {
+    typealias RawValue = (String, UIImage)
+    case products, clothers, car
+}
+
 //extension Transaction {
 //    static func getTransactionList() -> [Transaction] {
 //        

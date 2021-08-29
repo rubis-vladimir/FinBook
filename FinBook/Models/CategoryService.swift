@@ -7,11 +7,6 @@
 
 import UIKit
 
-enum Category {
-    typealias RawValue = (String, UIImage)
-    case products, clothers, car
-}
-
 final class CategoryService {
     static var categoryList:[Category:(String,UIImage)] = {
         
