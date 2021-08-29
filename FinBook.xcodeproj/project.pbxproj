@@ -19,6 +19,7 @@
 		7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3C6269B5C0F0041156D /* TransactionModel.swift */; };
 		7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3C8269CD19E0041156D /* CustomTabBar.swift */; };
 		7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3CA269D84070041156D /* MainTabBarController.swift */; };
+		7DF834EA26DC045A009EC940 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF834E926DC045A009EC940 /* CategoryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		7DADB3C6269B5C0F0041156D /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		7DADB3C8269CD19E0041156D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		7DADB3CA269D84070041156D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		7DF834E926DC045A009EC940 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				7DADB3C6269B5C0F0041156D /* TransactionModel.swift */,
+				7DF834E926DC045A009EC940 /* CategoryService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -86,19 +89,27 @@
 			isa = PBXGroup;
 			children = (
 				7DADB3B5269B478C0041156D /* Main.storyboard */,
-				7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */,
-				7DADB3AF269B478C0041156D /* AppDelegate.swift */,
-				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
 				7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */,
+				7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */,
 				6813DEE5269F711000AA408F /* ViewControllers */,
 				6813DEE626A07C7500AA408F /* Models */,
-				7DADB3CA269D84070041156D /* MainTabBarController.swift */,
-				7DADB3C8269CD19E0041156D /* CustomTabBar.swift */,
+				7DF834EB26DC0828009EC940 /* TabBar */,
 				7DADB3BB269B478E0041156D /* Assets.xcassets */,
+				7DADB3AF269B478C0041156D /* AppDelegate.swift */,
+				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
 				7DADB3C0269B478E0041156D /* Info.plist */,
 				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
 			);
 			path = FinBook;
+			sourceTree = "<group>";
+		};
+		7DF834EB26DC0828009EC940 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7DADB3CA269D84070041156D /* MainTabBarController.swift */,
+				7DADB3C8269CD19E0041156D /* CustomTabBar.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +191,7 @@
 				7DADB3B0269B478C0041156D /* AppDelegate.swift in Sources */,
 				7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */,
 				7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */,
+				7DF834EA26DC045A009EC940 /* CategoryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
