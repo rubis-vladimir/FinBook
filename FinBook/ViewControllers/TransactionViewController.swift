@@ -9,8 +9,7 @@ import UIKit
 
 class TransactionViewController: UIViewController {
 
-// MARK: - IBOutlets
-
+    // MARK: - IBOutlets
     @IBOutlet var costTextField: UITextField!
     @IBOutlet var labelTextField: UITextField!
     @IBOutlet var categoryPickerView: UIPickerView!
@@ -19,22 +18,26 @@ class TransactionViewController: UIViewController {
     @IBOutlet var noteTextField: UITextField!
     @IBOutlet var doneButton: UIBarButtonItem!
     
-// MARK: - Properties
-    var currentTransaction = Transaction()
+    // MARK: - Properties
+//    var currentTransaction = Transaction()
     
-// MARK: - Override func
+    
+    private lazy var categoryPickerModels: [CategoryPickerModel] = {
+        var categories: [CategoryPickerModel] = []
+        
+        for (category, value) in CategoryService.categoryList {
+            categories.append(.init(category: category, title: value.0, icon: value.1))
+        }
+        return categories
+    }()
+    
+// MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        costTextField.becomeFirstResponder()
-        costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
-        categoryPickerView.dataSource = self
-//        categoryPickerView.delegate = self
         
-        costTextField.addTarget(
-            self,
-            action: #selector(costTextFieldDidChanged),
-            for: .editingChanged
-        )
+        SetupCostTextField()
+        SetupPickerView()
+        
     }
     
 // MARK: - IBActions
@@ -68,34 +71,42 @@ class TransactionViewController: UIViewController {
     @IBAction func showTransaction(_ sender: Any) {
         
     }
-}
-
-// MARK: - Navigation
-
-
-
-// MARK: - TableView Settings - реализация примера транзакции
-extension TransactionViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
+    // MARK: - Private func
+    private func SetupCostTextField() {
+        costTextField.becomeFirstResponder()  // курсор на данном поле
+        costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
+        
+        costTextField.addTarget(
+            self,
+            action: #selector(costTextFieldDidChanged),
+            for: .editingChanged
+        )
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
+    private func SetupPickerView() {
+        categoryPickerView.dataSource = self
+        categoryPickerView.delegate = self  //показываем что есть связь между нашим PV и VC
+        
     }
+    
 }
-
 
 // MARK: - PickerControl Settings
-extension TransactionViewController: UIPickerViewDataSource {
+extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegate  {
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Category.allCases.count
+        return categoryPickerModels.count    // количество ячеек (компонента)
     }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { 40.0 } // высота ячейки (компонента)
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat { 130 } // длина ячейки (компонента)
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let model = categoryPickerModels[row]  // получаем актуальную модель чтобы передать
+        return CategoriesView.create(icon: model.icon, title: model.title)    }
 }
 
 //extension TransactionViewController: UIPickerViewDelegate {
@@ -164,3 +175,17 @@ extension TransactionViewController {
         present(alert, animated: true)
     }
 }
+
+// MARK: - TableView Settings - реализация примера транзакции
+//extension TransactionViewController: UITableViewDataSource, UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        50
+//    }
+//}

@@ -30,7 +30,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Uyc-uP-0VH" kind="presentation" identifier="addTransaction" id="uzO-ro-MsX"/>
+                                    <segue destination="Uyc-uP-0VH" kind="show" identifier="addTransaction" id="uzO-ro-MsX"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-XK-5mJ">
@@ -84,7 +84,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZ9-br-FN2">
                                                             <rect key="frame" x="248" y="0.0" width="40" height="40"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="FWP-u6-vFA"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="FWP-u6-vFA"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
@@ -368,73 +368,16 @@
                                     <action selector="showTransaction:" destination="A3i-py-pm1" eventType="touchUpInside" id="DML-f5-WNy"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fVV-1Q-nCY">
-                                <rect key="frame" x="0.0" y="386" width="320" height="182"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="lTK-Bx-Dbf">
-                                        <rect key="frame" x="0.0" y="24.5" width="320" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lTK-Bx-Dbf" id="bob-Ie-Ma0">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agc-wF-0Ac">
-                                                    <rect key="frame" x="265" y="16" width="55" height="18"/>
-                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Job-Ja-z1L">
-                                                    <rect key="frame" x="16" y="0.0" width="80" height="25"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kli-Ru-KXR">
-                                                    <rect key="frame" x="16" y="25" width="82.5" height="25"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Job-Ja-z1L" firstAttribute="leading" secondItem="bob-Ie-Ma0" secondAttribute="leading" constant="16" id="B2a-Gb-H3e"/>
-                                                <constraint firstAttribute="bottom" secondItem="Job-Ja-z1L" secondAttribute="bottom" constant="25" id="CLy-7N-9FA"/>
-                                                <constraint firstItem="agc-wF-0Ac" firstAttribute="trailing" secondItem="bob-Ie-Ma0" secondAttribute="trailingMargin" constant="16" id="Mvh-R3-ez4"/>
-                                                <constraint firstItem="agc-wF-0Ac" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bob-Ie-Ma0" secondAttribute="leading" constant="250" id="Ovq-G8-coB"/>
-                                                <constraint firstItem="Job-Ja-z1L" firstAttribute="top" secondItem="bob-Ie-Ma0" secondAttribute="top" id="WNZ-bB-gVQ"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Job-Ja-z1L" secondAttribute="trailing" constant="100" id="eph-05-gjf"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="agc-wF-0Ac" secondAttribute="bottom" constant="5" id="jNT-f3-sK1"/>
-                                                <constraint firstItem="Kli-Ru-KXR" firstAttribute="top" secondItem="bob-Ie-Ma0" secondAttribute="top" constant="25" id="jfV-6F-ltP"/>
-                                                <constraint firstItem="agc-wF-0Ac" firstAttribute="top" secondItem="bob-Ie-Ma0" secondAttribute="topMargin" constant="5" id="n6x-UE-3lK"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kli-Ru-KXR" secondAttribute="trailing" constant="100" id="oXc-Hy-OzP"/>
-                                                <constraint firstItem="Kli-Ru-KXR" firstAttribute="leading" secondItem="bob-Ie-Ma0" secondAttribute="leading" constant="16" id="q6H-Hi-m0g"/>
-                                                <constraint firstAttribute="bottom" secondItem="Kli-Ru-KXR" secondAttribute="bottom" id="y2Z-ni-fEL"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <sections/>
-                                <connections>
-                                    <outlet property="dataSource" destination="A3i-py-pm1" id="VUU-FC-YN3"/>
-                                    <outlet property="delegate" destination="A3i-py-pm1" id="C1V-N7-b3w"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C4E-1m-qLQ"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="C4E-1m-qLQ" firstAttribute="bottom" secondItem="fVV-1Q-nCY" secondAttribute="bottom" id="2ge-cQ-7R4"/>
-                            <constraint firstItem="fVV-1Q-nCY" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" id="4Hv-ql-U8V"/>
                             <constraint firstItem="mc4-op-nz2" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="16" id="4JO-bn-lg3"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="16" id="JWU-tj-Fkz"/>
                             <constraint firstItem="mc4-op-nz2" firstAttribute="top" secondItem="rd0-Cm-jdg" secondAttribute="bottom" constant="10" id="NkH-lW-dlX"/>
                             <constraint firstAttribute="trailing" secondItem="rd0-Cm-jdg" secondAttribute="trailing" constant="16" id="UGf-ju-Uez"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="mc4-op-nz2" secondAttribute="trailing" constant="16" id="UX4-FR-BWm"/>
-                            <constraint firstItem="fVV-1Q-nCY" firstAttribute="top" secondItem="mc4-op-nz2" secondAttribute="bottom" constant="10" id="gtW-k8-3Pn"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="top" secondItem="C4E-1m-qLQ" secondAttribute="top" constant="20" id="tSy-mO-QtB"/>
-                            <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="fVV-1Q-nCY" secondAttribute="trailing" id="wP3-zT-YqA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ECc-r5-MQA">
