@@ -97,6 +97,9 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        print("Сейчас количество строк: \(categoryPickerModels.count)")
+        
         return categoryPickerModels.count    // количество ячеек (компонента)
     }
     
@@ -106,7 +109,13 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let model = categoryPickerModels[row]  // получаем актуальную модель чтобы передать
-        return CategoriesView.create(icon: model.icon, title: model.title)    }
+        print("Сейчас создается категория: \(model.title) с иконкой \(model.icon)")
+        return CategoriesView.create(icon: model.icon, title: model.title)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        let model = categoryPickerModels[row]  //мы получили модель и строку выделенного элемента
+    }
 }
 
 //extension TransactionViewController: UIPickerViewDelegate {
