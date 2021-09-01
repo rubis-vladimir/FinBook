@@ -256,19 +256,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rd0-Cm-jdg" userLabel="Main Stack View">
-                                <rect key="frame" x="10" y="65" width="355" height="312"/>
+                                <rect key="frame" x="10" y="65" width="355" height="363"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rmD-g5-h44" userLabel="Cast Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="24.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qz0-bC-WtY">
-                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите стоимость" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tlg-5O-Irc">
-                                                <rect key="frame" x="78.5" y="0.0" width="276.5" height="24"/>
+                                                <rect key="frame" x="78.5" y="0.0" width="276.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="url"/>
                                                 <connections>
@@ -279,40 +279,44 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bCh-tu-93f" userLabel="Label Stack View">
-                                        <rect key="frame" x="0.0" y="44" width="355" height="24"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="355" height="24.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bv-Fa-2Mv">
-                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Описание" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pyp-qr-N2N">
-                                                <rect key="frame" x="107.5" y="0.0" width="247.5" height="24"/>
+                                                <rect key="frame" x="107.5" y="0.0" width="247.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G5d-sq-Udy" userLabel="Category Stack View">
-                                        <rect key="frame" x="0.0" y="88" width="355" height="100"/>
+                                        <rect key="frame" x="0.0" y="89" width="355" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория затрат:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-Ux-EYU">
-                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="150"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVb-0j-KS8">
-                                                <rect key="frame" x="182.5" y="0.0" width="172.5" height="100"/>
+                                                <rect key="frame" x="182.5" y="0.0" width="172.5" height="150"/>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="A3i-py-pm1" id="fVz-Gj-Yow"/>
+                                                    <outlet property="delegate" destination="A3i-py-pm1" id="PaZ-x4-z5G"/>
+                                                </connections>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="KQd-Tn-Ta4"/>
+                                            <constraint firstAttribute="height" constant="150" id="KQd-Tn-Ta4"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TKe-U1-arl" userLabel="Data Stack View">
-                                        <rect key="frame" x="0.0" y="208" width="355" height="50"/>
+                                        <rect key="frame" x="0.0" y="259" width="355" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkL-LX-alg">
                                                 <rect key="frame" x="0.0" y="0.0" width="172.5" height="50"/>
@@ -330,7 +334,7 @@
                                         </constraints>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Заметка по транзакции" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWb-r7-UV9">
-                                        <rect key="frame" x="0.0" y="278" width="355" height="34"/>
+                                        <rect key="frame" x="0.0" y="329" width="355" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -416,7 +420,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wmz-ca-7IC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Ehk-4f-Scq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2437.5" y="134.1549295774648"/>
+            <point key="canvasLocation" x="2506" y="134"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vHl-ou-mvm">

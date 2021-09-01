@@ -22,6 +22,8 @@ class TransactionViewController: UIViewController {
     // MARK: - Properties
     var delegate: NewTransactionViewControllerDelegate!
     
+//    let currentTransaction = Transaction(cost: 150, description: "Шава вЛаваше", category: .products, date: Date(), note: "Вкусно", incomeTransaction: false)
+    
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
         
@@ -60,8 +62,8 @@ class TransactionViewController: UIViewController {
         
         guard let cost = Double(costTextField.text ?? "0.0") else { return }
         guard let description = descriptionTextField.text else { return }
-        
-        var currentTransaction = Transaction(
+
+        let currentTransaction = Transaction(
             cost: cost,
             description: description,
             category: .products,
@@ -69,9 +71,6 @@ class TransactionViewController: UIViewController {
             note: noteTextField.text,
             incomeTransaction: false
             )
-        print(" ------->>>>>>   Транзакция   \(currentTransaction)")
-//        Транзакция   Transaction(cost: 52453.0, description: "gdfg", category: FinBook.Category.products, date: 2021-09-01 19:12:34 +0000, note: "", incomeTransaction: false)
-        
         
         delegate.saveTransaction(currentTransaction)
         

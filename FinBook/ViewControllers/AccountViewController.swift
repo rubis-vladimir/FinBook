@@ -29,6 +29,18 @@ class AccountViewController: UIViewController {
         
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addTransaction" {
+            let transactionVC = segue.destination as! TransactionViewController
+            transactionVC.delegate = self // обязательно для передачи транзакции !!!
+        }
+    }
+    
+    @IBAction func unwind(segue: UIStoryboardSegue) {
+        
+    }
+    
     // MARK: - IBActions
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         if transactionTableView.isEditing {
@@ -39,13 +51,6 @@ class AccountViewController: UIViewController {
             sender.image = UIImage(systemName: "checkmark")
         }
     }
-    
-    
-    @IBAction func unwind(segue: UIStoryboardSegue) {
-        
-    }
-    
-    
 }
 
 // MARK: - Table View Data Source
