@@ -11,7 +11,7 @@ class TransactionViewController: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet var costTextField: UITextField!
-    @IBOutlet var labelTextField: UITextField!
+    @IBOutlet var descriptionTextField: UITextField!
     @IBOutlet var categoryPickerView: UIPickerView!
     @IBOutlet var dataPicker: UIDatePicker!
     
@@ -20,8 +20,7 @@ class TransactionViewController: UIViewController {
     
     
     // MARK: - Properties
-//    var currentTransaction = Transaction()
-    
+    var delegate: NewTransactionViewControllerDelegate!
     
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
@@ -43,21 +42,7 @@ class TransactionViewController: UIViewController {
     
 // MARK: - IBActions
     @IBAction func doneButtonAction(_ sender: Any) {
-        
-        
-//
-//        print("Дан сработал")
-//
-//        if let cost = Double(costTextField.text!) {
-//            currentTransaction.cost = Double(cost)
-//            print("стоимость извлеклась!!!!!!!!!!!!!!!!!!!!!!!")
-//            return
-//        } else {
-//            print("Нельзя извлечь стоимость!!!!!!!!!!!!!!!!!")
-//            showAlert(title: "Стоимость введена не корректно", message: "Введите корректное значение")
-//            return
-//        }
-        
+        saveAndExit()
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
@@ -71,6 +56,29 @@ class TransactionViewController: UIViewController {
     
     
     // MARK: - Private func
+    private func saveAndExit() {
+        
+        guard let cost = Double(costTextField.text ?? "0.0") else { return }
+        guard let description = descriptionTextField.text else { return }
+        
+        var currentTransaction = Transaction(
+            cost: cost,
+            description: description,
+            category: .products,
+            date: dataPicker.date,
+            note: noteTextField.text,
+            incomeTransaction: false
+            )
+        print(" ------->>>>>>   Транзакция   \(currentTransaction)")
+//        Транзакция   Transaction(cost: 52453.0, description: "gdfg", category: FinBook.Category.products, date: 2021-09-01 19:12:34 +0000, note: "", incomeTransaction: false)
+        
+        
+        delegate.saveTransaction(currentTransaction)
+        
+        dismiss(animated: true)
+
+    }
+    
     private func SetupCostTextField() {
         costTextField.becomeFirstResponder()  // курсор на данном поле
         costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
@@ -85,9 +93,7 @@ class TransactionViewController: UIViewController {
     private func SetupPickerView() {
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self  //показываем что есть связь между нашим PV и VC
-        
     }
-    
 }
 
 // MARK: - PickerControl Settings
@@ -95,9 +101,6 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        print("Сейчас количество строк: \(categoryPickerModels.count)")
-        
         return categoryPickerModels.count    // количество ячеек (компонента)
     }
     
@@ -107,7 +110,6 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let model = categoryPickerModels[row]  // получаем актуальную модель чтобы передать
-        print("Сейчас создается категория: \(model.title) с иконкой \(model.icon)")
         return CategoriesView.create(icon: model.icon, title: model.title)
     }
     

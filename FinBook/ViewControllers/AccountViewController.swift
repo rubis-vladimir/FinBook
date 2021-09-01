@@ -7,18 +7,29 @@
 
 import UIKit
 
+protocol NewTransactionViewControllerDelegate {
+    func saveTransaction(_ transaction: Transaction)
+}
+
 class AccountViewController: UIViewController {
 
-    var transactionList = Transaction.getTransactionList()
-    
+    // MARK: - IBOutlets
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var transactionTableView: UITableView!
     
     
+    // MARK: - Properties
+    private var transactions: [Transaction] = []
+    
+//    var transactionList = Transaction.getTransactionList()
+    
+    // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
+    // MARK: - IBActions
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         if transactionTableView.isEditing {
             transactionTableView.setEditing(false, animated: true)
@@ -37,23 +48,21 @@ class AccountViewController: UIViewController {
     
 }
 
+// MARK: - Table View Data Source
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    // MARK: - Table View Data Source
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        transactionList.count
+        transactions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! CustomTableViewCell
         
-        cell.categoryLabel.text = transactionList[indexPath.row].note
-        cell.descriptionLabel.text = transactionList[indexPath.row].description
-        cell.costLabel.text = String(transactionList[indexPath.row].cost)
+        cell.categoryLabel.text = transactions[indexPath.row].note
+        cell.descriptionLabel.text = transactions[indexPath.row].description
+        cell.costLabel.text = String(transactions[indexPath.row].cost)
         
         for (category, value) in CategoryService.categoryList {
-            if category == transactionList[indexPath.row].category {
+            if category == transactions[indexPath.row].category {
                 cell.categoryImage.image = value.1
             }
         }
@@ -62,22 +71,27 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            transactionList.remove(at: indexPath.row)
+            transactions.remove(at: indexPath.row)
             transactionTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let itemToMove = transactionList[sourceIndexPath.row]
-        transactionList.remove(at: sourceIndexPath.row)
-        transactionList.insert(itemToMove, at: destinationIndexPath.row)
+        let itemToMove = transactions[sourceIndexPath.row]
+        transactions.remove(at: sourceIndexPath.row)
+        transactions.insert(itemToMove, at: destinationIndexPath.row)
     }
     
     // MARK: - Table View Delegate
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         50
     }
-    
 }
-
+    
+// MARK: - NewTransactionViewControllerDelegate
+extension AccountViewController: NewTransactionViewControllerDelegate {
+    func saveTransaction(_ transaction: Transaction) {
+        transactions.append(transaction)  ////передача и добавление новой трансакции в массив
+        transactionTableView.reloadData()
+    }
+}
