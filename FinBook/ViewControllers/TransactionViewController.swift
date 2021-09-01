@@ -16,7 +16,8 @@ class TransactionViewController: UIViewController {
     @IBOutlet var dataPicker: UIDatePicker!
     
     @IBOutlet var noteTextField: UITextField!
-    @IBOutlet var doneButton: UIBarButtonItem!
+    @IBOutlet var doneButton: UIButton!
+    
     
     // MARK: - Properties
 //    var currentTransaction = Transaction()
@@ -68,9 +69,6 @@ class TransactionViewController: UIViewController {
 
         }
     
-    @IBAction func showTransaction(_ sender: Any) {
-        
-    }
     
     // MARK: - Private func
     private func SetupCostTextField() {
@@ -154,6 +152,8 @@ extension TransactionViewController: UITextFieldDelegate {
     @objc private func costTextFieldDidChanged() {
         guard let costName = costTextField.text else { return }
         doneButton.isEnabled = !costName.isEmpty ? true : false
+        
+        
     }
     
     
@@ -173,17 +173,17 @@ extension TransactionViewController: UITextFieldDelegate {
 }
 
 
-// MARK: - Alert Controller - пока не используется
-extension TransactionViewController {
-    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            textField?.text = ""
-        }
-        alert.addAction(okAction)
-        present(alert, animated: true)
-    }
-}
+//// MARK: - Alert Controller - пока не используется
+//extension TransactionViewController {
+//    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+//            textField?.text = ""
+//        }
+//        alert.addAction(okAction)
+//        present(alert, animated: true)
+//    }
+//}
 
 // MARK: - TableView Settings - реализация примера транзакции
 //extension TransactionViewController: UITableViewDataSource, UITableViewDelegate {
