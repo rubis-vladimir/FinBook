@@ -14,6 +14,7 @@ struct Transaction {
     var date: Date = Date()
     var note: String?
     
+    
 //    чтобы понять проходит трата или доход - если доход то "true", а если трата "false"
     var incomeTransaction = false
     

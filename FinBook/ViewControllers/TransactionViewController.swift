@@ -140,7 +140,6 @@ extension TransactionViewController: UITextFieldDelegate {
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 15
-        
     }
     
     //скрыть клавиатуру после редактирования
@@ -156,9 +155,6 @@ extension TransactionViewController: UITextFieldDelegate {
         
         
     }
-    
-    
-    
     
 //    Работа с клавиатурой
     
