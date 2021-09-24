@@ -53,8 +53,8 @@ class TransactionViewController: UIViewController {
     
     
     @IBAction func costTFChange(_ sender: UITextField) {
-
-        }
+        
+    }
     
     
     // MARK: - Private func
@@ -72,8 +72,10 @@ class TransactionViewController: UIViewController {
             incomeTransaction: false
             )
         
-        delegate.saveTransaction(currentTransaction)
         
+        StorageManager.shared.save(transaction: currentTransaction) // сохраняем данные в памяти
+        
+        delegate.saveTransaction(currentTransaction)
         dismiss(animated: true)
 
     }
