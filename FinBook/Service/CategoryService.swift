@@ -17,15 +17,6 @@ final class CategoryService {
         categories[.products] = ("Продукты", UIImage(systemName: "bag") ?? UIImage())
         categories[.clothers] = ("Одежда", UIImage(systemName: "person") ?? UIImage())
         categories[.car] = ("Машина", UIImage(systemName: "car") ?? UIImage())
-    
-    
-//    static var categoryList: [Category: (String, UIImage)] = {
-//
-//        var categories = [Category: (String, UIImage)] ()
-//        categories[.products] = ("Продукты", UIImage(systemName: "bag") ?? UIImage())
-//        categories[.clothers] = ("Одежда", UIImage(systemName: "person") ?? UIImage())
-//        categories[.car] = ("Машина", UIImage(systemName: "car") ?? UIImage())
-//
         
         return categories
     }()
