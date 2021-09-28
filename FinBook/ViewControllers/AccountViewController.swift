@@ -17,8 +17,6 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var transactionTableView: UITableView!
     
-    
-    
     // MARK: - Properties
     private var transactions: [Transaction] = []
     
