@@ -10,6 +10,7 @@ import UIKit
 class TransactionViewController: UIViewController {
 
     // MARK: - IBOutlets
+    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var costTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
     @IBOutlet var categoryPickerView: UIPickerView!
@@ -18,8 +19,9 @@ class TransactionViewController: UIViewController {
     @IBOutlet var noteTextField: UITextField!
     @IBOutlet var doneButton: UIButton!
     
+    @IBOutlet var categoryLabel: UILabel!
     
-    // MARK: - Properties
+// MARK: - Properties
     var delegate: NewTransactionViewControllerDelegate!
     
 //    let currentTransaction = Transaction(cost: 150, description: "Шава вЛаваше", category: .products, date: Date(), note: "Вкусно", incomeTransaction: false)
@@ -39,10 +41,19 @@ class TransactionViewController: UIViewController {
         
         SetupCostTextField()
         SetupPickerView()
-        
+        SetupDoneToolBar()
     }
     
 // MARK: - IBActions
+    @IBAction func incomStatusOnSegmentedControl(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            categoryLabel.text = "Категория расхода:"
+        default:
+            categoryLabel.text = "Категория затрат:"
+        }
+    }
+    
     @IBAction func doneButtonAction(_ sender: Any) {
         saveAndExit()
     }
@@ -51,19 +62,11 @@ class TransactionViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    
-    @IBAction func costTFChange(_ sender: UITextField) {
-
-        }
-    
-    
-    // MARK: - Private func
+// MARK: - Private func
     private func saveAndExit() {
-        
         guard let cost = Double(costTextField.text ?? "0.0") else { return }
         guard let description = descriptionTextField.text else { return }
-
-        let currentTransaction = Transaction(
+        var currentTransaction = Transaction(
             cost: cost,
             description: description,
             category: .products,
@@ -71,27 +74,37 @@ class TransactionViewController: UIViewController {
             note: noteTextField.text,
             incomeTransaction: false
             )
+        if segmentedControl.isEnabledForSegment(at: 1) { currentTransaction.incomeTransaction = true }
         
+        StorageManager.shared.save(transaction: currentTransaction) // сохраняем данные в памяти
         delegate.saveTransaction(currentTransaction)
-        
         dismiss(animated: true)
-
     }
     
     private func SetupCostTextField() {
         costTextField.becomeFirstResponder()  // курсор на данном поле
         costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
         
-        costTextField.addTarget(
-            self,
-            action: #selector(costTextFieldDidChanged),
-            for: .editingChanged
-        )
+        costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
     private func SetupPickerView() {
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self  //показываем что есть связь между нашим PV и VC
+    }
+    
+    private func SetupDoneToolBar() {
+        let doneToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: self,
+                                            action: nil)
+        let doneButton = UIBarButtonItem(title: "Далее", style: .done,
+                                         target: self,
+                                         action: #selector(textFieldShouldReturn))
+        doneToolbar.items = [flexibleSpace, doneButton]
+        doneToolbar.sizeToFit()
+        costTextField.inputAccessoryView = doneToolbar
+        descriptionTextField.inputAccessoryView = doneToolbar
     }
 }
 
@@ -117,12 +130,6 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     }
 }
 
-//extension TransactionViewController: UIPickerViewDelegate {
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        let category = Category.allCases[row]
-//        return category.rawValue
-//    }
-//}
 
 // MARK: - CostTextField Settings
 extension TransactionViewController: UITextFieldDelegate {
@@ -140,7 +147,6 @@ extension TransactionViewController: UITextFieldDelegate {
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 15
-        
     }
     
     //скрыть клавиатуру после редактирования
@@ -153,49 +159,31 @@ extension TransactionViewController: UITextFieldDelegate {
     @objc private func costTextFieldDidChanged() {
         guard let costName = costTextField.text else { return }
         doneButton.isEnabled = !costName.isEmpty ? true : false
-        
-        
     }
     
-    
-    
-    
-//    Работа с клавиатурой
-    
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        if textField == userNameTextField {
-//            passwordTextField.becomeFirstResponder()
-//        } else {
-//            logInPressed()
-//        }
-//        return true
-//    }
+    //переход с costTextField на descriptionTextField по нажатию кнопки "Далее" с Алёртами
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard Double(costTextField.text ?? "0.0") ?? 0 > 0 else {
+            showAlert(title: "Сумма введена не корректно", message: "Введите число больше нуля")
+            return false
+        }
+        
+        if costTextField.isEditing  { descriptionTextField.becomeFirstResponder()
+        } else { view.endEditing(true) }
+        return true
+    }
 }
 
 
-//// MARK: - Alert Controller - пока не используется
-//extension TransactionViewController {
-//    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-//            textField?.text = ""
-//        }
-//        alert.addAction(okAction)
-//        present(alert, animated: true)
-//    }
-//}
 
-// MARK: - TableView Settings - реализация примера транзакции
-//extension TransactionViewController: UITableViewDataSource, UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        50
-//    }
-//}
+// MARK: - Alert Controller
+extension TransactionViewController {
+    private func showAlert(title: String, message: String, textField: UITextField? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            textField?.text = ""
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}

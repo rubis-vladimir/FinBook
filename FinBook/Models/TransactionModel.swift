@@ -3,33 +3,25 @@
 //  FinBook
 //
 //  Created by Владимир Рубис on 11.07.2021.
-//
+//  Changed by Nikita Speransky
 
 import UIKit
 
-struct Transaction {
+// MARK: - Модель Тразакций
+
+struct Transaction: Codable {
     var cost: Double
     var description: String
     var category: Category
     var date: Date = Date()
     var note: String?
-    
-//    чтобы понять проходит трата или доход - если доход то "true", а если трата "false"
-    var incomeTransaction = false
-    
+    var incomeTransaction = false ///    чтобы понять проходит трата или доход - если доход то "true", а если трата "false"
 }
 
-enum Category: CaseIterable {
-    typealias RawValue = (String, UIImage)
+
+// MARK: - Модель категорий через ENUM (версия со String вместо UIImage)
+
+enum Category: String, Codable, Hashable {
     case products, clothers, car
 }
 
-extension Transaction {
-    static func getTransactionList() -> [Transaction] {
-
-        [Transaction(cost: 150, description: "Шава вЛаваше", category: .products, date: Date(), note: "Вкусно", incomeTransaction: false),
-         Transaction(cost: 2500, description: "Замена Шаровой", category: .car, date: Date(), note: "Раз в 30000", incomeTransaction: false),
-         Transaction(cost: 333, description: "Футболка Maraton", category: .clothers, date: Date(), note: "На распродаже", incomeTransaction: false)]
-
-    }
-}

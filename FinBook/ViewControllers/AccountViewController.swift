@@ -17,7 +17,6 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var transactionTableView: UITableView!
     
-    
     // MARK: - Properties
     private var transactions: [Transaction] = []
     
@@ -27,6 +26,11 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        if let currentTransaction = UserDefaults.standard.object(forKey:"currentTransaction") as? Transaction {  /// достаем транзакцию по ключу
+//            transactions.append(currentTransaction)
+//        }
+        
+        transactions = StorageManager.shared.fetchTransactions()
     }
     
     // MARK: - Navigation
@@ -77,6 +81,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             transactions.remove(at: indexPath.row)
+            StorageManager.shared.deleteTransaction(at: indexPath.row)
             transactionTableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

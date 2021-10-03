@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681159D726E93A70009FAA5E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681159D626E93A70009FAA5E /* StorageManager.swift */; };
 		6887F41B26DD568200910C4A /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41A26DD568200910C4A /* CategoriesView.swift */; };
 		6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */; };
 		688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BA66126A0AE21009F4727 /* TransactionViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		681159D626E93A70009FAA5E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StorageManager.swift; path = FinBook/Service/StorageManager.swift; sourceTree = SOURCE_ROOT; };
 		6887F41A26DD568200910C4A /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryPickerModel.swift; path = FinBook/Models/CategoryPickerModel.swift; sourceTree = SOURCE_ROOT; };
 		688BA66126A0AE21009F4727 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		6887F41D26DD5B1D00910C4A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				681159D626E93A70009FAA5E /* StorageManager.swift */,
 				7DF834E926DC045A009EC940 /* CategoryService.swift */,
 			);
 			path = Service;
@@ -224,6 +227,7 @@
 				6887F41B26DD568200910C4A /* CategoriesView.swift in Sources */,
 				7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */,
 				7DF834EA26DC045A009EC940 /* CategoryService.swift in Sources */,
+				681159D726E93A70009FAA5E /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PK5GMP355X;
 				INFOPLIST_FILE = FinBook/Info.plist;
@@ -377,8 +382,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Kelevra.FinBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Kelevras.FinBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -389,6 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PK5GMP355X;
 				INFOPLIST_FILE = FinBook/Info.plist;
@@ -396,8 +403,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Kelevra.FinBook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Kelevras.FinBook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
