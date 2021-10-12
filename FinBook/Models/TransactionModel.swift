@@ -23,6 +23,8 @@ struct Transaction: Codable {
 // MARK: - Модель категорий через ENUM (версия со String вместо UIImage)
 
 enum Category: String, Codable, Hashable {
-    case products, clothers, car
+    case products = "Продукты"
+    case clothers = "Одежда"
+    case car = "Машина"
 }
 
