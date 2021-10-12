@@ -25,6 +25,8 @@ class TransactionViewController: UIViewController {
     var delegate: NewTransactionViewControllerDelegate!
     
     var selectedModel: CategoryPickerModel?
+//    let currentTransaction = Transaction(cost: 150, description: "Шава вЛаваше", category: .products, date: Date(), note: "Вкусно", incomeTransaction: false)
+    
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
         
@@ -66,11 +68,11 @@ class TransactionViewController: UIViewController {
         guard let cost = Double(costTextField.text ?? "0.0") else { return }
         guard let description = descriptionTextField.text else { return }
         guard let selectedModel = selectedModel else { return }
-        
         var currentTransaction = Transaction(
             cost: cost,
             description: description,
             category: selectedModel.category,
+//            categoryImage: UIImage(systemName: "car") ?? UIImage(),
             date: dataPicker.date,
             note: noteTextField.text,
             incomeTransaction: false
@@ -127,7 +129,11 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        let model = categoryPickerModels[row]  //мы получили модель и строку выделенного элемента
+//        var selectedCategory: Category = categoryPickerModels[row].category as Category
+//        var selectedImage: UIImage = categoryPickerModels[row].icon as UIImage
         selectedModel = categoryPickerModels[row]
+    
     }
 }
 
