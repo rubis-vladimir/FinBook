@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Df6-ib-i8Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Df6-ib-i8Z">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,19 +34,12 @@
                                     <segue destination="A3i-py-pm1" kind="presentation" identifier="addTransaction" id="xHW-Ja-rJ5"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-XK-5mJ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="32"/>
-                                <segments>
-                                    <segment title="Расходы"/>
-                                    <segment title="Доходы"/>
-                                </segments>
-                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="obQ-uS-wdU">
-                                <rect key="frame" x="0.0" y="75" width="375" height="505"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="536"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="transactionCell" rowHeight="60" id="XkE-H6-bny" customClass="CustomTableViewCell" customModule="FinBook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XkE-H6-bny" id="CQz-EG-fV7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -116,15 +110,12 @@
                         <viewLayoutGuide key="safeArea" id="zNz-9N-mbh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="obQ-uS-wdU" firstAttribute="top" secondItem="zNz-9N-mbh" secondAttribute="top" id="3XD-ha-OQX"/>
                             <constraint firstItem="zNz-9N-mbh" firstAttribute="bottom" secondItem="Lb1-NK-y9u" secondAttribute="bottom" constant="-30" id="DWR-yZ-YfU"/>
                             <constraint firstItem="Lb1-NK-y9u" firstAttribute="centerX" secondItem="JWP-nX-if0" secondAttribute="centerX" id="JVM-as-Flj"/>
-                            <constraint firstItem="mJC-XK-5mJ" firstAttribute="trailing" secondItem="zNz-9N-mbh" secondAttribute="trailing" id="LlB-S6-Jba"/>
                             <constraint firstItem="obQ-uS-wdU" firstAttribute="trailing" secondItem="zNz-9N-mbh" secondAttribute="trailing" id="Nsk-KI-gV9"/>
                             <constraint firstItem="obQ-uS-wdU" firstAttribute="leading" secondItem="zNz-9N-mbh" secondAttribute="leading" id="juY-ra-wtb"/>
-                            <constraint firstItem="obQ-uS-wdU" firstAttribute="top" secondItem="mJC-XK-5mJ" secondAttribute="bottom" id="n8d-Qp-mbB"/>
-                            <constraint firstItem="mJC-XK-5mJ" firstAttribute="leading" secondItem="zNz-9N-mbh" secondAttribute="leading" id="nnL-Nb-PiP"/>
                             <constraint firstItem="Lb1-NK-y9u" firstAttribute="top" secondItem="obQ-uS-wdU" secondAttribute="bottom" constant="8" symbolic="YES" id="tK9-DT-nxN"/>
-                            <constraint firstItem="mJC-XK-5mJ" firstAttribute="top" secondItem="zNz-9N-mbh" secondAttribute="top" id="wFb-Ff-4Nc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="egO-qN-cmU">
@@ -141,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPY-St-0T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1651.875" y="135.21126760563379"/>
+            <point key="canvasLocation" x="1650.4000000000001" y="134.48275862068968"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9IY-y4-g1B">
@@ -174,7 +165,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" id="V6B-Yk-B8q">
-                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V6B-Yk-B8q" id="9sF-jf-eZu">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -256,19 +247,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rd0-Cm-jdg" userLabel="Main Stack View">
-                                <rect key="frame" x="10" y="65" width="355" height="363"/>
+                                <rect key="frame" x="10" y="65" width="355" height="365"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rmD-g5-h44" userLabel="Cast Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="25.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qz0-bC-WtY">
-                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="24.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите стоимость" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tlg-5O-Irc">
-                                                <rect key="frame" x="78.5" y="0.0" width="276.5" height="24.5"/>
+                                                <rect key="frame" x="78.5" y="0.0" width="276.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="url"/>
                                                 <connections>
@@ -278,16 +269,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bCh-tu-93f" userLabel="Label Stack View">
-                                        <rect key="frame" x="0.0" y="44.5" width="355" height="24.5"/>
+                                        <rect key="frame" x="0.0" y="45.5" width="355" height="25.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bv-Fa-2Mv">
-                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="24.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Описание" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pyp-qr-N2N">
-                                                <rect key="frame" x="107.5" y="0.0" width="247.5" height="24.5"/>
+                                                <rect key="frame" x="107.5" y="0.0" width="247.5" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" smartInsertDeleteType="no"/>
                                                 <connections>
@@ -297,16 +288,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G5d-sq-Udy" userLabel="Category Stack View">
-                                        <rect key="frame" x="0.0" y="89" width="355" height="150"/>
+                                        <rect key="frame" x="0.0" y="91" width="355" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория расхода:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-Ux-EYU">
-                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="150"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVb-0j-KS8">
-                                                <rect key="frame" x="182.5" y="0.0" width="172.5" height="150"/>
+                                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="pVb-0j-KS8">
+                                                <rect key="frame" x="105.5" y="0.0" width="249.5" height="150"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="A3i-py-pm1" id="fVz-Gj-Yow"/>
                                                     <outlet property="delegate" destination="A3i-py-pm1" id="PaZ-x4-z5G"/>
@@ -318,7 +309,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TKe-U1-arl" userLabel="Data Stack View">
-                                        <rect key="frame" x="0.0" y="259" width="355" height="50"/>
+                                        <rect key="frame" x="0.0" y="261" width="355" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkL-LX-alg">
                                                 <rect key="frame" x="0.0" y="0.0" width="172.5" height="50"/>
@@ -336,7 +327,7 @@
                                         </constraints>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Заметка по транзакции" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWb-r7-UV9">
-                                        <rect key="frame" x="0.0" y="329" width="355" height="34"/>
+                                        <rect key="frame" x="0.0" y="331" width="355" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>

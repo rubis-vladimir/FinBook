@@ -12,27 +12,44 @@ protocol NewTransactionViewControllerDelegate {
 }
 
 class AccountViewController: UIViewController {
-
+    
     // MARK: - IBOutlets
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var transactionTableView: UITableView!
     
     // MARK: - Properties
-    private var transactions: [Transaction] = []
     
-//    var transactionList = Transaction.getTransactionList()
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var transactions: [Transaction] = []
+    private var filteredTransactions: [Transaction] = []
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    //    var transactionList = Transaction.getTransactionList()
     
     // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let currentTransaction = UserDefaults.standard.object(forKey:"currentTransaction") as? Transaction {  /// достаем транзакцию по ключу
-//            transactions.append(currentTransaction)
-//        }
+        // Setup the search controller
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        
+        //        if let currentTransaction = UserDefaults.standard.object(forKey:"currentTransaction") as? Transaction {  /// достаем транзакцию по ключу
+        //            transactions.append(currentTransaction)
+        //        }
         
         transactions = StorageManager.shared.fetchTransactions()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+//        print(transactions[0].category.rawValue)
+    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTransaction" {
@@ -69,7 +86,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryLabel.text = transactions[indexPath.row].note
         cell.descriptionLabel.text = transactions[indexPath.row].description
         cell.costLabel.text = String(transactions[indexPath.row].cost)
-        
+        cell.categoryLabel.text = transactions[indexPath.row].category.rawValue
         for (category, value) in CategoryService.categoryList {
             if category == transactions[indexPath.row].category {
                 cell.categoryImage.image = value.1
@@ -97,11 +114,21 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         50
     }
 }
-    
+
 // MARK: - NewTransactionViewControllerDelegate
 extension AccountViewController: NewTransactionViewControllerDelegate {
     func saveTransaction(_ transaction: Transaction) {
         transactions.append(transaction)  ////передача и добавление новой трансакции в массив
         transactionTableView.reloadData()
+    }
+}
+
+extension AccountViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredTransactions = transactions.filter{ $0.category.rawValue.contains(searchText)
+        }
+        print(filteredTransactions)
     }
 }
