@@ -13,6 +13,7 @@ struct Transaction: Codable {
     var cost: Double
     var description: String
     var category: Category
+//    var categoryImage: UIImage
     var date: Date = Date()
     var note: String?
     var incomeTransaction = false ///    чтобы понять проходит трата или доход - если доход то "true", а если трата "false"
