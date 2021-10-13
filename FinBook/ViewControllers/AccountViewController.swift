@@ -19,37 +19,37 @@ class AccountViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let searchController = UISearchController(searchResultsController: nil)
     private var transactions: [Transaction] = []
     private var filteredTransactions: [Transaction] = []
+    private var timer: Timer?
+    private let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
-        guard let text = searchController.searchBar.text else { return false }
+        guard let text = searchController.searchBar.text else { return false}
         return text.isEmpty
     }
-    //    var transactionList = Transaction.getTransactionList()
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup the search controller
+        setupSearchBar()
+        transactions = StorageManager.shared.fetchTransactions()
+    }
+    
+    // MARK: - Private func
+    
+    // Setup the search controller
+    private func setupSearchBar() {
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
-        
-        //        if let currentTransaction = UserDefaults.standard.object(forKey:"currentTransaction") as? Transaction {  /// достаем транзакцию по ключу
-        //            transactions.append(currentTransaction)
-        //        }
-        
-        transactions = StorageManager.shared.fetchTransactions()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-//        print(transactions[0].category.rawValue)
-    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTransaction" {
@@ -77,18 +77,30 @@ class AccountViewController: UIViewController {
 // MARK: - Table View Data Source
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        transactions.count
+        
+        if isFiltering {
+            return filteredTransactions.count
+        }
+        return transactions.isEmpty ? 0 : transactions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! CustomTableViewCell
         
-        cell.categoryLabel.text = transactions[indexPath.row].note
-        cell.descriptionLabel.text = transactions[indexPath.row].description
-        cell.costLabel.text = String(transactions[indexPath.row].cost)
-        cell.categoryLabel.text = transactions[indexPath.row].category.rawValue
+        var transaction: Transaction
+        
+        if isFiltering {
+            transaction = filteredTransactions[indexPath.row]
+        } else {
+            transaction = transactions[indexPath.row]
+        }
+        
+        cell.categoryLabel.text = transaction.note
+        cell.descriptionLabel.text = transaction.description
+        cell.costLabel.text = String(transaction.cost)
+        cell.categoryLabel.text = transaction.category.rawValue
         for (category, value) in CategoryService.categoryList {
-            if category == transactions[indexPath.row].category {
+            if category == transaction.category {
                 cell.categoryImage.image = value.1
             }
         }
@@ -123,14 +135,18 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
     }
 }
 
+// MARK: - SearchBarDelegate
 extension AccountViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filteredTransactions = transactions.filter{ $0.category.rawValue.contains(searchText)
-        }
-        print(filteredTransactions)
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+            
+            self.filteredTransactions = self.transactions.filter{ $0.category.rawValue.contains(searchText) || $0.description.contains(searchText)
+            }
+            self.transactionTableView.reloadData()
+        })
     }
 }
 
-//privet
