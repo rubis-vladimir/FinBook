@@ -23,8 +23,8 @@ class TransactionViewController: UIViewController {
     
 // MARK: - Properties
     var delegate: NewTransactionViewControllerDelegate!
-    
     var selectedModel: CategoryPickerModel?
+    
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
         
@@ -67,17 +67,26 @@ class TransactionViewController: UIViewController {
         guard let description = descriptionTextField.text else { return }
         guard let selectedModel = selectedModel else { return }
         
-        var currentTransaction = Transaction(
-            cost: cost,
-            description: description,
-            category: selectedModel.category,
-            date: dataPicker.date,
-            note: noteTextField.text,
-            incomeTransaction: false
-            )
+        let currentTransaction: Transact
+        
+        currentTransaction.cost = cost
+        currentTransaction.descr = description
+        currentTransaction.category = selectedModel.title
+        currentTransaction.date = dataPicker.date
+        currentTransaction.note = noteTextField.text
+        currentTransaction.incomeTransaction = false
+//        var currentTransaction = Transact(
+//            cost: cost,
+//            description: description,
+//            category: selectedModel.category,
+//            date: dataPicker.date,
+//            note: noteTextField.text,
+//            incomeTransaction: false
+//            )
+        
         if segmentedControl.isEnabledForSegment(at: 1) { currentTransaction.incomeTransaction = true }
         
-        StorageManager.shared.save(transaction: currentTransaction) // сохраняем данные в памяти
+        StorageManager.shared.saveData(currentTransaction, completion: <#(Transact) -> Void#>) // сохраняем данные в памяти
         delegate.saveTransaction(currentTransaction)
         dismiss(animated: true)
     }

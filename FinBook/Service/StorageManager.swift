@@ -5,32 +5,70 @@
 //  Created by Сперанский Никита on 08.09.2021.
 //
 
-import Foundation
+import CoreData
 
 class StorageManager {
+    
     static let shared = StorageManager()
     
-    private let userDefaults = UserDefaults.standard
-    private let key = "transaction"
+    // MARK: - Core Data stack
+    private let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "FinBook")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
     
-    private init() {}
+    private let viewContext: NSManagedObjectContext
     
-    func save(transaction: Transaction) {
-        var transactions = fetchTransactions()
-        transactions.append(transaction)
-        guard let data = try? JSONEncoder().encode(transactions) else { return }
-        userDefaults.set(data, forKey: key)
+    private init() {
+        viewContext = persistentContainer.viewContext
+// один из способов инициализировать свойство, при этом свойство можно объявить как "Let"
     }
     
-    func fetchTransactions() -> [Transaction] {
-        guard let data = userDefaults.object(forKey: key) as? Data else { return [] }
-        guard let contacts = try? JSONDecoder().decode([Transaction].self, from: data) else { return [] }
-        return contacts
+    
+    // MARK: - Public Methods - Методы по управлению данными
+    
+    func fetchData(completion:(Result<[Transact], Error>) -> Void) {
+        let fetchRequest: NSFetchRequest<Transact> = Transact.fetchRequest()
+        
+        do {
+            let transactions = try viewContext.fetch(fetchRequest)
+            completion(.success(transactions))
+        } catch let error {
+            completion(.failure(error))
+        }
     }
     
-    func deleteTransaction(at index: Int) {
-        var transactions = fetchTransactions()
-        transactions.remove(at: index)
-        userDefaults.set(transactions, forKey: key)
+    func saveData(_ transactionName: String, completion: (Transact) -> Void) {
+        let transaction = Transact(context: viewContext)
+        //        transaction.cost = transactionName
+        completion(transaction)
+        saveContext()
+    }
+    
+    func editData(_ task: Transact, newName: String) {
+        //            task.name = newName
+        saveContext()
+    }
+    
+    func deleteTransaction(_ transaction: Transact) {
+        viewContext.delete(transaction)
+        saveContext()
+    }
+    
+    // MARK: - Core Data Saving support
+    func saveContext () {
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }

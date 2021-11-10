@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewTransactionViewControllerDelegate {
-    func saveTransaction(_ transaction: Transaction)
+    func saveTransaction(_ transaction: Transact)
 }
 
 class AccountViewController: UIViewController {
@@ -19,8 +19,8 @@ class AccountViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var transactions: [Transaction] = []
-    private var filteredTransactions: [Transaction] = []
+    private var transactions: [Transact] = []
+    private var filteredTransactions: [Transact] = []
     private var timer: Timer?
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
@@ -36,10 +36,22 @@ class AccountViewController: UIViewController {
         super.viewDidLoad()
         
         setupSearchBar()
-        transactions = StorageManager.shared.fetchTransactions()
+        getData()
     }
     
     // MARK: - Private func
+    
+    //  Загрузка данных из CoreData
+    private func getData() {
+        StorageManager.shared.fetchData { result in
+            switch result {
+            case .success(let transactions):
+                self.transactions = transactions
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
     
     // Setup the search controller
     private func setupSearchBar() {
@@ -58,9 +70,7 @@ class AccountViewController: UIViewController {
         }
     }
     
-    @IBAction func unwind(segue: UIStoryboardSegue) {
-        
-    }
+    @IBAction func unwind(segue: UIStoryboardSegue) {    }
     
     // MARK: - IBActions
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
@@ -78,16 +88,14 @@ class AccountViewController: UIViewController {
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isFiltering {
-            return filteredTransactions.count
-        }
+        if isFiltering { return filteredTransactions.count }
         return transactions.isEmpty ? 0 : transactions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! CustomTableViewCell
         
-        var transaction: Transaction
+        var transaction: Transact
         
         if isFiltering {
             transaction = filteredTransactions[indexPath.row]
@@ -98,9 +106,9 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryLabel.text = transaction.note
         cell.descriptionLabel.text = transaction.description
         cell.costLabel.text = String(transaction.cost)
-        cell.categoryLabel.text = transaction.category.rawValue
+        cell.categoryLabel.text = transaction.category
         for (category, value) in CategoryService.categoryList {
-            if category == transaction.category {
+            if category.rawValue == transaction.category {
                 cell.categoryImage.image = value.1
             }
         }
@@ -108,10 +116,12 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let transaction = transactions[indexPath.row]
+        
         if editingStyle == .delete {
             transactions.remove(at: indexPath.row)
-            StorageManager.shared.deleteTransaction(at: indexPath.row)
-            transactionTableView.deleteRows(at: [indexPath], with: .fade)
+            StorageManager.shared.deleteTransaction(transaction)
+            transactionTableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     
@@ -129,25 +139,21 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - NewTransactionViewControllerDelegate
 extension AccountViewController: NewTransactionViewControllerDelegate {
-    func saveTransaction(_ transaction: Transaction) {
-        transactions.append(transaction)  ////передача и добавление новой трансакции в массив
+    func saveTransaction(_ transaction: Transact) {
+        transactions.append(transaction)  //// передача и добавление новой трансакции в массив
         transactionTableView.reloadData()
     }
 }
 
 // MARK: - SearchBarDelegate
 extension AccountViewController: UISearchBarDelegate {
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-            
-            self.filteredTransactions = self.transactions.filter{ $0.category.rawValue.contains(searchText) || $0.description.contains(searchText)
-            }
+
+//            self.filteredTransactions = self.transactions.filter{ $0.category.rawValue.contains(searchText) || $0.description.contains(searchText)
+//            }
             self.transactionTableView.reloadData()
         })
     }
 }
-
-//new
