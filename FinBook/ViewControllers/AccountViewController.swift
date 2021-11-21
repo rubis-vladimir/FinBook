@@ -105,7 +105,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.categoryLabel.text = transaction.note
-        cell.descriptionLabel.text = transaction.description
+        cell.descriptionLabel.text = transaction.descr
         cell.costLabel.text = String(transaction.cost)
         cell.categoryLabel.text = transaction.category
         for (category, value) in CategoryService.categoryList {
@@ -134,9 +134,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - Table View Delegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        50
-    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 50 }
 }
 
 // MARK: - NewTransactionViewControllerDelegate
