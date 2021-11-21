@@ -71,6 +71,7 @@
 			children = (
 				7DADB3C6269B5C0F0041156D /* TransactionModel.swift */,
 				6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */,
+				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -131,7 +132,6 @@
 				7DADB3AF269B478C0041156D /* AppDelegate.swift */,
 				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
 				7DADB3C0269B478E0041156D /* Info.plist */,
-				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
 			);
 			path = FinBook;
 			sourceTree = "<group>";
@@ -376,7 +376,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WJM24K3YHR;
+				DEVELOPMENT_TEAM = PK5GMP355X;
 				INFOPLIST_FILE = FinBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -397,7 +397,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WJM24K3YHR;
+				DEVELOPMENT_TEAM = PK5GMP355X;
 				INFOPLIST_FILE = FinBook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

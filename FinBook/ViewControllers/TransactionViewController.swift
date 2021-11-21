@@ -15,8 +15,8 @@ class TransactionViewController: UIViewController {
     @IBOutlet var descriptionTextField: UITextField!
     @IBOutlet var categoryPickerView: UIPickerView!
     @IBOutlet var dataPicker: UIDatePicker!
-    
     @IBOutlet var noteTextField: UITextField!
+    
     @IBOutlet var doneButton: UIButton!
     
     @IBOutlet var categoryLabel: UILabel!
@@ -24,10 +24,11 @@ class TransactionViewController: UIViewController {
 // MARK: - Properties
     var delegate: NewTransactionViewControllerDelegate!
     
-    var selectedModel: CategoryPickerModel?
+    private var selectedModel: CategoryPickerModel!
+    private var income = false
+    
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
-        
         for (category, value) in CategoryService.categoryList {
             categories.append(.init(category: category, title: value.0, icon: value.1))
         }
@@ -37,6 +38,7 @@ class TransactionViewController: UIViewController {
 // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedModel = categoryPickerModels[0]
         
         SetupCostTextField()
         SetupPickerView()
@@ -48,8 +50,10 @@ class TransactionViewController: UIViewController {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             categoryLabel.text = "Категория расхода:"
+            income = false
         default:
-            categoryLabel.text = "Категория затрат:"
+            categoryLabel.text = "Категория дохода:"
+            income = true
         }
     }
     
@@ -63,22 +67,29 @@ class TransactionViewController: UIViewController {
     
 // MARK: - Private func
     private func saveAndExit() {
-        guard let cost = Double(costTextField.text ?? "0.0") else { return }
+ 
+        guard let costPrice = Double(costTextField.text ?? "0.00") else { return }
         guard let description = descriptionTextField.text else { return }
-        guard let selectedModel = selectedModel else { return }
         
-        var currentTransaction = Transaction(
-            cost: cost,
-            description: description,
-            category: selectedModel.category,
-            date: dataPicker.date,
-            note: noteTextField.text,
-            incomeTransaction: false
-            )
-        if segmentedControl.isEnabledForSegment(at: 1) { currentTransaction.incomeTransaction = true }
+//        guard let pickerCategory = selectedModel.title else { return }
+//        if let pickerCategory = selectedModel.title
+//        guard let note = noteTextField.text else { return }
+//        if noteTextField.text == nil { noteTextField.text = "" }
         
-        StorageManager.shared.save(transaction: currentTransaction) // сохраняем данные в памяти
-        delegate.saveTransaction(currentTransaction)
+        //Thread 1: "-[Transact setCost:]: unrecognized selector sent to instance 0x600001d0da40"
+        //Thread 1: "-[Transact setCost:]: unrecognized selector sent to instance 0x6000001f2100"
+        
+//        let currentTransaction = Transact()
+//        // присваиваем новой транзакции данные с интерфейса
+//        currentTransaction.cost = costPrice
+//        currentTransaction.descr = description
+//        currentTransaction.category = selectedModel.title
+//        currentTransaction.date = dataPicker.date
+//        currentTransaction.note = noteTextField.text
+//
+        
+        delegate.saveTransaction(cost: costPrice, description: description, category: selectedModel.title,
+                                 date: dataPicker.date, note: noteTextField.text ?? "", income: income) // передаем новую транзакцию на основной экран
         dismiss(animated: true)
     }
     
@@ -142,9 +153,6 @@ extension TransactionViewController: UITextFieldDelegate {
             return false
         }
         if textFieldText.contains(".") && string == "." { return false }
-        
-       
-        
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 15
