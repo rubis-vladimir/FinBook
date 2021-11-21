@@ -26,6 +26,7 @@ class StorageManager {
     
     private init() {
         viewContext = persistentContainer.viewContext
+// viewContext - база данных восстановленная из памяти / контекст главной очереди
 // один из способов инициализировать свойство, при этом свойство можно объявить как "Let"
     }
     
@@ -43,15 +44,28 @@ class StorageManager {
         }
     }
     
-    func saveData(_ transactionName: String, completion: (Transact) -> Void) {
+    func saveData(_ currentTransaction: Transact, completion: (Transact) -> Void) {
         let transaction = Transact(context: viewContext)
-        //        transaction.cost = transactionName
+        
+        transaction.cost = currentTransaction.cost
+        transaction.descr = currentTransaction.description
+        transaction.category = currentTransaction.category
+        transaction.date = currentTransaction.date
+        transaction.note = currentTransaction.note
+        transaction.incomeTransaction = currentTransaction.incomeTransaction
+        
         completion(transaction)
         saveContext()
     }
     
-    func editData(_ task: Transact, newName: String) {
-        //            task.name = newName
+    func editData(_ transaction: Transact, cost: Double, description: String,
+                  category: String, date: Date, note: String, income: Bool) {
+        transaction.cost = cost
+        transaction.descr = description
+        transaction.category = category
+        transaction.date = date
+        transaction.note = note
+        transaction.incomeTransaction = income
         saveContext()
     }
     

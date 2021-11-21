@@ -125,6 +125,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+//  Передвижение транакций
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let itemToMove = transactions[sourceIndexPath.row]
         transactions.remove(at: sourceIndexPath.row)
@@ -140,8 +141,15 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - NewTransactionViewControllerDelegate
 extension AccountViewController: NewTransactionViewControllerDelegate {
     func saveTransaction(_ transaction: Transact) {
-        transactions.append(transaction)  //// передача и добавление новой трансакции в массив
-        transactionTableView.reloadData()
+        StorageManager.shared.saveData(transaction) { transaction in
+            
+        transactions.append(transaction)  /// передача и добавление новой трансакции в массив транзакций
+        self.transactionTableView.insertRows(   // отображение на экране
+            at: [IndexPath(row: self.transactions.count - 1, section: 0)],
+            with: .automatic
+        )
+            //        transactionTableView.reloadData()
+        }
     }
 }
 
