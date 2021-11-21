@@ -23,12 +23,12 @@ class TransactionViewController: UIViewController {
     
 // MARK: - Properties
     var delegate: NewTransactionViewControllerDelegate!
-    var selectedModel: CategoryPickerModel!
+    
+    private var selectedModel: CategoryPickerModel!
     private var income = false
     
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
-        
         for (category, value) in CategoryService.categoryList {
             categories.append(.init(category: category, title: value.0, icon: value.1))
         }
@@ -38,6 +38,7 @@ class TransactionViewController: UIViewController {
 // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectedModel = categoryPickerModels[0]
         
         SetupCostTextField()
         SetupPickerView()
@@ -49,8 +50,10 @@ class TransactionViewController: UIViewController {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             categoryLabel.text = "Категория расхода:"
+            income = false
         default:
-            categoryLabel.text = "Категория затрат:"
+            categoryLabel.text = "Категория дохода:"
+            income = true
         }
     }
     
@@ -67,28 +70,26 @@ class TransactionViewController: UIViewController {
  
         guard let costPrice = Double(costTextField.text ?? "0.00") else { return }
         guard let description = descriptionTextField.text else { return }
+        
 //        guard let pickerCategory = selectedModel.title else { return }
+//        if let pickerCategory = selectedModel.title
 //        guard let note = noteTextField.text else { return }
 //        if noteTextField.text == nil { noteTextField.text = "" }
         
         //Thread 1: "-[Transact setCost:]: unrecognized selector sent to instance 0x600001d0da40"
         //Thread 1: "-[Transact setCost:]: unrecognized selector sent to instance 0x6000001f2100"
         
-        let currentTransaction = Transact()
-        // присваиваем новой транзакции данные с интерфейса
-        currentTransaction.cost = costPrice
-        currentTransaction.descr = description
-        currentTransaction.category = selectedModel.title
-        currentTransaction.date = dataPicker.date
-        currentTransaction.note = noteTextField.text
-    
-        if segmentedControl.isEnabledForSegment(at: 1) {
-            currentTransaction.incomeTransaction = true
-        } else {
-            currentTransaction.incomeTransaction = false
-        }
+//        let currentTransaction = Transact()
+//        // присваиваем новой транзакции данные с интерфейса
+//        currentTransaction.cost = costPrice
+//        currentTransaction.descr = description
+//        currentTransaction.category = selectedModel.title
+//        currentTransaction.date = dataPicker.date
+//        currentTransaction.note = noteTextField.text
+//
         
-        delegate.saveTransaction(currentTransaction) // передаем новую транзакцию на основной экран
+        delegate.saveTransaction(cost: costPrice, description: description, category: selectedModel.title,
+                                 date: dataPicker.date, note: noteTextField.text ?? "", income: income) // передаем новую транзакцию на основной экран
         dismiss(animated: true)
     }
     

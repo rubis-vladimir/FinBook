@@ -8,7 +8,8 @@
 import UIKit
 
 protocol NewTransactionViewControllerDelegate {
-    func saveTransaction(_ transaction: Transact)
+    func saveTransaction(cost: Double, description: String, category: String,
+                         date: Date, note: String, income: Bool)
 }
 
 class AccountViewController: UIViewController {
@@ -140,15 +141,15 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - NewTransactionViewControllerDelegate
 extension AccountViewController: NewTransactionViewControllerDelegate {
-    func saveTransaction(_ transaction: Transact) {
-        StorageManager.shared.saveData(transaction) { transaction in
-            
-        transactions.append(transaction)  /// передача и добавление новой трансакции в массив транзакций
+    func saveTransaction(cost: Double, description: String, category: String,
+                         date: Date, note: String, income: Bool) {
+        StorageManager.shared.saveData(cost: cost, description: description, category: category,
+                                       date: date, note: note, income: income) { transaction in
+        transactions.append(transaction)  // передача и добавление новой трансакции в массив транзакций
         self.transactionTableView.insertRows(   // отображение на экране
             at: [IndexPath(row: self.transactions.count - 1, section: 0)],
             with: .automatic
         )
-            //        transactionTableView.reloadData()
         }
     }
 }

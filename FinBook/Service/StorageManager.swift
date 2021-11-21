@@ -44,15 +44,17 @@ class StorageManager {
         }
     }
     
-    func saveData(_ currentTransaction: Transact, completion: (Transact) -> Void) {
+    func saveData(cost: Double, description: String, category: String,
+                  date: Date, note: String, income: Bool,
+                  completion: (Transact) -> Void) {
         let transaction = Transact(context: viewContext)
         
-        transaction.cost = currentTransaction.cost
-        transaction.descr = currentTransaction.description
-        transaction.category = currentTransaction.category
-        transaction.date = currentTransaction.date
-        transaction.note = currentTransaction.note
-        transaction.incomeTransaction = currentTransaction.incomeTransaction
+        transaction.cost = cost
+        transaction.descr = description
+        transaction.category = category
+        transaction.date = date
+        transaction.note = note
+        transaction.incomeTransaction = income
         
         completion(transaction)
         saveContext()
