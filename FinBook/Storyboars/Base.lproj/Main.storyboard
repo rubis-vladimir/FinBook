@@ -134,11 +134,11 @@
             </objects>
             <point key="canvasLocation" x="1650.4000000000001" y="134.48275862068968"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="9IY-y4-g1B">
             <objects>
-                <tabBarController id="Df6-ib-i8Z" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" itemWidth="60" id="MeL-FY-TNM" customClass="CustomTabBar" customModule="FinBook" customModuleProvider="target">
+                <tabBarController id="Df6-ib-i8Z" customClass="MainTabBarController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" tag="2" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" itemWidth="60" id="MeL-FY-TNM" customClass="CustomTabBar" customModule="FinBook" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,7 +153,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSW-w7-BXq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="447"/>
+            <point key="canvasLocation" x="193" y="454"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="DqG-bU-hGr">
@@ -191,14 +191,47 @@
                     <view key="view" contentMode="scaleToFill" id="GTi-g5-HYe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8w-FV-H88">
+                                <rect key="frame" x="154" y="293" width="67" height="31"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="2ty-U8-G08" kind="show" id="UJN-tD-LQ5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gYW-oQ-Zof"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Q8w-FV-H88" firstAttribute="top" secondItem="gYW-oQ-Zof" secondAttribute="top" constant="249" id="F26-NH-F9i"/>
+                            <constraint firstItem="Q8w-FV-H88" firstAttribute="centerX" secondItem="GTi-g5-HYe" secondAttribute="centerX" id="QFY-V8-z7K"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ogf-de-ufO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6C4-4u-c5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="1517"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fxb-0I-vhY">
+            <objects>
+                <viewController id="kBa-sZ-es5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AW2-b5-Cc7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="VeT-fX-BC7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ACR-5e-t9b"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Hl-Hh-ZnH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2332" y="1515"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cJM-MY-rry">
@@ -424,7 +457,7 @@
         <scene sceneID="vHl-ou-mvm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HQv-X4-vCM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="dollar" id="7m2-TS-bFO">
+                    <tabBarItem key="tabBarItem" tag="2" title="Settings" image="dollar" id="7m2-TS-bFO">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="10" vertical="-2"/>
                     </tabBarItem>
@@ -446,7 +479,7 @@
         <scene sceneID="Sob-DR-wfX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AWq-Ww-PTz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Statistics" image="pie chart" id="vcS-Ae-aCp">
+                    <tabBarItem key="tabBarItem" tag="3" title="Statistics" image="pie chart" id="vcS-Ae-aCp">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="23" vertical="-2"/>
                     </tabBarItem>
@@ -468,7 +501,7 @@
         <scene sceneID="Zp9-1g-89z">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aIK-DG-ELO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" id="g14-WX-uwW">
+                    <tabBarItem key="tabBarItem" tag="1" title="Calendar" image="calendar" id="g14-WX-uwW">
                         <inset key="imageInsets" minX="103" minY="0.0" maxX="103" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="-23" vertical="-2"/>
                     </tabBarItem>
@@ -486,13 +519,32 @@
             </objects>
             <point key="canvasLocation" x="964" y="-552"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zZn-rK-Lum">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2ty-U8-G08" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Wgw-7y-OGB"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wIw-Eg-aJ1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kBa-sZ-es5" kind="relationship" relationship="rootViewController" id="OPP-qa-Fbf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kLX-yA-Yxy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1652" y="1515.2923538230887"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar" width="240" height="240"/>
         <image name="dollar" width="240" height="240"/>
         <image name="pie chart" width="240" height="240"/>
         <image name="plus" width="48" height="48"/>
-        <image name="rectangle.stack" catalog="system" width="128" height="122"/>
+        <image name="rectangle.stack" catalog="system" width="32" height="32"/>
         <image name="wallet" width="240" height="240"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -508,6 +560,12 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
