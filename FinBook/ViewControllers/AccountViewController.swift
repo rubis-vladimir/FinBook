@@ -158,8 +158,9 @@ extension AccountViewController: UISearchBarDelegate {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
 
-//            self.filteredTransactions = self.transactions.filter{ $0.category.rawValue.contains(searchText) || $0.description.contains(searchText)
-//            }
+            self.filteredTransactions = self.transactions.filter{
+                $0.category?.contains(searchText) ?? false || $0.descr?.contains(searchText) ?? false 
+            }
             self.transactionTableView.reloadData()
         })
     }
