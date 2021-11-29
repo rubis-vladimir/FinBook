@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Account View Controller-->
+        <!--Your Finbook-->
         <scene sceneID="BF2-dU-pQ7">
             <objects>
                 <viewController id="BME-1M-sJC" customClass="AccountViewController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -118,14 +118,35 @@
                             <constraint firstItem="Lb1-NK-y9u" firstAttribute="top" secondItem="obQ-uS-wdU" secondAttribute="bottom" constant="8" symbolic="YES" id="tK9-DT-nxN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="egO-qN-cmU">
+                    <navigationItem key="navigationItem" title="Your Finbook" id="egO-qN-cmU">
                         <barButtonItem key="leftBarButtonItem" image="rectangle.stack" catalog="system" id="j7F-QX-aNu">
                             <connections>
                                 <action selector="editButtonPressed:" destination="BME-1M-sJC" id="ASe-VB-ADc"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="LIg-zC-tWw">
+                            <view key="customView" contentMode="scaleToFill" id="4Ha-zv-JEM" userLabel="BalanceView">
+                                <rect key="frame" x="276" y="5.5" width="83" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000.00" textAlignment="right" lineBreakMode="clip" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoi-38-Wt9" userLabel="Balance Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="33"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aoi-38-Wt9" secondAttribute="trailing" id="BwW-P2-J4G"/>
+                                    <constraint firstItem="aoi-38-Wt9" firstAttribute="leading" secondItem="4Ha-zv-JEM" secondAttribute="leading" id="Der-b6-asN"/>
+                                    <constraint firstAttribute="bottom" secondItem="aoi-38-Wt9" secondAttribute="bottom" id="Tpe-if-Zqc"/>
+                                    <constraint firstItem="aoi-38-Wt9" firstAttribute="top" secondItem="4Ha-zv-JEM" secondAttribute="top" id="eW5-zW-pS1"/>
+                                </constraints>
+                            </view>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="balanceLabel" destination="aoi-38-Wt9" id="rum-hz-1Ft"/>
                         <outlet property="button" destination="Lb1-NK-y9u" id="396-5I-jDJ"/>
                         <outlet property="transactionTableView" destination="obQ-uS-wdU" id="0HR-ef-QoL"/>
                     </connections>

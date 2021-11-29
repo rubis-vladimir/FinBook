@@ -128,7 +128,7 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
         return categoryPickerModels.count    // количество ячеек (компонента)
     }
     
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { 40.0 } // высота ячейки (компонента)
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { 20.0 } // высота ячейки (компонента)
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat { 130 } // длина ячейки (компонента)
     

@@ -8,8 +8,7 @@
 import UIKit
 
 protocol NewTransactionViewControllerDelegate {
-    func saveTransaction(cost: Double, description: String, category: String,
-                         date: Date, note: String, income: Bool)
+    func saveTransaction(cost: Double, description: String, category: String,date: Date, note: String, income: Bool)
 }
 
 class AccountViewController: UIViewController {
@@ -17,6 +16,8 @@ class AccountViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var transactionTableView: UITableView!
+    
+    @IBOutlet weak var balanceLabel: UILabel!
     
     // MARK: - Properties
     
@@ -48,11 +49,24 @@ class AccountViewController: UIViewController {
             switch result {
             case .success(let transactions):
                 self.transactions = transactions
+                walletBalance()
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
+    
+    // расчет и вывод баланса кошелька по транзакциям
+    private func walletBalance() {
+        var currentBalance = 0.00
+        for transaction in transactions {
+            if transaction.incomeTransaction {
+               currentBalance += transaction.cost
+            } else { currentBalance -= transaction.cost}
+        }
+        balanceLabel.text = "\(currentBalance) "
+    }
+    
     
     // Setup the search controller
     private func setupSearchBar() {
@@ -123,6 +137,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
             transactions.remove(at: indexPath.row)
             StorageManager.shared.deleteTransaction(transaction)
             transactionTableView.deleteRows(at: [indexPath], with: .automatic)
+            walletBalance()
         }
     }
     
@@ -131,6 +146,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         let itemToMove = transactions[sourceIndexPath.row]
         transactions.remove(at: sourceIndexPath.row)
         transactions.insert(itemToMove, at: destinationIndexPath.row)
+        walletBalance()
     }
     
     // MARK: - Table View Delegate
@@ -148,6 +164,7 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
             at: [IndexPath(row: self.transactions.count - 1, section: 0)],
             with: .automatic
         )
+            walletBalance()
         }
     }
 }
@@ -165,3 +182,5 @@ extension AccountViewController: UISearchBarDelegate {
         })
     }
 }
+
+//new life is just like before
