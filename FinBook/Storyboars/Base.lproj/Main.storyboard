@@ -213,46 +213,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8w-FV-H88">
-                                <rect key="frame" x="154" y="293" width="67" height="31"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button">
-                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="2ty-U8-G08" kind="show" id="UJN-tD-LQ5"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CI-q0-Gpv" customClass="PieChartView" customModule="FinBook" customModuleProvider="target">
+                                <rect key="frame" x="62.5" y="140" width="250" height="250"/>
+                                <color key="backgroundColor" red="0.9098039269" green="0.81960785390000002" blue="0.91372549530000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8CI-q0-Gpv" secondAttribute="height" id="PcF-3U-OqU"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XHw-2r-7mh">
+                                <rect key="frame" x="62" y="420" width="251.5" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Период:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qg-J7-KrY">
+                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHu-L3-pvU">
+                                        <rect key="frame" x="84.5" y="0.0" width="167" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="167" id="iMw-Lt-cI7"/>
+                                            <constraint firstAttribute="height" constant="50" id="yra-p8-KxK"/>
+                                        </constraints>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="onh-Ut-0wG">
+                                <rect key="frame" x="62.5" y="475" width="250.5" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Месяц:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dz-DJ-WN6">
+                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFo-m2-eFf">
+                                        <rect key="frame" x="83.5" y="0.0" width="167" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Jbd-PU-XjU"/>
+                                            <constraint firstAttribute="width" constant="167" id="XIA-qm-EMr"/>
+                                        </constraints>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gYW-oQ-Zof"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Q8w-FV-H88" firstAttribute="top" secondItem="gYW-oQ-Zof" secondAttribute="top" constant="249" id="F26-NH-F9i"/>
-                            <constraint firstItem="Q8w-FV-H88" firstAttribute="centerX" secondItem="GTi-g5-HYe" secondAttribute="centerX" id="QFY-V8-z7K"/>
+                            <constraint firstItem="XHw-2r-7mh" firstAttribute="top" secondItem="8CI-q0-Gpv" secondAttribute="bottom" constant="30" id="3TL-TC-Wnb"/>
+                            <constraint firstItem="8CI-q0-Gpv" firstAttribute="centerY" secondItem="gYW-oQ-Zof" secondAttribute="centerY" multiplier="0.8" id="Bdj-Vv-5uf"/>
+                            <constraint firstItem="onh-Ut-0wG" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="S7v-U6-9tx"/>
+                            <constraint firstItem="8CI-q0-Gpv" firstAttribute="width" secondItem="GTi-g5-HYe" secondAttribute="width" multiplier="2:3" id="YkG-80-Fpp"/>
+                            <constraint firstItem="onh-Ut-0wG" firstAttribute="top" secondItem="XHw-2r-7mh" secondAttribute="bottom" constant="5" id="Ztn-yg-R19"/>
+                            <constraint firstItem="8CI-q0-Gpv" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="nHj-lR-4MM"/>
+                            <constraint firstItem="XHw-2r-7mh" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="uPo-QZ-cG5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ogf-de-ufO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6C4-4u-c5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="1517"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Fxb-0I-vhY">
-            <objects>
-                <viewController id="kBa-sZ-es5" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AW2-b5-Cc7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="VeT-fX-BC7"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ACR-5e-t9b"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Hl-Hh-ZnH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2332" y="1515"/>
+            <point key="canvasLocation" x="964" y="1516.1919040479761"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="cJM-MY-rry">
@@ -540,32 +561,13 @@
             </objects>
             <point key="canvasLocation" x="964" y="-552"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="zZn-rK-Lum">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2ty-U8-G08" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Wgw-7y-OGB"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wIw-Eg-aJ1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="kBa-sZ-es5" kind="relationship" relationship="rootViewController" id="OPP-qa-Fbf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kLX-yA-Yxy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1652" y="1515.2923538230887"/>
-        </scene>
     </scenes>
     <resources>
         <image name="calendar" width="240" height="240"/>
         <image name="dollar" width="240" height="240"/>
         <image name="pie chart" width="240" height="240"/>
         <image name="plus" width="48" height="48"/>
-        <image name="rectangle.stack" catalog="system" width="32" height="32"/>
+        <image name="rectangle.stack" catalog="system" width="128" height="122"/>
         <image name="wallet" width="240" height="240"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -581,12 +583,6 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

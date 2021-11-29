@@ -22,6 +22,8 @@ class AccountViewController: UIViewController {
     // MARK: - Properties
     
     private var transactions: [Transact] = []
+    private var chartTransact: [String: Double] = [:]
+    private let month = 11
     private var filteredTransactions: [Transact] = []
     private var timer: Timer?
     private let searchController = UISearchController(searchResultsController: nil)
@@ -39,6 +41,9 @@ class AccountViewController: UIViewController {
         
         setupSearchBar()
         getData()
+        chartTransact = ChartManager.shared.fillteredForChart(transactions: transactions)
+        print(chartTransact)
+//        let month = Calendar.current.component(.month, from: transactions[0].date ?? Date())
     }
     
     // MARK: - Private func
@@ -141,7 +146,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//  Передвижение транакций
+    //  Передвижение транакций
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let itemToMove = transactions[sourceIndexPath.row]
         transactions.remove(at: sourceIndexPath.row)
@@ -174,9 +179,8 @@ extension AccountViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-
             self.filteredTransactions = self.transactions.filter{
-                $0.category?.contains(searchText) ?? false || $0.descr?.contains(searchText) ?? false 
+                $0.category?.contains(searchText) ?? false || $0.descr?.contains(searchText) ?? false
             }
             self.transactionTableView.reloadData()
         })

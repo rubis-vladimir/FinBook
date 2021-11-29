@@ -11,6 +11,9 @@
 		6887F41B26DD568200910C4A /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41A26DD568200910C4A /* CategoriesView.swift */; };
 		6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */; };
 		688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BA66126A0AE21009F4727 /* TransactionViewController.swift */; };
+		7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F641275418C1007C5D66 /* StatisticViewController.swift */; };
+		7D66F644275419AB007C5D66 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F643275419AB007C5D66 /* PieChartView.swift */; };
+		7D66F646275420B0007C5D66 /* ChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F645275420B0007C5D66 /* ChartManager.swift */; };
 		7D90B02226DA59AA00A33930 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */; };
 		7DADB3B0269B478C0041156D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3AF269B478C0041156D /* AppDelegate.swift */; };
 		7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B1269B478C0041156D /* SceneDelegate.swift */; };
@@ -30,6 +33,9 @@
 		6887F41A26DD568200910C4A /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryPickerModel.swift; path = FinBook/Models/CategoryPickerModel.swift; sourceTree = SOURCE_ROOT; };
 		688BA66126A0AE21009F4727 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		7D66F641275418C1007C5D66 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
+		7D66F643275419AB007C5D66 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		7D66F645275420B0007C5D66 /* ChartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartManager.swift; sourceTree = "<group>"; };
 		7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		7DADB3AC269B478C0041156D /* FinBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DADB3AF269B478C0041156D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +68,7 @@
 			children = (
 				7DADB3B3269B478C0041156D /* AccountViewController.swift */,
 				688BA66126A0AE21009F4727 /* TransactionViewController.swift */,
+				7D66F641275418C1007C5D66 /* StatisticViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -89,6 +96,7 @@
 			children = (
 				681159D626E93A70009FAA5E /* StorageManager.swift */,
 				7DF834E926DC045A009EC940 /* CategoryService.swift */,
+				7D66F645275420B0007C5D66 /* ChartManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -100,6 +108,14 @@
 				7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */,
 			);
 			path = Storyboars;
+			sourceTree = "<group>";
+		};
+		7D66F64027541843007C5D66 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				7D66F643275419AB007C5D66 /* PieChartView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		7DADB3A3269B478C0041156D = {
@@ -124,6 +140,7 @@
 				7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */,
 				6887F41E26DD5B9F00910C4A /* Storyboars */,
 				6813DEE5269F711000AA408F /* ViewControllers */,
+				7D66F64027541843007C5D66 /* CustomView */,
 				6813DEE626A07C7500AA408F /* Models */,
 				6887F41D26DD5B1D00910C4A /* Service */,
 				6887F41C26DD5AEF00910C4A /* CategoriesPickerView */,
@@ -216,13 +233,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D90B02226DA59AA00A33930 /* CustomTableViewCell.swift in Sources */,
+				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
 				7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */,
 				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */,
 				7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */,
+				7D66F644275419AB007C5D66 /* PieChartView.swift in Sources */,
 				6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */,
 				688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */,
 				7DADB3B0269B478C0041156D /* AppDelegate.swift in Sources */,
+				7D66F646275420B0007C5D66 /* ChartManager.swift in Sources */,
 				7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */,
 				6887F41B26DD568200910C4A /* CategoriesView.swift in Sources */,
 				7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */,
