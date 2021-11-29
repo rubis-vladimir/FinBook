@@ -12,8 +12,11 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
         drawTabBar(tabBar.items![0])
+        
+        
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -93,5 +96,10 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
             }
         }
         self.shapeLayer = shapeLayer
+        
+        self.tabBar.alpha = 0.0
+        UITabBar.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            self.tabBar.alpha = 1.0
+            }, completion: nil)
     }
 }
