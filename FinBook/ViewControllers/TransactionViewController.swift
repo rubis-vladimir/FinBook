@@ -102,7 +102,7 @@ class TransactionViewController: UIViewController {
     
     private func SetupPickerView() {
         categoryPickerView.dataSource = self
-        categoryPickerView.delegate = self  //показываем что есть связь между нашим PV и VC
+        categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
     }
     
     private func SetupDoneToolBar() {
@@ -141,7 +141,6 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
         selectedModel = categoryPickerModels[row]
     }
 }
-
 
 // MARK: - CostTextField Settings
 extension TransactionViewController: UITextFieldDelegate {

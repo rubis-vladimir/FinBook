@@ -21,7 +21,7 @@ class AccountViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var transactions: [Transact] = []
+     var transactions: [Transact] = []
     private var chartTransact: [String: Double] = [:]
     private let month = 11
     private var filteredTransactions: [Transact] = []
@@ -41,9 +41,8 @@ class AccountViewController: UIViewController {
         
         setupSearchBar()
         getData()
-        chartTransact = ChartManager.shared.fillteredForChart(transactions: transactions)
-        print(chartTransact)
-//        let month = Calendar.current.component(.month, from: transactions[0].date ?? Date())
+//        chartTransact = ChartManager.shared.fillteredForChart(transactions: transactions)
+        //        let month = Calendar.current.component(.month, from: transactions[0].date ?? Date())
     }
     
     // MARK: - Private func
@@ -66,7 +65,7 @@ class AccountViewController: UIViewController {
         var currentBalance = 0.00
         for transaction in transactions {
             if transaction.incomeTransaction {
-               currentBalance += transaction.cost
+                currentBalance += transaction.cost
             } else { currentBalance -= transaction.cost}
         }
         balanceLabel.text = "\(currentBalance) "
@@ -156,6 +155,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table View Delegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 50 }
+
 }
 
 // MARK: - NewTransactionViewControllerDelegate
@@ -164,11 +164,11 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
                          date: Date, note: String, income: Bool) {
         StorageManager.shared.saveData(cost: cost, description: description, category: category,
                                        date: date, note: note, income: income) { transaction in
-        transactions.append(transaction)  // передача и добавление новой трансакции в массив транзакций
-        self.transactionTableView.insertRows(   // отображение на экране
-            at: [IndexPath(row: self.transactions.count - 1, section: 0)],
-            with: .automatic
-        )
+            transactions.append(transaction)  // передача и добавление новой трансакции в массив транзакций
+            self.transactionTableView.insertRows(   // отображение на экране
+                at: [IndexPath(row: self.transactions.count - 1, section: 0)],
+                with: .automatic
+            )
             walletBalance()
         }
     }
@@ -186,5 +186,5 @@ extension AccountViewController: UISearchBarDelegate {
         })
     }
 }
-
+    
 //new life is just like before

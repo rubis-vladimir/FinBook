@@ -9,18 +9,15 @@ import UIKit
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         
         drawTabBar(tabBar.items![0])
-        
-        
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         drawTabBar(item)
+        
     }
     
     // MARK: - Customization TabBar
@@ -73,7 +70,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     private func drawTabBar(_ item: UITabBarItem) {
         let shapeLayer = CAShapeLayer()
-        let horizontalPositionItems = [-10, -23, 10, 23]
+        let horizontalPositionItems = [-10, -23, 23, 10]
         
         shapeLayer.path = shapePath(item)
         shapeLayer.strokeColor = UIColor.lightGray.cgColor
