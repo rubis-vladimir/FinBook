@@ -16,12 +16,12 @@ class AccountViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var transactionTableView: UITableView!
-    
     @IBOutlet weak var balanceLabel: UILabel!
     
     // MARK: - Properties
     
     private var transactions: [Transact] = []
+    private var editTransIndexPath: IndexPath? = nil
     private var chartTransact: [String: Double] = [:]
     private let month = 11
     private var filteredTransactions: [Transact] = []
@@ -72,7 +72,6 @@ class AccountViewController: UIViewController {
         balanceLabel.text = "\(currentBalance) "
     }
     
-    
     // Setup the search controller
     private func setupSearchBar() {
         searchController.searchBar.delegate = self
@@ -82,25 +81,21 @@ class AccountViewController: UIViewController {
         definesPresentationContext = true
     }
     
-    // MARK: - Navigation
+// MARK: - Navigation - переход и передача данных на TransactionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTransaction" {
-            let transactionVC = segue.destination as! TransactionViewController
+            guard let transactionVC = segue.destination as? TransactionViewController else { return }
+            transactionVC.delegate = self // обязательно для передачи транзакции !!!
+        }
+        
+        if segue.identifier == "editTransaction" {
+            guard let transactionVC = segue.destination as? TransactionViewController else { return }
+            transactionVC.editTransaction = sender as? Transact
             transactionVC.delegate = self // обязательно для передачи транзакции !!!
         }
     }
     
-    @IBAction func unwind(segue: UIStoryboardSegue) {    }
-    
-    // MARK: - IBActions
-    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
-        if transactionTableView.isEditing {
-            transactionTableView.setEditing(false, animated: true)
-            sender.image = UIImage(systemName: "rectangle.stack")
-        } else {
-            transactionTableView.setEditing(true, animated: true)
-            sender.image = UIImage(systemName: "checkmark")
-        }
+    @IBAction func unwind(segue: UIStoryboardSegue) {
     }
 }
 
@@ -117,11 +112,8 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         
         var transaction: Transact
         
-        if isFiltering {
-            transaction = filteredTransactions[indexPath.row]
-        } else {
-            transaction = transactions[indexPath.row]
-        }
+        if isFiltering { transaction = filteredTransactions[indexPath.row]
+        } else { transaction = transactions[indexPath.row] }
         
         cell.categoryLabel.text = transaction.note
         cell.descriptionLabel.text = transaction.descr
@@ -135,15 +127,24 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let transaction = transactions[indexPath.row]
         
-        if editingStyle == .delete {
-            transactions.remove(at: indexPath.row)
-            StorageManager.shared.deleteTransaction(transaction)
-            transactionTableView.deleteRows(at: [indexPath], with: .automatic)
-            walletBalance()
+        let swipeEdit = UIContextualAction(style: .normal, title: "Редактировать") { (action, editView, success) in
+            self.editTransIndexPath = indexPath
+            self.performSegue(withIdentifier: "editTransaction", sender: transaction)
         }
+        swipeEdit.image = UIImage(systemName: "square.and.pencil")
+        
+        let  swipeDelete = UIContextualAction(style: .destructive, title: "Удалить") { (action, delView, success) in
+            self.transactions.remove(at: indexPath.row)
+            StorageManager.shared.deleteTransaction(transaction)
+            self.transactionTableView.deleteRows(at: [indexPath], with: .automatic)
+            self.walletBalance()
+        }
+        swipeDelete.image = UIImage(systemName: "trash")
+        
+        return UISwipeActionsConfiguration(actions: [swipeDelete, swipeEdit])
     }
     
     //  Передвижение транакций
@@ -162,15 +163,35 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
 extension AccountViewController: NewTransactionViewControllerDelegate {
     func saveTransaction(cost: Double, description: String, category: String,
                          date: Date, note: String, income: Bool) {
-        StorageManager.shared.saveData(cost: cost, description: description, category: category,
-                                       date: date, note: note, income: income) { transaction in
-        transactions.append(transaction)  // передача и добавление новой трансакции в массив транзакций
-        self.transactionTableView.insertRows(   // отображение на экране
-            at: [IndexPath(row: self.transactions.count - 1, section: 0)],
-            with: .automatic
-        )
-            walletBalance()
+        if let selectedIndexPath = editTransIndexPath?.row {
+            StorageManager.shared.editData(transactions[selectedIndexPath],
+                                           cost: cost, description: description,
+                                           category: category, date: date,
+                                           note: note, income: income)
+            
+            
+            
+            transactions[selectedIndexPath].cost = cost
+            transactions[selectedIndexPath].descr = description
+            transactions[selectedIndexPath].category = category
+            transactions[selectedIndexPath].date = date
+            transactions[selectedIndexPath].note = note
+            transactions[selectedIndexPath].incomeTransaction = income
+            transactionTableView.deselectRow(at:editTransIndexPath!, animated: true)
+            self.editTransIndexPath = nil
+            DispatchQueue.main.async { self.transactionTableView.reloadData() }
+        } else {
+            StorageManager.shared.saveData(cost: cost, description: description,
+                                           category: category, date: date,
+                                           note: note, income: income) { transaction in
+                transactions.append(transaction)  // передача и добавление новой трансакции в массив транзакций
+                self.transactionTableView.insertRows(   // отображение на экране
+                    at: [IndexPath(row: self.transactions.count - 1, section: 0)],
+                    with: .automatic
+                )
+            }
         }
+        walletBalance()
     }
 }
 
@@ -182,9 +203,8 @@ extension AccountViewController: UISearchBarDelegate {
             self.filteredTransactions = self.transactions.filter{
                 $0.category?.contains(searchText) ?? false || $0.descr?.contains(searchText) ?? false
             }
-            self.transactionTableView.reloadData()
+            DispatchQueue.main.async { self.transactionTableView.reloadData() }
         })
     }
 }
 
-//new life is just like before
