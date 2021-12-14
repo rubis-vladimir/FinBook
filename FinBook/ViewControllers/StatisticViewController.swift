@@ -13,9 +13,6 @@ class StatisticViewController: UIViewController {
     var sections: [String: Double] = [:]
     var palitreColors: [UIColor] = []
     private let hexColors: [String] = ["767E8C", "CE5A57", "78A5A3", "E1B16A"]
-    let colors: [UIColor] = [.red, .orange, .gray, .blue]
-    var reports: [String] = ["Полный", "Годовой", "Месячный"]
-    var selectedElement: String?
     
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var statisticsTV: UITableView!
@@ -25,13 +22,12 @@ class StatisticViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calculateChartButton.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
-        
+        setupButton(button: calculateChartButton)
+        startDate.date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         redrawPieChart()
-        setupButton(button: calculateChartButton)
     }
     
     
@@ -42,13 +38,17 @@ class StatisticViewController: UIViewController {
     
     private func redrawPieChart() {
         getData()
-        sections = ChartManager.shared.fillteredForChart(transactions: transactions, start: startDate.date, finish: finishDate.date)
+        sections = ChartManager.shared.fillteredForChart(transactions: transactions,
+                                                         start: startDate.date,
+                                                         finish: finishDate.date)
         statisticsTV.reloadData()
         palitreColors = ColorManager.shared.createPalitreColors(hexColors: hexColors)
         pieChartView.layer.sublayers?.removeAll()
         
         self.pieChartView.draw(
-            CGRect(origin: CGPoint(x:pieChartView.bounds.width / 2, y:pieChartView.bounds.height / 2), size: CGSize(width: 250, height: 250)),
+            CGRect(origin: CGPoint(x:pieChartView.bounds.width / 2,
+                                   y:pieChartView.bounds.height / 2),
+                   size: CGSize(width: 250, height: 250)),
             sections: sections,
             colors: palitreColors
         )
@@ -88,12 +88,5 @@ extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        40
-    }
-}
-
-extension StatisticViewController {
-    
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 40 }
 }

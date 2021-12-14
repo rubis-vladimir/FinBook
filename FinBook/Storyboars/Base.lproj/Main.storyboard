@@ -153,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPY-St-0T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650.4000000000001" y="134.48275862068968"/>
+            <point key="canvasLocation" x="1652" y="-402"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="9IY-y4-g1B">
@@ -168,13 +168,13 @@
                     <connections>
                         <segue destination="zRa-k1-ipG" kind="relationship" relationship="viewControllers" id="wMe-ud-Na7"/>
                         <segue destination="AWq-Ww-PTz" kind="relationship" relationship="viewControllers" id="cJX-0x-Qpm"/>
-                        <segue destination="aIK-DG-ELO" kind="relationship" relationship="viewControllers" id="hZq-uW-mo3"/>
+                        <segue destination="e7r-0P-ujG" kind="relationship" relationship="viewControllers" id="fNz-xd-EzL"/>
                         <segue destination="HQv-X4-vCM" kind="relationship" relationship="viewControllers" id="6ku-mo-Zu4"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSW-w7-BXq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="454"/>
+            <point key="canvasLocation" x="177" y="603"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="DqG-bU-hGr">
@@ -203,7 +203,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugU-Km-dfk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="824"/>
+            <point key="canvasLocation" x="964" y="1632"/>
         </scene>
         <!--Statistic View Controller-->
         <scene sceneID="j88-19-YLT">
@@ -214,14 +214,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CI-q0-Gpv" customClass="PieChartView" customModule="FinBook" customModuleProvider="target">
-                                <rect key="frame" x="62.5" y="184" width="250" height="294"/>
+                                <rect key="frame" x="62.5" y="44" width="250" height="250"/>
                                 <color key="backgroundColor" systemColor="systemRedColor"/>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="apA-qR-AgQ">
-                                <rect key="frame" x="62.5" y="44" width="250" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="R0v-LW-ya4"/>
-                                    <constraint firstAttribute="height" constant="120" id="ysv-Dv-HVC"/>
+                                    <constraint firstAttribute="height" secondItem="8CI-q0-Gpv" secondAttribute="width" multiplier="1:1" id="2NF-Cw-AiK"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="Wbp-Ck-7PS"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-qA-nCs">
+                                <rect key="frame" x="56.5" y="348" width="262" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="От" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJG-4d-ChR">
+                                        <rect key="frame" x="0.0" y="0.0" width="26" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7e-RX-Jnk">
+                                        <rect key="frame" x="36" y="0.0" width="90" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="0BK-eo-UU1"/>
+                                            <constraint firstAttribute="height" constant="35" id="VxD-7w-GCh"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="658338360.47646105">
+                                            <!--2021-11-11 15:46:00 +0000-->
+                                        </date>
+                                        <locale key="locale" localeIdentifier="ru_RU"/>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="До" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZq-fK-Wsu">
+                                        <rect key="frame" x="136" y="0.0" width="26" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-s0-tGH">
+                                        <rect key="frame" x="172" y="0.0" width="90" height="35"/>
+                                        <locale key="locale" localeIdentifier="ru_RU"/>
+                                    </datePicker>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="u7e-RX-Jnk" firstAttribute="width" secondItem="gUP-s0-tGH" secondAttribute="width" id="gwX-3c-mU7"/>
+                                    <constraint firstItem="TZq-fK-Wsu" firstAttribute="width" secondItem="TJG-4d-ChR" secondAttribute="width" id="vkw-X3-PeN"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите период:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1S-Us-crh">
+                                <rect key="frame" x="103" y="319" width="169.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-N5-gJK">
+                                <rect key="frame" x="122.5" y="398" width="130" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="8LE-Tx-fhJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Рассчитать">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="calculateChart:" destination="cER-Jq-FHV" eventType="touchUpInside" id="3dn-7d-Jxn"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="apA-qR-AgQ">
+                                <rect key="frame" x="62.5" y="444" width="250" height="164"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="VUz-RP-cdO"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="xcv-jz-84t"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="chartCell" rowHeight="30" id="pSY-Eo-zgU" customClass="ChartTableViewCell" customModule="FinBook" customModuleProvider="target">
@@ -278,74 +339,23 @@
                                     <outlet property="delegate" destination="cER-Jq-FHV" id="lA5-Nw-ttu"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-qA-nCs">
-                                <rect key="frame" x="33.5" y="523" width="308" height="35"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="От" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJG-4d-ChR">
-                                        <rect key="frame" x="0.0" y="0.0" width="19" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7e-RX-Jnk">
-                                        <rect key="frame" x="32" y="0.0" width="112" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="VxD-7w-GCh"/>
-                                        </constraints>
-                                        <date key="date" timeIntervalSinceReferenceDate="658338360.47646105">
-                                            <!--2021-11-11 15:46:00 +0000-->
-                                        </date>
-                                        <locale key="locale" localeIdentifier="ru_RU"/>
-                                    </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="До" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZq-fK-Wsu">
-                                        <rect key="frame" x="157" y="0.0" width="26" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-s0-tGH">
-                                        <rect key="frame" x="196" y="0.0" width="112" height="35"/>
-                                        <locale key="locale" localeIdentifier="ru_RU"/>
-                                    </datePicker>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="308" id="BNw-0N-f5f"/>
-                                </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите период:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1S-Us-crh">
-                                <rect key="frame" x="33.5" y="494" width="169.5" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-N5-gJK">
-                                <rect key="frame" x="121.5" y="563" width="132.5" height="41.5"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Рассчитать">
-                                    <fontDescription key="titleFontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="calculateChart:" destination="cER-Jq-FHV" eventType="touchUpInside" id="3dn-7d-Jxn"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gYW-oQ-Zof"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gYW-oQ-Zof" firstAttribute="bottom" secondItem="i9H-qA-nCs" secondAttribute="bottom" constant="60" id="5Dg-oE-d2n"/>
+                            <constraint firstItem="Y1S-Us-crh" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="07b-Hm-6Ik"/>
                             <constraint firstItem="i9H-qA-nCs" firstAttribute="top" secondItem="Y1S-Us-crh" secondAttribute="bottom" constant="5" id="BZ0-w3-B8V"/>
-                            <constraint firstItem="8CI-q0-Gpv" firstAttribute="centerY" secondItem="gYW-oQ-Zof" secondAttribute="centerY" id="Bdj-Vv-5uf"/>
-                            <constraint firstItem="6YH-N5-gJK" firstAttribute="top" secondItem="i9H-qA-nCs" secondAttribute="bottom" constant="5" id="MeB-y2-tLt"/>
-                            <constraint firstItem="apA-qR-AgQ" firstAttribute="leading" secondItem="8CI-q0-Gpv" secondAttribute="leading" id="Qoa-5s-AKx"/>
-                            <constraint firstItem="Y1S-Us-crh" firstAttribute="leading" secondItem="i9H-qA-nCs" secondAttribute="leading" id="RS9-Ib-ogd"/>
-                            <constraint firstItem="apA-qR-AgQ" firstAttribute="centerX" secondItem="8CI-q0-Gpv" secondAttribute="centerX" id="Unk-p2-KyQ"/>
+                            <constraint firstItem="apA-qR-AgQ" firstAttribute="top" secondItem="6YH-N5-gJK" secondAttribute="bottom" constant="10" id="D0I-y2-va1"/>
+                            <constraint firstItem="Y1S-Us-crh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8CI-q0-Gpv" secondAttribute="bottom" constant="10" id="FqR-cP-UHC"/>
+                            <constraint firstItem="6YH-N5-gJK" firstAttribute="top" secondItem="i9H-qA-nCs" secondAttribute="bottom" constant="15" id="MeB-y2-tLt"/>
                             <constraint firstItem="i9H-qA-nCs" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="WR2-IV-krH"/>
                             <constraint firstItem="8CI-q0-Gpv" firstAttribute="width" secondItem="GTi-g5-HYe" secondAttribute="width" multiplier="2:3" id="YkG-80-Fpp"/>
-                            <constraint firstItem="8CI-q0-Gpv" firstAttribute="top" secondItem="apA-qR-AgQ" secondAttribute="bottom" constant="20" id="api-fa-aU7"/>
-                            <constraint firstItem="apA-qR-AgQ" firstAttribute="top" secondItem="gYW-oQ-Zof" secondAttribute="top" id="jiP-tN-6MT"/>
+                            <constraint firstItem="apA-qR-AgQ" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="baK-OI-l2k"/>
+                            <constraint firstItem="gYW-oQ-Zof" firstAttribute="bottom" secondItem="apA-qR-AgQ" secondAttribute="bottom" constant="10" id="cvt-QX-xRm"/>
                             <constraint firstItem="8CI-q0-Gpv" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="nHj-lR-4MM"/>
+                            <constraint firstItem="Y1S-Us-crh" firstAttribute="centerY" secondItem="gYW-oQ-Zof" secondAttribute="centerY" id="nXQ-Jc-VsS"/>
                             <constraint firstItem="6YH-N5-gJK" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="tH2-vj-soB"/>
+                            <constraint firstItem="8CI-q0-Gpv" firstAttribute="top" secondItem="gYW-oQ-Zof" secondAttribute="top" id="wnM-OI-ux2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ogf-de-ufO"/>
@@ -359,23 +369,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6C4-4u-c5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="1516.1919040479761"/>
+            <point key="canvasLocation" x="1652" y="276"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="cJM-MY-rry">
+        <!--Business Card View Controller-->
+        <scene sceneID="ajf-LK-J8T">
             <objects>
-                <viewController id="nQc-9S-Pny" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lnz-d1-G6J">
+                <tableViewController id="N7G-7g-4oD" customClass="BusinessCardViewController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dr6-kn-jZu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="lMK-Dr-RHg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="aSB-ob-41Q"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JJP-hw-FVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="developerCell" rowHeight="240" id="E9F-ce-K0o" customClass="DeveloperTableViewCell" customModule="FinBook" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="240"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E9F-ce-K0o" id="l4q-MF-vrT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ke5-qU-RZ6" customClass="BusinessCardView" customModule="FinBook" customModuleProvider="target">
+                                            <rect key="frame" x="28" y="18" width="319" height="204"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ke5-qU-RZ6" firstAttribute="width" secondItem="l4q-MF-vrT" secondAttribute="width" multiplier="0.85" id="NxC-Ad-CT4"/>
+                                        <constraint firstItem="Ke5-qU-RZ6" firstAttribute="height" secondItem="l4q-MF-vrT" secondAttribute="height" multiplier="0.85" id="a4E-AO-tYT"/>
+                                        <constraint firstItem="Ke5-qU-RZ6" firstAttribute="centerX" secondItem="l4q-MF-vrT" secondAttribute="centerX" id="qrp-Wd-Rbo"/>
+                                        <constraint firstItem="Ke5-qU-RZ6" firstAttribute="centerY" secondItem="l4q-MF-vrT" secondAttribute="centerY" id="rUd-zC-vNk"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="businessCardView" destination="Ke5-qU-RZ6" id="XCM-0T-7he"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="N7G-7g-4oD" id="6L3-jd-GUV"/>
+                            <outlet property="delegate" destination="N7G-7g-4oD" id="3RA-5O-Bd8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="m2N-Ql-0Zb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zQf-8B-Q9N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1651" y="-552"/>
+            <point key="canvasLocation" x="1652" y="956.67166416791611"/>
         </scene>
         <!--Accounts-->
         <scene sceneID="ZJX-1V-wQ8">
@@ -383,7 +421,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zRa-k1-ipG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Accounts" image="wallet" id="V6S-Tp-X1n">
                         <inset key="imageInsets" minX="103" minY="0.0" maxX="103" maxY="0.0"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="-10" vertical="-2"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="-10" vertical="-4"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="y6j-cu-o53">
@@ -397,7 +435,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Whf-nV-bm8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963.76811594202911" y="135.9375"/>
+            <point key="canvasLocation" x="964" y="-401"/>
         </scene>
         <!--Transaction View Controller-->
         <scene sceneID="2wr-El-SQR">
@@ -579,7 +617,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wmz-ca-7IC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Ehk-4f-Scq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2506" y="134"/>
+            <point key="canvasLocation" x="2342" y="-402"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vHl-ou-mvm">
@@ -587,7 +625,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HQv-X4-vCM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="3" title="Settings" image="dollar" id="7m2-TS-bFO">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="10" vertical="-2"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="10" vertical="-4"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LPh-vJ-bN9">
@@ -601,7 +639,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEk-9u-3VY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="824"/>
+            <point key="canvasLocation" x="177" y="1631"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="Sob-DR-wfX">
@@ -609,7 +647,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AWq-Ww-PTz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="Statistics" image="pie chart" id="vcS-Ae-aCp">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="-23" vertical="-2"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="-23" vertical="-4"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hyg-Ma-1Mk">
@@ -623,29 +661,29 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gg6-RY-9eP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="1517"/>
+            <point key="canvasLocation" x="964" y="276"/>
         </scene>
         <!--Business card-->
-        <scene sceneID="Zp9-1g-89z">
+        <scene sceneID="qTT-Fr-UOe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aIK-DG-ELO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Business card" image="business card" id="g14-WX-uwW">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e7r-0P-ujG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" tag="2" title="Business card" image="business card" id="xPF-dd-BXf">
                         <inset key="imageInsets" minX="103" minY="0.0" maxX="103" maxY="0.0"/>
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="23" vertical="-2"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="23" vertical="-4"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vgx-EP-wdt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZHK-5B-deI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="nQc-9S-Pny" kind="relationship" relationship="rootViewController" id="ktw-uD-Sdv"/>
+                        <segue destination="N7G-7g-4oD" kind="relationship" relationship="rootViewController" id="JDD-QO-41L"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Upu-ZQ-5px" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BjS-4w-afb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="-552"/>
+            <point key="canvasLocation" x="964" y="957"/>
         </scene>
     </scenes>
     <resources>

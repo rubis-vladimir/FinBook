@@ -28,9 +28,13 @@ class PieChartView: UIView {
         let arcColor: UIColor = UIColor.white
         let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
         let radius: CGFloat = max(bounds.width, bounds.height) / 2
-        let circlePatch = UIBezierPath(arcCenter: center, radius: radius, startAngle: alpha, endAngle: betta, clockwise: true)
+        let circlePatch = UIBezierPath(arcCenter: center,
+                                       radius: radius,
+                                       startAngle: alpha,
+                                       endAngle: betta,
+                                       clockwise: true)
         circlePatch.addArc(withCenter: center,
-                           radius: 40,
+                           radius: radius / 3,
                            startAngle:  betta,
                            endAngle:  alpha,
                            clockwise: false)

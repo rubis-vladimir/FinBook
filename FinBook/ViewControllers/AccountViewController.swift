@@ -21,9 +21,7 @@ class AccountViewController: UIViewController {
     
     // MARK: - Properties
     
-     var transactions: [Transact] = []
-    private var chartTransact: [String: Double] = [:]
-    private let month = 11
+    private var transactions: [Transact] = []
     private var filteredTransactions: [Transact] = []
     private var timer: Timer?
     private let searchController = UISearchController(searchResultsController: nil)
@@ -41,8 +39,6 @@ class AccountViewController: UIViewController {
         
         setupSearchBar()
         getData()
-//        chartTransact = ChartManager.shared.fillteredForChart(transactions: transactions)
-        //        let month = Calendar.current.component(.month, from: transactions[0].date ?? Date())
     }
     
     // MARK: - Private func
