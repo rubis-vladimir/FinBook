@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Your Finbook-->
+        <!--Баланс счета:-->
         <scene sceneID="BF2-dU-pQ7">
             <objects>
                 <viewController id="BME-1M-sJC" customClass="AccountViewController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -98,6 +98,7 @@
                                             <outlet property="categoryLabel" destination="ufi-xM-9yK" id="xAN-Jt-g4z"/>
                                             <outlet property="costLabel" destination="mZ9-br-FN2" id="s2O-US-92K"/>
                                             <outlet property="descriptionLabel" destination="uB8-Qs-g8n" id="3s4-n4-CWi"/>
+                                            <segue destination="A3i-py-pm1" kind="presentation" identifier="editTransaction" id="KeR-Dn-foN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -118,12 +119,7 @@
                             <constraint firstItem="Lb1-NK-y9u" firstAttribute="top" secondItem="obQ-uS-wdU" secondAttribute="bottom" constant="8" symbolic="YES" id="tK9-DT-nxN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Finbook" id="egO-qN-cmU">
-                        <barButtonItem key="leftBarButtonItem" image="rectangle.stack" catalog="system" id="j7F-QX-aNu">
-                            <connections>
-                                <action selector="editButtonPressed:" destination="BME-1M-sJC" id="ASe-VB-ADc"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Баланс счета:" id="egO-qN-cmU">
                         <barButtonItem key="rightBarButtonItem" id="LIg-zC-tWw">
                             <view key="customView" contentMode="scaleToFill" id="4Ha-zv-JEM" userLabel="BalanceView">
                                 <rect key="frame" x="276" y="5.5" width="83" height="33"/>
@@ -686,12 +682,14 @@
             <point key="canvasLocation" x="964" y="957"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KeR-Dn-foN"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="business card" width="240" height="240"/>
         <image name="dollar" width="240" height="240"/>
         <image name="pie chart" width="240" height="240"/>
         <image name="plus" width="48" height="48"/>
-        <image name="rectangle.stack" catalog="system" width="128" height="122"/>
         <image name="wallet" width="240" height="240"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
