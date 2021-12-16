@@ -33,19 +33,26 @@ class BusinessCardViewController: UITableViewController {
 
 extension BusinessCardViewController {
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        2
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        developers?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "developerCell", for: indexPath) as! DeveloperTableViewCell
-        cell.backgroundColor = .orange
-        cell.businessCardView.backgroundColor = .orange
+        
+        cell.businessCardView.draw(CGRect(origin: CGPoint(x:cell.bounds.width / 2,
+                                                          y:cell.bounds.height / 2),
+                                          size: CGSize(width: 250, height: 250)),
+                                   developer: developers![indexPath.row])
+        
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        self.
-//    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        self.view.bounds.width * 0.65
+    }
     
+    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        <#code#>
+    //    }
 }

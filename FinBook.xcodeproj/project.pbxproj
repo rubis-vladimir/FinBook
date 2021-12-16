@@ -12,6 +12,7 @@
 		6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */; };
 		688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BA66126A0AE21009F4727 /* TransactionViewController.swift */; };
 		7D3F25D22767C29700365423 /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3F25D12767C29700365423 /* DeveloperTableViewCell.swift */; };
+		7D3F25D6276A711700365423 /* DevelopersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3F25D5276A711700365423 /* DevelopersViewController.swift */; };
 		7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F641275418C1007C5D66 /* StatisticViewController.swift */; };
 		7D66F644275419AB007C5D66 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F643275419AB007C5D66 /* PieChartView.swift */; };
 		7D66F646275420B0007C5D66 /* ChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F645275420B0007C5D66 /* ChartManager.swift */; };
@@ -42,6 +43,7 @@
 		6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryPickerModel.swift; path = FinBook/Models/CategoryPickerModel.swift; sourceTree = SOURCE_ROOT; };
 		688BA66126A0AE21009F4727 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		7D3F25D12767C29700365423 /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
+		7D3F25D5276A711700365423 /* DevelopersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopersViewController.swift; sourceTree = "<group>"; };
 		7D66F641275418C1007C5D66 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		7D66F643275419AB007C5D66 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		7D66F645275420B0007C5D66 /* ChartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartManager.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				688BA66126A0AE21009F4727 /* TransactionViewController.swift */,
 				7D66F641275418C1007C5D66 /* StatisticViewController.swift */,
 				7DF571422766865100ED5FB7 /* BusinessCardViewController.swift */,
+				7D3F25D5276A711700365423 /* DevelopersViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -168,15 +171,15 @@
 		7DADB3AE269B478C0041156D /* FinBook */ = {
 			isa = PBXGroup;
 			children = (
-				7D66F6472757BDF6007C5D66 /* CustomCell */,
-				6887F41E26DD5B9F00910C4A /* Storyboars */,
-				6813DEE5269F711000AA408F /* ViewControllers */,
-				7D66F64027541843007C5D66 /* CustomView */,
-				6813DEE626A07C7500AA408F /* Models */,
-				7DF5713D2766738600ED5FB7 /* DataDevelopers */,
-				6887F41D26DD5B1D00910C4A /* Service */,
 				6887F41C26DD5AEF00910C4A /* CategoriesPickerView */,
+				7D66F6472757BDF6007C5D66 /* CustomCell */,
+				7D66F64027541843007C5D66 /* CustomView */,
+				7DF5713D2766738600ED5FB7 /* DataDevelopers */,
+				6813DEE626A07C7500AA408F /* Models */,
+				6887F41D26DD5B1D00910C4A /* Service */,
+				6887F41E26DD5B9F00910C4A /* Storyboars */,
 				7DF834EB26DC0828009EC940 /* TabBar */,
+				6813DEE5269F711000AA408F /* ViewControllers */,
 				7DADB3BB269B478E0041156D /* Assets.xcassets */,
 				7DADB3AF269B478C0041156D /* AppDelegate.swift */,
 				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D90B02226DA59AA00A33930 /* CustomTableViewCell.swift in Sources */,
+				7D3F25D6276A711700365423 /* DevelopersViewController.swift in Sources */,
 				7D66F6492757BE2B007C5D66 /* ChartTableViewCell.swift in Sources */,
 				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
 				7DF571432766865100ED5FB7 /* BusinessCardViewController.swift in Sources */,

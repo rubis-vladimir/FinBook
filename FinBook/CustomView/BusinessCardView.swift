@@ -9,7 +9,7 @@ import UIKit
 
 class BusinessCardView: UIView {
 
-    func draw(_ rect: CGRect, developers: [Developer]) {
+    func draw(_ rect: CGRect, developer: Developer) {
         self.backgroundColor = UIColor.clear
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.black.cgColor
@@ -18,25 +18,25 @@ class BusinessCardView: UIView {
 //        self.layer.shadowOffset = CGSize(width: 0.5, height: 0.4)
 //        self.layer.shadowOpacity = 0.7
 //        self.layer.shadowRadius = 5
-        addPhotoView()
-        addFullnameLabel()
+        addPhotoView(developer)
+        addFullnameLabel(developer)
     }
     
-    private func addPhotoView() {
+    private func addPhotoView(_ developer: Developer) {
         let photoView = UIImageView()
         let photoSize = self.bounds.height * 0.7
         let y = self.bounds.height * 0.15
         
         photoView.frame = CGRect(x: 20, y: y, width: photoSize, height: photoSize)
-        photoView.image = UIImage(named: "testPhoto")
+        photoView.image = UIImage(named: developer.photo)
         self.addSubview(photoView)
   }
     
-    private func addFullnameLabel() {
+    private func addFullnameLabel(_ developer: Developer) {
         let fullnameLabel = UILabel()
         fullnameLabel.frame = CGRect(x: self.bounds.width / 2, y: self.bounds.height / 2 - 50, width: self.bounds.width / 2 - 10, height: self.bounds.height / 2)
         fullnameLabel.numberOfLines = 0
-        fullnameLabel.text = "Рубис Владимир \nЮрьевич"
+        fullnameLabel.text = developer.surname + " " + developer.name
         fullnameLabel.font = UIFont(name: "Avenir Heavy", size: 20)
         fullnameLabel.textAlignment = .center
         self.addSubview(fullnameLabel)
