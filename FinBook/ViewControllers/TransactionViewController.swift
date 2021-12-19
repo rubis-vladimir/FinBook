@@ -24,7 +24,10 @@ class TransactionViewController: UIViewController {
 // MARK: - Properties
     var delegate: NewTransactionViewControllerDelegate!
     
+    var editTransaction: Transact?
+    
     private var selectedModel: CategoryPickerModel!
+//    private var selectedCategory
     private var income = false
     
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
@@ -38,11 +41,11 @@ class TransactionViewController: UIViewController {
 // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedModel = categoryPickerModels[0]
         
         SetupCostTextField()
         SetupPickerView()
         SetupDoneToolBar()
+        EditTransaction()
     }
     
 // MARK: - IBActions
@@ -67,30 +70,48 @@ class TransactionViewController: UIViewController {
     
 // MARK: - Private func
     private func saveAndExit() {
- 
+       
         guard let costPrice = Double(costTextField.text ?? "0.00") else { return }
         guard let description = descriptionTextField.text else { return }
-        
-//        guard let pickerCategory = selectedModel.title else { return }
-//        if let pickerCategory = selectedModel.title
-//        guard let note = noteTextField.text else { return }
-//        if noteTextField.text == nil { noteTextField.text = "" }
-        
-        //Thread 1: "-[Transact setCost:]: unrecognized selector sent to instance 0x600001d0da40"
-        //Thread 1: "-[Transact setCost:]: unrecognized selector sent to instance 0x6000001f2100"
-        
-//        let currentTransaction = Transact()
-//        // присваиваем новой транзакции данные с интерфейса
-//        currentTransaction.cost = costPrice
-//        currentTransaction.descr = description
-//        currentTransaction.category = selectedModel.title
-//        currentTransaction.date = dataPicker.date
-//        currentTransaction.note = noteTextField.text
-//
-        
+ 
+            
+            //        guard let pickerCategory = selectedModel.title else { return }
+            //        if let pickerCategory = selectedModel.title
+            //        guard let note = noteTextField.text else { return }
+            //        if noteTextField.text == nil { noteTextField.text = "" }
+            
+            //        let currentTransaction = Transact()
+            //        // присваиваем новой транзакции данные с интерфейса
+            //        currentTransaction.cost = costPrice
+            //        currentTransaction.descr = description
+            //        currentTransaction.category = selectedModel.title
+            //        currentTransaction.date = dataPicker.date
+            //        currentTransaction.note = noteTextField.text
+            //
+            
         delegate.saveTransaction(cost: costPrice, description: description, category: selectedModel.title,
-                                 date: dataPicker.date, note: noteTextField.text ?? "", income: income) // передаем новую транзакцию на основной экран
+                                     date: dataPicker.date, note: noteTextField.text ?? "", income: income) // передаем новую транзакцию на основной экран
+
+        
         dismiss(animated: true)
+    }
+    
+    private func EditTransaction() {                                    // установки при редактировании транзакции
+        guard let editTransaction = editTransaction else { return }
+        if editTransaction.incomeTransaction == true {
+            segmentedControl.selectedSegmentIndex = 1
+            income = true
+        }
+        costTextField.text = String(editTransaction.cost)
+        descriptionTextField.text = editTransaction.descr
+        dataPicker.date = editTransaction.date!
+        noteTextField.text = editTransaction.note
+                
+        for (index, value) in CategoryService.categoryList.values.enumerated() {
+            if value.0 == editTransaction.category {
+                categoryPickerView.selectRow(index, inComponent: 0, animated: true)
+            }
+        }
     }
     
     private func SetupCostTextField() {
@@ -101,8 +122,9 @@ class TransactionViewController: UIViewController {
     }
     
     private func SetupPickerView() {
+        selectedModel = categoryPickerModels[0]
         categoryPickerView.dataSource = self
-        categoryPickerView.delegate = self  //показываем что есть связь между нашим PV и VC
+        categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
     }
     
     private func SetupDoneToolBar() {
@@ -141,7 +163,6 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
         selectedModel = categoryPickerModels[row]
     }
 }
-
 
 // MARK: - CostTextField Settings
 extension TransactionViewController: UITextFieldDelegate {
