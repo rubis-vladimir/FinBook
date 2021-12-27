@@ -33,42 +33,54 @@ class StorageManager {
     
     // MARK: - Public Methods - Методы по управлению данными
     
-    func fetchData(completion:(Result<[Transact], Error>) -> Void) {
-        let fetchRequest: NSFetchRequest<Transact> = Transact.fetchRequest() // создали запрос к базе данных "fetchRequest" - выбрать из базы все объекты с типом Transact
-        
+    func fetchData() -> [Transact] {
+        // создали запрос к базе данных "fetchRequest" - выбрать из базы все объекты с типом Transact
+        let fetchRequest: NSFetchRequest<Transact> = Transact.fetchRequest()
+//        // сортировка выводимых данных по дате
+//        let sort = NSSortDescriptor(key: #keyPath(Transact.date), ascending: true)
+//        fetchRequest.sortDescriptors = [sort]
         do {
             let transactions = try viewContext.fetch(fetchRequest)
-            completion(.success(transactions))
+            return transactions // при удаче возвращаем массив транзакций
         } catch let error {
-            completion(.failure(error))
+            print (error)
+            return []  // при неудаче возвращаем пустой массив
         }
     }
     
-    func saveData(cost: Double, description: String, category: String,
-                  date: Date, note: String, income: Bool,
-                  completion: (Transact) -> Void) {
-        let transaction = Transact(context: viewContext)
-        
-        transaction.cost = cost
-        transaction.descr = description
-        transaction.category = category
-        transaction.date = date
-        transaction.note = note
-        transaction.incomeTransaction = income
-        
+    func saveData(newTransaction: Transact, completion: (Transact) -> Void) {
+        var transaction = Transact(context: viewContext)
+        transaction = newTransaction
         completion(transaction)
         saveContext()
+        print("---------- сохранили транзакцию \(newTransaction.descr ?? "")")
     }
     
-    func editData(_ transaction: Transact, cost: Double, description: String,
-                  category: String, date: Date, note: String, income: Bool) {
+    //    Собрать новую транзакцию из элементов
+    func createTransact(cost: Double, description: String, category: String,
+                        date: Date, note: String, income: Bool) -> Transact {
+        let transaction = Transact(context: viewContext)
         transaction.cost = cost
         transaction.descr = description
         transaction.category = category
         transaction.date = date
         transaction.note = note
         transaction.incomeTransaction = income
+        print("----------Собрали и сохранили новую транзакцию")
         saveContext()
+
+        return transaction
+    }
+
+    
+    func editData(editingTransaction: Transact, from newTransaction: Transact) {
+        print("----------Отредактировал транзакцию \(editingTransaction.descr ?? "") [удалили её]")
+        deleteTransaction(editingTransaction)
+        
+        saveData(newTransaction: editingTransaction)  { transaction in }    //R800 ------------------------------------------------
+
+        saveContext()
+        print("---------- на транзакцию \(newTransaction.descr ?? "")")
     }
     
     func deleteTransaction(_ transaction: Transact) {

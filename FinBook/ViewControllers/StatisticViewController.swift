@@ -55,14 +55,7 @@ class StatisticViewController: UIViewController {
     }
     
     private func getData() {
-        StorageManager.shared.fetchData { result in
-            switch result {
-            case .success(let transactions):
-                self.transactions = transactions
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        self.transactions = StorageManager.shared.fetchData()
     }
     
     private func setupButton(button: UIButton) {

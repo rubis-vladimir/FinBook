@@ -27,6 +27,7 @@ class TransactionViewController: UIViewController {
     var editTransaction: Transact?
     
     private var selectedModel: CategoryPickerModel!
+//    private var selectedCategory
     private var income = false
     
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
@@ -44,7 +45,6 @@ class TransactionViewController: UIViewController {
         SetupCostTextField()
         SetupPickerView()
         SetupDoneToolBar()
-        
         EditTransaction()
     }
     
@@ -73,44 +73,37 @@ class TransactionViewController: UIViewController {
        
         guard let costPrice = Double(costTextField.text ?? "0.00") else { return }
         guard let description = descriptionTextField.text else { return }
- 
-            
-            //        guard let pickerCategory = selectedModel.title else { return }
-            //        if let pickerCategory = selectedModel.title
-            //        guard let note = noteTextField.text else { return }
-            //        if noteTextField.text == nil { noteTextField.text = "" }
-            
-            //        let currentTransaction = Transact()
-            //        // присваиваем новой транзакции данные с интерфейса
-            //        currentTransaction.cost = costPrice
-            //        currentTransaction.descr = description
-            //        currentTransaction.category = selectedModel.title
-            //        currentTransaction.date = dataPicker.date
-            //        currentTransaction.note = noteTextField.text
-            //
-            
-        delegate.saveTransaction(cost: costPrice, description: description, category: selectedModel.title,
-                                     date: dataPicker.date, note: noteTextField.text ?? "", income: income) // передаем новую транзакцию на основной экран
-
         
+        // присваиваем новой транзакции данные с интерфейса и сохраняем ее
+        let transaction = StorageManager.shared.createTransact(cost: costPrice, description: description, category: selectedModel.title, date: dataPicker.date, note: noteTextField.text ?? "", income: income)
+            
+        delegate.saveTransaction(newTransaction: transaction) // передаем новую транзакцию на основной экран     
         dismiss(animated: true)
     }
     
-    private func EditTransaction() {
+    private func EditTransaction() {                                    // установки при редактировании транзакции
         guard let editTransaction = editTransaction else { return }
-        
+        if editTransaction.incomeTransaction == true {
+            segmentedControl.selectedSegmentIndex = 1
+            income = true
+        }
         costTextField.text = String(editTransaction.cost)
         descriptionTextField.text = editTransaction.descr
-        categoryPickerView.selectedRow(inComponent: 0)
-        dataPicker.date = editTransaction.date!
+        dataPicker.date = editTransaction.date ?? dataPicker.date
         noteTextField.text = editTransaction.note
+                
+        for (index, value) in CategoryService.categoryList.values.enumerated() {
+            if value.0 == editTransaction.category {
+                categoryPickerView.selectRow(index, inComponent: 0, animated: true)
+            }
+        }
     }
     
     private func SetupCostTextField() {
         costTextField.becomeFirstResponder()  // курсор на данном поле
         costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
         
-        costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
+//        costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
     private func SetupPickerView() {
@@ -178,10 +171,10 @@ extension TransactionViewController: UITextFieldDelegate {
     }
     
     // Чтобы кнопка Done была активна только в когда поле цены заполнено
-    @objc private func costTextFieldDidChanged() {
-        guard let costName = costTextField.text else { return }
-        doneButton.isEnabled = !costName.isEmpty ? true : false
-    }
+//    @objc private func costTextFieldDidChanged() {
+//        guard let costName = costTextField.text else { return }
+//        doneButton.isEnabled = !costName.isEmpty ? true : false
+//    }
     
     //переход с costTextField на descriptionTextField по нажатию кнопки "Далее" с Алёртами
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
