@@ -195,8 +195,6 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
                 at: [IndexPath(row: self.transactions.count - 1, section: 0)],
                 with: .automatic
             )
-            
-            
         }
         reloadTransactArrayToFiltered()
         reloadDataTableView()
