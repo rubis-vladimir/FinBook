@@ -42,13 +42,6 @@ class AccountViewController: UIViewController {
     }
     
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        DispatchQueue.main.async { self.transactionTableView.reloadData() }
-//
-//    }
-    
-    
     // MARK: - Private func
     
     //  Загрузка данных из CoreData
@@ -199,7 +192,6 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
             
             self.transactions.append(newTransaction)                // передача и добавление новой трансакции в массив транзакций
             self.transactionTableView.insertRows(           // отображение на экране
-//                at: [IndexPath(row: 0, section: 0)],
                 at: [IndexPath(row: self.transactions.count - 1, section: 0)],
                 with: .automatic
             )
@@ -217,7 +209,7 @@ extension AccountViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-            self.filteredTransactions = self.transactions.filter{
+            self.filteredTransactions = self.transactions.filter {
                 $0.category?.contains(searchText) ?? false || $0.descr?.contains(searchText) ?? false
             }
             self.reloadDataTableView()
