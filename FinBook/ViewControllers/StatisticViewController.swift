@@ -11,7 +11,6 @@ class StatisticViewController: UIViewController {
     
     var transactions: [Transact] = []
     var sections: [(String, Double)] = []
-    var sections: [String: Double] = [:]
     var palitreColors: [UIColor] = []
     private let hexColors: [String] = ["767E8C", "CE5A57", "78A5A3", "E1B16A"]
     
@@ -78,7 +77,7 @@ extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.categoryShare.text = String(format: "%.1f", sections[indexPath.row].1 * 100 / (2 * Double.pi)) + " %"
         cell.categoryLabel.text = sections[indexPath.row].0
-        cell.categoryLabel.text = sections.map({$0})[indexPath.row].key
+        cell.categoryLabel.text = sections.map({$0})[indexPath.row].0
         
         return cell
     }

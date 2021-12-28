@@ -9,6 +9,8 @@ import UIKit
 
 class ContactsViewController: UITableViewController {
     
+    @IBOutlet weak var contactView: ContactView!
+    
     private var developers: [Developer]?
     private var isSelected = false
     
@@ -41,7 +43,7 @@ extension ContactsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "developerCell", for: indexPath) as! DeveloperTableViewCell
         
-        cell.businessCardView.draw(CGRect(origin: CGPoint(x:cell.bounds.width / 2,
+        cell.contactView.draw(CGRect(origin: CGPoint(x:cell.bounds.width / 2,
                                                           y:cell.bounds.height / 2),
                                           size: CGSize(width: 250, height: 250)),
                                    developer: developers![indexPath.row], isSelected: isSelected)

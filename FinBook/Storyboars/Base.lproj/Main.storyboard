@@ -58,16 +58,16 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fIf-bR-WRy">
-                                                            <rect key="frame" x="45" y="0.0" width="80" height="40"/>
+                                                            <rect key="frame" x="45" y="0.0" width="203" height="40"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uB8-Qs-g8n">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="203" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufi-xM-9yK">
-                                                                    <rect key="frame" x="0.0" y="25.5" width="80" height="14.5"/>
+                                                                    <rect key="frame" x="0.0" y="25.5" width="203" height="14.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="14.5" id="Lcs-Od-l4u"/>
                                                                     </constraints>
@@ -77,15 +77,27 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZ9-br-FN2">
-                                                            <rect key="frame" x="130" y="0.0" width="243" height="40"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1fV-sB-8gp">
+                                                            <rect key="frame" x="253" y="0.0" width="120" height="40"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rln-Ms-Rbn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:11 22.33.4444" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ug1-yZ-9XE" userLabel="Data Label">
+                                                                    <rect key="frame" x="0.0" y="25.5" width="114" height="14.5"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="FWP-u6-vFA"/>
+                                                                <constraint firstAttribute="width" constant="120" id="IEa-MI-q5l"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -98,7 +110,8 @@
                                         <connections>
                                             <outlet property="categoryImage" destination="4dE-HN-GhM" id="sbl-y9-IiM"/>
                                             <outlet property="categoryLabel" destination="ufi-xM-9yK" id="xAN-Jt-g4z"/>
-                                            <outlet property="costLabel" destination="mZ9-br-FN2" id="s2O-US-92K"/>
+                                            <outlet property="costLabel" destination="rln-Ms-Rbn" id="MuL-2b-d7S"/>
+                                            <outlet property="dataLabel" destination="Ug1-yZ-9XE" id="Csb-ka-BQ8"/>
                                             <outlet property="descriptionLabel" destination="uB8-Qs-g8n" id="3s4-n4-CWi"/>
                                             <segue destination="A3i-py-pm1" kind="presentation" identifier="editTransaction" id="KeR-Dn-foN"/>
                                         </connections>
@@ -497,6 +510,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="businessCardView" destination="Ke5-qU-RZ6" id="XCM-0T-7he"/>
+                                    <outlet property="contactView" destination="Ke5-qU-RZ6" id="2db-76-bza"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
