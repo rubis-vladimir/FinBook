@@ -16,6 +16,7 @@
 		7D5CF709277B80EE00FD5D11 /* PaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */; };
 		7D5CF70B277B80FA00FD5D11 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70A277B80FA00FD5D11 /* Palette.swift */; };
 		7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */; };
+		7D5CF70F277B8A6D00FD5D11 /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70E277B8A6D00FD5D11 /* TestCollectionViewCell.swift */; };
 		7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F641275418C1007C5D66 /* StatisticViewController.swift */; };
 		7D66F644275419AB007C5D66 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F643275419AB007C5D66 /* PieChartView.swift */; };
 		7D66F646275420B0007C5D66 /* ChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F645275420B0007C5D66 /* ChartManager.swift */; };
@@ -50,6 +51,7 @@
 		7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteModel.swift; sourceTree = "<group>"; };
 		7D5CF70A277B80FA00FD5D11 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView + Gradient.swift"; path = "Extensions/UIView + Gradient.swift"; sourceTree = "<group>"; };
+		7D5CF70E277B8A6D00FD5D11 /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D66F641275418C1007C5D66 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		7D66F643275419AB007C5D66 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		7D66F645275420B0007C5D66 /* ChartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartManager.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */,
 				7D3F25D12767C29700365423 /* DeveloperTableViewCell.swift */,
+				7D5CF70E277B8A6D00FD5D11 /* TestCollectionViewCell.swift */,
 				7D66F6482757BE2B007C5D66 /* ChartTableViewCell.swift */,
 			);
 			path = CustomCell;
@@ -295,6 +298,7 @@
 				7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */,
 				7D66F644275419AB007C5D66 /* PieChartView.swift in Sources */,
 				6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */,
+				7D5CF70F277B8A6D00FD5D11 /* TestCollectionViewCell.swift in Sources */,
 				7DF5713A2766333000ED5FB7 /* ContactView.swift in Sources */,
 				7DF5713F2766790000ED5FB7 /* DataManager.swift in Sources */,
 				688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */,
