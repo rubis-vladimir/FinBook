@@ -10,6 +10,8 @@ import UIKit
 class DeveloperTableViewCell: UITableViewCell {
 
     
+    @IBOutlet weak var contactView: ContactView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
