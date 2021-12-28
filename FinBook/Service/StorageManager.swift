@@ -33,14 +33,16 @@ class StorageManager {
     
     // MARK: - Public Methods - Методы по управлению данными
     
-    func fetchData(completion:(Result<[Transact], Error>) -> Void) {
+    func fetchData() -> [Transact] {
         let fetchRequest: NSFetchRequest<Transact> = Transact.fetchRequest() // создали запрос к базе данных "fetchRequest" - выбрать из базы все объекты с типом Transact
-        
+        let sort = NSSortDescriptor(key: #keyPath(Transact.date), ascending: true)
+        fetchRequest.sortDescriptors = [sort]
         do {
             let transactions = try viewContext.fetch(fetchRequest)
-            completion(.success(transactions))
+            return transactions
         } catch let error {
-            completion(.failure(error))
+            print(error)
+            return []
         }
     }
     

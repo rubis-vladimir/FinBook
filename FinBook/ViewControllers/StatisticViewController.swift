@@ -10,7 +10,7 @@ import UIKit
 class StatisticViewController: UIViewController {
     
     var transactions: [Transact] = []
-    var sections: [String: Double] = [:]
+    var sections: [(String, Double)] = []
     var palitreColors: [UIColor] = []
     private let hexColors: [String] = ["767E8C", "CE5A57", "78A5A3", "E1B16A"]
     
@@ -24,12 +24,12 @@ class StatisticViewController: UIViewController {
         super.viewDidLoad()
         setupButton(button: calculateChartButton)
         startDate.date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
+        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         redrawPieChart()
     }
-    
     
     @IBAction func calculateChart(_ sender: UIButton) {
         redrawPieChart()
@@ -55,14 +55,7 @@ class StatisticViewController: UIViewController {
     }
     
     private func getData() {
-        StorageManager.shared.fetchData { result in
-            switch result {
-            case .success(let transactions):
-                self.transactions = transactions
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        self.transactions = StorageManager.shared.fetchData()
     }
     
     private func setupButton(button: UIButton) {
@@ -82,8 +75,8 @@ extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chartCell", for: indexPath) as! ChartTableViewCell
         cell.categoryView.backgroundColor = palitreColors[indexPath.row]
         
-        cell.categoryShare.text = String(format: "%.1f", sections.map({$1})[indexPath.row] * 100 / (2 * Double.pi)) + " %"
-        cell.categoryLabel.text = sections.map({$0})[indexPath.row].key
+        cell.categoryShare.text = String(format: "%.1f", sections[indexPath.row].1 * 100 / (2 * Double.pi)) + " %"
+        cell.categoryLabel.text = sections[indexPath.row].0
         
         return cell
     }

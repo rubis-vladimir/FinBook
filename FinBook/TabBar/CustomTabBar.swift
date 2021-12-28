@@ -9,7 +9,9 @@ import UIKit
 
 class CustomTabBar: UITabBar {
     
-    // MARK: Override button touch
+    // MARK: Override draw and button touch
+    
+    override func draw(_ rect: CGRect) { }
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let buttonRadius: CGFloat = self.bounds.height * 0.5

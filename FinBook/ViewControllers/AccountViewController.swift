@@ -36,24 +36,20 @@ class AccountViewController: UIViewController {
     // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.hidesSearchBarWhenScrolling = false
         setupSearchBar()
         getData()
+        
+        ColorManager.shared.setThemeColors(mainElement: transactionTableView, secondaryElement: navigationController?.navigationBar)
+        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
+//        self.view.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
     }
     
     // MARK: - Private func
     
     //  Загрузка данных из CoreData
     private func getData() {
-        StorageManager.shared.fetchData { result in
-            switch result {
-            case .success(let transactions):
-                self.transactions = transactions
-                walletBalance()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        self.transactions = StorageManager.shared.fetchData()
     }
     
     // расчет и вывод баланса кошелька по транзакциям
@@ -76,7 +72,17 @@ class AccountViewController: UIViewController {
         definesPresentationContext = true
     }
     
-// MARK: - Navigation - переход и передача данных на TransactionViewController
+    private func transactionToDisplayAt(indexPath: IndexPath) -> Transact {
+        let transaction: Transact
+        if isFiltering {
+            transaction = filteredTransactions[indexPath.row]
+        } else {
+            transaction = transactions[indexPath.row]
+        }
+        return transaction
+    }
+    
+    // MARK: - Navigation - переход и передача данных на TransactionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addTransaction" {
             guard let transactionVC = segue.destination as? TransactionViewController else { return }
@@ -85,8 +91,9 @@ class AccountViewController: UIViewController {
         
         if segue.identifier == "editTransaction" {
             guard let transactionVC = segue.destination as? TransactionViewController else { return }
-            transactionVC.editTransaction = sender as? Transact
-            transactionVC.delegate = self // обязательно для передачи транзакции !!!
+                transactionVC.editTransaction = sender as? Transact
+                transactionVC.delegate = self // обязательно для передачи транзакции !!!
+            
         }
     }
     
@@ -105,11 +112,9 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! CustomTableViewCell
         
-        var transaction: Transact
+        let transaction = transactionToDisplayAt(indexPath: indexPath)
         
-        if isFiltering { transaction = filteredTransactions[indexPath.row]
-        } else { transaction = transactions[indexPath.row] }
-        
+        cell.backgroundColor = self.view.backgroundColor
         cell.categoryLabel.text = transaction.note
         cell.descriptionLabel.text = transaction.descr
         cell.costLabel.text = String(transaction.cost)
@@ -123,7 +128,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let transaction = transactions[indexPath.row]
+        let transaction = transactionToDisplayAt(indexPath: indexPath)
         
         let swipeEdit = UIContextualAction(style: .normal, title: "Редактировать") { (action, editView, success) in
             self.editTransIndexPath = indexPath
@@ -152,20 +157,19 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table View Delegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 50 }
-
 }
 
 // MARK: - NewTransactionViewControllerDelegate
 extension AccountViewController: NewTransactionViewControllerDelegate {
     func saveTransaction(cost: Double, description: String, category: String,
                          date: Date, note: String, income: Bool) {
-
+        
         if let selectedIndexPath = editTransIndexPath?.row {
             StorageManager.shared.editData(transactions[selectedIndexPath],
                                            cost: cost, description: description,
                                            category: category, date: date,
                                            note: note, income: income)
-  
+            
             transactions[selectedIndexPath].cost = cost
             transactions[selectedIndexPath].descr = description
             transactions[selectedIndexPath].category = category
@@ -195,8 +199,9 @@ extension AccountViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-            self.filteredTransactions = self.transactions.filter{
-                $0.category?.contains(searchText) ?? false || $0.descr?.contains(searchText) ?? false
+            self.filteredTransactions = self.transactions.filter{ (transaction) -> Bool in
+                return (transaction.category?.lowercased().contains(searchText.lowercased()))!
+                //                $0.descr?.contains(searchText.lowercased()) ?? false
             }
             DispatchQueue.main.async { self.transactionTableView.reloadData() }
         })
