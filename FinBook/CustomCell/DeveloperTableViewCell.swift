@@ -9,7 +9,7 @@ import UIKit
 
 class DeveloperTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var businessCardView: BusinessCardView!
+    @IBOutlet weak var businessCardView: ContactView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

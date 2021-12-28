@@ -1,5 +1,5 @@
 //
-//  BusinessCardViewController.swift
+//  ContactsViewController.swift
 //  FinBook
 //
 //  Created by Владимир Рубис on 12.12.2021.
@@ -7,9 +7,10 @@
 
 import UIKit
 
-class BusinessCardViewController: UITableViewController {
+class ContactsViewController: UITableViewController {
     
     private var developers: [Developer]?
+    private var isSelected = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +32,10 @@ class BusinessCardViewController: UITableViewController {
     }
 }
 
-extension BusinessCardViewController {
+extension ContactsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        developers?.count ?? 1
+        developers?.count ?? 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,8 +44,7 @@ extension BusinessCardViewController {
         cell.businessCardView.draw(CGRect(origin: CGPoint(x:cell.bounds.width / 2,
                                                           y:cell.bounds.height / 2),
                                           size: CGSize(width: 250, height: 250)),
-                                   developer: developers![indexPath.row])
-        
+                                   developer: developers![indexPath.row], isSelected: isSelected)
         return cell
     }
     
@@ -52,7 +52,11 @@ extension BusinessCardViewController {
         self.view.bounds.width * 0.65
     }
     
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        <#code#>
-    //    }
+//        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//            isSelected = true
+////            let cell = tableView.dequeueReusableCell(withIdentifier: "developerCell", for: indexPath) as! DeveloperTableViewCell
+//            let cell = tableView.cellForRow(at: indexPath)
+//            cell?.
+//            print(isSelected)
+//        }
 }

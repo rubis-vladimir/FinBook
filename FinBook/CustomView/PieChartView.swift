@@ -11,14 +11,14 @@ class PieChartView: UIView {
     
     private var circleLayer: CAShapeLayer!
     
-    func draw(_ rect: CGRect, sections: [String: Double], colors: [UIColor]) {
+    func draw(_ rect: CGRect, sections: [(String, Double)], colors: [UIColor]) {
         self.backgroundColor = UIColor.clear
         var alpha = CGFloat(Double.pi / 2)
         var betta = alpha
         
-        for (index, value) in sections.map({$1}).enumerated() {
+        for (index, section) in sections.enumerated() {
                 let color = colors[index]
-                betta += CGFloat(value)
+                betta += CGFloat(section.1)
                 drawSection(alpha: alpha, betta: betta, color: color)
                 alpha = betta
         }
