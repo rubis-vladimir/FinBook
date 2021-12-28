@@ -251,7 +251,7 @@
                                                             </constraints>
                                                             <imageReference key="image" image="plusminus.circle" catalog="system" symbolScale="large"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категории" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48S-OZ-w58">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48S-OZ-w58">
                                                             <rect key="frame" x="60" y="10" width="264" height="30"/>
                                                             <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="20"/>
                                                             <nil key="textColor"/>
@@ -373,16 +373,16 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-qA-nCs">
-                                <rect key="frame" x="41.5" y="678" width="331" height="35"/>
+                                <rect key="frame" x="69" y="678" width="276" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="От" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="TJG-4d-ChR">
-                                        <rect key="frame" x="0.0" y="0.0" width="33" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="26.5" height="35"/>
                                         <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7e-RX-Jnk">
-                                        <rect key="frame" x="43" y="0.0" width="117.5" height="35"/>
+                                        <rect key="frame" x="36.5" y="0.0" width="96.5" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="VxD-7w-GCh"/>
                                         </constraints>
@@ -392,19 +392,19 @@
                                         <locale key="locale" localeIdentifier="ru_RU"/>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="До" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="TZq-fK-Wsu">
-                                        <rect key="frame" x="170.5" y="0.0" width="33" height="35"/>
+                                        <rect key="frame" x="143" y="0.0" width="26.5" height="35"/>
                                         <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-s0-tGH">
-                                        <rect key="frame" x="213.5" y="0.0" width="117.5" height="35"/>
+                                        <rect key="frame" x="179.5" y="0.0" width="96.5" height="35"/>
                                         <locale key="locale" localeIdentifier="ru_RU"/>
                                     </datePicker>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="8ZY-Kb-oQY"/>
-                                    <constraint firstItem="u7e-RX-Jnk" firstAttribute="width" secondItem="i9H-qA-nCs" secondAttribute="width" multiplier="0.35461" id="Tub-FD-mWE"/>
+                                    <constraint firstItem="u7e-RX-Jnk" firstAttribute="width" secondItem="i9H-qA-nCs" secondAttribute="width" multiplier="0.35" id="Tub-FD-mWE"/>
                                     <constraint firstItem="u7e-RX-Jnk" firstAttribute="width" secondItem="gUP-s0-tGH" secondAttribute="width" id="gwX-3c-mU7"/>
                                     <constraint firstItem="TZq-fK-Wsu" firstAttribute="width" secondItem="TJG-4d-ChR" secondAttribute="width" id="vkw-X3-PeN"/>
                                 </constraints>
@@ -441,7 +441,7 @@
                             <constraint firstItem="Y1S-Us-crh" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="07b-Hm-6Ik"/>
                             <constraint firstItem="i9H-qA-nCs" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="9Qe-5z-2jU"/>
                             <constraint firstItem="i9H-qA-nCs" firstAttribute="top" secondItem="Y1S-Us-crh" secondAttribute="bottom" constant="5" id="BZ0-w3-B8V"/>
-                            <constraint firstItem="i9H-qA-nCs" firstAttribute="width" secondItem="8CI-q0-Gpv" secondAttribute="width" multiplier="1.2" id="Cd1-zT-WXd"/>
+                            <constraint firstItem="i9H-qA-nCs" firstAttribute="width" secondItem="8CI-q0-Gpv" secondAttribute="width" id="Cd1-zT-WXd"/>
                             <constraint firstItem="6YH-N5-gJK" firstAttribute="top" secondItem="i9H-qA-nCs" secondAttribute="bottom" constant="15" id="MeB-y2-tLt"/>
                             <constraint firstItem="gYW-oQ-Zof" firstAttribute="bottom" secondItem="6YH-N5-gJK" secondAttribute="bottom" priority="999" constant="35" id="PTD-LB-ayu"/>
                             <constraint firstItem="i9H-qA-nCs" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="WR2-IV-krH"/>
@@ -794,11 +794,11 @@
             </objects>
             <point key="canvasLocation" x="964" y="276"/>
         </scene>
-        <!--Contacts-->
+        <!--Contact-->
         <scene sceneID="qTT-Fr-UOe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e7r-0P-ujG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Contacts" image="person.text.rectangle" catalog="system" id="xPF-dd-BXf">
+                    <tabBarItem key="tabBarItem" tag="2" title="Contact" image="person.text.rectangle" catalog="system" id="xPF-dd-BXf">
                         <inset key="imageInsets" minX="103" minY="0.0" maxX="103" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="23" vertical="-4"/>
                     </tabBarItem>
