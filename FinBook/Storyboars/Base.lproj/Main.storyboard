@@ -190,8 +190,8 @@
         <!--Настройки-->
         <scene sceneID="DqG-bU-hGr">
             <objects>
-                <tableViewController id="4DT-rb-dWD" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NvH-Ux-zuK">
+                <tableViewController id="4DT-rb-dWD" customClass="SettingsViewController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NvH-Ux-zuK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -225,6 +225,9 @@
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WBo-ll-S2X">
                                                             <rect key="frame" x="335" y="9.5" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="changeColorTheme:" destination="4DT-rb-dWD" eventType="valueChanged" id="aBq-mC-mXU"/>
+                                                            </connections>
                                                         </switch>
                                                     </subviews>
                                                     <constraints>
@@ -279,6 +282,9 @@
                                                             <buttonConfiguration key="configuration" style="plain" image="play" catalog="system">
                                                                 <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
                                                             </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="editCategories:" destination="4DT-rb-dWD" eventType="touchUpInside" id="WJG-WD-NT0"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
@@ -304,6 +310,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Настройки" id="DsM-1P-VbC"/>
+                    <connections>
+                        <outlet property="nameTheme" destination="L0N-DK-2sm" id="ybT-Xn-FeX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugU-Km-dfk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
