@@ -8,5 +8,5 @@
 struct PaletteModel {
     let primaryColor: String
     let secondaryColor: String
-    let textColor: String
+    let chartColors: [String]
 }

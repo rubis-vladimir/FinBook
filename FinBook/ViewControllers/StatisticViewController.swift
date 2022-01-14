@@ -19,21 +19,33 @@ class StatisticViewController: UIViewController {
     @IBOutlet weak var startDate: UIDatePicker!
     @IBOutlet weak var finishDate: UIDatePicker!
     @IBOutlet weak var calculateChartButton: UIButton!
+    @IBOutlet var screenLabels: [UILabel]!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton(button: calculateChartButton)
+        setupElements()
         startDate.date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
+        startDate.tintColor = .white
     }
     
     override func viewWillAppear(_ animated: Bool) {
         redrawPieChart()
+        refreshTheme()
     }
     
     
     @IBAction func calculateChart(_ sender: UIButton) {
         redrawPieChart()
-        setupButton(button: calculateChartButton)
+    }
+    
+    private func refreshTheme() {
+        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
+        
+        for i in screenLabels {
+            i.changeColor()
+        }
+        
     }
     
     private func redrawPieChart() {
@@ -58,11 +70,9 @@ class StatisticViewController: UIViewController {
         self.transactions = StorageManager.shared.fetchData()
     }
     
-    private func setupButton(button: UIButton) {
-        button.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
-        button.layer.borderWidth = 3
-        button.layer.borderColor = UIColor(ciColor: .gray).cgColor
-        button.layer.cornerRadius = 10
+    private func setupElements() {
+        calculateChartButton.customizeButton(model: 2, cradius: 10, bgc: false)
+        statisticsTV.backgroundColor = UIColor.clear
     }
 }
 
@@ -78,6 +88,10 @@ extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryShare.text = String(format: "%.1f", sections[indexPath.row].1 * 100 / (2 * Double.pi)) + " %"
         cell.categoryLabel.text = sections[indexPath.row].0
         cell.categoryLabel.text = sections.map({$0})[indexPath.row].0
+        
+        cell.backgroundColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getPallete(model: ColorManager.shared.retrieveThemeData()).primaryColor)
+        cell.categoryLabel.changeColor()
+        cell.categoryShare.changeColor()
         
         return cell
     }

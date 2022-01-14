@@ -27,4 +27,11 @@ extension UIView {
         gradient.endPoint = CGPoint(x: 1, y: 0)
         layer.insertSublayer(gradient, at: 0)
     }
+    
+    func customizeView(model: Int) {
+        self.backgroundColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getPallete(model: model).primaryColor)
+        self.layer.borderColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getPallete(model: model).secondaryColor).cgColor
+        self.layer.borderWidth = 3
+    }
 }
+

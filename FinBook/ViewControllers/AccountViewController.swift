@@ -11,6 +11,10 @@ protocol NewTransactionViewControllerDelegate {
     func saveTransaction(newTransaction: Transact)
 }
 
+protocol ThemeChange {
+    func changeTheme(answer: Bool)
+}
+
 class AccountViewController: UIViewController {
     
     // MARK: - IBOutlets
@@ -35,10 +39,17 @@ class AccountViewController: UIViewController {
     // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupElements()
         setupSearchBar()
         getData()
         reloadWalletBalance()
         reloadTransactArrayToFiltered()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
     }
     
     
@@ -47,6 +58,11 @@ class AccountViewController: UIViewController {
     //  Загрузка данных из CoreData
     private func getData() {
         self.transactions = StorageManager.shared.fetchData()
+    }
+    
+    private func setupElements() {
+        button.customizeButton(model: 2, cradius: button.frame.width / 2, bgc: true)
+        transactionTableView.backgroundColor = UIColor.clear
     }
     
     // расчет и вывод баланса кошелька по транзакциям
@@ -216,4 +232,3 @@ extension AccountViewController: UISearchBarDelegate {
         })
     }
 }
-

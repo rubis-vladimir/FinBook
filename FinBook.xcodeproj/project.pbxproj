@@ -12,6 +12,8 @@
 		6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */; };
 		688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BA66126A0AE21009F4727 /* TransactionViewController.swift */; };
 		68DAE9082772350D0033CE7A /* DateConvertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAE9072772350D0033CE7A /* DateConvertManager.swift */; };
+		7D0E84212790BEE700349AD4 /* UIButton + CustomDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */; };
+		7D0E84232790C4F600349AD4 /* UILabel + ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84222790C4F600349AD4 /* UILabel + ColorTheme.swift */; };
 		7D3F25D22767C29700365423 /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3F25D12767C29700365423 /* DeveloperTableViewCell.swift */; };
 		7D5CF709277B80EE00FD5D11 /* PaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */; };
 		7D5CF70B277B80FA00FD5D11 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70A277B80FA00FD5D11 /* Palette.swift */; };
@@ -48,6 +50,8 @@
 		6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryPickerModel.swift; path = FinBook/Models/CategoryPickerModel.swift; sourceTree = SOURCE_ROOT; };
 		688BA66126A0AE21009F4727 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		68DAE9072772350D0033CE7A /* DateConvertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConvertManager.swift; sourceTree = "<group>"; };
+		7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + CustomDesign.swift"; sourceTree = "<group>"; };
+		7D0E84222790C4F600349AD4 /* UILabel + ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + ColorTheme.swift"; sourceTree = "<group>"; };
 		7D3F25D12767C29700365423 /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
 		7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteModel.swift; sourceTree = "<group>"; };
 		7D5CF70A277B80FA00FD5D11 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 				7DF834EB26DC0828009EC940 /* TabBar */,
 				7DADB3BB269B478E0041156D /* Assets.xcassets */,
 				7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */,
+				7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */,
+				7D0E84222790C4F600349AD4 /* UILabel + ColorTheme.swift */,
 				7DADB3AF269B478C0041156D /* AppDelegate.swift */,
 				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
 				7DADB3C0269B478E0041156D /* Info.plist */,
@@ -295,6 +301,7 @@
 				7D66F6492757BE2B007C5D66 /* ChartTableViewCell.swift in Sources */,
 				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
 				7DF571432766865100ED5FB7 /* ContactsViewController.swift in Sources */,
+				7D0E84212790BEE700349AD4 /* UIButton + CustomDesign.swift in Sources */,
 				7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */,
 				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */,
@@ -319,6 +326,7 @@
 				7DF834EA26DC045A009EC940 /* CategoryService.swift in Sources */,
 				7DF571412766840C00ED5FB7 /* DeveloperModel.swift in Sources */,
 				681159D726E93A70009FAA5E /* StorageManager.swift in Sources */,
+				7D0E84232790C4F600349AD4 /* UILabel + ColorTheme.swift in Sources */,
 				7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

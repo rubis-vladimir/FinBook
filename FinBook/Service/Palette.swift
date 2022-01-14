@@ -12,15 +12,15 @@ struct Pallete {
 
 // MARK: - gray theme
         case 0:
-            palette = PaletteModel(primaryColor: "#97999B", secondaryColor: "#7D8085", textColor: "#F8F5F1")
+            palette = PaletteModel(primaryColor: "#FFFFFF", secondaryColor: "#000000", chartColors: ["767E8C", "CE5A57", "78A5A3", "E1B16A"])
             
 // MARK: - blue theme
         case 1:
-            palette = PaletteModel(primaryColor: "#D8E3E7", secondaryColor: "#126E82", textColor: "#FFFFFF")
+            palette = PaletteModel(primaryColor: "#B0BBBF", secondaryColor: "#FFFFFF", chartColors: ["CE5A57", "78A5A3", "767E8C", "E1B16A"])
             
 // MARK: - yellow theme
         default:
-            palette = PaletteModel(primaryColor: "#FBEEAC", secondaryColor: "#F4D160", textColor: "#28527A")
+            palette = PaletteModel(primaryColor: "#889397", secondaryColor: "#656D76", chartColors: ["767E8C", "CE5A57", "78A5A3", "E1B16A"])
         }
         return palette
     }

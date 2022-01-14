@@ -14,18 +14,16 @@ class ColorManager {
     // MARK: - Setting theme palette colors
         
         func setThemeColors(mainElement: UIView, secondaryElement: UINavigationBar?) {
-            let themeValue = Int(retrieveThemeData())
-            let model = Pallete.getPallete(model: themeValue ?? 1)
+            let themeValue = retrieveThemeData()
+            let model = Pallete.getPallete(model: themeValue)
             mainElement.backgroundColor = hexStringToUIColor(hex: model.primaryColor)
             if (secondaryElement != nil) {
-                secondaryElement?.barTintColor = hexStringToUIColor(hex: model.secondaryColor)
-                secondaryElement?.tintColor = hexStringToUIColor(hex: model.textColor)
-                let textAttributes = [NSAttributedString.Key.foregroundColor:hexStringToUIColor(hex: model.textColor)]
+                secondaryElement?.tintColor = hexStringToUIColor(hex: model.secondaryColor)
+                let textAttributes = [NSAttributedString.Key.foregroundColor:hexStringToUIColor(hex: model.secondaryColor)]
                 secondaryElement?.titleTextAttributes = textAttributes
             }
-            mainElement.tintColor = hexStringToUIColor(hex: model.textColor)
+            mainElement.tintColor = hexStringToUIColor(hex: model.secondaryColor)
         }
-    
     
     // MARK: - Creating array colors
     
@@ -64,16 +62,16 @@ class ColorManager {
     
     // MARK: - Saving theme data to User Defaults
         
-        func saveThemeData(value: String) {
+        func saveThemeData(value: Int) {
             let defaults = UserDefaults.standard
             defaults.set(value, forKey: "theme")
         }
         
     // MARK: - Retrieving theme data from User Defaults
         
-        func retrieveThemeData() -> String{
+        func retrieveThemeData() -> Int{
             let defaults = UserDefaults.standard
-            guard let savedValue = defaults.string(forKey: "theme") else { return "gray" }
-            return savedValue
+            guard let savedValue = defaults.value(forKey: "theme") else { return 0 }
+            return savedValue as! Int
         }
 }
