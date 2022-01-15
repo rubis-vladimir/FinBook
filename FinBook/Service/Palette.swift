@@ -9,19 +9,27 @@ struct Pallete {
     static func getPallete(model: Int) -> PaletteModel {
         var palette: PaletteModel
         switch model {
-
-// MARK: - gray theme
+            
+            // MARK: - light theme
         case 0:
-            palette = PaletteModel(primaryColor: "#FFFFFF", secondaryColor: "#000000", chartColors: ["767E8C", "CE5A57", "78A5A3", "E1B16A"])
+            palette = PaletteModel(bgColor: "#FFFFFF", chartColors: ["767E8C", "CE5A57", "78A5A3", "E1B16A"])
             
-// MARK: - blue theme
+            // MARK: - dark theme
         case 1:
-            palette = PaletteModel(primaryColor: "#B0BBBF", secondaryColor: "#FFFFFF", chartColors: ["CE5A57", "78A5A3", "767E8C", "E1B16A"])
+            palette = PaletteModel(bgColor: "#B5C0C4", chartColors: ["F98866", "FF420E", "80BD9E", "89DA59"])
             
-// MARK: - yellow theme
+            // MARK: - default theme
         default:
-            palette = PaletteModel(primaryColor: "#889397", secondaryColor: "#656D76", chartColors: ["767E8C", "CE5A57", "78A5A3", "E1B16A"])
+            palette = PaletteModel(bgColor: "#FFFFFF", chartColors: ["767E8C", "CE5A57", "78A5A3", "E1B16A"])
         }
         return palette
     }
+    
+    
+    static func getColorDecor() -> (String, String) {
+        // MARK: - color decor for elements
+        return ("#889397","656D77")
+    }
 }
+
+// "EB8A44", "F9DC24", "4B7447", "8EBA43"

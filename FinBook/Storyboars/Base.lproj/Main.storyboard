@@ -268,16 +268,25 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIg-IT-i6g">
-                                                            <rect key="frame" x="344" y="9.5" width="40" height="31"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIg-IT-i6g">
+                                                            <rect key="frame" x="344" y="14" width="40" height="22.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="qSe-Ln-Utq"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain">
-                                                                <imageReference key="image" image="play" catalog="system" symbolScale="medium"/>
-                                                                <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
-                                                            </buttonConfiguration>
+                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" title="Button">
+                                                                <attributedString key="attributedTitle">
+                                                                    <fragment content=" ">
+                                                                        <attributes>
+                                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <font key="NSFont" metaFont="system" size="18"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
+                                                                <imageReference key="image" image="play" catalog="system" symbolScale="large"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="editCategories:" destination="4DT-rb-dWD" eventType="touchUpInside" id="WJG-WD-NT0"/>
                                                             </connections>
@@ -307,9 +316,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Настройки" id="DsM-1P-VbC"/>
                     <connections>
-                        <outlet property="categoryLabel" destination="48S-OZ-w58" id="u0g-Ak-3kU"/>
                         <outlet property="categoryView" destination="heI-TK-ej9" id="0pl-qn-P4L"/>
-                        <outlet property="nameThemeLabel" destination="L0N-DK-2sm" id="K4f-Jv-R7i"/>
                         <outlet property="themeSwitch" destination="WBo-ll-S2X" id="gPW-nu-Trl"/>
                         <outlet property="themeView" destination="9sF-jf-eZu" id="Hhy-4R-9vZ"/>
                     </connections>
@@ -405,6 +412,7 @@
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7e-RX-Jnk">
                                         <rect key="frame" x="36.5" y="0.0" width="96.5" height="35"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="VxD-7w-GCh"/>
                                         </constraints>
@@ -421,6 +429,7 @@
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-s0-tGH">
                                         <rect key="frame" x="179.5" y="0.0" width="96.5" height="35"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <locale key="locale" localeIdentifier="ru_RU"/>
                                     </datePicker>
                                 </subviews>
@@ -484,9 +493,6 @@
                         <outlet property="pieChartView" destination="8CI-q0-Gpv" id="kqY-J5-ind"/>
                         <outlet property="startDate" destination="u7e-RX-Jnk" id="4nb-P5-TZd"/>
                         <outlet property="statisticsTV" destination="apA-qR-AgQ" id="ib5-AH-vb0"/>
-                        <outletCollection property="screenLabels" destination="Y1S-Us-crh" collectionClass="NSMutableArray" id="1Hb-Wy-D3S"/>
-                        <outletCollection property="screenLabels" destination="TJG-4d-ChR" collectionClass="NSMutableArray" id="0ly-ew-Avz"/>
-                        <outletCollection property="screenLabels" destination="TZq-fK-Wsu" collectionClass="NSMutableArray" id="ttN-g3-XCV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6C4-4u-c5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -521,7 +527,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="businessCardView" destination="Ke5-qU-RZ6" id="XCM-0T-7he"/>
                                     <outlet property="contactView" destination="Ke5-qU-RZ6" id="2db-76-bza"/>
                                 </connections>
                             </tableViewCell>
@@ -824,7 +829,7 @@
         <scene sceneID="qTT-Fr-UOe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e7r-0P-ujG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Contact" image="person.text.rectangle" catalog="system" id="xPF-dd-BXf">
+                    <tabBarItem key="tabBarItem" tag="2" title="Contact" image="business card" id="xPF-dd-BXf">
                         <inset key="imageInsets" minX="103" minY="0.0" maxX="103" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="23" vertical="-4"/>
                     </tabBarItem>
@@ -847,9 +852,9 @@
         <segue reference="KeR-Dn-foN"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="business card" width="240" height="240"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
-        <image name="person.text.rectangle" catalog="system" width="128" height="93"/>
         <image name="pie chart" width="240" height="240"/>
         <image name="play" catalog="system" width="120" height="128"/>
         <image name="plus" width="48" height="48"/>

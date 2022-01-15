@@ -35,7 +35,7 @@ class ChartManager {
             }
         }
         let summExpenses = chartTransact.map{$1}.reduce(0, +)
-//        return Dictionary(uniqueKeysWithValues: chartTransact.lazy.map{(k, v) in (k, v * 2 * Double.pi / summExpenses)})
+        
         return Array(chartTransact.map{(k,v) in (k, v * 2 * Double.pi / summExpenses)}).sorted(by:{$0.1 > $1.1})
     }
 }

@@ -11,8 +11,6 @@ class SettingsViewController: UITableViewController {
     
     var numberOfTheme: Int = 0
     
-    @IBOutlet weak var nameThemeLabel: UILabel!
-    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var themeSwitch: UISwitch!
     @IBOutlet weak var themeView: UIView!
     @IBOutlet weak var categoryView: UIView!
@@ -34,9 +32,6 @@ class SettingsViewController: UITableViewController {
         themeView.customizeView(model: 2)
         categoryView.customizeView(model: 2)
         
-        nameThemeLabel.changeColor()
-        categoryLabel.changeColor()
-        
         numberOfTheme = ColorManager.shared.retrieveThemeData()
         themeSwitch.isOn = numberOfTheme == 0 ? false : true
     }
@@ -48,9 +43,6 @@ class SettingsViewController: UITableViewController {
         numberOfTheme = sender.isOn ? 1 : 0
         
         ColorManager.shared.saveThemeData(value: numberOfTheme)
-        
-        nameThemeLabel.changeColor()
-        categoryLabel.changeColor()
         ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
     }
     

@@ -19,6 +19,16 @@ class ContactsViewController: UITableViewController {
         loadDevelopersFromJSON()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshTheme()
+        
+    }
+    
+    private func refreshTheme() {
+        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
+    }
+    
     // MARK: - Table view data source
     
     func loadDevelopersFromJSON() {
@@ -29,7 +39,6 @@ class ContactsViewController: UITableViewController {
             }
             
             self.developers = developerArray
-            print(developerArray[0].email)
         }
     }
 }
@@ -43,6 +52,7 @@ extension ContactsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "developerCell", for: indexPath) as! DeveloperTableViewCell
         
+        cell.backgroundColor = UIColor.clear
         cell.contactView.draw(CGRect(origin: CGPoint(x:cell.bounds.width / 2,
                                                           y:cell.bounds.height / 2),
                                           size: CGSize(width: 250, height: 250)),
@@ -53,12 +63,4 @@ extension ContactsViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         self.view.bounds.width * 0.65
     }
-    
-//        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            isSelected = true
-////            let cell = tableView.dequeueReusableCell(withIdentifier: "developerCell", for: indexPath) as! DeveloperTableViewCell
-//            let cell = tableView.cellForRow(at: indexPath)
-//            cell?.
-//            print(isSelected)
-//        }
 }

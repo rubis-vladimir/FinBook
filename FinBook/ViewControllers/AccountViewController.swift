@@ -225,10 +225,12 @@ extension AccountViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-            self.filteredTransactions = self.transactions.filter {
-                $0.category?.contains(searchText) ?? false || $0.descr?.contains(searchText) ?? false
+            self.filteredTransactions = self.transactions.filter{ (transaction) -> Bool in
+                
+                
+                return (transaction.category?.lowercased().contains(searchText.lowercased()))! || (transaction.descr?.lowercased().contains(searchText.lowercased()))!
             }
-            self.reloadDataTableView()
+            DispatchQueue.main.async { self.transactionTableView.reloadData() }
         })
     }
 }

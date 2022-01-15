@@ -16,19 +16,21 @@ class ColorManager {
         func setThemeColors(mainElement: UIView, secondaryElement: UINavigationBar?) {
             let themeValue = retrieveThemeData()
             let model = Pallete.getPallete(model: themeValue)
-            mainElement.backgroundColor = hexStringToUIColor(hex: model.primaryColor)
+            let color = hexStringToUIColor(hex: model.bgColor)
+            mainElement.backgroundColor = color
+            
             if (secondaryElement != nil) {
-                secondaryElement?.tintColor = hexStringToUIColor(hex: model.secondaryColor)
-                let textAttributes = [NSAttributedString.Key.foregroundColor:hexStringToUIColor(hex: model.secondaryColor)]
-                secondaryElement?.titleTextAttributes = textAttributes
+                secondaryElement?.barTintColor = color
             }
-            mainElement.tintColor = hexStringToUIColor(hex: model.secondaryColor)
         }
     
     // MARK: - Creating array colors
     
-    func createPalitreColors(hexColors: [String]) -> [UIColor] {
+    func createPalitreColors() -> [UIColor] {
+        let model = ColorManager.shared.retrieveThemeData()
+        let hexColors = Pallete.getPallete(model: model).chartColors
         var paletteColors: [UIColor] = []
+        
         for i in hexColors {
             let color = hexStringToUIColor(hex: i)
             paletteColors.append(color)
