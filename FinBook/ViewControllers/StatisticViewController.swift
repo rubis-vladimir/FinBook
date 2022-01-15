@@ -61,7 +61,7 @@ class StatisticViewController: UIViewController {
     }
     
     private func setupElements() {
-        calculateChartButton.customizeButton(model: 2, cradius: 10, bgc: false)
+        calculateChartButton.customizeButton(cradius: 10, bgc: false)
         statisticsTV.backgroundColor = UIColor.clear
     }
 }
