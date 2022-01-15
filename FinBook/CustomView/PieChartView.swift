@@ -25,7 +25,7 @@ class PieChartView: UIView {
     }
     
     private func drawSection(alpha: CGFloat, betta: CGFloat, color: UIColor) {
-        let arcColor: UIColor = UIColor.white
+        let arcColor: UIColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getPallete(model: ColorManager.shared.retrieveThemeData()).bgColor)
         let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
         let radius: CGFloat = max(bounds.width, bounds.height) / 2
         let circlePatch = UIBezierPath(arcCenter: center,

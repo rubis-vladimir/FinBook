@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Df6-ib-i8Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Df6-ib-i8Z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -27,11 +27,6 @@
                                     <constraint firstAttribute="width" constant="60" id="bzr-0U-ibo"/>
                                 </constraints>
                                 <state key="normal" image="plus"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="A3i-py-pm1" kind="presentation" identifier="addTransaction" id="xHW-Ja-rJ5"/>
                                 </connections>
@@ -209,7 +204,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="384" height="50"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gb1-S6-fhU">
-                                                            <rect key="frame" x="0.0" y="3" width="40" height="44"/>
+                                                            <rect key="frame" x="0.0" y="2" width="40" height="46"/>
                                                             <color key="tintColor" systemColor="systemOrangeColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Gb1-S6-fhU" secondAttribute="height" id="TPg-AU-qJo"/>
@@ -218,8 +213,8 @@
                                                             <imageReference key="image" image="pencil.tip.crop.circle" catalog="system" symbolScale="large"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Темная тема" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0N-DK-2sm">
-                                                            <rect key="frame" x="60" y="10" width="255" height="30"/>
-                                                            <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="20"/>
+                                                            <rect key="frame" x="60" y="11.5" width="255" height="27"/>
+                                                            <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -259,7 +254,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="384" height="50"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x8Y-Gl-H2d">
-                                                            <rect key="frame" x="0.0" y="3" width="40" height="44"/>
+                                                            <rect key="frame" x="0.0" y="2" width="40" height="46"/>
                                                             <color key="tintColor" systemColor="systemOrangeColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="gLE-b1-Uk3"/>
@@ -268,20 +263,30 @@
                                                             <imageReference key="image" image="plusminus.circle" catalog="system" symbolScale="large"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48S-OZ-w58">
-                                                            <rect key="frame" x="60" y="10" width="264" height="30"/>
-                                                            <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="20"/>
+                                                            <rect key="frame" x="60" y="11.5" width="264" height="27"/>
+                                                            <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIg-IT-i6g">
-                                                            <rect key="frame" x="344" y="9.5" width="40" height="31"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIg-IT-i6g">
+                                                            <rect key="frame" x="344" y="14" width="40" height="22.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="40" id="qSe-Ln-Utq"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="play" catalog="system">
-                                                                <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
-                                                            </buttonConfiguration>
+                                                            <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <state key="normal" title="Button">
+                                                                <attributedString key="attributedTitle">
+                                                                    <fragment content=" ">
+                                                                        <attributes>
+                                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                            <font key="NSFont" metaFont="system" size="18"/>
+                                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="clipping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                        </attributes>
+                                                                    </fragment>
+                                                                </attributedString>
+                                                                <imageReference key="image" image="play" catalog="system" symbolScale="large"/>
+                                                            </state>
                                                             <connections>
                                                                 <action selector="editCategories:" destination="4DT-rb-dWD" eventType="touchUpInside" id="WJG-WD-NT0"/>
                                                             </connections>
@@ -311,7 +316,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Настройки" id="DsM-1P-VbC"/>
                     <connections>
-                        <outlet property="nameTheme" destination="L0N-DK-2sm" id="ybT-Xn-FeX"/>
+                        <outlet property="categoryView" destination="heI-TK-ej9" id="0pl-qn-P4L"/>
+                        <outlet property="themeSwitch" destination="WBo-ll-S2X" id="gPW-nu-Trl"/>
+                        <outlet property="themeView" destination="9sF-jf-eZu" id="Hhy-4R-9vZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugU-Km-dfk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -405,6 +412,7 @@
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7e-RX-Jnk">
                                         <rect key="frame" x="36.5" y="0.0" width="96.5" height="35"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="VxD-7w-GCh"/>
                                         </constraints>
@@ -421,6 +429,7 @@
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-s0-tGH">
                                         <rect key="frame" x="179.5" y="0.0" width="96.5" height="35"/>
+                                        <color key="tintColor" systemColor="labelColor"/>
                                         <locale key="locale" localeIdentifier="ru_RU"/>
                                     </datePicker>
                                 </subviews>
@@ -518,7 +527,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="businessCardView" destination="Ke5-qU-RZ6" id="XCM-0T-7he"/>
                                     <outlet property="contactView" destination="Ke5-qU-RZ6" id="2db-76-bza"/>
                                 </connections>
                             </tableViewCell>
@@ -821,7 +829,7 @@
         <scene sceneID="qTT-Fr-UOe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e7r-0P-ujG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Contact" image="person.text.rectangle" catalog="system" id="xPF-dd-BXf">
+                    <tabBarItem key="tabBarItem" tag="2" title="Contact" image="business card" id="xPF-dd-BXf">
                         <inset key="imageInsets" minX="103" minY="0.0" maxX="103" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="23" vertical="-4"/>
                     </tabBarItem>
@@ -844,9 +852,9 @@
         <segue reference="KeR-Dn-foN"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="business card" width="240" height="240"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
-        <image name="person.text.rectangle" catalog="system" width="128" height="93"/>
         <image name="pie chart" width="240" height="240"/>
         <image name="play" catalog="system" width="120" height="128"/>
         <image name="plus" width="48" height="48"/>

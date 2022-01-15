@@ -6,7 +6,6 @@
 //
 
 struct PaletteModel {
-    let primaryColor: String
-    let secondaryColor: String
-    let textColor: String
+    let bgColor: String
+    let chartColors: [String]
 }

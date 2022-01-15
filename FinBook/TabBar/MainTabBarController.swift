@@ -72,8 +72,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = shapePath(item)
-        shapeLayer.strokeColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getPallete(model: 0).secondaryColor).cgColor
-        shapeLayer.fillColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getPallete(model: 0).primaryColor).cgColor
+        shapeLayer.strokeColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().1).cgColor
+        shapeLayer.fillColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().0).cgColor
         shapeLayer.lineWidth = 3.0
         
         if let oldShapeLayer = self.shapeLayer {
