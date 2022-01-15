@@ -102,8 +102,8 @@ class TransactionViewController: UIViewController {
     private func SetupCostTextField() {
         costTextField.becomeFirstResponder()  // курсор на данном поле
         costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
-        
-//        costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
+        doneButton.isEnabled = false
+        costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
     private func SetupPickerView() {
@@ -170,11 +170,15 @@ extension TransactionViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    // Чтобы кнопка Done была активна только в когда поле цены заполнено
-//    @objc private func costTextFieldDidChanged() {
-//        guard let costName = costTextField.text else { return }
-//        doneButton.isEnabled = !costName.isEmpty ? true : false
-//    }
+    // Чтобы кнопка Done была активна только в когда поле цены заполнено -------------------------------------------------------------------------ТУТ
+    @objc private func costTextFieldDidChanged() {
+        guard let costName = costTextField.text else {
+            
+            doneButton.isEnabled = false
+            return
+        }
+        doneButton.isEnabled = !costName.isEmpty ? true : false
+    }
     
     //переход с costTextField на descriptionTextField по нажатию кнопки "Далее" с Алёртами
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

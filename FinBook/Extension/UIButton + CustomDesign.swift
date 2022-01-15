@@ -9,7 +9,7 @@ import UIKit
 
 extension UIButton {
     
-    func customizeButton(model: Int, cradius: CGFloat, bgc: Bool) {
+    func customizeButton(cradius: CGFloat, bgc: Bool) {
         self.layer.cornerRadius = cradius
         self.layer.borderColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().1).cgColor
         self.layer.borderWidth = 3
