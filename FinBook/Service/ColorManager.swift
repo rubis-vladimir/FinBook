@@ -14,9 +14,9 @@ class ColorManager {
     // MARK: - Setting theme palette colors
         
         func setThemeColors(mainElement: UIView, secondaryElement: UINavigationBar?) {
-            let themeValue = retrieveThemeData()
-            let model = Pallete.getPallete(model: themeValue)
-            let color = hexStringToUIColor(hex: model.bgColor)
+            let model = UserDefaultManager.shared.retrieveThemeData()
+            let themeValue = Pallete.getPallete(model: model)
+            let color = hexStringToUIColor(hex: themeValue.bgColor)
             mainElement.backgroundColor = color
             
             if (secondaryElement != nil) {
@@ -27,7 +27,7 @@ class ColorManager {
     // MARK: - Creating array colors
     
     func createPalitreColors() -> [UIColor] {
-        let model = ColorManager.shared.retrieveThemeData()
+        let model = UserDefaultManager.shared.retrieveThemeData()
         let hexColors = Pallete.getPallete(model: model).chartColors
         var paletteColors: [UIColor] = []
         
@@ -61,19 +61,4 @@ class ColorManager {
             alpha: CGFloat(1.0)
         )
     }
-    
-    // MARK: - Saving theme data to User Defaults
-        
-        func saveThemeData(value: Int) {
-            let defaults = UserDefaults.standard
-            defaults.set(value, forKey: "theme")
-        }
-        
-    // MARK: - Retrieving theme data from User Defaults
-        
-        func retrieveThemeData() -> Int{
-            let defaults = UserDefaults.standard
-            guard let savedValue = defaults.value(forKey: "theme") else { return 0 }
-            return savedValue as! Int
-        }
 }

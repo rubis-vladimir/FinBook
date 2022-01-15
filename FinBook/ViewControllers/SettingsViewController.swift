@@ -32,7 +32,7 @@ class SettingsViewController: UITableViewController {
         themeView.customizeView(model: 2)
         categoryView.customizeView(model: 2)
         
-        numberOfTheme = ColorManager.shared.retrieveThemeData()
+        numberOfTheme = UserDefaultManager.shared.retrieveThemeData()
         themeSwitch.isOn = numberOfTheme == 0 ? false : true
     }
     
@@ -42,7 +42,7 @@ class SettingsViewController: UITableViewController {
     @IBAction func changeColorTheme(_ sender: UISwitch) {
         numberOfTheme = sender.isOn ? 1 : 0
         
-        ColorManager.shared.saveThemeData(value: numberOfTheme)
+        UserDefaultManager.shared.saveThemeData(value: numberOfTheme)
         ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
     }
     
