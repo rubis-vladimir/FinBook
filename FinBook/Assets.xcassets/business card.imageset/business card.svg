@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="240px" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>credit card</title>
+    <desc>Created with Sketch.</desc>
+    <g id="credit-card" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="bounding-box">
+            <polygon id="shape" points="0 0 240 0 240 240 0 240"></polygon>
+        </g>
+        <rect id="Rectangle" stroke="#46AAF7" stroke-width="10" x="25" y="55" width="190" height="130" rx="12"></rect>
+        <rect id="Rectangle" fill="#E8F7FF" x="30" y="60" width="180" height="30"></rect>
+        <rect id="Rectangle" fill="#46AAF7" x="30" y="90" width="180" height="10"></rect>
+        <rect id="Rectangle" fill="#46AAF7" x="50" y="150" width="60" height="10" rx="5"></rect>
+        <rect id="Rectangle-Copy" fill="#46AAF7" x="50" y="130" width="40" height="10" rx="5"></rect>
+    </g>
+</svg>

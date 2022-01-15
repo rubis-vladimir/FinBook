@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Владимир",
+        "surname": "Рубис",
+        "email": "rubis-vu@mail.ru",
+        "gitHubLink": "https://github.com/rubis-vladimir",
+        "photo": "rubis",
+        "description": "Тут будет описание"
+    },
+    {
+        "name": "Никита",
+        "surname": "Сперанский",
+        "email": "nonamerz5@mail.ru",
+        "gitHubLink": "https://github.com/NikitaKelevra",
+        "photo": "speransky",
+        "description": "Тут будет описание"
+    }
+]
