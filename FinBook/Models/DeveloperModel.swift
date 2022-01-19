@@ -7,11 +7,11 @@
 
 import UIKit
 
-struct Developer: Decodable {
+struct Developer: Decodable, Hashable {
     var name: String
     var surname: String
     var email: String
-    var gitHubLink: String
+    var gitHub: String
     var photo: String
-    var description: String
+    var linkedin: String
 }

@@ -11,7 +11,7 @@ class PieChartView: UIView {
     
     private var circleLayer: CAShapeLayer!
     
-    func draw(_ rect: CGRect, sections: [(String, Double)], colors: [UIColor]) {
+    func draw( sections: [(String, Double)], colors: [UIColor]) {
         self.backgroundColor = UIColor.clear
         var alpha = CGFloat(Double.pi / 2)
         var betta = alpha

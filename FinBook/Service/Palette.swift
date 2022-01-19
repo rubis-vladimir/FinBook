@@ -10,21 +10,16 @@ struct Pallete {
         var palette: PaletteModel
         switch model {
             
-            // MARK: - light theme
-        case 0:
-            palette = PaletteModel(bgColor: "#FFFFFF", chartColors: ["767E8C", "CE5A57", "78A5A3", "E1B16A"])
-            
             // MARK: - dark theme
-        case 1:
+        case 0:
             palette = PaletteModel(bgColor: "#B5C0C4", chartColors: ["F98866", "FF420E", "80BD9E", "89DA59"])
             
-            // MARK: - default theme
+            // MARK: - light theme
         default:
             palette = PaletteModel(bgColor: "#FFFFFF", chartColors: ["767E8C", "CE5A57", "78A5A3", "E1B16A"])
         }
         return palette
     }
-    
     
     static func getColorDecor() -> (String, String) {
         // MARK: - color decor for elements

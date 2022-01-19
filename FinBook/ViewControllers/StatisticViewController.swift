@@ -22,6 +22,7 @@ class StatisticViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
+//        redrawPieChart()
         startDate.date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()    }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,9 +49,6 @@ class StatisticViewController: UIViewController {
         pieChartView.layer.sublayers?.removeAll()
         
         self.pieChartView.draw(
-            CGRect(origin: CGPoint(x:pieChartView.bounds.width / 2,
-                                   y:pieChartView.bounds.height / 2),
-                   size: CGSize(width: 250, height: 250)),
             sections: sections,
             colors: palitreColors
         )

@@ -57,6 +57,7 @@ extension ContactsViewController {
                                                           y:cell.bounds.height / 2),
                                           size: CGSize(width: 250, height: 250)),
                                    developer: developers![indexPath.row], isSelected: isSelected)
+//        cell.contactView.dr
         return cell
     }
     
