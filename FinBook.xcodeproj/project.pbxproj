@@ -17,6 +17,7 @@
 		7D0E842D2794A32100349AD4 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E842C2794A32100349AD4 /* TestViewController.swift */; };
 		7D0E842F2795F1F100349AD4 /* Bundle + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E842E2795F1F100349AD4 /* Bundle + Extension.swift */; };
 		7D0E84312798784F00349AD4 /* Test2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84302798784F00349AD4 /* Test2CollectionViewCell.swift */; };
+		7D39A1AE2799F27F00940EA3 /* BorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1AD2799F27F00940EA3 /* BorderedLabel.swift */; };
 		7D3F25D22767C29700365423 /* DeveloperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3F25D12767C29700365423 /* DeveloperTableViewCell.swift */; };
 		7D5CF709277B80EE00FD5D11 /* PaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */; };
 		7D5CF70B277B80FA00FD5D11 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70A277B80FA00FD5D11 /* Palette.swift */; };
@@ -58,6 +59,7 @@
 		7D0E842C2794A32100349AD4 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		7D0E842E2795F1F100349AD4 /* Bundle + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle + Extension.swift"; sourceTree = "<group>"; };
 		7D0E84302798784F00349AD4 /* Test2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2CollectionViewCell.swift; sourceTree = "<group>"; };
+		7D39A1AD2799F27F00940EA3 /* BorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedLabel.swift; sourceTree = "<group>"; };
 		7D3F25D12767C29700365423 /* DeveloperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperTableViewCell.swift; sourceTree = "<group>"; };
 		7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteModel.swift; sourceTree = "<group>"; };
 		7D5CF70A277B80FA00FD5D11 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */,
+				7D39A1AD2799F27F00940EA3 /* BorderedLabel.swift */,
 				7D0E842E2795F1F100349AD4 /* Bundle + Extension.swift */,
 				7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */,
 			);
@@ -345,6 +348,7 @@
 				7D5CF711277B986E00FD5D11 /* SettingsViewController.swift in Sources */,
 				7DF571182759489B00ED5FB7 /* ColorManager.swift in Sources */,
 				7DF834EA26DC045A009EC940 /* CategoryService.swift in Sources */,
+				7D39A1AE2799F27F00940EA3 /* BorderedLabel.swift in Sources */,
 				7DF571412766840C00ED5FB7 /* DeveloperModel.swift in Sources */,
 				681159D726E93A70009FAA5E /* StorageManager.swift in Sources */,
 				7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */,

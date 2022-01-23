@@ -19,7 +19,7 @@ class Test2CollectionViewCell: UICollectionViewCell {
         setupElements()
         setupConstraints()
         
-        self.layer.cornerRadius = 4
+        self.layer.cornerRadius = self.frame.width / 2
         self.clipsToBounds = true
     }
     
@@ -50,6 +50,7 @@ extension Test2CollectionViewCell {
         photo.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         photo.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         photo.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        
         
     }
 }

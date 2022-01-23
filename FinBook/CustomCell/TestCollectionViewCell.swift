@@ -9,41 +9,74 @@ import UIKit
 
 class TestCollectionViewCell: UICollectionViewCell {
     
+    let headerLinks: [String] = ["e-mail:", "github:", "linkidin:"]
     static var reuseId: String = "TestCell"
     
-    let photo = UIImageView()
-    let fullname = UILabel()
-    let email = UILabel()
-    let gitHub = UILabel()
-    let linkedin = UILabel()
-    let stackView = UIStackView()
+    let photoView = UIImageView()
+    let nameLabel = BorderedLabel()
+    
+    let surnameLabel = BorderedLabel()
+    let emailLabel = BorderedLabel()
+    let gitHubLabel = BorderedLabel()
+    let linkedinLabel = BorderedLabel()
+    let stackFullname = UIStackView()
+    let stackLinks = UIStackView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(white: 1, alpha: 1)
         setupElements()
+        setupStackViewForLink()
         setupConstraints()
         
         self.layer.cornerRadius = 4
         self.clipsToBounds = true
+//        self.backgroundColor = 
+    }
+    
+    func setupStackViewForLink() {
+        let linkLabels: [BorderedLabel] = [emailLabel, gitHubLabel, linkedinLabel]
+        nameLabel.font = UIFont(name: "Avenir", size: 18)
+        surnameLabel.font = UIFont(name: "Avenir", size: 18)
+        for (index, label) in linkLabels.enumerated() {
+            label.font = UIFont(name: "Avenir", size: 20)
+            
+            let stackLink = UIStackView()
+            let headerLink = UILabel()
+            
+            headerLink.text = headerLinks[index]
+            headerLink.font = UIFont(name: "Avenir", size: 18)
+            headerLink.textColor = UIColor.gray
+            stackLink.addArrangedSubview(headerLink)
+            stackLink.addArrangedSubview(label)
+            stackLink.spacing = 1
+            stackLink.distribution = .fillEqually
+            stackLink.axis = .vertical
+            stackLinks.addArrangedSubview(stackLink)
+        }
     }
     
     func setupElements() {
-        photo.translatesAutoresizingMaskIntoConstraints = false
-        fullname.translatesAutoresizingMaskIntoConstraints = false
-        email.translatesAutoresizingMaskIntoConstraints = false
-        gitHub.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        linkedin.translatesAutoresizingMaskIntoConstraints = false
+        photoView.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        surnameLabel.translatesAutoresizingMaskIntoConstraints = false
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        gitHubLabel.translatesAutoresizingMaskIntoConstraints = false
+        linkedinLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackFullname.translatesAutoresizingMaskIntoConstraints = false
+        stackLinks.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func configure(with developer: Developer) {
-        fullname.text = developer.surname + " " + developer.name
-        email.text = "email: " + developer.email
-        gitHub.text = "gitHub: " + developer.gitHub
-        linkedin.text = "linkedin: " + developer.linkedin
-        photo.image = UIImage(named: developer.photo)
-        photo.customizeView(model: <#T##Int#>)
+        nameLabel.text = developer.name
+        surnameLabel.text = developer.surname
+        emailLabel.text = developer.email
+        gitHubLabel.text = developer.gitHub
+        linkedinLabel.text = developer.linkedin
+        photoView.image = UIImage(named: developer.photo)
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -54,18 +87,18 @@ class TestCollectionViewCell: UICollectionViewCell {
 // MARK: - Setup Constraints
 extension TestCollectionViewCell {
     func setupConstraints() {
-        addSubview(photo)
-        addSubview(fullname)
-        addSubview(stackView)
-//        addSubview(email)
-//        addSubview(gitHub)
-//        addSubview(linkedin)
         
-        // oponentImageView constraints
-        photo.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        photo.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        photo.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        photo.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        addSubview(photoView)
+        addSubview(stackLinks)
+        addSubview(stackFullname)
+        
+        // photo constraints
+        photoView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        photoView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        photoView.widthAnchor.constraint(equalToConstant: self.frame.width / 5).isActive = true
+        photoView.heightAnchor.constraint(equalTo: photoView.widthAnchor).isActive = true
+        photoView.layer.cornerRadius = self.frame.width / 10
+        photoView.layer.masksToBounds = true
         
         // gradientView constraints
 //        gradientView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
@@ -74,25 +107,56 @@ extension TestCollectionViewCell {
 //        gradientView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive  = true
         
         // oponentLabel constraints
-        fullname.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        fullname.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 16).isActive = true
+//        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+//        nameLabel.leadingAnchor.constraint(equalTo: photoView.trailingAnchor, constant: 16).isActive = true
 //        fullname.trailingAnchor.constraint(equalTo: gradientView.leadingAnchor, constant: 16).isActive = true
 //        email.widthAnchor.constraint(equalToConstant: 60).isActive = true
 //        gitHub.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
-        gitHub.numberOfLines = 0
+        gitHubLabel.numberOfLines = 0
+        gitHubLabel.backgroundColor = .orange
         // lastMessageLabel constraints
 //        lastMessage.topAnchor.constraint(equalTo: friendName.bottomAnchor).isActive = true
 //        lastMessage.leadingAnchor.constraint(equalTo: friendImageView.trailingAnchor, constant: 16).isActive = true
 //        lastMessage.trailingAnchor.constraint(equalTo: gradientView.leadingAnchor, constant: -16).isActive =
-        stackView.addArrangedSubview(email)
-        stackView.addArrangedSubview(gitHub)
-        stackView.addArrangedSubview(linkedin)
-        stackView.axis = .vertical
-//        stackView.alignment =
-        stackView.topAnchor.constraint(equalTo: topAnchor, constant: 50).isActive = true
-        stackView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-        stackView.spacing = 30
+        
+        stackFullname.addArrangedSubview(surnameLabel)
+        stackFullname.addArrangedSubview(nameLabel)
+        stackFullname.axis = .vertical
+        stackFullname.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        stackFullname.leadingAnchor.constraint(equalTo: photoView.trailingAnchor, constant: 10).isActive = true
+        stackFullname.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        stackFullname.bottomAnchor.constraint(equalTo: photoView.bottomAnchor).isActive = true
+        stackFullname.spacing = 0
+        stackFullname.distribution = .fillEqually
+        stackFullname.layer.cornerRadius = 10
+        stackFullname.backgroundColor = .systemGray4
+//        nameLabel.backgroundColor = .orange
+//        nameLabel.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+//        surnameLabel.backgroundColor = .orange
+        
+        
+//        stackLinks.addArrangedSubview(emailLabel)
+//        stackLinks.addArrangedSubview(gitHubLabel)
+//        stackLinks.addArrangedSubview(linkedinLabel)
+        stackLinks.axis = .vertical
+        stackLinks.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 20).isActive = true
+        stackLinks.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        stackLinks.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        stackLinks.spacing = 10
+        stackLinks.heightAnchor.constraint(equalToConstant:  self.frame.width / 5 * 3).isActive = true
+        stackLinks.distribution = .fillEqually
+        
+        emailLabel.backgroundColor = .systemGray4
+        emailLabel.layer.cornerRadius = 10
+        emailLabel.clipsToBounds = true
+        gitHubLabel.backgroundColor = .systemGray4
+            gitHubLabel.layer.cornerRadius = 10
+        gitHubLabel.clipsToBounds = true
+        linkedinLabel.backgroundColor = .systemGray4
+        linkedinLabel.layer.cornerRadius = 10
+            linkedinLabel.clipsToBounds = true
+        
+        
     }
 }
