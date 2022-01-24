@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChartTableViewCell: UITableViewCell {
+class ChartCell: UITableViewCell {
 
     @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var categoryShare: UILabel!

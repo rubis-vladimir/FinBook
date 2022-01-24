@@ -21,7 +21,14 @@ class ColorManager {
             
             if (secondaryElement != nil) {
                 secondaryElement?.barTintColor = color
+////                secondaryElement?.setBackgroundImage(UIImage(named: "rubis"), for: .default)
+//                secondaryElement?.tintColor = .white
+//                let textAttributes = [NSAttributedString.Key.foregroundColor:color]
+//                secondaryElement?.titleTextAttributes = textAttributes
             }
+//            if (secondaryElement != nil) {
+//            secondaryElement?.barTintColor = color
+//            mainElement.tintColor = color
         }
     
     // MARK: - Creating array colors

@@ -23,10 +23,10 @@ class StatisticViewController: UIViewController {
         super.viewDidLoad()
         setupElements()
 //        redrawPieChart()
-        startDate.date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()    }
+        startDate.date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()}
     
     override func viewWillAppear(_ animated: Bool) {
-        redrawPieChart()
+//        redrawPieChart()
         refreshTheme()
     }
     
@@ -70,7 +70,7 @@ extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chartCell", for: indexPath) as! ChartTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chartCell", for: indexPath) as! ChartCell
         cell.backgroundColor = UIColor.clear
         cell.categoryView.backgroundColor = palitreColors[indexPath.row]
         

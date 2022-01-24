@@ -47,9 +47,9 @@ class PieChartView: UIView {
         circleLayer.strokeEnd = 1.0
         layer.addSublayer(circleLayer)
         
-        // Add animation
+//         Add animation
 //        let animationRound = CABasicAnimation(keyPath: "strokeEnd")
-//        animationRound.duration = 5
+//        animationRound.duration = 15
 //        animationRound.fromValue = 0
 //        animationRound.toValue = 1
 //        circleLayer.add(animationRound, forKey: "lessAnimation")

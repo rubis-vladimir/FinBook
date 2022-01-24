@@ -39,6 +39,7 @@ class AccountViewController: UIViewController {
     // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         setupElements()
         setupSearchBar()
         getData()
@@ -49,7 +50,7 @@ class AccountViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
+        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: self.navigationController?.navigationBar)
     }
     
     

@@ -1,67 +1,114 @@
 //
-//  ContactsViewController.swift
+//  TestViewController.swift
 //  FinBook
 //
-//  Created by Владимир Рубис on 12.12.2021.
+//  Created by Владимир Рубис on 16.01.2022.
 //
 
 import UIKit
 
-class ContactsViewController: UITableViewController {
+class ContactsViewController: UICollectionViewController {
     
-    @IBOutlet weak var contactView: ContactView!
+    var selectedIndex: IndexPath = [0, 2]
+    var isChanged: Bool = false
+    var itemsPerRow: CGFloat = 1
+    let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     
-    private var developers: [Developer]?
-    private var isSelected = false
+    var developers = Bundle.main.decode([Developer].self, from: "developers.json")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDevelopersFromJSON()
+        setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refreshTheme()
+        ColorManager.shared.setThemeColors(mainElement: collectionView, secondaryElement: navigationController?.navigationBar)
+    }
+    
+    func setupCollectionView() {
+        collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
+        collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
+        collectionView.allowsMultipleSelection = false
+    }
+    
+    // MARK: UICollectionViewDataSource
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int { 1 }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        developers.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let developer = developers[indexPath.row]
         
-    }
-    
-    private func refreshTheme() {
-        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
-    }
-    
-    // MARK: - Table view data source
-    
-    func loadDevelopersFromJSON() {
-        DataManager.getDeveloperDataWithSuccess() { (data) in
-            guard let data = data, let developerArray = try? JSONDecoder().decode([Developer].self, from: data) else {
-                print("JSON loading Error")
-                return
-            }
+        if isChanged {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactInfoCell.reuseId, for: indexPath) as! ContactInfoCell
+            cell.configure(with: developer)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactPhotoCell.reuseId, for: indexPath) as! ContactPhotoCell
+            cell.configure(with: developer)
             
-            self.developers = developerArray
+            if selectedIndex == indexPath {
+                cell.photoView.alpha = 1
+            }
+            return cell
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectedIndex == indexPath {
+            isChanged = false
+            collectionView.deselectItem(at: selectedIndex, animated: true)
+            collectionView.reloadItems(at: [selectedIndex])
+            selectedIndex = [0, 2]
+        } else {
+            if selectedIndex != [0, 2] {
+                isChanged = false
+                collectionView.deselectItem(at: selectedIndex, animated: true)
+                collectionView.reloadItems(at: [selectedIndex])
+            }
+            isChanged = true
+            collectionView.reloadItems(at: [indexPath])
+            selectedIndex = indexPath
         }
     }
 }
 
-extension ContactsViewController {
+extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        developers?.count ?? 2
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "developerCell", for: indexPath) as! DeveloperTableViewCell
+    func calculateSizeForItem(itemPerRow: CGFloat) -> CGSize {
+        let paddingWidth = sectionInserts.left * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let widthPerItem = availableWidth / itemsPerRow
         
-        cell.backgroundColor = UIColor.clear
-        cell.contactView.draw(CGRect(origin: CGPoint(x:cell.bounds.width / 2,
-                                                          y:cell.bounds.height / 2),
-                                          size: CGSize(width: 250, height: 250)),
-                                   developer: developers![indexPath.row], isSelected: isSelected)
-//        cell.contactView.dr
-        return cell
+        return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        self.view.bounds.width * 0.65
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        switch collectionView.indexPathsForSelectedItems?.first {
+        case .some(indexPath):
+            itemsPerRow = 1
+            return calculateSizeForItem(itemPerRow: itemsPerRow)
+        default:
+            itemsPerRow = 2
+            guard let cell =  collectionView.cellForItem(at: indexPath) as? ContactPhotoCell
+            else {
+                return calculateSizeForItem(itemPerRow: itemsPerRow)
+            }
+            cell.photoView.alpha = collectionView.indexPathsForSelectedItems?.isEmpty ?? true ? 1 : 0.3
+            return calculateSizeForItem(itemPerRow: itemsPerRow)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInserts
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInserts.top
     }
 }
