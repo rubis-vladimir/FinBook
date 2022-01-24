@@ -96,13 +96,14 @@ class TransactionViewController: UIViewController {
             if value.0 == editTransaction.category {
                 categoryPickerView.selectRow(index, inComponent: 0, animated: true)
             }
+            doneButton.isEnabled = true
         }
     }
     
     private func SetupCostTextField() {
         costTextField.becomeFirstResponder()  // курсор на данном поле
         costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
-        doneButton.isEnabled = false
+        doneButton.isEnabled = false  // кнопка выключена
         costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
@@ -159,9 +160,12 @@ extension TransactionViewController: UITextFieldDelegate {
             return false
         }
         if textFieldText.contains(".") && string == "." { return false }
+        if textFieldText.contains(",") && string == "," { return false }
+
+//        if string == "," { string = "." }
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
-        return count <= 15
+        return count <= 30
     }
     
     //скрыть клавиатуру после редактирования
@@ -173,7 +177,6 @@ extension TransactionViewController: UITextFieldDelegate {
     // Чтобы кнопка Done была активна только в когда поле цены заполнено -------------------------------------------------------------------------ТУТ
     @objc private func costTextFieldDidChanged() {
         guard let costName = costTextField.text else {
-            
             doneButton.isEnabled = false
             return
         }
@@ -182,14 +185,26 @@ extension TransactionViewController: UITextFieldDelegate {
     
     //переход с costTextField на descriptionTextField по нажатию кнопки "Далее" с Алёртами
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard Double(costTextField.text ?? "0.0") ?? 0 > 0 else {
-            showAlert(title: "Сумма введена не корректно", message: "Введите число больше нуля")
+        
+        guard costFormatter(cost: costTextField.text) > 0 else {
+            showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
             return false
         }
         
         if costTextField.isEditing  { descriptionTextField.becomeFirstResponder()
         } else { view.endEditing(true) }
         return true
+    }
+    
+    private func costFormatter(cost: String?) -> Double {
+        let formatter = NumberFormatter()
+        var doubCost: Double = 0.00000
+        formatter.locale = Locale.current
+        if let number = formatter.number(from: cost ?? "0.0") {
+            doubCost = number.doubleValue
+            print (number)
+        }
+        return doubCost
     }
 }
 

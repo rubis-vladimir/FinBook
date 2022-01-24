@@ -7,7 +7,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -543,40 +542,6 @@
             </objects>
             <point key="canvasLocation" x="1652" y="956.67166416791611"/>
         </scene>
-        <!--Test View Controller-->
-        <scene sceneID="i8g-eh-YAr">
-            <objects>
-                <collectionViewController id="H7F-vb-Ugu" customClass="TestViewController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UNp-3x-gmk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tnO-ll-meK">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2ah-mL-Of5">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kFo-hz-xHa">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="H7F-vb-Ugu" id="7ek-qh-Jlj"/>
-                            <outlet property="delegate" destination="H7F-vb-Ugu" id="fVz-Ee-Jzp"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5qJ-3f-3yc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3013" y="960"/>
-        </scene>
         <!--Accounts-->
         <scene sceneID="ZJX-1V-wQ8">
             <objects>
@@ -708,10 +673,10 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k43-i1-ScQ" userLabel="Button Stack View">
-                                <rect key="frame" x="0.0" y="772" width="414" height="36"/>
+                                <rect key="frame" x="0.0" y="440" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
-                                        <rect key="frame" x="0.0" y="0.0" width="207" height="36"/>
+                                        <rect key="frame" x="0.0" y="7" width="207" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Отмена"/>
                                         <connections>
@@ -719,7 +684,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q55-mc-zBg">
-                                        <rect key="frame" x="207" y="0.0" width="207" height="36"/>
+                                        <rect key="frame" x="207" y="7" width="207" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Готово"/>
                                         <connections>
@@ -727,20 +692,24 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3bI-cf-JNC"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C4E-1m-qLQ"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="k43-i1-ScQ" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" id="7LZ-wu-ovd"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="top" secondItem="rd0-Cm-jdg" secondAttribute="bottom" constant="10" id="1rO-YH-rZ1"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" id="FeK-5N-uq4"/>
                             <constraint firstItem="i9f-g9-0tg" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" id="IVj-OJ-xmq"/>
                             <constraint firstItem="i9f-g9-0tg" firstAttribute="top" secondItem="C4E-1m-qLQ" secondAttribute="top" id="NVR-an-rZK"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="10" id="U4Z-6Z-NN0"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="top" secondItem="i9f-g9-0tg" secondAttribute="bottom" constant="15" id="WHl-9y-0ot"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="k43-i1-ScQ" secondAttribute="trailing" id="Y7D-zs-Dus"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="rd0-Cm-jdg" secondAttribute="trailing" constant="10" id="b6m-B2-3uo"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="trailing" secondItem="C4E-1m-qLQ" secondAttribute="trailing" id="gpB-FE-rQ4"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="i9f-g9-0tg" secondAttribute="trailing" id="px5-dA-BnM"/>
-                            <constraint firstItem="C4E-1m-qLQ" firstAttribute="bottom" secondItem="k43-i1-ScQ" secondAttribute="bottom" id="yNi-3k-WEH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ECc-r5-MQA">

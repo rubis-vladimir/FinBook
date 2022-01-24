@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  FinBook
 //
-//  Created by Владимир Рубис on 11.07.2021.
+//  Created by Владимир Рубис   on 11.07.2021.
 //
 
 import UIKit
