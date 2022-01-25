@@ -13,20 +13,23 @@ class TransactionViewController: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var costTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
-    @IBOutlet var categoryPickerView: UIPickerView!
+    
+    @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet weak var categoryTextField: UITextField!
+    
     @IBOutlet var dataPicker: UIDatePicker!
     @IBOutlet var noteTextField: UITextField!
     
     @IBOutlet var doneButton: UIButton!
     
-    @IBOutlet var categoryLabel: UILabel!
     
 // MARK: - Properties
     var delegate: NewTransactionViewControllerDelegate!
     
     var editTransaction: Transact?
-    
     private var selectedModel: CategoryPickerModel!
+    private var categoryPickerView = UIPickerView()
+
 //    private var selectedCategory
     private var income = false
     
@@ -108,7 +111,11 @@ class TransactionViewController: UIViewController {
     }
     
     private func SetupPickerView() {
-        selectedModel = categoryPickerModels[0]
+
+        categoryTextField.inputView = categoryPickerView
+//        categoryLabelField.inputView = categoryPicker
+        
+        selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
     }
@@ -125,6 +132,7 @@ class TransactionViewController: UIViewController {
         doneToolbar.sizeToFit()
         costTextField.inputAccessoryView = doneToolbar
         descriptionTextField.inputAccessoryView = doneToolbar
+        categoryTextField.inputAccessoryView = doneToolbar
     }
 }
 

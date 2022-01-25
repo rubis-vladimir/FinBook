@@ -573,7 +573,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rd0-Cm-jdg" userLabel="Main Stack View">
-                                <rect key="frame" x="10" y="65" width="394" height="365"/>
+                                <rect key="frame" x="10" y="65" width="394" height="263"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rmD-g5-h44" userLabel="Cast Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="25.5"/>
@@ -614,28 +614,23 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="G5d-sq-Udy" userLabel="Category Stack View">
-                                        <rect key="frame" x="0.0" y="91" width="394" height="150"/>
+                                        <rect key="frame" x="0.0" y="91" width="394" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория расхода:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-Ux-EYU">
-                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="150"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="95.5" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="pVb-0j-KS8">
-                                                <rect key="frame" x="105.5" y="0.0" width="288.5" height="150"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="A3i-py-pm1" id="fVz-Gj-Yow"/>
-                                                    <outlet property="delegate" destination="A3i-py-pm1" id="PaZ-x4-z5G"/>
-                                                </connections>
-                                            </pickerView>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24W-OW-JUN">
+                                                <rect key="frame" x="105.5" y="0.0" width="288.5" height="48"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="KQd-Tn-Ta4"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TKe-U1-arl" userLabel="Data Stack View">
-                                        <rect key="frame" x="0.0" y="261" width="394" height="50"/>
+                                        <rect key="frame" x="0.0" y="159" width="394" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkL-LX-alg">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
@@ -653,7 +648,7 @@
                                         </constraints>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Заметка по транзакции" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWb-r7-UV9">
-                                        <rect key="frame" x="0.0" y="331" width="394" height="34"/>
+                                        <rect key="frame" x="0.0" y="229" width="394" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -673,7 +668,7 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k43-i1-ScQ" userLabel="Button Stack View">
-                                <rect key="frame" x="0.0" y="440" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="338" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
                                         <rect key="frame" x="0.0" y="7" width="207" height="36"/>
@@ -736,7 +731,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryLabel" destination="l4A-Ux-EYU" id="BsD-Kz-yl5"/>
-                        <outlet property="categoryPickerView" destination="pVb-0j-KS8" id="WVD-pt-D4L"/>
+                        <outlet property="categoryTextField" destination="24W-OW-JUN" id="oUU-CJ-dwK"/>
                         <outlet property="costTextField" destination="Tlg-5O-Irc" id="7aV-0J-i0J"/>
                         <outlet property="dataPicker" destination="TKX-gF-tlO" id="2cI-YP-gFp"/>
                         <outlet property="descriptionTextField" destination="pyp-qr-N2N" id="1sG-SX-WEY"/>
