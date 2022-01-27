@@ -35,8 +35,8 @@ final class CategoriesView: UIView {
     
     // MARK: - Private func - настройка констрейнтов - расположение элементов на View
     private func setup() {
-        addSubview(iconView)
         addSubview(label)
+        addSubview(iconView)
         
         iconView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false

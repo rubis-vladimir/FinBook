@@ -16,9 +16,9 @@ class TransactionViewController: UIViewController {
     
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var categoryImage: UIImageView!
     
     @IBOutlet weak var dateTextField: UITextField!
-//    @IBOutlet var dataPicker: UIDatePicker! //  ---------------удалить
     @IBOutlet var noteTextField: UITextField!
     
     @IBOutlet var doneButton: UIButton!
@@ -47,11 +47,11 @@ class TransactionViewController: UIViewController {
         super.viewDidLoad()
         
         SetupCostTextField()
-        SetupPickerView()
+        SetupCategoryPickerView()
         SetupDataTextField()
         
         SetupDoneToolBar()
-        EditTransaction()
+        EditTransaction() // если редактируем существующую транзакцию
     }
     
 // MARK: - IBActions
@@ -114,33 +114,19 @@ class TransactionViewController: UIViewController {
         costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
-    private func SetupPickerView() { // настройка текстового поля с категорией
+    private func SetupCategoryPickerView() { // настройка текстового поля с категорией
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
 
         selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
+        categoryTextField.text = selectedModel.title
+        categoryImage.image = selectedModel.icon
         
         categoryTextField.inputView = categoryPickerView
-        //        categoryLabelField.inputView = categoryPicker
     }
-    
-    private func SetupDoneToolBar() {
-        let doneToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
-                                            target: self,
-                                            action: nil)
-        let doneButton = UIBarButtonItem(title: "Готово", style: .done,
-                                         target: self,
-                                         action: #selector(textFieldShouldReturn))
-        doneToolbar.items = [flexibleSpace, doneButton]
-        doneToolbar.sizeToFit()
-        costTextField.inputAccessoryView = doneToolbar
-        descriptionTextField.inputAccessoryView = doneToolbar
-        categoryTextField.inputAccessoryView = doneToolbar
-        dateTextField.inputAccessoryView = doneToolbar
-    }
-    
+        
     private func SetupDataTextField() { // настройка текстового поля с датой
+        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
         
         dateTextField.inputView = datePickerView
         datePickerView.preferredDatePickerStyle = .wheels
@@ -149,6 +135,22 @@ class TransactionViewController: UIViewController {
         datePickerView.locale = Locale(identifier: localeID!)
         
         datePickerView.addTarget(self, action: #selector(dateTextFieldDidChanged), for: .valueChanged)
+    }
+    
+    private func SetupDoneToolBar() {
+        let doneToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: self,
+                                            action: nil)
+        let doneButton = UIBarButtonItem(title: "Далее", style: .done,
+                                         target: self,
+                                         action: #selector(textFieldShouldReturn))
+        doneToolbar.items = [flexibleSpace, doneButton]
+        doneToolbar.sizeToFit()
+        costTextField.inputAccessoryView = doneToolbar
+        descriptionTextField.inputAccessoryView = doneToolbar
+        categoryTextField.inputAccessoryView = doneToolbar
+        dateTextField.inputAccessoryView = doneToolbar
     }
 }
 
@@ -171,6 +173,8 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedModel = categoryPickerModels[row]
+        categoryTextField.text = selectedModel.title
+        categoryImage.image = selectedModel.icon
     }
 }
 
@@ -192,7 +196,7 @@ extension TransactionViewController: UITextFieldDelegate {
         return count <= 30
     }
     
-    //скрыть клавиатуру после редактирования
+    // Скрыть клавиатуру после редактирования
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -212,22 +216,24 @@ extension TransactionViewController: UITextFieldDelegate {
     }
     
     
-    //переход с costTextField на descriptionTextField по нажатию кнопки "Далее" с Алёртами
+    //переход на следующее поле по нажатию кнопки "Готово" с Алёртами
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        
-        
-        guard costFormatter(cost: costTextField.text) > 0 else {
-            showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
-            return false
-        }
-        
-        if costTextField.isEditing  { descriptionTextField.becomeFirstResponder()
+        if costTextField.isEditing  {
+            guard costFormatter(cost: costTextField.text) > 0 else {
+                showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
+                return false
+            }
+            descriptionTextField.becomeFirstResponder()
+        } else if descriptionTextField.isEditing {
+            categoryTextField.becomeFirstResponder()
+        } else if categoryTextField.isEditing {
+            dateTextField.becomeFirstResponder()
         } else { view.endEditing(true) }
         return true
     }
     
-    private func costFormatter(cost: String?) -> Double {
+    
+    private func costFormatter(cost: String?) -> Double { // корректировка  вводимого числа  если вместо точки запятая
         let formatter = NumberFormatter()
         var doubCost: Double = 0.00000
         formatter.locale = Locale.current
