@@ -622,9 +622,9 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24W-OW-JUN">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Выберите категорию" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24W-OW-JUN">
                                                 <rect key="frame" x="105.5" y="0.0" width="288.5" height="48"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -638,10 +638,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="right" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="TKX-gF-tlO">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Установите время" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dAM-tr-XQA">
                                                 <rect key="frame" x="202" y="0.0" width="192" height="50"/>
-                                                <locale key="locale" localeIdentifier="ru_RU"/>
-                                            </datePicker>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="cPA-7S-tLo"/>
@@ -733,7 +734,7 @@
                         <outlet property="categoryLabel" destination="l4A-Ux-EYU" id="BsD-Kz-yl5"/>
                         <outlet property="categoryTextField" destination="24W-OW-JUN" id="oUU-CJ-dwK"/>
                         <outlet property="costTextField" destination="Tlg-5O-Irc" id="7aV-0J-i0J"/>
-                        <outlet property="dataPicker" destination="TKX-gF-tlO" id="2cI-YP-gFp"/>
+                        <outlet property="dateTextField" destination="dAM-tr-XQA" id="qYi-nU-YxX"/>
                         <outlet property="descriptionTextField" destination="pyp-qr-N2N" id="1sG-SX-WEY"/>
                         <outlet property="doneButton" destination="Q55-mc-zBg" id="aAc-uu-EhU"/>
                         <outlet property="noteTextField" destination="kWb-r7-UV9" id="2VC-Ll-Ayt"/>

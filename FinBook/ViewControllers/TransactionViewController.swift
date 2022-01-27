@@ -17,7 +17,8 @@ class TransactionViewController: UIViewController {
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet weak var categoryTextField: UITextField!
     
-    @IBOutlet var dataPicker: UIDatePicker!
+    @IBOutlet weak var dateTextField: UITextField!
+//    @IBOutlet var dataPicker: UIDatePicker! //  ---------------удалить
     @IBOutlet var noteTextField: UITextField!
     
     @IBOutlet var doneButton: UIButton!
@@ -28,8 +29,8 @@ class TransactionViewController: UIViewController {
     
     var editTransaction: Transact?
     private var selectedModel: CategoryPickerModel!
-    private var categoryPickerView = UIPickerView()
-
+    private let categoryPickerView = UIPickerView()
+    private let datePickerView = UIDatePicker()
 //    private var selectedCategory
     private var income = false
     
@@ -47,6 +48,8 @@ class TransactionViewController: UIViewController {
         
         SetupCostTextField()
         SetupPickerView()
+        SetupDataTextField()
+        
         SetupDoneToolBar()
         EditTransaction()
     }
@@ -78,7 +81,7 @@ class TransactionViewController: UIViewController {
         guard let description = descriptionTextField.text else { return }
         
         // присваиваем новой транзакции данные с интерфейса и сохраняем ее
-        let transaction = StorageManager.shared.createTransact(cost: costPrice, description: description, category: selectedModel.title, date: dataPicker.date, note: noteTextField.text ?? "", income: income)
+        let transaction = StorageManager.shared.createTransact(cost: costPrice, description: description, category: selectedModel.title, date: datePickerView.date, note: noteTextField.text ?? "", income: income)
             
         delegate.saveTransaction(newTransaction: transaction) // передаем новую транзакцию на основной экран     
         dismiss(animated: true)
@@ -92,7 +95,8 @@ class TransactionViewController: UIViewController {
         }
         costTextField.text = String(editTransaction.cost)
         descriptionTextField.text = editTransaction.descr
-        dataPicker.date = editTransaction.date ?? dataPicker.date
+        datePickerView.date = editTransaction.date ?? datePickerView.date
+        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
         noteTextField.text = editTransaction.note
                 
         for (index, value) in CategoryService.categoryList.values.enumerated() {
@@ -110,14 +114,14 @@ class TransactionViewController: UIViewController {
         costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
-    private func SetupPickerView() {
-
-        categoryTextField.inputView = categoryPickerView
-//        categoryLabelField.inputView = categoryPicker
-        
-        selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
+    private func SetupPickerView() { // настройка текстового поля с категорией
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
+
+        selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
+        
+        categoryTextField.inputView = categoryPickerView
+        //        categoryLabelField.inputView = categoryPicker
     }
     
     private func SetupDoneToolBar() {
@@ -125,7 +129,7 @@ class TransactionViewController: UIViewController {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                             target: self,
                                             action: nil)
-        let doneButton = UIBarButtonItem(title: "Далее", style: .done,
+        let doneButton = UIBarButtonItem(title: "Готово", style: .done,
                                          target: self,
                                          action: #selector(textFieldShouldReturn))
         doneToolbar.items = [flexibleSpace, doneButton]
@@ -133,6 +137,18 @@ class TransactionViewController: UIViewController {
         costTextField.inputAccessoryView = doneToolbar
         descriptionTextField.inputAccessoryView = doneToolbar
         categoryTextField.inputAccessoryView = doneToolbar
+        dateTextField.inputAccessoryView = doneToolbar
+    }
+    
+    private func SetupDataTextField() { // настройка текстового поля с датой
+        
+        dateTextField.inputView = datePickerView
+        datePickerView.preferredDatePickerStyle = .wheels
+        datePickerView.datePickerMode = .dateAndTime
+        let localeID = Locale.preferredLanguages.first
+        datePickerView.locale = Locale(identifier: localeID!)
+        
+        datePickerView.addTarget(self, action: #selector(dateTextFieldDidChanged), for: .valueChanged)
     }
 }
 
@@ -191,8 +207,15 @@ extension TransactionViewController: UITextFieldDelegate {
         doneButton.isEnabled = !costName.isEmpty ? true : false
     }
     
+    @objc private func dateTextFieldDidChanged() {
+        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
+    }
+    
+    
     //переход с costTextField на descriptionTextField по нажатию кнопки "Далее" с Алёртами
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        
         
         guard costFormatter(cost: costTextField.text) > 0 else {
             showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
