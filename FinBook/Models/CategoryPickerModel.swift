@@ -9,7 +9,7 @@
 import UIKit
 
 struct CategoryPickerModel {
-    let category: Category
+//    let category: String
     let title: String
     let icon: UIImage
 }

@@ -31,13 +31,13 @@ class TransactionViewController: UIViewController {
     private var selectedModel: CategoryPickerModel!
     private let categoryPickerView = UIPickerView()
     private let datePickerView = UIDatePicker()
-//    private var selectedCategory
+
     private var income = false
     
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
-        for (category, value) in CategoryService.categoryList {
-            categories.append(.init(category: category, title: value.0, icon: value.1))
+        for (category, image) in CategoryService.spendCategoryList {
+            categories.append(.init( title: category, icon: image))
         }
         return categories
     }()
@@ -49,7 +49,7 @@ class TransactionViewController: UIViewController {
         SetupCostTextField()
         SetupCategoryPickerView()
         SetupDataTextField()
-        
+        SetupCategoryList() // установка категорий в зависимости от транзакций
         SetupDoneToolBar()
         EditTransaction() // если редактируем существующую транзакцию
     }
@@ -64,6 +64,9 @@ class TransactionViewController: UIViewController {
             categoryLabel.text = "Категория дохода:"
             income = true
         }
+        SetupCategoryList() // установка категорий в зависимости от транзакций
+        SetupCategoryPickerView()  // установка актуальной категории в поле
+        
     }
     
     @IBAction func doneButtonAction(_ sender: Any) {
@@ -99,7 +102,7 @@ class TransactionViewController: UIViewController {
         dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
         noteTextField.text = editTransaction.note
                 
-        for (index, value) in CategoryService.categoryList.values.enumerated() {
+        for (index, value) in CategoryService.spendCategoryList.enumerated() {
             if value.0 == editTransaction.category {
                 categoryPickerView.selectRow(index, inComponent: 0, animated: true)
             }
@@ -152,6 +155,18 @@ class TransactionViewController: UIViewController {
         categoryTextField.inputAccessoryView = doneToolbar
         dateTextField.inputAccessoryView = doneToolbar
     }
+    private func SetupCategoryList() {
+        var categories: [CategoryPickerModel] = []
+        var list: [(String, UIImage)] = []
+        
+        list = income ? CategoryService.incomeCategoryList : CategoryService.spendCategoryList
+        categoryPickerModels = {
+            for (category, image) in list {
+                categories.append(.init( title: category, icon: image))
+            }
+            return categories
+        }()
+    }
 }
 
 // MARK: - PickerControl Settings
@@ -188,9 +203,10 @@ extension TransactionViewController: UITextFieldDelegate {
             return false
         }
         if textFieldText.contains(".") && string == "." { return false }
-        if textFieldText.contains(",") && string == "," { return false }
+//        if string == "," {
+//            textField.text = textFieldText + "."
+//            return true }
 
-//        if string == "," { string = "." }
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 30

@@ -32,9 +32,9 @@ class CustomTableViewCell: UITableViewCell {
     }
     
     func getImageFromCategory (transaction: Transact) -> UIImage {
-        for (_ , value) in CategoryService.categoryList {
-            if value.0 == transaction.category {
-                return value.1
+        for (name , image) in CategoryService.spendCategoryList {
+            if name == transaction.category {
+                return image
             }
         }
          return UIImage(systemName: "bag") ?? UIImage()
