@@ -32,7 +32,7 @@ class TransactionViewController: UIViewController {
     private let categoryPickerView = UIPickerView()
     private let datePickerView = UIDatePicker()
 
-    private var income = false
+    private var isIncome = false
     
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
@@ -46,26 +46,26 @@ class TransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SetupCostTextField()
-        SetupCategoryPickerView()
-        SetupDataTextField()
-        SetupCategoryList() // установка категорий в зависимости от транзакций
+        setupCostTextField()
+        setupCategoryPickerView()
+        setupDataTextField()
+        setupCategoryList() // установка категорий в зависимости от транзакций
         SetupDoneToolBar()
         EditTransaction() // если редактируем существующую транзакцию
     }
     
 // MARK: - IBActions
-    @IBAction func incomStatusOnSegmentedControl(_ sender: Any) {
+    @IBAction func incomeStatusOnSegmentedControl(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             categoryLabel.text = "Категория расхода:"
-            income = false
+            isIncome = false
         default:
             categoryLabel.text = "Категория дохода:"
-            income = true
+            isIncome = true
         }
-        SetupCategoryList() // установка категорий в зависимости от транзакций
-        SetupCategoryPickerView()  // установка актуальной категории в поле
+        setupCategoryList() // установка категорий в зависимости от транзакций
+        setupCategoryPickerView()  // установка актуальной категории в поле
         
     }
     
@@ -84,7 +84,7 @@ class TransactionViewController: UIViewController {
         guard let description = descriptionTextField.text else { return }
         
         // присваиваем новой транзакции данные с интерфейса и сохраняем ее
-        let transaction = StorageManager.shared.createTransact(cost: costPrice, description: description, category: selectedModel.title, date: datePickerView.date, note: noteTextField.text ?? "", income: income)
+        let transaction = StorageManager.shared.createTransact(cost: costPrice, description: description, category: selectedModel.title, date: datePickerView.date, note: noteTextField.text ?? "", income: isIncome)
             
         delegate.saveTransaction(newTransaction: transaction) // передаем новую транзакцию на основной экран
         dismiss(animated: true)
@@ -94,7 +94,7 @@ class TransactionViewController: UIViewController {
         guard let editTransaction = editTransaction else { return }
         if editTransaction.incomeTransaction == true {
             segmentedControl.selectedSegmentIndex = 1
-            income = true
+            isIncome = true
         }
         costTextField.text = String(editTransaction.cost)
         descriptionTextField.text = editTransaction.descr
@@ -110,14 +110,14 @@ class TransactionViewController: UIViewController {
         }
     }
     
-    private func SetupCostTextField() {
+    private func setupCostTextField() {
         costTextField.becomeFirstResponder()  // курсор на данном поле
         costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
         doneButton.isEnabled = false  // кнопка выключена
         costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
-    private func SetupCategoryPickerView() { // настройка текстового поля с категорией
+    private func setupCategoryPickerView() { // настройка текстового поля с категорией
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
 
@@ -128,7 +128,7 @@ class TransactionViewController: UIViewController {
         categoryTextField.inputView = categoryPickerView
     }
         
-    private func SetupDataTextField() { // настройка текстового поля с датой
+    private func setupDataTextField() { // настройка текстового поля с датой
         dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
         
         dateTextField.inputView = datePickerView
@@ -155,11 +155,11 @@ class TransactionViewController: UIViewController {
         categoryTextField.inputAccessoryView = doneToolbar
         dateTextField.inputAccessoryView = doneToolbar
     }
-    private func SetupCategoryList() {
+    private func setupCategoryList() {
         var categories: [CategoryPickerModel] = []
         var list: [(String, UIImage)] = []
         
-        list = income ? CategoryService.incomeCategoryList : CategoryService.spendCategoryList
+        list = isIncome ? CategoryService.incomeCategoryList : CategoryService.spendCategoryList
         categoryPickerModels = {
             for (category, image) in list {
                 categories.append(.init( title: category, icon: image))
@@ -273,6 +273,4 @@ extension TransactionViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     }
-    //------------
-    //--------------------
 }
