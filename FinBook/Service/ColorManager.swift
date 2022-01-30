@@ -18,17 +18,6 @@ class ColorManager {
             let themeValue = Pallete.getPallete(model: model)
             let color = hexStringToUIColor(hex: themeValue.bgColor)
             mainElement.backgroundColor = color
-            
-            if (secondaryElement != nil) {
-                secondaryElement?.barTintColor = color
-////                secondaryElement?.setBackgroundImage(UIImage(named: "rubis"), for: .default)
-//                secondaryElement?.tintColor = .white
-//                let textAttributes = [NSAttributedString.Key.foregroundColor:color]
-//                secondaryElement?.titleTextAttributes = textAttributes
-            }
-//            if (secondaryElement != nil) {
-//            secondaryElement?.barTintColor = color
-//            mainElement.tintColor = color
         }
     
     // MARK: - Creating array colors

@@ -9,6 +9,7 @@ import UIKit
 
 class ContactInfoCell: UICollectionViewCell {
     
+    //MARK: - Properties
     static var reuseId: String = "contactInfoCell"
     
     let emailLabel = BorderedLabel()
@@ -18,21 +19,24 @@ class ContactInfoCell: UICollectionViewCell {
     
     let headerLinks: [String] = ["e-mail:", "github:", "linkidin:"]
     let font = UIFont(name: "Avenir", size: 18)
-    let padding: CGFloat = 10
+    static let padding: CGFloat = 10
     static let heightLink: CGFloat = 60
-
     
+    //MARK: Adding elements to view
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupElements()
+        customizateCell()
         setupConstraints()
-        
-        self.layer.cornerRadius = 10
-        self.clipsToBounds = true
-        self.backgroundColor = .systemGray3
     }
     
-    func setupElements() {
+    //MARK: - Private functions
+    private func customizateCell() {
+        backgroundColor = .systemGray3
+        layer.customizeView()
+    }
+    
+    private func setupElements() {
         setupStackViewForLink()
         
         stackLinks.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +45,7 @@ class ContactInfoCell: UICollectionViewCell {
         stackLinks.spacing = 10
     }
     
-    func setupStackViewForLink() {
+    private func setupStackViewForLink() {
         let linkLabels: [BorderedLabel] = [emailLabel, gitHubLabel, linkedinLabel]
         
         for (index, label) in linkLabels.enumerated() {
@@ -63,14 +67,15 @@ class ContactInfoCell: UICollectionViewCell {
         }
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: data filling function
     func configure(with developer: Developer) {
         emailLabel.text = developer.email
         gitHubLabel.text = developer.gitHub
         linkedinLabel.text = developer.linkedin
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -80,10 +85,9 @@ extension ContactInfoCell {
         addSubview(stackLinks)
         
         // stackLinks constraints
-        stackLinks.topAnchor.constraint(equalTo: self.topAnchor, constant: padding).isActive = true
-        stackLinks.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
-        stackLinks.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
+        stackLinks.topAnchor.constraint(equalTo: self.topAnchor, constant: ContactInfoCell.padding).isActive = true
+        stackLinks.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: ContactInfoCell.padding).isActive = true
+        stackLinks.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -ContactInfoCell.padding).isActive = true
         stackLinks.heightAnchor.constraint(equalToConstant: ContactInfoCell.heightLink * 3 + stackLinks.spacing * 2).isActive = true
-        
     }
 }

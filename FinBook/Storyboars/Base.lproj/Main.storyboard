@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Df6-ib-i8Z">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -212,7 +211,7 @@
                                                             </constraints>
                                                             <imageReference key="image" image="pencil.tip.crop.circle" catalog="system" symbolScale="large"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Темная тема" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0N-DK-2sm">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ночная тема" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0N-DK-2sm">
                                                             <rect key="frame" x="60" y="11.666666666666664" width="269" height="27"/>
                                                             <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="18"/>
                                                             <nil key="textColor"/>
@@ -342,7 +341,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="apA-qR-AgQ">
-                                <rect key="frame" x="50" y="446" width="328" height="232"/>
+                                <rect key="frame" x="50" y="456" width="328" height="302"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="chartCell" rowHeight="30" id="pSY-Eo-zgU" customClass="ChartCell" customModule="FinBook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="328" height="30"/>
@@ -399,49 +398,6 @@
                                     <outlet property="delegate" destination="cER-Jq-FHV" id="lA5-Nw-ttu"/>
                                 </connections>
                             </tableView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-qA-nCs">
-                                <rect key="frame" x="76" y="733" width="276" height="35"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="От" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="TJG-4d-ChR">
-                                        <rect key="frame" x="0.0" y="0.0" width="25.666666666666668" height="35"/>
-                                        <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="u7e-RX-Jnk">
-                                        <rect key="frame" x="30.666666666666671" y="0.0" width="105.00000000000001" height="35"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="VxD-7w-GCh"/>
-                                        </constraints>
-                                        <locale key="locale" localeIdentifier="ru_RU"/>
-                                    </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="До" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="TZq-fK-Wsu">
-                                        <rect key="frame" x="140.66666666666666" y="0.0" width="25.333333333333343" height="35"/>
-                                        <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-s0-tGH">
-                                        <rect key="frame" x="171" y="0.0" width="105" height="35"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="105" id="hGX-5e-zs7"/>
-                                        </constraints>
-                                        <locale key="locale" localeIdentifier="ru_RU"/>
-                                    </datePicker>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="TZq-fK-Wsu" firstAttribute="leading" secondItem="u7e-RX-Jnk" secondAttribute="trailing" constant="5" id="CTw-Ey-efY"/>
-                                    <constraint firstItem="u7e-RX-Jnk" firstAttribute="width" secondItem="gUP-s0-tGH" secondAttribute="width" id="wHZ-QD-6DV"/>
-                                </constraints>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите период:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1S-Us-crh">
-                                <rect key="frame" x="127.66666666666667" y="698" width="172.66666666666663" height="30"/>
-                                <fontDescription key="fontDescription" name="KohinoorGujarati-Regular" family="Kohinoor Gujarati" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-N5-gJK">
                                 <rect key="frame" x="143.66666666666666" y="778" width="140.99999999999997" height="45"/>
                                 <constraints>
@@ -451,11 +407,11 @@
                                 <fontDescription key="fontDescription" name="KohinoorGujarati-Bold" family="Kohinoor Gujarati" pointSize="25"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Рассчитать">
+                                <state key="normal" title="Параметры">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="calculateChart:" destination="cER-Jq-FHV" eventType="touchUpInside" id="3dn-7d-Jxn"/>
+                                    <action selector="parametersChart:" destination="cER-Jq-FHV" eventType="touchUpInside" id="3ch-us-RAI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -463,18 +419,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6YH-N5-gJK" firstAttribute="bottom" secondItem="gYW-oQ-Zof" secondAttribute="bottom" constant="-20" id="0Zq-dq-piZ"/>
-                            <constraint firstItem="apA-qR-AgQ" firstAttribute="top" secondItem="8CI-q0-Gpv" secondAttribute="bottom" constant="15" id="17r-8F-pu1"/>
+                            <constraint firstItem="apA-qR-AgQ" firstAttribute="top" secondItem="8CI-q0-Gpv" secondAttribute="bottom" constant="25" id="17r-8F-pu1"/>
                             <constraint firstItem="6YH-N5-gJK" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="4hl-Ds-sgB"/>
                             <constraint firstItem="8CI-q0-Gpv" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="DKm-LN-UrR"/>
                             <constraint firstItem="gYW-oQ-Zof" firstAttribute="trailing" secondItem="8CI-q0-Gpv" secondAttribute="trailing" priority="999" constant="50" id="EWc-Go-y7S"/>
-                            <constraint firstItem="6YH-N5-gJK" firstAttribute="top" secondItem="i9H-qA-nCs" secondAttribute="bottom" constant="10" id="HSm-d4-rga"/>
                             <constraint firstItem="8CI-q0-Gpv" firstAttribute="top" secondItem="gYW-oQ-Zof" secondAttribute="top" constant="15" id="HeD-4S-aHz"/>
-                            <constraint firstItem="Y1S-Us-crh" firstAttribute="top" secondItem="apA-qR-AgQ" secondAttribute="bottom" constant="20" id="JdX-Lk-RdH"/>
-                            <constraint firstItem="i9H-qA-nCs" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="WR2-IV-krH"/>
-                            <constraint firstItem="i9H-qA-nCs" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="aAL-V6-qxr"/>
                             <constraint firstItem="apA-qR-AgQ" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="aZ0-Vo-5yn"/>
-                            <constraint firstItem="i9H-qA-nCs" firstAttribute="top" secondItem="Y1S-Us-crh" secondAttribute="bottom" constant="5" id="m64-xX-acg"/>
-                            <constraint firstItem="Y1S-Us-crh" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="r7C-yn-vjo"/>
+                            <constraint firstItem="6YH-N5-gJK" firstAttribute="top" secondItem="apA-qR-AgQ" secondAttribute="bottom" constant="20" id="eFb-2F-M9b"/>
                             <constraint firstItem="apA-qR-AgQ" firstAttribute="width" secondItem="8CI-q0-Gpv" secondAttribute="width" id="yx6-dv-yfg"/>
                         </constraints>
                     </view>
@@ -484,18 +435,16 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="calculateChartButton" destination="6YH-N5-gJK" id="QPl-C2-hDy"/>
-                        <outlet property="finishDate" destination="gUP-s0-tGH" id="I5A-ez-1s3"/>
+                        <outlet property="parametersChartButton" destination="6YH-N5-gJK" id="QPl-C2-hDy"/>
                         <outlet property="pieChartView" destination="8CI-q0-Gpv" id="kqY-J5-ind"/>
-                        <outlet property="startDate" destination="u7e-RX-Jnk" id="4nb-P5-TZd"/>
                         <outlet property="statisticsTV" destination="apA-qR-AgQ" id="ib5-AH-vb0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6C4-4u-c5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650.7246376811595" y="274.72826086956525"/>
+            <point key="canvasLocation" x="1650" y="274.08207343412528"/>
         </scene>
-        <!--Контакты-->
+        <!--Разработчики-->
         <scene sceneID="i8g-eh-YAr">
             <objects>
                 <collectionViewController id="H7F-vb-Ugu" customClass="ContactsViewController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -527,7 +476,7 @@
                             <outlet property="delegate" destination="H7F-vb-Ugu" id="fVz-Ee-Jzp"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Контакты" id="cea-Vw-XcG"/>
+                    <navigationItem key="navigationItem" title="Разработчики" id="cea-Vw-XcG"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qJ-3f-3yc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

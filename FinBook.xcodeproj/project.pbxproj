@@ -18,7 +18,7 @@
 		7D0E842F2795F1F100349AD4 /* Bundle + Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E842E2795F1F100349AD4 /* Bundle + Decode.swift */; };
 		7D0E84312798784F00349AD4 /* ContactPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */; };
 		7D39A1AE2799F27F00940EA3 /* BorderedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1AD2799F27F00940EA3 /* BorderedLabel.swift */; };
-		7D39A1D3279F06C500940EA3 /* View +Exension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1D2279F06C500940EA3 /* View +Exension.swift */; };
+		7D39A1D927A6AA7200940EA3 /* CALayer + Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */; };
 		7D5CF709277B80EE00FD5D11 /* PaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */; };
 		7D5CF70B277B80FA00FD5D11 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70A277B80FA00FD5D11 /* Palette.swift */; };
 		7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */; };
@@ -57,7 +57,7 @@
 		7D0E842E2795F1F100349AD4 /* Bundle + Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle + Decode.swift"; sourceTree = "<group>"; };
 		7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPhotoCell.swift; sourceTree = "<group>"; };
 		7D39A1AD2799F27F00940EA3 /* BorderedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedLabel.swift; sourceTree = "<group>"; };
-		7D39A1D2279F06C500940EA3 /* View +Exension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View +Exension.swift"; sourceTree = "<group>"; };
+		7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Customization.swift"; sourceTree = "<group>"; };
 		7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteModel.swift; sourceTree = "<group>"; };
 		7D5CF70A277B80FA00FD5D11 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Gradient.swift"; sourceTree = "<group>"; };
@@ -155,10 +155,10 @@
 		68A6232427933062006240C2 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */,
-				7D39A1D2279F06C500940EA3 /* View +Exension.swift */,
 				7D39A1AD2799F27F00940EA3 /* BorderedLabel.swift */,
 				7D0E842E2795F1F100349AD4 /* Bundle + Decode.swift */,
+				7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */,
+				7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */,
 				7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */,
 			);
 			path = Extension;
@@ -311,6 +311,7 @@
 				7D90B02226DA59AA00A33930 /* CustomTableViewCell.swift in Sources */,
 				7D66F6492757BE2B007C5D66 /* ChartCell.swift in Sources */,
 				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
+				7D39A1D927A6AA7200940EA3 /* CALayer + Customization.swift in Sources */,
 				7D0E84212790BEE700349AD4 /* UIButton + CustomDesign.swift in Sources */,
 				7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */,
 				7D0E84252793370200349AD4 /* UserDefaulftManager.swift in Sources */,
@@ -338,7 +339,6 @@
 				7D39A1AE2799F27F00940EA3 /* BorderedLabel.swift in Sources */,
 				7DF571412766840C00ED5FB7 /* DeveloperModel.swift in Sources */,
 				681159D726E93A70009FAA5E /* StorageManager.swift in Sources */,
-				7D39A1D3279F06C500940EA3 /* View +Exension.swift in Sources */,
 				7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
