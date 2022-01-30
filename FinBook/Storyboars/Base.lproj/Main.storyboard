@@ -563,19 +563,18 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wRZ-wx-Mxi">
-                                                <rect key="frame" x="105.5" y="0.0" width="288.5" height="50"/>
+                                                <rect key="frame" x="105.33333333333334" y="0.0" width="302.66666666666663" height="150"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Выберите категорию" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24W-OW-JUN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="233.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="247.66666666666666" height="150"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x5H-zx-KHz">
-                                                        <rect key="frame" x="238.5" y="0.0" width="50" height="50"/>
+                                                        <rect key="frame" x="252.66666666666669" y="0.0" width="50" height="150"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
-
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="KQd-Tn-Ta4"/>
@@ -620,11 +619,10 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k43-i1-ScQ" userLabel="Button Stack View">
-                                <rect key="frame" x="0.0" y="340" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="802" width="428" height="36"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
-                                        <rect key="frame" x="0.0" y="7" width="202" height="36"/>
-
+                                        <rect key="frame" x="0.0" y="0.0" width="209" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Отмена"/>
                                         <connections>
@@ -632,8 +630,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q55-mc-zBg">
-                                        <rect key="frame" x="212" y="7" width="202" height="36"/>
-
+                                        <rect key="frame" x="219" y="0.0" width="209" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Готово"/>
                                         <connections>
@@ -681,7 +678,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryLabel" destination="l4A-Ux-EYU" id="BsD-Kz-yl5"/>
-                        <outlet property="categoryPickerView" destination="pVb-0j-KS8" id="WVD-pt-D4L"/>
                         <outlet property="costTextField" destination="Tlg-5O-Irc" id="7aV-0J-i0J"/>
                         <outlet property="dataPicker" destination="TKX-gF-tlO" id="2cI-YP-gFp"/>
                         <outlet property="descriptionTextField" destination="pyp-qr-N2N" id="1sG-SX-WEY"/>
