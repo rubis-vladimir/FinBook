@@ -627,7 +627,6 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Выберите категорию" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24W-OW-JUN">
                                                         <rect key="frame" x="0.0" y="0.0" width="233.5" height="50"/>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
