@@ -2,65 +2,114 @@
 //  ContactsViewController.swift
 //  FinBook
 //
-//  Created by Владимир Рубис on 12.12.2021.
+//  Created by Владимир Рубис on 16.01.2022.
 //
 
 import UIKit
 
-class ContactsViewController: UITableViewController {
+class ContactsViewController: UICollectionViewController {
     
-    @IBOutlet weak var contactView: ContactView!
+    //MARK: - Properties
+    var selectedIndex: IndexPath = [0, 2]
+    var isSelected: Bool = false
+    var itemsPerRow: CGFloat = 1
+    let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20)
     
-    private var developers: [Developer]?
-    private var isSelected = false
+    var developers = Bundle.main.decode([Developer].self, from: "developers.json")
     
+    // MARK: - Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadDevelopersFromJSON()
+        setupCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refreshTheme()
+        ColorManager.shared.setThemeColors(mainElement: collectionView, secondaryElement: navigationController?.navigationBar)
+    }
+    
+    // MARK: - Setting UICollectionView
+    func setupCollectionView() {
+        collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
+        collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
+        collectionView.allowsMultipleSelection = false
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    override func numberOfSections(in collectionView: UICollectionView) -> Int { 2 }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return section == 1 ? 1 : developers.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print(indexPath)
+        let developer = selectedIndex == [0, 2] ? developers[indexPath.row] : developers[selectedIndex.row]
         
+        print(developer.surname)
+        switch indexPath.section {
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactInfoCell.reuseId, for: indexPath) as! ContactInfoCell
+            cell.configure(with: developer)
+            cell.isHidden = isSelected ? false : true
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactPhotoCell.reuseId, for: indexPath) as! ContactPhotoCell
+            cell.configure(with: developer)
+            return cell
+        }
     }
     
-    private func refreshTheme() {
-        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
-    }
-    
-    // MARK: - Table view data source
-    
-    func loadDevelopersFromJSON() {
-        DataManager.getDeveloperDataWithSuccess() { (data) in
-            guard let data = data, let developerArray = try? JSONDecoder().decode([Developer].self, from: data) else {
-                print("JSON loading Error")
-                return
+    // MARK: - UICollectionViewDelegate
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if selectedIndex == indexPath {
+                isSelected = false
+                collectionView.deselectItem(at: selectedIndex, animated: true)
+                collectionView.reloadItems(at: [[1, 0]])
+                selectedIndex = [0, 2]
+            } else {
+                isSelected = true
+                collectionView.deselectItem(at: selectedIndex, animated: true)
+                selectedIndex = indexPath
+                collectionView.reloadItems(at: [[1, 0]])
             }
-            
-            self.developers = developerArray
         }
     }
 }
 
-extension ContactsViewController {
+// MARK: - UICollectionViewLayout
+extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        developers?.count ?? 2
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "developerCell", for: indexPath) as! DeveloperTableViewCell
+    func calculateSizeForItem(itemPerRow: CGFloat) -> CGSize {
+        let paddingWidth = sectionInserts.top * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let widthPerItem = availableWidth / itemsPerRow
+        var heightPerItem: CGFloat = widthPerItem + 75
         
-        cell.backgroundColor = UIColor.clear
-        cell.contactView.draw(CGRect(origin: CGPoint(x:cell.bounds.width / 2,
-                                                          y:cell.bounds.height / 2),
-                                          size: CGSize(width: 250, height: 250)),
-                                   developer: developers![indexPath.row], isSelected: isSelected)
-        return cell
+        if itemPerRow == 1 {
+            heightPerItem = self.view.frame.height - heightPerItem - paddingWidth
+        }
+        return CGSize(width: widthPerItem, height: heightPerItem)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        self.view.bounds.width * 0.65
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch indexPath.section {
+        case 1:
+            itemsPerRow = 1
+        default:
+            itemsPerRow = 2
+            
+            guard let cell = collectionView.cellForItem(at: indexPath) as? ContactPhotoCell else {
+                return calculateSizeForItem(itemPerRow: itemsPerRow)
+            }
+            cell.photoView.alpha = collectionView.indexPathsForSelectedItems?.first == indexPath ||
+            collectionView.indexPathsForSelectedItems?.isEmpty == true ? 1 : 0.3
+        }
+        return calculateSizeForItem(itemPerRow: itemsPerRow)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInserts
     }
 }

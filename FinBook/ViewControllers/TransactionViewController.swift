@@ -13,31 +13,26 @@ class TransactionViewController: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var costTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
-    
-    @IBOutlet var categoryLabel: UILabel!
-    @IBOutlet weak var categoryTextField: UITextField!
-    @IBOutlet weak var categoryImage: UIImageView!
-    
-    @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet var categoryPickerView: UIPickerView!
+    @IBOutlet var dataPicker: UIDatePicker!
     @IBOutlet var noteTextField: UITextField!
     
     @IBOutlet var doneButton: UIButton!
     
+    @IBOutlet var categoryLabel: UILabel!
     
 // MARK: - Properties
     var delegate: NewTransactionViewControllerDelegate!
     
     var editTransaction: Transact?
+    
     private var selectedModel: CategoryPickerModel!
-    private let categoryPickerView = UIPickerView()
-    private let datePickerView = UIDatePicker()
-
     private var income = false
     
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
         var categories: [CategoryPickerModel] = []
-        for (category, image) in CategoryService.spendCategoryList {
-            categories.append(.init( title: category, icon: image))
+        for (category, value) in CategoryService.categoryList {
+            categories.append(.init(category: category, title: value.0, icon: value.1))
         }
         return categories
     }()
@@ -47,11 +42,9 @@ class TransactionViewController: UIViewController {
         super.viewDidLoad()
         
         SetupCostTextField()
-        SetupCategoryPickerView()
-        SetupDataTextField()
-        SetupCategoryList() // установка категорий в зависимости от транзакций
+        SetupPickerView()
         SetupDoneToolBar()
-        EditTransaction() // если редактируем существующую транзакцию
+        EditTransaction()
     }
     
 // MARK: - IBActions
@@ -64,9 +57,6 @@ class TransactionViewController: UIViewController {
             categoryLabel.text = "Категория дохода:"
             income = true
         }
-        SetupCategoryList() // установка категорий в зависимости от транзакций
-        SetupCategoryPickerView()  // установка актуальной категории в поле
-        
     }
     
     @IBAction func doneButtonAction(_ sender: Any) {
@@ -84,7 +74,7 @@ class TransactionViewController: UIViewController {
         guard let description = descriptionTextField.text else { return }
         
         // присваиваем новой транзакции данные с интерфейса и сохраняем ее
-        let transaction = StorageManager.shared.createTransact(cost: costPrice, description: description, category: selectedModel.title, date: datePickerView.date, note: noteTextField.text ?? "", income: income)
+        let transaction = StorageManager.shared.createTransact(cost: costPrice, description: description, category: selectedModel.title, date: dataPicker.date, note: noteTextField.text ?? "", income: income)
             
         delegate.saveTransaction(newTransaction: transaction) // передаем новую транзакцию на основной экран     
         dismiss(animated: true)
@@ -98,11 +88,10 @@ class TransactionViewController: UIViewController {
         }
         costTextField.text = String(editTransaction.cost)
         descriptionTextField.text = editTransaction.descr
-        datePickerView.date = editTransaction.date ?? datePickerView.date
-        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
+        dataPicker.date = editTransaction.date ?? dataPicker.date
         noteTextField.text = editTransaction.note
                 
-        for (index, value) in CategoryService.spendCategoryList.enumerated() {
+        for (index, value) in CategoryService.categoryList.values.enumerated() {
             if value.0 == editTransaction.category {
                 categoryPickerView.selectRow(index, inComponent: 0, animated: true)
             }
@@ -117,27 +106,10 @@ class TransactionViewController: UIViewController {
         costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
-    private func SetupCategoryPickerView() { // настройка текстового поля с категорией
+    private func SetupPickerView() {
+        selectedModel = categoryPickerModels[0]
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
-
-        selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
-        categoryTextField.text = selectedModel.title
-        categoryImage.image = selectedModel.icon
-        
-        categoryTextField.inputView = categoryPickerView
-    }
-        
-    private func SetupDataTextField() { // настройка текстового поля с датой
-        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
-        
-        dateTextField.inputView = datePickerView
-        datePickerView.preferredDatePickerStyle = .wheels
-        datePickerView.datePickerMode = .dateAndTime
-        let localeID = Locale.preferredLanguages.first
-        datePickerView.locale = Locale(identifier: localeID!)
-        
-        datePickerView.addTarget(self, action: #selector(dateTextFieldDidChanged), for: .valueChanged)
     }
     
     private func SetupDoneToolBar() {
@@ -152,20 +124,6 @@ class TransactionViewController: UIViewController {
         doneToolbar.sizeToFit()
         costTextField.inputAccessoryView = doneToolbar
         descriptionTextField.inputAccessoryView = doneToolbar
-        categoryTextField.inputAccessoryView = doneToolbar
-        dateTextField.inputAccessoryView = doneToolbar
-    }
-    private func SetupCategoryList() {
-        var categories: [CategoryPickerModel] = []
-        var list: [(String, UIImage)] = []
-        
-        list = income ? CategoryService.incomeCategoryList : CategoryService.spendCategoryList
-        categoryPickerModels = {
-            for (category, image) in list {
-                categories.append(.init( title: category, icon: image))
-            }
-            return categories
-        }()
     }
 }
 
@@ -188,8 +146,6 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedModel = categoryPickerModels[row]
-        categoryTextField.text = selectedModel.title
-        categoryImage.image = selectedModel.icon
     }
 }
 
@@ -203,16 +159,15 @@ extension TransactionViewController: UITextFieldDelegate {
             return false
         }
         if textFieldText.contains(".") && string == "." { return false }
-//        if string == "," {
-//            textField.text = textFieldText + "."
-//            return true }
+        if textFieldText.contains(",") && string == "," { return false }
 
+//        if string == "," { string = "." }
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 30
     }
     
-    // Скрыть клавиатуру после редактирования
+    //скрыть клавиатуру после редактирования
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -227,29 +182,20 @@ extension TransactionViewController: UITextFieldDelegate {
         doneButton.isEnabled = !costName.isEmpty ? true : false
     }
     
-    @objc private func dateTextFieldDidChanged() {
-        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
-    }
-    
-    
-    //переход на следующее поле по нажатию кнопки "Готово" с Алёртами
+    //переход с costTextField на descriptionTextField по нажатию кнопки "Далее" с Алёртами
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if costTextField.isEditing  {
-            guard costFormatter(cost: costTextField.text) > 0 else {
-                showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
-                return false
-            }
-            descriptionTextField.becomeFirstResponder()
-        } else if descriptionTextField.isEditing {
-            categoryTextField.becomeFirstResponder()
-        } else if categoryTextField.isEditing {
-            dateTextField.becomeFirstResponder()
+        
+        guard costFormatter(cost: costTextField.text) > 0 else {
+            showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
+            return false
+        }
+        
+        if costTextField.isEditing  { descriptionTextField.becomeFirstResponder()
         } else { view.endEditing(true) }
         return true
     }
     
-    
-    private func costFormatter(cost: String?) -> Double { // корректировка  вводимого числа  если вместо точки запятая
+    private func costFormatter(cost: String?) -> Double {
         let formatter = NumberFormatter()
         var doubCost: Double = 0.00000
         formatter.locale = Locale.current

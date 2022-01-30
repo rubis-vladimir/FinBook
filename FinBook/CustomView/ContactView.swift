@@ -12,7 +12,7 @@ class ContactView: UIView {
     //    private let hexColors = ["EAE5C9", "6CC6CB"]
     //    private let hexColors = ["7DC387", "DBE9EA"]
     //    private let hexColors = ["50D5B7", "067D68"]
-    private let hexColors = ["A1D6E2", "1995AD"]
+    private let hexColors = ["07A3B2", "D9ECC7"]
     private struct Constants {
         //        static let photoSize = bounds.height
     }
@@ -23,9 +23,8 @@ class ContactView: UIView {
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = true
-        let color1 = ColorManager.shared.hexStringToUIColor(hex: hexColors[0])
-        let color2 = ColorManager.shared.hexStringToUIColor(hex: hexColors[1])
-        self.addHorizontalGradientLayer(leftColor: color1, rightColor: color2)
+        let colors = ColorManager.shared.createPalitreColors(hexColors: hexColors)
+        self.addHorizontalGradientLayer(leftColor: colors[0], rightColor: colors[1])
         //        self.layer.shadowColor = UIColor.black.cgColor
         //        self.layer.shadowOffset = CGSize(width: 0.5, height: 0.4)
         //        self.layer.shadowOpacity = 0.7

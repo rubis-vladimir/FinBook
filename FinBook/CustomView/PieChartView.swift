@@ -11,7 +11,8 @@ class PieChartView: UIView {
     
     private var circleLayer: CAShapeLayer!
     
-    func draw(_ rect: CGRect, sections: [(String, Double)], colors: [UIColor]) {
+    func draw(sections: [(String, Double)], colors: [UIColor]) {
+        print(sections)
         self.backgroundColor = UIColor.clear
         var alpha = CGFloat(Double.pi / 2)
         var betta = alpha
@@ -47,9 +48,9 @@ class PieChartView: UIView {
         circleLayer.strokeEnd = 1.0
         layer.addSublayer(circleLayer)
         
-        // Add animation
+//         Add animation
 //        let animationRound = CABasicAnimation(keyPath: "strokeEnd")
-//        animationRound.duration = 5
+//        animationRound.duration = 15
 //        animationRound.fromValue = 0
 //        animationRound.toValue = 1
 //        circleLayer.add(animationRound, forKey: "lessAnimation")
