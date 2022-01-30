@@ -11,17 +11,7 @@ import UIKit
 
 final class CategoryService {
     
-//    static var categoryList: [Category: (String, UIImage)] = {
-//
-//        var categories = [Category: (String, UIImage)] ()
-//        categories[.products] = ("Продукты", UIImage(systemName: "bag") ?? UIImage())
-//        categories[.clothers] = ("Одежда", UIImage(systemName: "person") ?? UIImage())
-//        categories[.car] = ("Машина", UIImage(systemName: "car") ?? UIImage())
-//
-//        return categories
-//    }()
-    
-    static var spendCategoryList: [(String, UIImage)] = [
+    static let spendCategoryList: [(String, UIImage)] = [
         ("Продукты", UIImage(systemName: "cart") ?? UIImage()),
         ("Одежда", UIImage(systemName: "person") ?? UIImage()),
         ("Машина", UIImage(systemName: "car") ?? UIImage()),
@@ -31,7 +21,7 @@ final class CategoryService {
         ("Прочее", UIImage(systemName: "figure.walk") ?? UIImage())
     ]
     
-    static var incomeCategoryList: [(String, UIImage)] = [
+    static let incomeCategoryList: [(String, UIImage)] = [
         ("Зарплата", UIImage(systemName: "person.3") ?? UIImage()),
         ("Подработки", UIImage(systemName: "dollarsign.circle") ?? UIImage()),
         ("Дивиденды", UIImage(systemName: "personalhotspot") ?? UIImage()),

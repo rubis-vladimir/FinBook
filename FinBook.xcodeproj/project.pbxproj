@@ -36,7 +36,6 @@
 		7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */; };
 		7DADB3BC269B478E0041156D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DADB3BB269B478E0041156D /* Assets.xcassets */; };
 		7DADB3BF269B478E0041156D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */; };
-		7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3C6269B5C0F0041156D /* TransactionModel.swift */; };
 		7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3C8269CD19E0041156D /* CustomTabBar.swift */; };
 		7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3CA269D84070041156D /* MainTabBarController.swift */; };
 		7DF571182759489B00ED5FB7 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF571172759489B00ED5FB7 /* ColorManager.swift */; };
@@ -77,7 +76,6 @@
 		7DADB3BB269B478E0041156D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DADB3BE269B478E0041156D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DADB3C0269B478E0041156D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7DADB3C6269B5C0F0041156D /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		7DADB3C8269CD19E0041156D /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		7DADB3CA269D84070041156D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7DF571172759489B00ED5FB7 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */,
-				7DADB3C6269B5C0F0041156D /* TransactionModel.swift */,
 				6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */,
 				7DF571402766840C00ED5FB7 /* DeveloperModel.swift */,
 				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
@@ -313,7 +310,6 @@
 				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
 				7D39A1D927A6AA7200940EA3 /* CALayer + Customization.swift in Sources */,
 				7D0E84212790BEE700349AD4 /* UIButton + CustomDesign.swift in Sources */,
-				7DADB3C7269B5C0F0041156D /* TransactionModel.swift in Sources */,
 				7D0E84252793370200349AD4 /* UserDefaulftManager.swift in Sources */,
 				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */,
