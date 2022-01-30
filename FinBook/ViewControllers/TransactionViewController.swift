@@ -27,7 +27,6 @@ class TransactionViewController: UIViewController {
     var editTransaction: Transact?
     
     private var selectedModel: CategoryPickerModel!
-//    private var selectedCategory
     private var income = false
     
     private lazy var categoryPickerModels: [CategoryPickerModel] = {
