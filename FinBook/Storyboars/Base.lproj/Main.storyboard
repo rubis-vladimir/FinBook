@@ -562,13 +562,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="pVb-0j-KS8">
-                                                <rect key="frame" x="105.33333333333334" y="0.0" width="302.66666666666663" height="150"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="A3i-py-pm1" id="fVz-Gj-Yow"/>
-                                                    <outlet property="delegate" destination="A3i-py-pm1" id="PaZ-x4-z5G"/>
-                                                </connections>
-                                            </pickerView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wRZ-wx-Mxi">
+                                                <rect key="frame" x="105.5" y="0.0" width="288.5" height="50"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Выберите категорию" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24W-OW-JUN">
+                                                        <rect key="frame" x="0.0" y="0.0" width="233.5" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x5H-zx-KHz">
+                                                        <rect key="frame" x="238.5" y="0.0" width="50" height="50"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="KQd-Tn-Ta4"/>
@@ -612,11 +619,12 @@
                                     <action selector="incomStatusOnSegmentedControl:" destination="A3i-py-pm1" eventType="valueChanged" id="OjS-xd-lYJ"/>
                                 </connections>
                             </segmentedControl>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="k43-i1-ScQ" userLabel="Button Stack View">
-                                <rect key="frame" x="0.0" y="802" width="428" height="36"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k43-i1-ScQ" userLabel="Button Stack View">
+                                <rect key="frame" x="0.0" y="340" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="36"/>
+                                        <rect key="frame" x="0.0" y="7" width="202" height="36"/>
+
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Отмена"/>
                                         <connections>
@@ -624,7 +632,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q55-mc-zBg">
-                                        <rect key="frame" x="214" y="0.0" width="214" height="36"/>
+                                        <rect key="frame" x="212" y="7" width="202" height="36"/>
+
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Готово"/>
                                         <connections>
