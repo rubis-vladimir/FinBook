@@ -10,15 +10,15 @@ import UIKit
 class StatisticViewController: UIViewController {
     
     //MARK: - Properties
-    var transactions: [Transact] = []
-    var sections: [(String, Double)] = []
-    var palitreColors: [UIColor] = []
+    private var transactions: [Transact] = []
+    private var sections: [(String, Double)] = []
+    private var palitreColors: [UIColor] = []
     
     //MARK: - UIElements for AlertController
-    let startDate = UIDatePicker()
-    let finishDate = UIDatePicker()
-    let switchChartType = UISwitch()
-    let chartTypeLabel = UILabel()
+    private let startDate = UIDatePicker()
+    private let finishDate = UIDatePicker()
+    private let switchChartType = UISwitch()
+    private let chartTypeLabel = UILabel()
     
     //MARK: - IBOutlets
     @IBOutlet weak var pieChartView: PieChartView!
@@ -29,8 +29,6 @@ class StatisticViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
-        startDate.date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
-        finishDate.date = Date()
     }
     override func viewWillAppear(_ animated: Bool) {
         redrawPieChart()
@@ -73,10 +71,12 @@ class StatisticViewController: UIViewController {
     private func setupElements() {
         parametersChartButton.customizeButton(cradius: 10, bgc: false)
         statisticsTV.backgroundColor = UIColor.clear
+        startDate.date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
+        finishDate.date = Date()
     }
 }
 
-//MARK: - TableViewDataSourse
+//MARK: - UITableViewDataSourse
 extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         sections.count
@@ -87,9 +87,10 @@ extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
         
         let persantageValue = String(format: "%.1f", sections[indexPath.row].1 * 100 / (2 * Double.pi)) + " %"
         cell.backgroundColor = UIColor.clear
-        cell.categoryShare.text = persantageValue
+        cell.colorView.backgroundColor = palitreColors[indexPath.row]
+        cell.percentLabel.text = persantageValue
         cell.categoryLabel.text = sections[indexPath.row].0
-        cell.categoryView.backgroundColor = palitreColors[indexPath.row]
+        
         return cell
     }
     
@@ -98,7 +99,7 @@ extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - AlertController
 extension StatisticViewController {
-    func setAlert() {
+    private func setAlert() {
         let alert = UIAlertController(title: "", message: "\n\n\n\n\n\n", preferredStyle: .alert)
         
         overrideAlertWidthConstrants(alert: alert)
@@ -117,7 +118,7 @@ extension StatisticViewController {
     }
     
     // MARK: - Все что ниже надо куда то вынести и отредактировать
-    func overrideAlertWidthConstrants(alert: UIAlertController!) {
+    private func overrideAlertWidthConstrants(alert: UIAlertController!) {
         
         let widthConstraints = alert.view.constraints.filter({return $0.firstAttribute == .width})
         alert.view.removeConstraints(widthConstraints)
@@ -152,7 +153,7 @@ extension StatisticViewController {
         
     }
     
-    func setupElements(alert: UIAlertController) {
+    private func setupElements(alert: UIAlertController) {
         
         let label = UILabel()
         let label2 = UILabel()
@@ -188,19 +189,19 @@ extension StatisticViewController {
         
         chartTypeLabel.font = UIFont(name: "Avenir-Heavy", size: 17)
         
-        stackChoiceChart.addArrangedSubview(label2)
-        stackChoiceChart.addArrangedSubview(switchChartType)
-        stackChoiceChart.addArrangedSubview(chartTypeLabel)
-        stackChoiceChart.spacing = 10
-        
         stackDateRange.addArrangedSubview(label4)
         stackDateRange.addArrangedSubview(startDate)
         stackDateRange.addArrangedSubview(label5)
         stackDateRange.addArrangedSubview(finishDate)
         
-        alert.view.addSubview(stackChoiceChart)
+        stackChoiceChart.addArrangedSubview(label2)
+        stackChoiceChart.addArrangedSubview(switchChartType)
+        stackChoiceChart.addArrangedSubview(chartTypeLabel)
+        stackChoiceChart.spacing = 10
+        
         alert.view.addSubview(label)
         alert.view.addSubview(stackDateRange)
+        alert.view.addSubview(stackChoiceChart)
         
         stackChoiceChart.topAnchor.constraint(equalTo: stackDateRange.bottomAnchor, constant: 10).isActive = true
         stackChoiceChart.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor, constant: 10).isActive = true

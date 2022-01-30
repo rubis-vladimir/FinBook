@@ -9,7 +9,7 @@ import UIKit
 
 class ChartCell: UITableViewCell {
     
-    @IBOutlet weak var categoryView: UIView!
-    @IBOutlet weak var categoryShare: UILabel!
+    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var percentLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
 }

@@ -10,12 +10,12 @@ import UIKit
 class ContactsViewController: UICollectionViewController {
     
     //MARK: - Properties
-    var selectedIndex: IndexPath = [0, 2]
-    var isSelected: Bool = false
-    var itemsPerRow: CGFloat = 1
-    let sectionInserts = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20)
+    private var selectedIndex: IndexPath = [0, 2]
+    private var isSelected: Bool = false
+    private var itemsPerRow: CGFloat = 1
+    private let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20)
     
-    var developers = Bundle.main.decode([Developer].self, from: "developers.json")
+    private var developers = Bundle.main.decode([Developer].self, from: "developers.json")
     
     // MARK: - Override functions
     override func viewDidLoad() {
@@ -46,7 +46,6 @@ class ContactsViewController: UICollectionViewController {
         print(indexPath)
         let developer = selectedIndex == [0, 2] ? developers[indexPath.row] : developers[selectedIndex.row]
         
-        print(developer.surname)
         switch indexPath.section {
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactInfoCell.reuseId, for: indexPath) as! ContactInfoCell
@@ -82,7 +81,7 @@ class ContactsViewController: UICollectionViewController {
 extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     
     func calculateSizeForItem(itemPerRow: CGFloat) -> CGSize {
-        let paddingWidth = sectionInserts.top * (itemsPerRow + 1)
+        let paddingWidth = sectionInsets.top * (itemsPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingWidth
         let widthPerItem = availableWidth / itemsPerRow
         var heightPerItem: CGFloat = widthPerItem + 75
@@ -110,6 +109,6 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInserts
+        return sectionInsets
     }
 }
