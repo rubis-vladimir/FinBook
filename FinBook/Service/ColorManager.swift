@@ -18,10 +18,6 @@ class ColorManager {
             let themeValue = Pallete.getPallete(model: model)
             let color = hexStringToUIColor(hex: themeValue.bgColor)
             mainElement.backgroundColor = color
-            
-            if (secondaryElement != nil) {
-                secondaryElement?.barTintColor = color
-            }
         }
     
     // MARK: - Creating array colors

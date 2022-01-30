@@ -29,7 +29,8 @@ extension UIView {
     }
     
     func customizeView(model: Int) {
-        self.backgroundColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().0)
+        self.backgroundColor =
+        ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().0)
         self.layer.borderColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().1).cgColor
         self.layer.borderWidth = 3
     }

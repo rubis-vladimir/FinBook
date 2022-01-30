@@ -27,7 +27,7 @@ class CustomTableViewCell: UITableViewCell {
 //        cell.categoryLabel.text = transaction.note
         cell.categoryImage.tintColor =  transaction.incomeTransaction ? .systemGreen : .systemRed
         
-        cell.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.systemGray4
         return cell
     }
     

@@ -11,11 +11,12 @@ class ChartManager {
     
     static let shared = ChartManager()
     
-    func fillteredForChart(transactions: [Transact], start: Date, finish: Date) -> [(String, Double)] {
+    // MARK: The function returns a filtered array of tuples - (category, section in pie chart)
+    func fillteredForChart(transactions: [Transact], start: Date, finish: Date, isIncome: Bool) -> [(String, Double)] {
         var chartTransact: [String: Double] = [:]
         
         for transact in transactions {
-            if let date = transact.date, !transact.incomeTransaction {
+            if let date = transact.date, transact.incomeTransaction == isIncome {
                 let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
                 let finishComponents = Calendar.current.dateComponents([.year, .month, .day], from: finish)
                 let startComponents = Calendar.current.dateComponents([.year, .month, .day], from: start)
