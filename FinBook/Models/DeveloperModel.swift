@@ -14,4 +14,5 @@ struct Developer: Decodable, Hashable {
     var gitHub: String
     var photo: String
     var linkedin: String
+    var telegram: String
 }

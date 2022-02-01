@@ -7,25 +7,22 @@
 
 import UIKit
 
-class BorderedLabel: UILabel {
+class LabelWithPaddingText: UILabel {
     
-    var sidePadding = CGFloat(10)
-    
-//    override func sizeToFit() {
-//        super.sizeToFit()
-//        bounds.size.width += 2 * sidePadding
-//    }
+    private let sidePadding: CGFloat = 10
+    private let radius: CGFloat = 10
+    private let customFont = UIFont(name: "Avenir", size: 20)
     
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.insetBy(dx: sidePadding, dy: 0))
         invalidateIntrinsicContentSize()
     }
     
-    func customizeLabel() {
+    func customizeLinkLabel() {
         backgroundColor = .systemGray4
-        layer.cornerRadius = 10
+        layer.cornerRadius = radius
         clipsToBounds = true
-        font = UIFont(name: "Avenir", size: 20)
+        font = customFont
         numberOfLines = 0
     }
 }

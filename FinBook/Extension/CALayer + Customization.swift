@@ -9,7 +9,8 @@ import QuartzCore
 import UIKit
 
 extension CALayer {
-    func customizeView() {
+    
+    func customizeContactItemView() {
         cornerRadius = 10
         shadowColor = UIColor.black.cgColor
         shadowOpacity = 0.6

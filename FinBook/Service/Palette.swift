@@ -16,7 +16,7 @@ struct Pallete {
             
             // MARK: - light theme
         default:
-            palette = PaletteModel(bgColor: "#FFFFFF", chartColors: ["78A5A3", "CE5A57", "E1B16A", "664975", "D6606D", "767E8C", "A09151", "AD9ED3", "99705B"])
+            palette = PaletteModel(bgColor: "#FFFFFF", chartColors: ["78A5A3", "CE5A57", "E1B16A", "664975", "99705B", "D6606D", "767E8C",  "A09151", "AD9ED3"])
         }
         return palette
     }

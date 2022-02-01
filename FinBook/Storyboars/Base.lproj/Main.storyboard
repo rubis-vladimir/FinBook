@@ -325,7 +325,7 @@
             </objects>
             <point key="canvasLocation" x="1651" y="1631"/>
         </scene>
-        <!--Диаграмма расходов-->
+        <!--Диаграмма-->
         <scene sceneID="j88-19-YLT">
             <objects>
                 <viewController id="cER-Jq-FHV" customClass="StatisticViewController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
@@ -341,7 +341,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="apA-qR-AgQ">
-                                <rect key="frame" x="50" y="456" width="328" height="302"/>
+                                <rect key="frame" x="50" y="456" width="328" height="367"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="chartCell" rowHeight="30" id="pSY-Eo-zgU" customClass="ChartCell" customModule="FinBook" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="328" height="30"/>
@@ -398,44 +398,28 @@
                                     <outlet property="delegate" destination="cER-Jq-FHV" id="lA5-Nw-ttu"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-N5-gJK">
-                                <rect key="frame" x="143.66666666666666" y="778" width="140.99999999999997" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="5AH-3J-lVN"/>
-                                    <constraint firstAttribute="height" constant="45" id="miD-d7-Hoj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="KohinoorGujarati-Bold" family="Kohinoor Gujarati" pointSize="25"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Параметры">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="parametersChart:" destination="cER-Jq-FHV" eventType="touchUpInside" id="3ch-us-RAI"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gYW-oQ-Zof"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6YH-N5-gJK" firstAttribute="bottom" secondItem="gYW-oQ-Zof" secondAttribute="bottom" constant="-20" id="0Zq-dq-piZ"/>
                             <constraint firstItem="apA-qR-AgQ" firstAttribute="top" secondItem="8CI-q0-Gpv" secondAttribute="bottom" constant="25" id="17r-8F-pu1"/>
-                            <constraint firstItem="6YH-N5-gJK" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="4hl-Ds-sgB"/>
                             <constraint firstItem="8CI-q0-Gpv" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="DKm-LN-UrR"/>
                             <constraint firstItem="gYW-oQ-Zof" firstAttribute="trailing" secondItem="8CI-q0-Gpv" secondAttribute="trailing" priority="999" constant="50" id="EWc-Go-y7S"/>
                             <constraint firstItem="8CI-q0-Gpv" firstAttribute="top" secondItem="gYW-oQ-Zof" secondAttribute="top" constant="15" id="HeD-4S-aHz"/>
+                            <constraint firstItem="gYW-oQ-Zof" firstAttribute="bottom" secondItem="apA-qR-AgQ" secondAttribute="bottom" constant="20" id="JEK-EB-IJY"/>
                             <constraint firstItem="apA-qR-AgQ" firstAttribute="centerX" secondItem="gYW-oQ-Zof" secondAttribute="centerX" id="aZ0-Vo-5yn"/>
-                            <constraint firstItem="6YH-N5-gJK" firstAttribute="top" secondItem="apA-qR-AgQ" secondAttribute="bottom" constant="20" id="eFb-2F-M9b"/>
                             <constraint firstItem="apA-qR-AgQ" firstAttribute="width" secondItem="8CI-q0-Gpv" secondAttribute="width" id="yx6-dv-yfg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Диаграмма расходов" id="ogf-de-ufO">
-                        <barButtonItem key="rightBarButtonItem" title="sdsds" image="arrowshape.turn.up.forward" catalog="system" id="GGD-wp-5QA">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <navigationItem key="navigationItem" title="Диаграмма" id="ogf-de-ufO">
+                        <barButtonItem key="rightBarButtonItem" title="Фильтр" image="slider.horizontal.3" catalog="system" id="GGD-wp-5QA">
+                            <color key="tintColor" systemColor="linkColor"/>
+                            <connections>
+                                <action selector="parametersChart:" destination="cER-Jq-FHV" id="rQ5-xs-ddk"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="parametersChartButton" destination="6YH-N5-gJK" id="QPl-C2-hDy"/>
                         <outlet property="pieChartView" destination="8CI-q0-Gpv" id="kqY-J5-ind"/>
                         <outlet property="statisticsTV" destination="apA-qR-AgQ" id="ib5-AH-vb0"/>
                     </connections>
@@ -765,7 +749,6 @@
         <segue reference="xHW-Ja-rJ5"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="arrowshape.turn.up.forward" catalog="system" width="128" height="106"/>
         <image name="business card" width="240" height="240"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="pencil.tip.crop.circle" catalog="system" width="128" height="121"/>
@@ -773,9 +756,13 @@
         <image name="play" catalog="system" width="120" height="128"/>
         <image name="plus" width="48" height="48"/>
         <image name="plusminus.circle" catalog="system" width="128" height="121"/>
+        <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="wallet" width="240" height="240"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
