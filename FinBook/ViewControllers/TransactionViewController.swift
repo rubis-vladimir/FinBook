@@ -36,7 +36,7 @@ class TransactionViewController: UIViewController {
     
     private var categoryPickerModels: [CategoryPickerModel] {
         get {
-            var categories: [CategoryPickerModel] = []     
+            var categories: [CategoryPickerModel] = []
             let list = isIncome ? CategoryService.incomeCategoryList : CategoryService.spendCategoryList
             
             for (category, image) in list {
@@ -49,6 +49,8 @@ class TransactionViewController: UIViewController {
 // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        categoryPickerView.dataSource = self
+        categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
         
         setupCostTextField()
         setupCategoryPickerView()
@@ -106,16 +108,18 @@ class TransactionViewController: UIViewController {
         dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
         noteTextField.text = editTransaction.note
              
-        
-        
+        setCategoryEditTransaction()
+        doneButton.isEnabled = true
+    }
+    
+    private func setCategoryEditTransaction() {
         for (index, value) in categoryPickerModels.enumerated() {
-            if value.title == editTransaction.category {
+            if value.title == editTransaction?.category {
                 categoryPickerView.selectRow(index, inComponent: 0, animated: true)
                 selectedModel = categoryPickerModels[index]
-                setupCategoryTextField()
             }
         }
-            doneButton.isEnabled = true
+        setupCategoryTextField() // установка соответствующих значений в поле
     }
     
     private func setupCostTextField() {
@@ -126,11 +130,12 @@ class TransactionViewController: UIViewController {
     }
     
     private func setupCategoryPickerView() { // настройка текстового поля с категорией
-        categoryPickerView.dataSource = self
-        categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
-
-        selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
-        setupCategoryTextField()
+        if  editTransaction?.incomeTransaction == isIncome {
+            setCategoryEditTransaction() // если редактируем транзакцию то чтобы категория не терялась при смене дох/расх
+        } else {
+            selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
+            setupCategoryTextField()
+        }
         
         categoryTextField.inputView = categoryPickerView
     }
@@ -154,13 +159,16 @@ class TransactionViewController: UIViewController {
     
     private func setupDoneToolBar() {
         let doneToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
+        let hideKeyboardButton  = UIBarButtonItem(title: "Скрыть", style: .plain,
+                                         target: self,
+                                         action:#selector(hideKeyboard))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                             target: self,
                                             action: nil)
         let doneButton = UIBarButtonItem(title: "Далее", style: .done,
                                          target: self,
                                          action: #selector(textFieldShouldReturn))
-        doneToolbar.items = [flexibleSpace, doneButton]
+        doneToolbar.items = [hideKeyboardButton, flexibleSpace, doneButton]
         doneToolbar.sizeToFit()
         costTextField.inputAccessoryView = doneToolbar
         descriptionTextField.inputAccessoryView = doneToolbar
@@ -235,32 +243,32 @@ extension TransactionViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         
-        switch textField {
-        case costTextField:
-            guard costFormatter(cost: costTextField.text) > 0 else {
-                showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
-                return false
-            }
-            descriptionTextField.becomeFirstResponder()
-        case descriptionTextField:   categoryTextField.becomeFirstResponder()
-        case categoryTextField:     dateTextField.becomeFirstResponder()
-        default: view.endEditing(true)
-        }
-        return true
-        
-        
-//        if costTextField.isEditing  {
+//        switch textField {
+//        case costTextField:
 //            guard costFormatter(cost: costTextField.text) > 0 else {
 //                showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
 //                return false
 //            }
 //            descriptionTextField.becomeFirstResponder()
-//        } else if descriptionTextField.isEditing {
-//            categoryTextField.becomeFirstResponder()
-//        } else if categoryTextField.isEditing {
-//            dateTextField.becomeFirstResponder()
-//        } else { view.endEditing(true) }
+//        case descriptionTextField:   categoryTextField.becomeFirstResponder()
+//        case categoryTextField:     dateTextField.becomeFirstResponder()
+//        default: view.endEditing(true)
+//        }
 //        return true
+        
+        
+        if costTextField.isEditing  { //---------------------------------------------------------------------------------------------------
+            guard costFormatter(cost: costTextField.text) > 0 else {
+                showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
+                return false
+            }
+            descriptionTextField.becomeFirstResponder()
+        } else if descriptionTextField.isEditing {
+            categoryTextField.becomeFirstResponder()
+        } else if categoryTextField.isEditing {
+            dateTextField.becomeFirstResponder()
+        } else { view.endEditing(true) }
+        return true
     }
         
     private func costFormatter(cost: String?) -> Double { // корректировка  вводимого числа  если вместо точки запятая
@@ -273,6 +281,8 @@ extension TransactionViewController: UITextFieldDelegate {
         }
         return doubCost
     }
+    
+    @objc private func hideKeyboard() { view.endEditing(true) }
 }
 
 // MARK: - Alert Controller

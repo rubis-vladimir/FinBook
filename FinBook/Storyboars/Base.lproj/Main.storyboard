@@ -482,11 +482,11 @@
             </objects>
             <point key="canvasLocation" x="1651" y="960"/>
         </scene>
-        <!--Accounts-->
+        <!--Баланс-->
         <scene sceneID="ZJX-1V-wQ8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zRa-k1-ipG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Accounts" image="wallet" id="V6S-Tp-X1n">
+                    <tabBarItem key="tabBarItem" title="Баланс" image="wallet" id="V6S-Tp-X1n">
                         <inset key="imageInsets" minX="103" minY="0.0" maxX="103" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="-10" vertical="-4"/>
                     </tabBarItem>
@@ -691,11 +691,11 @@
             </objects>
             <point key="canvasLocation" x="2342" y="-402"/>
         </scene>
-        <!--Settings-->
+        <!--Настройки-->
         <scene sceneID="vHl-ou-mvm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HQv-X4-vCM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="Settings" image="gearshape" catalog="system" id="7m2-TS-bFO">
+                    <tabBarItem key="tabBarItem" tag="3" title="Настройки" image="gearshape" catalog="system" id="7m2-TS-bFO">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="10" vertical="-4"/>
                     </tabBarItem>
@@ -713,11 +713,11 @@
             </objects>
             <point key="canvasLocation" x="964" y="1631"/>
         </scene>
-        <!--Statistics-->
+        <!--Статистика-->
         <scene sceneID="Sob-DR-wfX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AWq-Ww-PTz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Statistics" image="pie chart" id="vcS-Ae-aCp">
+                    <tabBarItem key="tabBarItem" tag="1" title="Статистика" image="pie chart" id="vcS-Ae-aCp">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="-23" vertical="-4"/>
                     </tabBarItem>
@@ -735,11 +735,11 @@
             </objects>
             <point key="canvasLocation" x="964" y="276"/>
         </scene>
-        <!--Contacts-->
+        <!--Контакты-->
         <scene sceneID="OJd-cn-I1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xxd-U8-3gM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Contacts" image="business card" id="Vw1-Lx-ZrX">
+                    <tabBarItem key="tabBarItem" tag="2" title="Контакты" image="business card" id="Vw1-Lx-ZrX">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="23" vertical="-4"/>
                     </tabBarItem>
