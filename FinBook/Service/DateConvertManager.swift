@@ -8,11 +8,10 @@
 import Foundation
 
 class DateConvertManager {
-    static let shared = DateConvertManager()
     
-    private let dateFormatter = DateFormatter()
-    
-    func convertDateToStr(date: Date?) -> String {
+    static func convertDateToStr(_ date: Date?) -> String {
+        let dateFormatter = DateFormatter()
+        
         guard let date2 = date else { return "error while wrapping Date"}
         
         dateFormatter.dateStyle = .short

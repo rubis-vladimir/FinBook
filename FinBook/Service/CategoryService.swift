@@ -17,6 +17,7 @@ final class CategoryService {
         ("Машина", UIImage(systemName: "car") ?? UIImage()),
         ("Лекарства", UIImage(systemName: "pills") ?? UIImage()),
         ("Путешествия", UIImage(systemName: "airplane") ?? UIImage()),
+        ("Техника", UIImage(systemName: "tv") ?? UIImage()),
         ("Налоги", UIImage(systemName: "banknote") ?? UIImage()),
         ("Прочее", UIImage(systemName: "figure.walk") ?? UIImage())
     ]

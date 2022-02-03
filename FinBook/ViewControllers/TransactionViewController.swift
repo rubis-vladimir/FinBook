@@ -10,18 +10,18 @@ import UIKit
 class TransactionViewController: UIViewController {
 
     // MARK: - IBOutlets
-    @IBOutlet var segmentedControl: UISegmentedControl!
-    @IBOutlet var costTextField: UITextField!
-    @IBOutlet var descriptionTextField: UITextField!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var costTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
     
-    @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var categoryImage: UIImageView!
     
     @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet var noteTextField: UITextField!
+    @IBOutlet weak var noteTextField: UITextField!
     
-    @IBOutlet var doneButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     
     
 // MARK: - Properties
@@ -34,13 +34,17 @@ class TransactionViewController: UIViewController {
 
     private var isIncome = false
     
-    private lazy var categoryPickerModels: [CategoryPickerModel] = {
-        var categories: [CategoryPickerModel] = []
-        for (category, image) in CategoryService.spendCategoryList {
-            categories.append(.init( title: category, icon: image))
+    private var categoryPickerModels: [CategoryPickerModel] {
+        get {
+            var categories: [CategoryPickerModel] = []     
+            let list = isIncome ? CategoryService.incomeCategoryList : CategoryService.spendCategoryList
+            
+            for (category, image) in list {
+                categories.append(.init( title: category, icon: image))
+            }
+            return categories
         }
-        return categories
-    }()
+    }
     
 // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
@@ -49,9 +53,8 @@ class TransactionViewController: UIViewController {
         setupCostTextField()
         setupCategoryPickerView()
         setupDataTextField()
-        setupCategoryList() // установка категорий в зависимости от транзакций
-        SetupDoneToolBar()
-        EditTransaction() // если редактируем существующую транзакцию
+        setupDoneToolBar()
+        edittingTransaction() // если редактируем существующую транзакцию
     }
     
 // MARK: - IBActions
@@ -64,9 +67,7 @@ class TransactionViewController: UIViewController {
             categoryLabel.text = "Категория дохода:"
             isIncome = true
         }
-        setupCategoryList() // установка категорий в зависимости от транзакций
         setupCategoryPickerView()  // установка актуальной категории в поле
-        
     }
     
     @IBAction func doneButtonAction(_ sender: Any) {
@@ -79,18 +80,21 @@ class TransactionViewController: UIViewController {
     
 // MARK: - Private func
     private func saveAndExit() {
-       
         guard let costPrice = Double(costTextField.text ?? "0.00") else { return }
         guard let description = descriptionTextField.text else { return }
         
         // присваиваем новой транзакции данные с интерфейса и сохраняем ее
-        let transaction = StorageManager.shared.createTransact(cost: costPrice, description: description, category: selectedModel.title, date: datePickerView.date, note: noteTextField.text ?? "", income: isIncome)
-            
-        delegate.saveTransaction(newTransaction: transaction) // передаем новую транзакцию на основной экран
+        let transaction = StorageManager.shared.createTransact(cost: costPrice,
+                                                               description: description,
+                                                               category: selectedModel.title,
+                                                               date: datePickerView.date,
+                                                               note: noteTextField.text ?? "",
+                                                               income: isIncome)
+        delegate.saveTransaction(transaction) // передаем новую транзакцию на основной экран
         dismiss(animated: true)
     }
     
-    private func EditTransaction() {                                    // установки при редактировании транзакции
+    private func edittingTransaction() {                                    // установки при редактировании транзакции
         guard let editTransaction = editTransaction else { return }
         if editTransaction.incomeTransaction == true {
             segmentedControl.selectedSegmentIndex = 1
@@ -99,15 +103,19 @@ class TransactionViewController: UIViewController {
         costTextField.text = String(editTransaction.cost)
         descriptionTextField.text = editTransaction.descr
         datePickerView.date = editTransaction.date ?? datePickerView.date
-        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
+        dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
         noteTextField.text = editTransaction.note
-                
-        for (index, value) in CategoryService.spendCategoryList.enumerated() {
-            if value.0 == editTransaction.category {
+             
+        
+        
+        for (index, value) in categoryPickerModels.enumerated() {
+            if value.title == editTransaction.category {
                 categoryPickerView.selectRow(index, inComponent: 0, animated: true)
+                selectedModel = categoryPickerModels[index]
+                setupCategoryTextField()
             }
-            doneButton.isEnabled = true
         }
+            doneButton.isEnabled = true
     }
     
     private func setupCostTextField() {
@@ -122,14 +130,18 @@ class TransactionViewController: UIViewController {
         categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
 
         selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
-        categoryTextField.text = selectedModel.title
-        categoryImage.image = selectedModel.icon
+        setupCategoryTextField()
         
         categoryTextField.inputView = categoryPickerView
     }
+    
+    private func setupCategoryTextField() {
+        categoryTextField.text = selectedModel.title
+        categoryImage.image = selectedModel.icon
+    }
         
     private func setupDataTextField() { // настройка текстового поля с датой
-        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
+        dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
         
         dateTextField.inputView = datePickerView
         datePickerView.preferredDatePickerStyle = .wheels
@@ -140,7 +152,7 @@ class TransactionViewController: UIViewController {
         datePickerView.addTarget(self, action: #selector(dateTextFieldDidChanged), for: .valueChanged)
     }
     
-    private func SetupDoneToolBar() {
+    private func setupDoneToolBar() {
         let doneToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                             target: self,
@@ -154,18 +166,6 @@ class TransactionViewController: UIViewController {
         descriptionTextField.inputAccessoryView = doneToolbar
         categoryTextField.inputAccessoryView = doneToolbar
         dateTextField.inputAccessoryView = doneToolbar
-    }
-    private func setupCategoryList() {
-        var categories: [CategoryPickerModel] = []
-        var list: [(String, UIImage)] = []
-        
-        list = isIncome ? CategoryService.incomeCategoryList : CategoryService.spendCategoryList
-        categoryPickerModels = {
-            for (category, image) in list {
-                categories.append(.init( title: category, icon: image))
-            }
-            return categories
-        }()
     }
 }
 
@@ -218,7 +218,7 @@ extension TransactionViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    // Чтобы кнопка Done была активна только в когда поле цены заполнено -------------------------------------------------------------------------ТУТ
+    // Чтобы кнопка Done была активна только в когда поле цены заполнено
     @objc private func costTextFieldDidChanged() {
         guard let costName = costTextField.text else {
             doneButton.isEnabled = false
@@ -228,27 +228,41 @@ extension TransactionViewController: UITextFieldDelegate {
     }
     
     @objc private func dateTextFieldDidChanged() {
-        dateTextField.text = DateConvertManager.shared.convertDateToStr(date: datePickerView.date)
+        dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
     }
-    
     
     //переход на следующее поле по нажатию кнопки "Готово" с Алёртами
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if costTextField.isEditing  {
+        
+        
+        switch textField {
+        case costTextField:
             guard costFormatter(cost: costTextField.text) > 0 else {
                 showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
                 return false
             }
             descriptionTextField.becomeFirstResponder()
-        } else if descriptionTextField.isEditing {
-            categoryTextField.becomeFirstResponder()
-        } else if categoryTextField.isEditing {
-            dateTextField.becomeFirstResponder()
-        } else { view.endEditing(true) }
+        case descriptionTextField:   categoryTextField.becomeFirstResponder()
+        case categoryTextField:     dateTextField.becomeFirstResponder()
+        default: view.endEditing(true)
+        }
         return true
+        
+        
+//        if costTextField.isEditing  {
+//            guard costFormatter(cost: costTextField.text) > 0 else {
+//                showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
+//                return false
+//            }
+//            descriptionTextField.becomeFirstResponder()
+//        } else if descriptionTextField.isEditing {
+//            categoryTextField.becomeFirstResponder()
+//        } else if categoryTextField.isEditing {
+//            dateTextField.becomeFirstResponder()
+//        } else { view.endEditing(true) }
+//        return true
     }
-    
-    
+        
     private func costFormatter(cost: String?) -> Double { // корректировка  вводимого числа  если вместо точки запятая
         let formatter = NumberFormatter()
         var doubCost: Double = 0.00000
@@ -260,8 +274,6 @@ extension TransactionViewController: UITextFieldDelegate {
         return doubCost
     }
 }
-
-
 
 // MARK: - Alert Controller
 extension TransactionViewController {

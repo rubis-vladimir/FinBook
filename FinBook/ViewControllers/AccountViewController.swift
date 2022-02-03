@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewTransactionViewControllerDelegate {
-    func saveTransaction(newTransaction: Transact)
+    func saveTransaction(_ newTransaction: Transact)
 }
 
 protocol ThemeChange {
@@ -148,11 +148,9 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! CustomTableViewCell
         
-        let transaction = transactionToDisplayAt(indexPath: indexPath) //----------------------------------------------------------------ТУТ
-                
-        let customCell = CustomTableViewCell.shared.createCustomCell(cell: cell, transaction: transaction)
+        let transaction = transactionToDisplayAt(indexPath: indexPath)
 
-        return customCell
+        return CustomTableViewCell.createCustomCell(cell, transaction)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -183,7 +181,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - NewTransactionViewControllerDelegate
 extension AccountViewController: NewTransactionViewControllerDelegate {
-    func saveTransaction(newTransaction: Transact) {
+    func saveTransaction(_ newTransaction: Transact) {
 
         if let selectedIndexPath = editTransIndexPath?.row {          // -------------редактирование существующей транзакции
             let edittingTransaction = transactionToDisplayAt(indexPath: editTransIndexPath!)
