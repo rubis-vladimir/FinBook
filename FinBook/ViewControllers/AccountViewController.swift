@@ -128,11 +128,7 @@ class AccountViewController: UIViewController {
         transactionVC.delegate = self // обязательно для передачи транзакции !!!
     }
     
-    @IBAction func unwind(segue: UIStoryboardSegue) {
-        transactionTableView.deselectRow(at:editTransIndexPath!, animated: true)
-//        transactionTableView.reloadRows(at: [editTransIndexPath!], with: .automatic)
-        self.editTransIndexPath = nil
-    }
+    @IBAction func unwind(segue: UIStoryboardSegue) {    }
 }
 
 // MARK: - Table View Data Source & Delegate
@@ -187,14 +183,14 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
             
             StorageManager.shared.deleteTransaction(edittingTransaction) // удаляем старую версию транзакции
             
-            if isFiltering {
+            if isFiltering {                             // если редактировали транз-ю в отфильтрованном списке
                 filteredTransactions[selectedIndexPath] = newTransaction
                 
                 for (index,transaction) in transactions.enumerated() {
                     if transaction == edittingTransaction {
                         transactions[index] = newTransaction
-                        self.editTransIndexPath = nil
                     }
+                    self.editTransIndexPath = nil
                 }
             } else {
                 transactions[selectedIndexPath] = newTransaction

@@ -614,21 +614,36 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k43-i1-ScQ" userLabel="Button Stack View">
-                                <rect key="frame" x="0.0" y="296" width="428" height="40"/>
+                                <rect key="frame" x="10" y="296" width="408" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
-                                        <rect key="frame" x="0.0" y="2" width="209" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Отмена"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
+                                        <rect key="frame" x="0.0" y="1" width="199" height="38"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Отмена" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelButtonAction:" destination="A3i-py-pm1" eventType="touchUpInside" id="91y-Ws-RIy"/>
                                             <segue destination="Ehk-4f-Scq" kind="unwind" unwindAction="unwindWithSegue:" id="LGk-BK-mh6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q55-mc-zBg">
-                                        <rect key="frame" x="219" y="2" width="209" height="36"/>
+                                        <rect key="frame" x="209" y="1" width="199" height="38"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Готово"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Готово" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="doneButtonAction:" destination="A3i-py-pm1" eventType="touchUpInside" id="Lqf-nr-kl3"/>
                                         </connections>
@@ -642,15 +657,15 @@
                         <viewLayoutGuide key="safeArea" id="C4E-1m-qLQ"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="k43-i1-ScQ" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" id="8v3-ic-cHx"/>
-                            <constraint firstItem="k43-i1-ScQ" firstAttribute="trailing" secondItem="C4E-1m-qLQ" secondAttribute="trailing" id="FiE-SC-mdi"/>
                             <constraint firstItem="i9f-g9-0tg" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" id="IVj-OJ-xmq"/>
                             <constraint firstItem="i9f-g9-0tg" firstAttribute="top" secondItem="C4E-1m-qLQ" secondAttribute="top" id="NVR-an-rZK"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="10" id="U4Z-6Z-NN0"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="top" secondItem="i9f-g9-0tg" secondAttribute="bottom" constant="15" id="WHl-9y-0ot"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="rd0-Cm-jdg" secondAttribute="trailing" constant="10" id="b6m-B2-3uo"/>
                             <constraint firstItem="k43-i1-ScQ" firstAttribute="top" secondItem="rd0-Cm-jdg" secondAttribute="bottom" constant="10" id="eRQ-Zp-6vW"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="10" id="fzD-d5-84n"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="i9f-g9-0tg" secondAttribute="trailing" id="px5-dA-BnM"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="trailing" secondItem="C4E-1m-qLQ" secondAttribute="trailing" constant="-10" id="q4f-1O-THX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ECc-r5-MQA">
