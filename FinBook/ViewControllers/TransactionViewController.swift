@@ -151,8 +151,7 @@ class TransactionViewController: UIViewController {
         dateTextField.inputView = datePickerView
         datePickerView.preferredDatePickerStyle = .wheels
         datePickerView.datePickerMode = .dateAndTime
-        let localeID = Locale.preferredLanguages.first
-        datePickerView.locale = Locale(identifier: localeID!)
+        datePickerView.locale = Locale(identifier: "ru_RU")
         
         datePickerView.addTarget(self, action: #selector(dateTextFieldDidChanged), for: .valueChanged)
     }

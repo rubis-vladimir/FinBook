@@ -107,7 +107,6 @@
                                             <outlet property="costLabel" destination="rln-Ms-Rbn" id="MuL-2b-d7S"/>
                                             <outlet property="dataLabel" destination="Ug1-yZ-9XE" id="Csb-ka-BQ8"/>
                                             <outlet property="descriptionLabel" destination="uB8-Qs-g8n" id="3s4-n4-CWi"/>
-                                            <segue destination="A3i-py-pm1" kind="presentation" identifier="editTransaction" id="KeR-Dn-foN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -154,6 +153,7 @@
                         <outlet property="balanceLabel" destination="aoi-38-Wt9" id="rum-hz-1Ft"/>
                         <outlet property="button" destination="Lb1-NK-y9u" id="396-5I-jDJ"/>
                         <outlet property="transactionTableView" destination="obQ-uS-wdU" id="0HR-ef-QoL"/>
+                        <segue destination="A3i-py-pm1" kind="presentation" identifier="editTransaction" id="tV2-p7-MWX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPY-St-0T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -622,6 +622,7 @@
                                         <state key="normal" title="Отмена"/>
                                         <connections>
                                             <action selector="cancelButtonAction:" destination="A3i-py-pm1" eventType="touchUpInside" id="91y-Ws-RIy"/>
+                                            <segue destination="Ehk-4f-Scq" kind="unwind" unwindAction="unwindWithSegue:" id="LGk-BK-mh6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q55-mc-zBg">
@@ -759,7 +760,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xHW-Ja-rJ5"/>
+        <segue reference="tV2-p7-MWX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.forward" catalog="system" width="128" height="106"/>

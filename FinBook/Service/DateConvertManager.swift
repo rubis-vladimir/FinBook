@@ -16,7 +16,7 @@ class DateConvertManager {
         
         dateFormatter.dateStyle = .short
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateFormat = "HH:mm  dd.MMMyyyy"
+        dateFormatter.dateFormat = "HH:mm  dd.MMMyy"
         let stringDate = dateFormatter.string(from: date2)
         
         return stringDate
