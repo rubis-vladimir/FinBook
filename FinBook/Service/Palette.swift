@@ -12,11 +12,11 @@ struct Pallete {
             
             // MARK: - dark theme
         case 0:
-            palette = PaletteModel(bgColor: "#B5C0C4", chartColors: ["66c6cc", "f6cf71", "f89c74", "dcb0f2", "87c55f", "9eb9f3", "fe88b1", "c9db74", "8be0a4"])
+            palette = PaletteModel(bgColor: "#B5C0C4", textColor: "#FFFFFF", chartColors: ["66c6cc", "f6cf71", "f89c74", "dcb0f2", "87c55f", "9eb9f3", "fe88b1", "c9db74", "8be0a4"])
             
             // MARK: - light theme
         default:
-            palette = PaletteModel(bgColor: "#FFFFFF", chartColors: ["78A5A3", "CE5A57", "E1B16A", "664975", "99705B", "D6606D", "767E8C",  "A09151", "AD9ED3"])
+            palette = PaletteModel(bgColor: "#FFFFFF",textColor: "#000000", chartColors: ["78A5A3", "CE5A57", "E1B16A", "664975", "99705B", "D6606D", "767E8C",  "A09151", "AD9ED3"])
         }
         return palette
     }

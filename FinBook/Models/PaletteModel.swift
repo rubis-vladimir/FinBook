@@ -7,5 +7,6 @@
 
 struct PaletteModel {
     let bgColor: String
+    let textColor: String
     let chartColors: [String]
 }

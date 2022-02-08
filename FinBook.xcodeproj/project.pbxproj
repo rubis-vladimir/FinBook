@@ -19,8 +19,10 @@
 		7D0E84312798784F00349AD4 /* ContactPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */; };
 		7D39A1AE2799F27F00940EA3 /* LabelWithPaddingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */; };
 		7D39A1D927A6AA7200940EA3 /* CALayer + Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */; };
-		7D39A1DD27A9284E00940EA3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1DC27A9284E00940EA3 /* AlertManager.swift */; };
 		7D39A1DF27A9981500940EA3 /* UILabel + SettingDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1DE27A9981500940EA3 /* UILabel + SettingDefault.swift */; };
+		7D39A20427AFD50F00940EA3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20327AFD50F00940EA3 /* Theme.swift */; };
+		7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20527AFD5B500940EA3 /* Persist.swift */; };
+		7D39A20C27B1B49700940EA3 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */; };
 		7D5CF709277B80EE00FD5D11 /* PaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */; };
 		7D5CF70B277B80FA00FD5D11 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70A277B80FA00FD5D11 /* Palette.swift */; };
 		7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */; };
@@ -59,8 +61,10 @@
 		7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPhotoCell.swift; sourceTree = "<group>"; };
 		7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithPaddingText.swift; sourceTree = "<group>"; };
 		7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Customization.swift"; sourceTree = "<group>"; };
-		7D39A1DC27A9284E00940EA3 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		7D39A1DE27A9981500940EA3 /* UILabel + SettingDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + SettingDefault.swift"; sourceTree = "<group>"; };
+		7D39A20327AFD50F00940EA3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		7D39A20527AFD5B500940EA3 /* Persist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
+		7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 		7D5CF708277B80EE00FD5D11 /* PaletteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteModel.swift; sourceTree = "<group>"; };
 		7D5CF70A277B80FA00FD5D11 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Gradient.swift"; sourceTree = "<group>"; };
@@ -136,11 +140,12 @@
 				7DF834E926DC045A009EC940 /* CategoryService.swift */,
 				68DAE9072772350D0033CE7A /* DateConvertManager.swift */,
 				681159D626E93A70009FAA5E /* StorageManager.swift */,
-				7D39A1DC27A9284E00940EA3 /* AlertManager.swift */,
 				7D66F645275420B0007C5D66 /* ChartManager.swift */,
 				7DF571172759489B00ED5FB7 /* ColorManager.swift */,
 				7D5CF70A277B80FA00FD5D11 /* Palette.swift */,
 				7D0E84242793370200349AD4 /* UserDefaulftManager.swift */,
+				7D39A20327AFD50F00940EA3 /* Theme.swift */,
+				7D39A20527AFD5B500940EA3 /* Persist.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -157,22 +162,23 @@
 		68A6232427933062006240C2 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */,
 				7D0E842E2795F1F100349AD4 /* Bundle + Decode.swift */,
 				7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */,
 				7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */,
 				7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */,
+				7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */,
 				7D39A1DE27A9981500940EA3 /* UILabel + SettingDefault.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		7D66F64027541843007C5D66 /* CustomView */ = {
+		7D66F64027541843007C5D66 /* CustomElements */ = {
 			isa = PBXGroup;
 			children = (
 				7D66F643275419AB007C5D66 /* PieChartView.swift */,
+				7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */,
 			);
-			path = CustomView;
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 		7D66F6472757BDF6007C5D66 /* CustomCell */ = {
@@ -207,7 +213,7 @@
 			children = (
 				6887F41E26DD5B9F00910C4A /* Storyboars */,
 				6813DEE5269F711000AA408F /* ViewControllers */,
-				7D66F64027541843007C5D66 /* CustomView */,
+				7D66F64027541843007C5D66 /* CustomElements */,
 				6813DEE626A07C7500AA408F /* Models */,
 				7DF5713D2766738600ED5FB7 /* DataDevelopers */,
 				6887F41D26DD5B1D00910C4A /* Service */,
@@ -312,10 +318,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D90B02226DA59AA00A33930 /* CustomTableViewCell.swift in Sources */,
+				7D39A20C27B1B49700940EA3 /* UIViewController + Alert.swift in Sources */,
 				7D66F6492757BE2B007C5D66 /* ChartCell.swift in Sources */,
 				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
 				7D39A1D927A6AA7200940EA3 /* CALayer + Customization.swift in Sources */,
 				7D0E84212790BEE700349AD4 /* UIButton + CustomDesign.swift in Sources */,
+				7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */,
 				7D0E84252793370200349AD4 /* UserDefaulftManager.swift in Sources */,
 				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */,
@@ -333,7 +341,6 @@
 				7D66F646275420B0007C5D66 /* ChartManager.swift in Sources */,
 				7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */,
 				7D5CF70B277B80FA00FD5D11 /* Palette.swift in Sources */,
-				7D39A1DD27A9284E00940EA3 /* AlertManager.swift in Sources */,
 				6887F41B26DD568200910C4A /* CategoriesView.swift in Sources */,
 				7D39A1DF27A9981500940EA3 /* UILabel + SettingDefault.swift in Sources */,
 				7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */,
@@ -344,6 +351,7 @@
 				7DF571412766840C00ED5FB7 /* DeveloperModel.swift in Sources */,
 				681159D726E93A70009FAA5E /* StorageManager.swift in Sources */,
 				7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */,
+				7D39A20427AFD50F00940EA3 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +428,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -475,7 +483,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -499,7 +507,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.RubisV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RubisVladimir;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -521,7 +529,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.RubisV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RubisVladimir;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

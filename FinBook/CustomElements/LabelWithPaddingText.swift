@@ -8,21 +8,17 @@
 import UIKit
 
 class LabelWithPaddingText: UILabel {
-    
-    private let sidePadding: CGFloat = 10
-    private let radius: CGFloat = 10
-    private let customFont = UIFont(name: "Avenir", size: 20)
-    
+
     override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.insetBy(dx: sidePadding, dy: 0))
+        super.drawText(in: rect.insetBy(dx: 10, dy: 0))
         invalidateIntrinsicContentSize()
     }
     
     func customizeLinkLabel() {
         backgroundColor = .systemGray4
-        layer.cornerRadius = radius
+        layer.cornerRadius = 10
         clipsToBounds = true
-        font = customFont
+        font = UIFont(name: "Avenir", size: 20)
         numberOfLines = 0
     }
 }

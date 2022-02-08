@@ -415,7 +415,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Фильтр" image="slider.horizontal.3" catalog="system" id="GGD-wp-5QA">
                             <color key="tintColor" systemColor="linkColor"/>
                             <connections>
-                                <action selector="parametersChart:" destination="cER-Jq-FHV" id="rQ5-xs-ddk"/>
+                                <action selector="parametersChart" destination="cER-Jq-FHV" id="4Mz-f4-liD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

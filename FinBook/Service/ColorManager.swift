@@ -13,11 +13,20 @@ class ColorManager {
     
     // MARK: - Setting theme palette colors
         
-        func setThemeColors(mainElement: UIView, secondaryElement: UINavigationBar?) {
+    func setThemeColors(mainElement: UIView, secondaryElement: UINavigationBar?) {
             let model = UserDefaultManager.shared.retrieveThemeData()
             let themeValue = Pallete.getPallete(model: model)
             let color = hexStringToUIColor(hex: themeValue.bgColor)
+            if (secondaryElement != nil) {
+                secondaryElement?.barTintColor = hexStringToUIColor(hex: themeValue.bgColor)
+                secondaryElement?.tintColor = hexStringToUIColor(hex: themeValue.textColor)
+                let textAttributes = [NSAttributedString.Key.foregroundColor:hexStringToUIColor(hex: themeValue.textColor)]
+                secondaryElement?.titleTextAttributes = textAttributes
+            }
+            
             mainElement.backgroundColor = color
+            
+            
         }
     
     // MARK: - Creating array colors
@@ -38,13 +47,8 @@ class ColorManager {
     
     func hexStringToUIColor(hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)
-        }
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
         }
         
         var rgbValue:UInt64 = 0

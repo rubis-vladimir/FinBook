@@ -22,12 +22,6 @@ class SettingsViewController: UITableViewController {
         ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-
     private func setupElements() {
         themeView.customizeView(model: 2)
         categoryView.customizeView(model: 2)

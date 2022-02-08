@@ -10,6 +10,8 @@ import UIKit
 class ContactsViewController: UICollectionViewController {
     
     //MARK: - Properties
+    private let startLabel = UILabel()
+    
     private let developers = Bundle.main.decode([Developer].self, from: "developers.json")
     
     private let sectionInfoIndexPath: IndexPath = [1, 0]
@@ -19,33 +21,17 @@ class ContactsViewController: UICollectionViewController {
     private var itemsPerRow: CGFloat = 1
     private let paddingSection: CGFloat = 20
     
-    private let startLabel = UILabel()
-    
     // MARK: - Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        startLabel.setupDefaultLabel(view: self.view,
+                                     title: "Для отображения контактной информации разработчика нажмите на соответствующую карточку")
         setupCollectionView()
-        setupStartLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshTheme()
-    }
-    
-    // MARK: - Private func
-    private func setupCollectionView() {
-        collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
-        collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
-    }
-    
-    private func refreshTheme() {
-        ColorManager.shared.setThemeColors(mainElement: collectionView, secondaryElement: navigationController?.navigationBar)
-    }
-    
-    private func setupStartLabel() {
-        startLabel.text = "Для отображения контактной информации разработчика нажмите на соответствующую карточку"
-        startLabel.setupDefaultLabel(view: self.view)
     }
     
     // MARK: - UICollectionViewDataSource
@@ -82,10 +68,19 @@ class ContactsViewController: UICollectionViewController {
             } else {
                 isSelected = true
                 selectedIndexPath = indexPath
-                startLabel.isHidden = false
             }
             collectionView.reloadItems(at: [sectionInfoIndexPath])
         }
+    }
+    
+    // MARK: - Private func
+    private func setupCollectionView() {
+        collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
+        collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
+    }
+    
+    private func refreshTheme() {
+        ColorManager.shared.setThemeColors(mainElement: collectionView, secondaryElement: navigationController?.navigationBar)
     }
 }
 
@@ -93,7 +88,7 @@ class ContactsViewController: UICollectionViewController {
 extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: paddingSection, left: paddingSection, bottom: 0, right: paddingSection)
+        UIEdgeInsets(top: paddingSection / 2, left: paddingSection, bottom: paddingSection / 2, right: paddingSection)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

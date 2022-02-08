@@ -1,18 +1,50 @@
 //
-//  AlertManager.swift
+//  UIViewController + Alert.swift
 //  FinBook
 //
-//  Created by Владимир Рубис on 01.02.2022.
+//  Created by Владимир Рубис on 07.02.2022.
 //
 
 import UIKit
 
-class AlertManager {
+extension UIViewController {
     
-    static let shared = AlertManager()
+    func setAlert(isIncome: Bool, startDate: Date, finishDate: Date, completion: @escaping (Bool, Date, Date) -> Void) {
+        
+        let startDatePicker = UIDatePicker()
+        let finishDatePicker = UIDatePicker()
+        let chartTypeSwitch = UISwitch()
+        let chartTypeLabel = UILabel()
+        
+        startDatePicker.date = startDate
+        finishDatePicker.date = finishDate
+        chartTypeSwitch.isOn = isIncome
+        
+        let alert = UIAlertController(title: nil, message: "\n\n\n\n", preferredStyle: .alert)
+        
+        overrideAlertWidthConstrants(alert: alert)
+        setupAlertElements(alert: alert,
+                           startDatePicker: startDatePicker,
+                           finishDatePicker: finishDatePicker,
+                           typeSwitch: chartTypeSwitch,
+                           typeLabel: chartTypeLabel)
+        
+        chartTypeSwitch.addTarget(self, action: #selector(switchValueDidChanged), for: .valueChanged)
+        
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Рассчитать", style: .default, handler: {(action) in
+            completion (chartTypeSwitch.isOn, startDatePicker.date, finishDatePicker.date)
+        }))
+        self.present(alert, animated: true, completion: nil )
+    }
+    
+    @objc private func switchValueDidChanged(sender:UISwitch!) {
+        let chartTypeLabel = UILabel()
+        chartTypeLabel.text = sender.isOn ? "Доход" : "Расход"
+    }
     
     //MARK: - Setting alert width
-    func overrideAlertWidthConstrants(alert: UIAlertController!) {
+    private func overrideAlertWidthConstrants(alert: UIAlertController!) {
         
         let widthConstraints = alert.view.constraints.filter({return $0.firstAttribute == .width})
         alert.view.removeConstraints(widthConstraints)
@@ -22,9 +54,11 @@ class AlertManager {
         alert.view.addConstraint(widthConstraint)
         
         let firstContainer = alert.view.subviews[0]
+        
         // Finding first child width constraint
         let constraint = firstContainer.constraints.filter({ return $0.firstAttribute == .width && $0.secondItem == nil })
         firstContainer.removeConstraints(constraint)
+        
         // And replacing with new constraint equal to alert.view width constraint that we setup earlier
         alert.view.addConstraint(NSLayoutConstraint(item: firstContainer,
                                                     attribute: .width,
@@ -33,6 +67,7 @@ class AlertManager {
                                                     attribute: .width,
                                                     multiplier: 1.0,
                                                     constant: 0))
+        
         // Same for the second child with width constraint with 998 priority
         let innerBackground = firstContainer.subviews[0]
         let innerConstraints = innerBackground.constraints.filter({ return $0.firstAttribute == .width && $0.secondItem == nil })
@@ -48,7 +83,7 @@ class AlertManager {
     }
     
     // MARK: - Setting alert view content
-    func setupAlertElements(alert: UIAlertController, startDatePicker: UIDatePicker, finishDatePicker: UIDatePicker, typeSwitch: UISwitch, typeLabel: UILabel) {
+    private func setupAlertElements(alert: UIAlertController, startDatePicker: UIDatePicker, finishDatePicker: UIDatePicker, typeSwitch: UISwitch, typeLabel: UILabel) {
         
         let explanationLabel1 = UILabel()
         let explanationLabel2 = UILabel()
@@ -65,7 +100,7 @@ class AlertManager {
         beforeLabel.text = "До"
         
         typeLabel.font = UIFont(name: "Avenir-Heavy", size: 17)
-    
+        
         startDatePicker.datePickerMode = .date
         startDatePicker.contentHorizontalAlignment = .center
         finishDatePicker.datePickerMode = .date
@@ -101,16 +136,22 @@ class AlertManager {
         fromLabel.widthAnchor.constraint(equalToConstant: 22).isActive = true
         beforeLabel.widthAnchor.constraint(equalToConstant: 22).isActive = true
         
-        explanationLabel1.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 20).isActive = true
+        explanationLabel1.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 15).isActive = true
         explanationLabel1.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor, constant: 10).isActive = true
         
         stackChoiceChart.topAnchor.constraint(equalTo: stackDateRange.bottomAnchor, constant: 10).isActive = true
         stackChoiceChart.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor, constant: 10).isActive = true
         
-        stackDateRange.topAnchor.constraint(equalTo: explanationLabel1.bottomAnchor, constant: 15).isActive = true
-        stackDateRange.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor, constant: 10).isActive = true
-        stackDateRange.trailingAnchor.constraint(equalTo: alert.view.trailingAnchor, constant: -10).isActive = true
-        stackDateRange.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        stackDateRange.topAnchor.constraint(equalTo: explanationLabel1.bottomAnchor, constant: 10).isActive = true
+        
         startDatePicker.widthAnchor.constraint(equalTo: finishDatePicker.widthAnchor).isActive = true
+        
+        if alert.view.bounds.width > 375 {
+            stackDateRange.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor, constant: 10).isActive = true
+            stackDateRange.trailingAnchor.constraint(equalTo: alert.view.trailingAnchor, constant: -10).isActive = true
+        } else {
+            stackDateRange.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
+            stackDateRange.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        }
     }
 }

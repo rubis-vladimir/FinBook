@@ -51,7 +51,7 @@ class ContactInfoCell: UICollectionViewCell {
             let stackLink = UIStackView()
             let headerLink = UILabel()
             
-//            label.customizeLinkLabel()
+            label.customizeLinkLabel()
             
             headerLink.text = headerLinks[index]
             headerLink.font = UIFont(name: "Avenir", size: 18)
