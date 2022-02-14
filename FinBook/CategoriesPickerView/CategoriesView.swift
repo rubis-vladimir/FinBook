@@ -41,21 +41,23 @@ final class CategoriesView: UIView {
         iconView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
 
-        let iconWidth: CGFloat = 20.0
+        let iconWidth: CGFloat = 22.0
 
         NSLayoutConstraint.activate([
+            
+//            label.trailingAnchor.constraint(equalTo: trailingAnchor),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0.0),
+            
             iconView.widthAnchor.constraint(equalToConstant: iconWidth),
             iconView.heightAnchor.constraint(equalToConstant: iconWidth),
-            iconView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0.0),
+            
+            iconView.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 10.0),
             iconView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
-            label.trailingAnchor.constraint(equalTo: trailingAnchor),
-            label.centerYAnchor.constraint(equalTo: centerYAnchor),
-            label.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 10.0)
         ])
 
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 19)
         label.textAlignment = .left
 
         iconView.contentMode = .scaleAspectFit

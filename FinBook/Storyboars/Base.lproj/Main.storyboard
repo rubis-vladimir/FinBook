@@ -107,7 +107,6 @@
                                             <outlet property="costLabel" destination="rln-Ms-Rbn" id="MuL-2b-d7S"/>
                                             <outlet property="dataLabel" destination="Ug1-yZ-9XE" id="Csb-ka-BQ8"/>
                                             <outlet property="descriptionLabel" destination="uB8-Qs-g8n" id="3s4-n4-CWi"/>
-                                            <segue destination="A3i-py-pm1" kind="presentation" identifier="editTransaction" id="KeR-Dn-foN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -154,6 +153,7 @@
                         <outlet property="balanceLabel" destination="aoi-38-Wt9" id="rum-hz-1Ft"/>
                         <outlet property="button" destination="Lb1-NK-y9u" id="396-5I-jDJ"/>
                         <outlet property="transactionTableView" destination="obQ-uS-wdU" id="0HR-ef-QoL"/>
+                        <segue destination="A3i-py-pm1" kind="presentation" identifier="editTransaction" id="tV2-p7-MWX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPY-St-0T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -482,11 +482,11 @@
             </objects>
             <point key="canvasLocation" x="1651" y="960"/>
         </scene>
-        <!--Accounts-->
+        <!--Баланс-->
         <scene sceneID="ZJX-1V-wQ8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zRa-k1-ipG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Accounts" image="wallet" id="V6S-Tp-X1n">
+                    <tabBarItem key="tabBarItem" title="Баланс" image="wallet" id="V6S-Tp-X1n">
                         <inset key="imageInsets" minX="103" minY="0.0" maxX="103" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="-10" vertical="-4"/>
                     </tabBarItem>
@@ -513,7 +513,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rd0-Cm-jdg" userLabel="Main Stack View">
-                                <rect key="frame" x="10" y="65" width="408" height="271.33333333333331"/>
+                                <rect key="frame" x="10" y="45" width="408" height="241"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rmD-g5-h44" userLabel="Cast Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="408" height="25.666666666666668"/>
@@ -554,83 +554,96 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5PD-t0-1Ko" userLabel="Category Stack View">
-                                        <rect key="frame" x="0.0" y="91.333333333333343" width="408" height="56"/>
+                                        <rect key="frame" x="0.0" y="91.333333333333343" width="408" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Категория расхода:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-MY-Sm3">
-                                                <rect key="frame" x="0.0" y="0.0" width="95.333333333333329" height="56"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="95.333333333333329" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Nrl-sB-bDT">
-                                                <rect key="frame" x="105.33333333333334" y="0.0" width="302.66666666666663" height="56"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Nrl-sB-bDT">
+                                                <rect key="frame" x="105.33333333333334" y="0.0" width="302.66666666666663" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Выберите категорию" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvy-BD-Igw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="247.66666666666666" height="56"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="242.66666666666666" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tgm-BC-zn1">
-                                                        <rect key="frame" x="252.66666666666669" y="0.0" width="50" height="56"/>
+                                                        <rect key="frame" x="252.66666666666669" y="0.0" width="50" height="50"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gvr-p9-Ted" userLabel="Data Stack View">
-                                        <rect key="frame" x="0.0" y="167.33333333333334" width="408" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gvr-p9-Ted" userLabel="Data Stack View">
+                                        <rect key="frame" x="0.0" y="161.33333333333334" width="408" height="25.666666666666657"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh9-v9-aba">
-                                                <rect key="frame" x="0.0" y="0.0" width="199" height="50"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата и время:" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh9-v9-aba">
+                                                <rect key="frame" x="0.0" y="0.0" width="128" height="25.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Установите время" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9DS-GY-cCz">
-                                                <rect key="frame" x="209" y="0.0" width="199" height="50"/>
+                                                <rect key="frame" x="128" y="0.0" width="280" height="25.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Y4K-0g-AOO"/>
-                                        </constraints>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Заметка по транзакции" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWb-r7-UV9">
-                                        <rect key="frame" x="0.0" y="237.33333333333331" width="408" height="34"/>
+                                        <rect key="frame" x="0.0" y="207" width="408" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="i9f-g9-0tg">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="51"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="31"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="kLy-Ry-rZW"/>
+                                    <constraint firstAttribute="height" constant="30" id="kLy-Ry-rZW"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Расход"/>
                                     <segment title="Доход"/>
                                 </segments>
                                 <connections>
-                                    <action selector="incomStatusOnSegmentedControl:" destination="A3i-py-pm1" eventType="valueChanged" id="OjS-xd-lYJ"/>
+                                    <action selector="incomeStatusOnSegmentedControl:" destination="A3i-py-pm1" eventType="valueChanged" id="DQx-GP-TIt"/>
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k43-i1-ScQ" userLabel="Button Stack View">
-                                <rect key="frame" x="0.0" y="336.33333333333331" width="428" height="40"/>
+                                <rect key="frame" x="10" y="296" width="408" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
-                                        <rect key="frame" x="0.0" y="2" width="209" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Отмена"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
+                                        <rect key="frame" x="0.0" y="1" width="199" height="38"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Отмена" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="cancelButtonAction:" destination="A3i-py-pm1" eventType="touchUpInside" id="91y-Ws-RIy"/>
+                                            <segue destination="Ehk-4f-Scq" kind="unwind" unwindAction="unwindWithSegue:" id="LGk-BK-mh6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q55-mc-zBg">
-                                        <rect key="frame" x="219" y="2" width="209" height="36"/>
+                                        <rect key="frame" x="209" y="1" width="199" height="38"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Готово"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Готово" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="doneButtonAction:" destination="A3i-py-pm1" eventType="touchUpInside" id="Lqf-nr-kl3"/>
                                         </connections>
@@ -644,15 +657,15 @@
                         <viewLayoutGuide key="safeArea" id="C4E-1m-qLQ"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="k43-i1-ScQ" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" id="8v3-ic-cHx"/>
-                            <constraint firstItem="k43-i1-ScQ" firstAttribute="trailing" secondItem="C4E-1m-qLQ" secondAttribute="trailing" id="FiE-SC-mdi"/>
                             <constraint firstItem="i9f-g9-0tg" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" id="IVj-OJ-xmq"/>
                             <constraint firstItem="i9f-g9-0tg" firstAttribute="top" secondItem="C4E-1m-qLQ" secondAttribute="top" id="NVR-an-rZK"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="10" id="U4Z-6Z-NN0"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="top" secondItem="i9f-g9-0tg" secondAttribute="bottom" constant="15" id="WHl-9y-0ot"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="rd0-Cm-jdg" secondAttribute="trailing" constant="10" id="b6m-B2-3uo"/>
-                            <constraint firstItem="k43-i1-ScQ" firstAttribute="top" secondItem="rd0-Cm-jdg" secondAttribute="bottom" id="eRQ-Zp-6vW"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="top" secondItem="rd0-Cm-jdg" secondAttribute="bottom" constant="10" id="eRQ-Zp-6vW"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="10" id="fzD-d5-84n"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="i9f-g9-0tg" secondAttribute="trailing" id="px5-dA-BnM"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="trailing" secondItem="C4E-1m-qLQ" secondAttribute="trailing" constant="-10" id="q4f-1O-THX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ECc-r5-MQA">
@@ -694,11 +707,11 @@
             </objects>
             <point key="canvasLocation" x="2342" y="-402"/>
         </scene>
-        <!--Settings-->
+        <!--Настройки-->
         <scene sceneID="vHl-ou-mvm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HQv-X4-vCM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="Settings" image="gearshape" catalog="system" id="7m2-TS-bFO">
+                    <tabBarItem key="tabBarItem" tag="3" title="Настройки" image="gearshape" catalog="system" id="7m2-TS-bFO">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="10" vertical="-4"/>
                     </tabBarItem>
@@ -716,11 +729,11 @@
             </objects>
             <point key="canvasLocation" x="964" y="1631"/>
         </scene>
-        <!--Statistics-->
+        <!--Статистика-->
         <scene sceneID="Sob-DR-wfX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AWq-Ww-PTz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Statistics" image="pie chart" id="vcS-Ae-aCp">
+                    <tabBarItem key="tabBarItem" tag="1" title="Статистика" image="pie chart" id="vcS-Ae-aCp">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="-23" vertical="-4"/>
                     </tabBarItem>
@@ -738,11 +751,11 @@
             </objects>
             <point key="canvasLocation" x="964" y="276"/>
         </scene>
-        <!--Contacts-->
+        <!--Контакты-->
         <scene sceneID="OJd-cn-I1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xxd-U8-3gM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="Contacts" image="business card" id="Vw1-Lx-ZrX">
+                    <tabBarItem key="tabBarItem" tag="2" title="Контакты" image="business card" id="Vw1-Lx-ZrX">
                         <inset key="imageInsets" minX="104" minY="0.0" maxX="104" maxY="0.0"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="23" vertical="-4"/>
                     </tabBarItem>
@@ -762,7 +775,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xHW-Ja-rJ5"/>
+        <segue reference="tV2-p7-MWX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.forward" catalog="system" width="128" height="106"/>

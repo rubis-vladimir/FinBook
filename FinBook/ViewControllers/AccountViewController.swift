@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NewTransactionViewControllerDelegate {
-    func saveTransaction(newTransaction: Transact)
+    func saveTransaction(_ newTransaction: Transact)
 }
 
 protocol ThemeChange {
@@ -23,7 +23,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var balanceLabel: UILabel!
     
     // MARK: - Properties
-    private var transactions = [Transact]()
+    private var transactions = StorageManager.shared.fetchData() // загрузка транзакций
     private var editTransIndexPath: IndexPath? = nil
     private var filteredTransactions: [Transact] = []
     private var timer: Timer?
@@ -42,28 +42,28 @@ class AccountViewController: UIViewController {
        
         setupElements()
         setupSearchBar()
-        getData()
+//        getData()
         reloadWalletBalance()
         reloadTransactArrayToFiltered()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: self.navigationController?.navigationBar)
     }
     
     
     // MARK: - Private func
     
-    //  Загрузка данных из CoreData
-    private func getData() {
-        self.transactions = StorageManager.shared.fetchData()
-    }
+//    //  Загрузка данных из CoreData
+//    private func getData() {
+//        self.transactions = StorageManager.shared.fetchData()
+//    }
     
     private func setupElements() {
         button.customizeButton(cradius: button.frame.width / 2, bgc: true)
         transactionTableView.backgroundColor = UIColor.clear
+//        transactionTableView.allowsSelection = false // запрет на выделение строки
     }
     
     // расчет и вывод баланса кошелька по транзакциям
@@ -119,25 +119,19 @@ class AccountViewController: UIViewController {
     
 // MARK: - Navigation - переход и передача данных на TransactionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addTransaction" {
-            guard let transactionVC = segue.destination as? TransactionViewController else { return }
-            transactionVC.delegate = self // обязательно для передачи транзакции !!!
-        }
+        guard let transactionVC = segue.destination as? TransactionViewController else { return }
         
         if segue.identifier == "editTransaction" {
-            guard let transactionVC = segue.destination as? TransactionViewController else { return }
             transactionVC.editTransaction = sender as? Transact
-            transactionVC.delegate = self // обязательно для передачи транзакции !!!
         }
+
+        transactionVC.delegate = self // обязательно для передачи транзакции !!!
     }
     
-    @IBAction func unwind(segue: UIStoryboardSegue) {
-        transactionTableView.deselectRow(at:editTransIndexPath!, animated: true)
-        self.editTransIndexPath = nil
-    }
+    @IBAction func unwind(segue: UIStoryboardSegue) {    }
 }
 
-// MARK: - Table View Data Source
+// MARK: - Table View Data Source & Delegate
 extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -148,11 +142,9 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! CustomTableViewCell
         
-        let transaction = transactionToDisplayAt(indexPath: indexPath) //----------------------------------------------------------------ТУТ
-                
-        let customCell = CustomTableViewCell.shared.createCustomCell(cell: cell, transaction: transaction)
+        let transaction = transactionToDisplayAt(indexPath: indexPath)
 
-        return customCell
+        return CustomTableViewCell.createCustomCell(cell, transaction)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -176,34 +168,34 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [swipeDelete, swipeEdit])  // "Редак-ть" и "Удалить" по свайпу
     }
     
-    // MARK: - Table View Delegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 50 }
 
 }
 
 // MARK: - NewTransactionViewControllerDelegate
 extension AccountViewController: NewTransactionViewControllerDelegate {
-    func saveTransaction(newTransaction: Transact) {
+    func saveTransaction(_ newTransaction: Transact) {
 
         if let selectedIndexPath = editTransIndexPath?.row {          // -------------редактирование существующей транзакции
+            
+            transactionTableView.deselectRow(at:editTransIndexPath!, animated: true) // убираем выделение с ред. ячейки
             let edittingTransaction = transactionToDisplayAt(indexPath: editTransIndexPath!)
             
             StorageManager.shared.deleteTransaction(edittingTransaction) // удаляем старую версию транзакции
             
-            if isFiltering {
+            if isFiltering {                             // если редактировали транз-ю в отфильтрованном списке
                 filteredTransactions[selectedIndexPath] = newTransaction
                 
                 for (index,transaction) in transactions.enumerated() {
                     if transaction == edittingTransaction {
                         transactions[index] = newTransaction
                     }
+                    self.editTransIndexPath = nil
                 }
             } else {
                 transactions[selectedIndexPath] = newTransaction
             }
 
-            transactionTableView.deselectRow(at:editTransIndexPath!, animated: true)
-            self.editTransIndexPath = nil
             
         } else {        //  --------------Если добавляется новая транзакция
             
@@ -212,8 +204,6 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
                 at: [IndexPath(row: self.transactions.count - 1, section: 0)],
                 with: .automatic
             )
-            
-            
         }
         reloadTransactArrayToFiltered()
         reloadDataTableView()

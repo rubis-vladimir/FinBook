@@ -15,15 +15,15 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dataLabel: UILabel!
     
-    static let shared = CustomTableViewCell()
+//    static let shared = CustomTableViewCell()
     
-    func createCustomCell(cell: CustomTableViewCell, transaction: Transact) -> CustomTableViewCell {
+    static func createCustomCell(_ cell: CustomTableViewCell,_ transaction: Transact) -> CustomTableViewCell {
         
         cell.costLabel.text = String(transaction.cost)
         cell.descriptionLabel.text = transaction.descr
         cell.categoryLabel.text = transaction.category
         cell.categoryImage.image = getImageFromCategory(transaction: transaction)
-        cell.dataLabel.text = DateConvertManager.shared.convertDateToStr(date: transaction.date)
+        cell.dataLabel.text = DateConvertManager.convertDateToStr(transaction.date)
 //        cell.categoryLabel.text = transaction.note
         cell.categoryImage.tintColor =  transaction.incomeTransaction ? .systemGreen : .systemRed
         
@@ -31,7 +31,7 @@ class CustomTableViewCell: UITableViewCell {
         return cell
     }
     
-    func getImageFromCategory (transaction: Transact) -> UIImage {
+    static func getImageFromCategory (transaction: Transact) -> UIImage {
         for (name , image) in CategoryService.spendCategoryList {
             if name == transaction.category {
                 return image
