@@ -1,5 +1,5 @@
 //
-//  BorderedLabel.swift
+//  LabelWithPaddingText.swift
 //  FinBook
 //
 //  Created by Владимир Рубис on 20.01.2022.
@@ -7,21 +7,14 @@
 
 import UIKit
 
-class BorderedLabel: UILabel {
-    
-    var sidePadding = CGFloat(10)
-    
-//    override func sizeToFit() {
-//        super.sizeToFit()
-//        bounds.size.width += 2 * sidePadding
-//    }
-    
+class LabelWithPaddingText: UILabel {
+
     override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.insetBy(dx: sidePadding, dy: 0))
+        super.drawText(in: rect.insetBy(dx: 10, dy: 0))
         invalidateIntrinsicContentSize()
     }
     
-    func customizeLabel() {
+    func customizeLinkLabel() {
         backgroundColor = .systemGray4
         layer.cornerRadius = 10
         clipsToBounds = true

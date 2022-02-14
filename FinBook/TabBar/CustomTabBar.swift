@@ -14,7 +14,7 @@ class CustomTabBar: UITabBar {
     override func draw(_ rect: CGRect) { }
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        let buttonRadius: CGFloat = self.bounds.height * 0.5
+        let buttonRadius: CGFloat = 30
         let pointIsInside = super.point(inside: point, with: event)
         if pointIsInside == true {
             for _ in subviews {

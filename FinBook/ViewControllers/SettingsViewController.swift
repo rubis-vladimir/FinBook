@@ -8,45 +8,24 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
+
     
-    var numberOfTheme: Int = 0
-    
-    @IBOutlet weak var themeSwitch: UISwitch!
-    @IBOutlet weak var themeView: UIView!
-    @IBOutlet weak var categoryView: UIView!
-    
+    @IBOutlet weak var themeSegmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupElements()
-        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
+        
+        themeSegmentedControl.tintColor = UIColor.Palette.black
+        themeSegmentedControl.selectedSegmentIndex = Theme.current.rawValue
+        themeSegmentedControl.addTarget(self, action: #selector(selectTheme), for: .valueChanged)
+        
+        view.backgroundColor = UIColor.Palette.background
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    @objc func selectTheme() {
+        guard let theme = Theme(rawValue: themeSegmentedControl.selectedSegmentIndex) else { return }
         
-        
-    }
-
-    private func setupElements() {
-        themeView.customizeView(model: 2)
-        categoryView.customizeView(model: 2)
-        
-        numberOfTheme = UserDefaultManager.shared.retrieveThemeData()
-        themeSwitch.isOn = numberOfTheme == 0 ? true : false
-    }
-    
-    // MARK: - Table view data source
-
-
-    @IBAction func changeColorTheme(_ sender: UISwitch) {
-        numberOfTheme = sender.isOn ? 0 : 1
-        
-        UserDefaultManager.shared.saveThemeData(value: numberOfTheme)
-        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
-    }
-    
-    
-    @IBAction func editCategories(_ sender: UIButton) {
+        theme.setActive()
+        Notification.Name(rawValue: "didReceiveNotification")
     }
 }

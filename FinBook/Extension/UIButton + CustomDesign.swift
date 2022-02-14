@@ -9,14 +9,13 @@ import UIKit
 
 extension UIButton {
     
-    func customizeButton(cradius: CGFloat, bgc: Bool) {
-        self.layer.cornerRadius = cradius
-        self.layer.borderColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().1).cgColor
-        self.layer.borderWidth = 3
-        
-        if bgc {
-            self.backgroundColor =  ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().0)
-        }
-        self.titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
+    func customizeButton(cradius: CGFloat) {
+        layer.cornerRadius = cradius
+        layer.borderColor = UIColor.gray.cgColor
+        layer.borderWidth = 2
+        backgroundColor =  UIColor.systemMint
+        titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
     }
 }
+
+// hex("7DB2A5")

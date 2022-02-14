@@ -11,10 +11,6 @@ protocol NewTransactionViewControllerDelegate {
     func saveTransaction(_ newTransaction: Transact)
 }
 
-protocol ThemeChange {
-    func changeTheme(answer: Bool)
-}
-
 class AccountViewController: UIViewController {
     
     // MARK: - IBOutlets
@@ -39,19 +35,13 @@ class AccountViewController: UIViewController {
     // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         setupElements()
         setupSearchBar()
 //        getData()
         reloadWalletBalance()
         reloadTransactArrayToFiltered()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: self.navigationController?.navigationBar)
-    }
-    
     
     // MARK: - Private func
     
@@ -61,8 +51,9 @@ class AccountViewController: UIViewController {
 //    }
     
     private func setupElements() {
-        button.customizeButton(cradius: button.frame.width / 2, bgc: true)
+        button.customizeButton(cradius: button.frame.width / 2)
         transactionTableView.backgroundColor = UIColor.clear
+        view.backgroundColor = UIColor.Palette.background
 //        transactionTableView.allowsSelection = false // запрет на выделение строки
     }
     
@@ -168,8 +159,8 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [swipeDelete, swipeEdit])  // "Редак-ть" и "Удалить" по свайпу
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 50 }
-
+    // MARK: - Table View Delegate
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 55 }
 }
 
 // MARK: - NewTransactionViewControllerDelegate
