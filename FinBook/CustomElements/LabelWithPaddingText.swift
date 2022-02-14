@@ -1,5 +1,5 @@
 //
-//  BorderedLabel.swift
+//  LabelWithPaddingText.swift
 //  FinBook
 //
 //  Created by Владимир Рубис on 20.01.2022.

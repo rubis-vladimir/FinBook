@@ -11,7 +11,7 @@ extension UILabel {
     func setupDefaultLabel(view: UIView, title: String) {
         text = title
         font = UIFont(name: "Avenir", size: 20)
-        textColor = .systemGray3
+        textColor = .systemGray
         textAlignment = .center
         numberOfLines = 0
         

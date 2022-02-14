@@ -15,22 +15,19 @@ class ContactPhotoCell: UICollectionViewCell {
     let photoView = UIImageView()
     let nameLabel = LabelWithPaddingText()
     let surnameLabel = LabelWithPaddingText()
-    let stackFullname = UIStackView()
+    let fullNameStack = UIStackView()
     
     //MARK: Adding elements to view
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .systemGray5
+        layer.customizeContactItemView()
+        
         setupElements()
-        customizateCell()
         setupConstraints()
     }
     
     //MARK: - Private functions
-    private func customizateCell() {
-        backgroundColor = .systemGray3
-        layer.customizeContactItemView()
-    }
-    
     private func setupElements() {
         // setup photoView
         photoView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,15 +42,15 @@ class ContactPhotoCell: UICollectionViewCell {
         surnameLabel.textAlignment = .center
         
         // setup stacks
-        stackFullname.addArrangedSubview(surnameLabel)
-        stackFullname.addArrangedSubview(nameLabel)
+        fullNameStack.addArrangedSubview(surnameLabel)
+        fullNameStack.addArrangedSubview(nameLabel)
         
-        stackFullname.translatesAutoresizingMaskIntoConstraints = false
-        stackFullname.axis = .vertical
-        stackFullname.distribution = .fillEqually
-        stackFullname.spacing = 10
-        stackFullname.layer.cornerRadius = 10
-        stackFullname.backgroundColor = .systemGray4
+        fullNameStack.translatesAutoresizingMaskIntoConstraints = false
+        fullNameStack.axis = .vertical
+        fullNameStack.distribution = .fillEqually
+        fullNameStack.spacing = 10
+        fullNameStack.layer.cornerRadius = 10
+        fullNameStack.backgroundColor = .systemGray4
     }
     
     required init?(coder: NSCoder) {
@@ -74,7 +71,7 @@ extension ContactPhotoCell {
         let padding: CGFloat = 10
         
         addSubview(photoView)
-        addSubview(stackFullname)
+        addSubview(fullNameStack)
         
         // photoView constraints
         photoView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
@@ -82,10 +79,10 @@ extension ContactPhotoCell {
         photoView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
         photoView.heightAnchor.constraint(equalTo: photoView.widthAnchor).isActive = true
         
-        // stackFullname constraints
-        stackFullname.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: padding).isActive = true
-        stackFullname.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
-        stackFullname.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
-        stackFullname.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding).isActive = true
+        // fullNameStack constraints
+        fullNameStack.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: padding).isActive = true
+        fullNameStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
+        fullNameStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
+        fullNameStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding).isActive = true
     }
 }

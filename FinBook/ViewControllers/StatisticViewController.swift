@@ -25,14 +25,11 @@ class StatisticViewController: UIViewController {
     //MARK: - Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        statisticsTV.backgroundColor = UIColor.clear
-        withEmptyChartLabel.setupDefaultLabel(view: view,
-                                              title: "Отсутствуют данные по операциям за указанный период")
+        setupElements()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         redrawPieChart()
-        refreshTheme()
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,16 +50,11 @@ class StatisticViewController: UIViewController {
     }
     
     // MARK: - Private function
-    // Screen refresh functions
-    private func refreshTheme() {
-        ColorManager.shared.setThemeColors(mainElement: self.view, secondaryElement: navigationController?.navigationBar)
-    }
-    
     private func redrawPieChart() {
         percentageShares = ChartManager.shared.fillteredForChart(startDate: startDate,
                                                                  finishDate: finishDate,
                                                                  isIncome: isIncome)
-        palitreColors = ColorManager.shared.createPalitreColors()
+        palitreColors = UIColor.Palette.colorsChart()
         statisticsTV.reloadData()
         pieChartView.layer.sublayers?.removeAll()
         
@@ -74,6 +66,13 @@ class StatisticViewController: UIViewController {
                                    colors: palitreColors
             )
         }
+    }
+    
+    private func setupElements() {
+        statisticsTV.backgroundColor = UIColor.clear
+        withEmptyChartLabel.setupDefaultLabel(view: view,
+                                              title: "Отсутствуют данные по операциям за указанный период")
+        view.backgroundColor = UIColor.Palette.background
     }
 }
 

@@ -16,53 +16,49 @@ class ContactInfoCell: UICollectionViewCell {
     private let gitHubLabel = LabelWithPaddingText()
     private let linkedinLabel = LabelWithPaddingText()
     private let telegramLabel = LabelWithPaddingText()
-    private let stackLinks = UIStackView()
+    private let linksStack = UIStackView()
     
     //MARK: Adding elements to view
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupElements()
-        customizateCell()
         setupConstraints()
     }
     
     //MARK: - Private functions
-    private func customizateCell() {
-        backgroundColor = .systemGray3
-        layer.customizeContactItemView()
-    }
-    
     private func setupElements() {
         setupStackViewForLink()
         
-        // setup stackLinks
-        stackLinks.translatesAutoresizingMaskIntoConstraints = false
-        stackLinks.axis = .vertical
-        stackLinks.distribution = .fillEqually
-        stackLinks.spacing = 10
-        stackLinks.layer.cornerRadius = 10
+        linksStack.translatesAutoresizingMaskIntoConstraints = false
+        linksStack.axis = .vertical
+        linksStack.distribution = .fillEqually
+        linksStack.spacing = 10
+        linksStack.layer.cornerRadius = 10
+        
+        backgroundColor = .systemGray5
+        layer.customizeContactItemView()
     }
     
     private func setupStackViewForLink() {
         let headerLinks: [String] = ["e-mail:", "github:", "linkidin:", "telegram:"]
         let linkLabels: [LabelWithPaddingText] = [emailLabel, gitHubLabel, linkedinLabel, telegramLabel]
         
-        for (index, label) in linkLabels.enumerated() {
-            let stackLink = UIStackView()
-            let headerLink = UILabel()
+        for (header, label) in zip(headerLinks, linkLabels) {
+            let linkStack = UIStackView()
+            let headerLinkLabel = UILabel()
             
             label.customizeLinkLabel()
             
-            headerLink.text = headerLinks[index]
-            headerLink.font = UIFont(name: "Avenir", size: 18)
-            headerLink.textColor = UIColor.gray
+            headerLinkLabel.text = header
+            headerLinkLabel.font = UIFont(name: "Avenir", size: 18)
+            headerLinkLabel.textColor = UIColor.gray
             
-            stackLink.addArrangedSubview(headerLink)
-            stackLink.addArrangedSubview(label)
-            stackLink.distribution = .fillEqually
-            stackLink.axis = .vertical
+            linkStack.addArrangedSubview(headerLinkLabel)
+            linkStack.addArrangedSubview(label)
+            linkStack.distribution = .fillEqually
+            linkStack.axis = .vertical
             
-            stackLinks.addArrangedSubview(stackLink)
+            linksStack.addArrangedSubview(linkStack)
         }
     }
     
@@ -84,12 +80,12 @@ extension ContactInfoCell {
     func setupConstraints() {
         let padding: CGFloat = 10
         
-        addSubview(stackLinks)
+        addSubview(linksStack)
         
         // stackLinks constraints
-        stackLinks.topAnchor.constraint(equalTo: self.topAnchor, constant: padding).isActive = true
-        stackLinks.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
-        stackLinks.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
-        stackLinks.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding).isActive = true
+        linksStack.topAnchor.constraint(equalTo: self.topAnchor, constant: padding).isActive = true
+        linksStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
+        linksStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
+        linksStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding).isActive = true
     }
 }

@@ -14,6 +14,7 @@ class ContactsViewController: UICollectionViewController {
     
     private let developers = Bundle.main.decode([Developer].self, from: "developers.json")
     
+    //REFACTORING!!!!!!
     private let sectionInfoIndexPath: IndexPath = [1, 0]
     private let defaultIndexPath: IndexPath = [0, 2]
     private lazy var selectedIndexPath: IndexPath = defaultIndexPath
@@ -24,14 +25,8 @@ class ContactsViewController: UICollectionViewController {
     // MARK: - Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        startLabel.setupDefaultLabel(view: self.view,
-                                     title: "Для отображения контактной информации разработчика нажмите на соответствующую карточку")
-        setupCollectionView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        refreshTheme()
+        
+        setupElements()
     }
     
     // MARK: - UICollectionViewDataSource
@@ -74,13 +69,13 @@ class ContactsViewController: UICollectionViewController {
     }
     
     // MARK: - Private func
-    private func setupCollectionView() {
+    private func setupElements() {
         collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
         collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
-    }
-    
-    private func refreshTheme() {
-        ColorManager.shared.setThemeColors(mainElement: collectionView, secondaryElement: navigationController?.navigationBar)
+        
+        startLabel.setupDefaultLabel(view: self.view,
+                                     title: "Для отображения контактной информации разработчика нажмите на соответствующую карточку")
+        collectionView.backgroundColor = UIColor.Palette.background
     }
 }
 

@@ -35,7 +35,6 @@ class ChartManager {
                         chartTransact[key] = keyExists
                     } else {
                         chartTransact[transact.category ?? "Прочее"] = transact.cost
-                        print(transact.category ?? "Прочее")
                     }
                 }
             }
@@ -44,6 +43,7 @@ class ChartManager {
         let summExpenses = chartTransact.map{$1}.reduce(0, +)
         
         // Возвращаем отсортированный массив кортежей - (категория, процент)
-        return Array(chartTransact.map{(k,v) in (k, v * 100 / summExpenses)}).sorted(by:{$0.1 > $1.1})
+        return Array(chartTransact.map{(k,v) in (k, v * 100 / summExpenses)})
+            .sorted(by:{$0.1 > $1.1})
     }
 }

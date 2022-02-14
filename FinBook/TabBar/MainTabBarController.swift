@@ -8,15 +8,32 @@
 import UIKit
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
+    func changeTheme(answer: Bool) {
+        print(answer)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        drawTabBar(tabBar.items![0])
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateTabBar),
+            name: Notification.Name(rawValue: "didReceiveNotification"),
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateTabBar),
+            name: Notification.Name(UIApplication.didBecomeActiveNotification.rawValue),
+            object: nil)
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         drawTabBar(item)
+    }
+    
+    @objc func updateTabBar() {
+        if let item = tabBar.selectedItem {
+            drawTabBar(item) }
     }
     
     // MARK: - Customization TabBar
@@ -68,14 +85,25 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func drawTabBar(_ item: UITabBarItem) {
-        let horizontalPositionItems = [-10, -23, 23, 10]
+        let offsetItem = tabBar.bounds.width / 25
+        let horizontalPositionItems = [-offsetItem, -offsetItem * 2, offsetItem * 2, offsetItem]
+        let darkColor = UIColor.hex("2C2C2E").cgColor
+        let lightColor = UIColor.hex("E5E5EA").cgColor
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = shapePath(item)
-        shapeLayer.strokeColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getColorDecor().1).cgColor
-        shapeLayer.fillColor = UIColor.systemGray3.cgColor
-        shapeLayer.lineWidth = 3.0
+        shapeLayer.strokeColor = UIColor.gray.cgColor
+        shapeLayer.lineWidth = 1.5
         
+        switch Theme.current {
+        case .system:
+            shapeLayer.fillColor = UIColor.isDark() ? darkColor : lightColor
+        case .light:
+            shapeLayer.fillColor = lightColor
+        case .dark:
+            shapeLayer.fillColor = darkColor
+        }
+    
         if let oldShapeLayer = self.shapeLayer {
             self.tabBar.layer.replaceSublayer(oldShapeLayer, with: shapeLayer)
         } else {
@@ -91,11 +119,13 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
                 item.titlePositionAdjustment.horizontal = 0
             }
         }
+        tabBar.tintColor = UIColor.systemMint
         self.shapeLayer = shapeLayer
         
-        self.tabBar.alpha = 0.0
-        UITabBar.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
-            self.tabBar.alpha = 1.0
-            }, completion: nil)
+//        self.tabBar.alpha = 0.0
+//        UITabBar.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseOut, animations: {
+//            self.tabBar.alpha = 1.0
+//        }
+//                         , completion: nil)
     }
 }

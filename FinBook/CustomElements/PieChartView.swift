@@ -18,9 +18,8 @@ class PieChartView: UIView {
         var alpha = CGFloat(Double.pi / 2)
         var betta = alpha
         
-        for (index, section) in percents.enumerated() {
-            let radian = 2 * Double.pi * section.1 / 100
-            let color = colors[index]
+        for (persent, color) in zip(percents, colors) {
+            let radian = 2 * Double.pi * persent.1 / 100
             betta += CGFloat(radian)
             drawSection(alpha: alpha, betta: betta, color: color)
             alpha = betta
@@ -29,7 +28,7 @@ class PieChartView: UIView {
     
     // Отрисовка секции для соответствующей категории
     private func drawSection(alpha: CGFloat, betta: CGFloat, color: UIColor) {
-        let arcColor: UIColor = ColorManager.shared.hexStringToUIColor(hex: Pallete.getPallete(model: UserDefaultManager.shared.retrieveThemeData()).bgColor)
+        let arcColor = UIColor.systemGray4
         let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
         let radius: CGFloat = max(bounds.width, bounds.height) / 2
         
