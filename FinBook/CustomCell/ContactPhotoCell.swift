@@ -20,8 +20,6 @@ class ContactPhotoCell: UICollectionViewCell {
     //MARK: Adding elements to view
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemGray5
-        layer.customizeContactItemView()
         
         setupElements()
         setupConstraints()
@@ -51,6 +49,9 @@ class ContactPhotoCell: UICollectionViewCell {
         fullNameStack.spacing = 10
         fullNameStack.layer.cornerRadius = 10
         fullNameStack.backgroundColor = .systemGray4
+        
+        backgroundColor = .systemGray5
+        layer.customizeContactItemView()
     }
     
     required init?(coder: NSCoder) {

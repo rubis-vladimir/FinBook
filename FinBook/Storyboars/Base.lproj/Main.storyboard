@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Df6-ib-i8Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Df6-ib-i8Z">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -407,7 +407,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rd0-Cm-jdg" userLabel="Main Stack View">
-                                <rect key="frame" x="10" y="45" width="408" height="241"/>
+                                <rect key="frame" x="10" y="55" width="408" height="241"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rmD-g5-h44" userLabel="Cast Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="408" height="25.666666666666668"/>
@@ -495,9 +495,9 @@
                                 </subviews>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="i9f-g9-0tg">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="31"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="kLy-Ry-rZW"/>
+                                    <constraint firstAttribute="height" constant="40" id="kLy-Ry-rZW"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Расход"/>
@@ -508,7 +508,7 @@
                                 </connections>
                             </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k43-i1-ScQ" userLabel="Button Stack View">
-                                <rect key="frame" x="10" y="296" width="408" height="40"/>
+                                <rect key="frame" x="10" y="316" width="408" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" role="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-KB-tTf">
                                         <rect key="frame" x="0.0" y="1" width="199" height="38"/>
@@ -556,7 +556,7 @@
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="10" id="U4Z-6Z-NN0"/>
                             <constraint firstItem="rd0-Cm-jdg" firstAttribute="top" secondItem="i9f-g9-0tg" secondAttribute="bottom" constant="15" id="WHl-9y-0ot"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="rd0-Cm-jdg" secondAttribute="trailing" constant="10" id="b6m-B2-3uo"/>
-                            <constraint firstItem="k43-i1-ScQ" firstAttribute="top" secondItem="rd0-Cm-jdg" secondAttribute="bottom" constant="10" id="eRQ-Zp-6vW"/>
+                            <constraint firstItem="k43-i1-ScQ" firstAttribute="top" secondItem="rd0-Cm-jdg" secondAttribute="bottom" constant="20" id="eRQ-Zp-6vW"/>
                             <constraint firstItem="k43-i1-ScQ" firstAttribute="leading" secondItem="C4E-1m-qLQ" secondAttribute="leading" constant="10" id="fzD-d5-84n"/>
                             <constraint firstItem="C4E-1m-qLQ" firstAttribute="trailing" secondItem="i9f-g9-0tg" secondAttribute="trailing" id="px5-dA-BnM"/>
                             <constraint firstItem="k43-i1-ScQ" firstAttribute="trailing" secondItem="C4E-1m-qLQ" secondAttribute="trailing" constant="-10" id="q4f-1O-THX"/>

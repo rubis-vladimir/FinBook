@@ -45,16 +45,11 @@ class AccountViewController: UIViewController {
     
     // MARK: - Private func
     
-//    //  Загрузка данных из CoreData
-//    private func getData() {
-//        self.transactions = StorageManager.shared.fetchData()
-//    }
     
     private func setupElements() {
         button.customizeButton(cradius: button.frame.width / 2)
         transactionTableView.backgroundColor = UIColor.clear
         view.backgroundColor = UIColor.Palette.background
-//        transactionTableView.allowsSelection = false // запрет на выделение строки
     }
     
     // расчет и вывод баланса кошелька по транзакциям
@@ -160,7 +155,7 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - Table View Delegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 55 }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 60 }
 }
 
 // MARK: - NewTransactionViewControllerDelegate

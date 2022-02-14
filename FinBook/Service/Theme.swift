@@ -55,7 +55,6 @@ extension Theme {
         
         // Устанавливаем активную тему для всех окон приложения
         UIApplication.shared.windows
-//            .filter { $0 != themeWindow }
             .forEach { $0.overrideUserInterfaceStyle = userInterfaceStyle }
         
         NotificationCenter.default.post(Notification(name: Notification.Name("didReceiveNotification")))

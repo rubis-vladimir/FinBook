@@ -103,8 +103,10 @@ extension UIViewController {
         
         startDatePicker.datePickerMode = .date
         startDatePicker.contentHorizontalAlignment = .center
+        startDatePicker.locale = Locale(identifier: "ru_RU")
         finishDatePicker.datePickerMode = .date
         finishDatePicker.contentHorizontalAlignment = .center
+        finishDatePicker.locale = Locale(identifier: "ru_RU")
         
         // To dynamically calculate the size and position of our views
         startDatePicker.translatesAutoresizingMaskIntoConstraints = false
