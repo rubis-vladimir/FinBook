@@ -8,16 +8,15 @@
 import Foundation
 
 class DateConvertManager {
-    static let shared = DateConvertManager()
     
-    private let dateFormatter = DateFormatter()
-    
-    func convertDateToStr(date: Date?) -> String {
+    static func convertDateToStr(_ date: Date?) -> String {
+        let dateFormatter = DateFormatter()
+        
         guard let date2 = date else { return "error while wrapping Date"}
         
         dateFormatter.dateStyle = .short
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        dateFormatter.dateFormat = "HH:mm  dd.MMMyyyy"
+        dateFormatter.dateFormat = "HH:mm  dd.MMMyy"
         let stringDate = dateFormatter.string(from: date2)
         
         return stringDate
