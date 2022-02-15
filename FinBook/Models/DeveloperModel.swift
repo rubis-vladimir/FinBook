@@ -10,9 +10,24 @@ import UIKit
 struct Developer: Decodable, Hashable {
     var name: String
     var surname: String
-    var email: String
-    var gitHub: String
     var photo: String
-    var linkedin: String
-    var telegram: String
+    var links: Links
+    
+    struct Links: Decodable, Hashable {
+        var email: String
+        var gitHub: String
+        var linkedin: String
+        var telegram: String
+    }
 }
+
+//struct Links: Decodable, Hashable {
+//    var email: String
+//    var gitHub: String
+//    var linkedin: String
+//    var telegram: String
+//}
+
+//struct JSONContainer {
+//    let
+//}

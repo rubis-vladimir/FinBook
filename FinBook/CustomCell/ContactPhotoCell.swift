@@ -33,10 +33,11 @@ class ContactPhotoCell: UICollectionViewCell {
         photoView.clipsToBounds = true
         
         // setup labels
-        let font = UIFont(name: "Avenir", size: 18)
-        nameLabel.font = font
+//        let font = UIFont(name: "Avenir", size: 17)
+//        nameLabel.font = font
+//        nameLabel.font = nameLabel.font.withSize(18)
         nameLabel.textAlignment = .center
-        surnameLabel.font = font
+//        surnameLabel.font = surnameLabel.font.withSize(18)
         surnameLabel.textAlignment = .center
         
         // setup stacks

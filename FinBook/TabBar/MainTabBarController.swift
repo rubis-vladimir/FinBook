@@ -14,7 +14,9 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tabBar.itemPositioning = .fill
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateTabBar),
@@ -85,8 +87,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func drawTabBar(_ item: UITabBarItem) {
-        let offsetItem = tabBar.bounds.width / 25
-        let horizontalPositionItems = [-offsetItem, -offsetItem * 2, offsetItem * 2, offsetItem]
+        let offsetItem = tabBar.bounds.width / 15
+        let horizontalPositionItems = [0, -offsetItem , offsetItem , 0]
         let darkColor = UIColor.hex("2C2C2E").cgColor
         let lightColor = UIColor.hex("E5E5EA").cgColor
         

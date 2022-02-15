@@ -16,7 +16,9 @@ class ContactsViewController: UICollectionViewController {
     
     //REFACTORING!!!!!!
     private let sectionInfoIndexPath: IndexPath = [1, 0]
-    private let defaultIndexPath: IndexPath = [0, 2]
+    private var defaultIndexPath: IndexPath {
+        [0, developers.count + 1]
+    }
     private lazy var selectedIndexPath: IndexPath = defaultIndexPath
     private var isSelected: Bool = false
     private var itemsPerRow: CGFloat = 1
@@ -25,7 +27,6 @@ class ContactsViewController: UICollectionViewController {
     // MARK: - Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupElements()
     }
     

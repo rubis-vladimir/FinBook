@@ -33,7 +33,7 @@ extension Theme {
     
     // Текущая тема приложения
     static var current: Theme {
-        Theme(rawValue: appTheme) ?? .system
+       Theme(rawValue: appTheme) ?? .system
     }
 }
 
@@ -53,11 +53,13 @@ extension Theme {
         // Сохраняем активную тему
         save()
         
+        NotificationCenter.default.post(Notification(name: Notification.Name("didReceiveNotification")))
+        
         // Устанавливаем активную тему для всех окон приложения
         UIApplication.shared.windows
             .forEach { $0.overrideUserInterfaceStyle = userInterfaceStyle }
         
-        NotificationCenter.default.post(Notification(name: Notification.Name("didReceiveNotification")))
+        
     }
 }
 

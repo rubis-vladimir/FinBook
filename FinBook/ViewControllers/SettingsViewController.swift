@@ -26,6 +26,5 @@ class SettingsViewController: UITableViewController {
         guard let theme = Theme(rawValue: themeSegmentedControl.selectedSegmentIndex) else { return }
         
         theme.setActive()
-//        Notification.Name(rawValue: "didReceiveNotification")
     }
 }

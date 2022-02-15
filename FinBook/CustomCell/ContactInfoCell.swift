@@ -50,7 +50,7 @@ class ContactInfoCell: UICollectionViewCell {
             label.customizeLinkLabel()
             
             headerLinkLabel.text = header
-            headerLinkLabel.font = UIFont(name: "Avenir", size: 18)
+//            headerLinkLabel.font = UIFont(name: "Avenir", size: 18)
             headerLinkLabel.textColor = UIColor.gray
             
             linkStack.addArrangedSubview(headerLinkLabel)
@@ -68,10 +68,10 @@ class ContactInfoCell: UICollectionViewCell {
     
     //MARK: data filling function
     func configure(with developer: Developer) {
-        emailLabel.text = developer.email
-        gitHubLabel.text = developer.gitHub
-        linkedinLabel.text = developer.linkedin
-        telegramLabel.text = developer.telegram
+        emailLabel.text = developer.links.email
+        gitHubLabel.text = developer.links.gitHub
+        linkedinLabel.text = developer.links.linkedin
+        telegramLabel.text = developer.links.telegram
     }
 }
 

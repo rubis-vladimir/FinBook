@@ -14,6 +14,7 @@ extension UIButton {
         layer.borderColor = UIColor.gray.cgColor
         layer.borderWidth = 2
         backgroundColor =  UIColor.systemMint
+        layer.masksToBounds = true
         titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
     }
 }
