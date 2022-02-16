@@ -13,8 +13,8 @@ class ContactPhotoCell: UICollectionViewCell {
     static var reuseId: String = "contactPhotoCell"
     
     let photoView = UIImageView()
-    let nameLabel = LabelWithPaddingText()
-    let surnameLabel = LabelWithPaddingText()
+    let nameLabel = UILabel()
+    let surnameLabel = UILabel()
     let fullNameStack = UIStackView()
     
     //MARK: Adding elements to view
@@ -52,7 +52,7 @@ class ContactPhotoCell: UICollectionViewCell {
         fullNameStack.backgroundColor = .systemGray4
         
         backgroundColor = .systemGray5
-        layer.customizeContactItemView()
+        layer.cornerRadius = 10
     }
     
     required init?(coder: NSCoder) {

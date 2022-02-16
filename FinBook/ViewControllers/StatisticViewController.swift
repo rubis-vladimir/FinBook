@@ -71,7 +71,8 @@ class StatisticViewController: UIViewController {
     private func setupElements() {
         statisticsTV.backgroundColor = UIColor.clear
         withEmptyChartLabel.setupDefaultLabel(view: view,
-                                              title: "Отсутствуют данные по операциям за указанный период")
+                                              title: "Отсутствуют данные по операциям за указанный период",
+                                              inCenter: true)
         view.backgroundColor = UIColor.Palette.background
     }
 }

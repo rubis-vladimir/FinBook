@@ -44,8 +44,7 @@ class ContactsViewController: UICollectionViewController {
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactInfoCell.reuseId, for: indexPath) as! ContactInfoCell
             cell.configure(with: developer)
-            cell.isHidden = isSelected ? false : true
-            startLabel.isHidden = isSelected ? true : false
+            cell.updateCell(isSelected)
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactPhotoCell.reuseId, for: indexPath) as! ContactPhotoCell
@@ -74,8 +73,8 @@ class ContactsViewController: UICollectionViewController {
         collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
         collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
         
-        startLabel.setupDefaultLabel(view: self.view,
-                                     title: "Для отображения контактной информации разработчика нажмите на соответствующую карточку")
+//        startLabel.setupDefaultLabel(view: self.collectionView.sec,
+//                                     title: "Для отображения контактной информации разработчика нажмите на соответствующую карточку")
         collectionView.backgroundColor = UIColor.Palette.background
     }
 }
@@ -110,15 +109,23 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
         let availableWidth = collectionView.frame.width - paddingWidth
         let widthPerItem = availableWidth / itemsPerRow
         
-        let heightStackInItem: CGFloat = 55
+        let heightStackInItem: CGFloat = 65
         let paddingItem: CGFloat = paddingSection / 2
         let numberOfDeveloperLink: CGFloat = 4
         
-        var heightPerItem: CGFloat = widthPerItem + heightStackInItem + paddingItem
+        var heightPerItem: CGFloat = widthPerItem + heightStackInItem - 5
         
         if itemPerRow == 1 {
             heightPerItem = heightStackInItem * numberOfDeveloperLink + paddingItem * (numberOfDeveloperLink + 1)
         }
         return CGSize(width: widthPerItem, height: heightPerItem)
+    }
+}
+
+extension ContactsViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        
+        UIApplication.shared.open(URL)
+        return false
     }
 }

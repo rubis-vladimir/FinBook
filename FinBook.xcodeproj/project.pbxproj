@@ -18,7 +18,7 @@
 		7D0E84312798784F00349AD4 /* ContactPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */; };
 		7D39A1AE2799F27F00940EA3 /* LabelWithPaddingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */; };
 		7D39A1D927A6AA7200940EA3 /* CALayer + Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */; };
-		7D39A1DF27A9981500940EA3 /* UILabel + SettingDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1DE27A9981500940EA3 /* UILabel + SettingDefault.swift */; };
+		7D39A1DF27A9981500940EA3 /* UILabel + Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1DE27A9981500940EA3 /* UILabel + Default.swift */; };
 		7D39A20427AFD50F00940EA3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20327AFD50F00940EA3 /* Theme.swift */; };
 		7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20527AFD5B500940EA3 /* Persist.swift */; };
 		7D39A20C27B1B49700940EA3 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */; };
@@ -58,7 +58,7 @@
 		7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPhotoCell.swift; sourceTree = "<group>"; };
 		7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithPaddingText.swift; sourceTree = "<group>"; };
 		7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Customization.swift"; sourceTree = "<group>"; };
-		7D39A1DE27A9981500940EA3 /* UILabel + SettingDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + SettingDefault.swift"; sourceTree = "<group>"; };
+		7D39A1DE27A9981500940EA3 /* UILabel + Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Default.swift"; sourceTree = "<group>"; };
 		7D39A20327AFD50F00940EA3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7D39A20527AFD5B500940EA3 /* Persist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
 		7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 				7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */,
 				7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */,
 				7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */,
-				7D39A1DE27A9981500940EA3 /* UILabel + SettingDefault.swift */,
+				7D39A1DE27A9981500940EA3 /* UILabel + Default.swift */,
 				7D869F9527B44A6B00E2D29C /* UIColor +.swift */,
 			);
 			path = Extension;
@@ -335,7 +335,7 @@
 				7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */,
 				7D5CF70B277B80FA00FD5D11 /* PaletteModel.swift in Sources */,
 				6887F41B26DD568200910C4A /* CategoriesView.swift in Sources */,
-				7D39A1DF27A9981500940EA3 /* UILabel + SettingDefault.swift in Sources */,
+				7D39A1DF27A9981500940EA3 /* UILabel + Default.swift in Sources */,
 				7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */,
 				7D5CF711277B986E00FD5D11 /* SettingsViewController.swift in Sources */,
 				7DF834EA26DC045A009EC940 /* CategoryService.swift in Sources */,

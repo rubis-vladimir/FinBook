@@ -1,18 +1,10 @@
-////
-////  Theme.swift
-////  FinBook
-////
-////  Created by Владимир Рубис on 06.02.2022.
-////
 //
-//import UIKit
+//  Theme.swift
+//  FinBook
 //
-//enum Theme: Int, CaseIterable {
-////    case system = 0
-//    case light
-//    case dark
-//}
+//  Created by Владимир Рубис on 06.02.2022.
 //
+
 import UIKit
 
 enum Theme: Int, CaseIterable {

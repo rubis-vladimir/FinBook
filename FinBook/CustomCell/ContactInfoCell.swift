@@ -7,15 +7,23 @@
 
 import UIKit
 
+enum TypeURL {
+    case email
+    case telegram
+    case browser
+}
+
 class ContactInfoCell: UICollectionViewCell {
     
     //MARK: - Properties
     static var reuseId: String = "contactInfoCell"
     
-    private let emailLabel = LabelWithPaddingText()
-    private let gitHubLabel = LabelWithPaddingText()
-    private let linkedinLabel = LabelWithPaddingText()
-    private let telegramLabel = LabelWithPaddingText()
+    private let defaultLabel = UILabel()
+    
+    private let emailTextView = UITextView()
+    private let gitHubTextView = UITextView()
+    private let linkedinTextView = UITextView()
+    private let telegramTextView = UITextView()
     private let linksStack = UIStackView()
     
     //MARK: Adding elements to view
@@ -29,29 +37,25 @@ class ContactInfoCell: UICollectionViewCell {
     private func setupElements() {
         setupStackViewForLink()
         
-        linksStack.translatesAutoresizingMaskIntoConstraints = false
-        linksStack.axis = .vertical
-        linksStack.distribution = .fillEqually
-        linksStack.spacing = 10
-        linksStack.layer.cornerRadius = 10
+        defaultLabel.setupDefaultLabel(view: self,
+                                       title: "Для отображения контактной информации разработчика нажмите на соответствующую карточку",
+                                       inCenter: false)
         
-        backgroundColor = .systemGray5
-        layer.customizeContactItemView()
+        layer.cornerRadius = 10
     }
     
     private func setupStackViewForLink() {
         let headerLinks: [String] = ["e-mail:", "github:", "linkidin:", "telegram:"]
-        let linkLabels: [LabelWithPaddingText] = [emailLabel, gitHubLabel, linkedinLabel, telegramLabel]
+        let linkLabels: [UITextView] = [emailTextView, gitHubTextView, linkedinTextView, telegramTextView]
         
         for (header, label) in zip(headerLinks, linkLabels) {
             let linkStack = UIStackView()
             let headerLinkLabel = UILabel()
             
-            label.customizeLinkLabel()
-            
+            label.backgroundColor = .systemGray4
+            label.layer.cornerRadius = 10
             headerLinkLabel.text = header
-//            headerLinkLabel.font = UIFont(name: "Avenir", size: 18)
-            headerLinkLabel.textColor = UIColor.gray
+            headerLinkLabel.textColor = UIColor.systemGray
             
             linkStack.addArrangedSubview(headerLinkLabel)
             linkStack.addArrangedSubview(label)
@@ -60,6 +64,30 @@ class ContactInfoCell: UICollectionViewCell {
             
             linksStack.addArrangedSubview(linkStack)
         }
+        
+        linksStack.translatesAutoresizingMaskIntoConstraints = false
+        linksStack.axis = .vertical
+        linksStack.distribution = .fillEqually
+        linksStack.spacing = 10
+        linksStack.layer.cornerRadius = 10
+    }
+    
+    
+    private func getLink(_ string: String, type: TypeURL) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: string)
+        var startPartURL: String = ""
+        switch type {
+        case .email:
+            startPartURL = "mailto:"
+        case .telegram:
+            startPartURL = "https://t.me/"
+        default:
+            startPartURL = "https://www."
+        }
+        attributedString.addAttribute(.link,
+                                      value: "\(startPartURL)" + "\(string)",
+                                      range: NSRange(location: 0, length: string.count))
+        return attributedString
     }
     
     required init?(coder: NSCoder) {
@@ -68,10 +96,16 @@ class ContactInfoCell: UICollectionViewCell {
     
     //MARK: data filling function
     func configure(with developer: Developer) {
-        emailLabel.text = developer.links.email
-        gitHubLabel.text = developer.links.gitHub
-        linkedinLabel.text = developer.links.linkedin
-        telegramLabel.text = developer.links.telegram
+        emailTextView.attributedText = getLink(developer.links.email, type: .email)
+        gitHubTextView.attributedText = getLink(developer.links.gitHub, type: .browser)
+        linkedinTextView.attributedText = getLink(developer.links.linkedin, type: .browser)
+        telegramTextView.attributedText = getLink(developer.links.telegram, type: .telegram)
+    }
+    
+    func updateCell(_ isSelected: Bool) {
+        defaultLabel.isHidden = isSelected ? true : false
+        linksStack.isHidden = isSelected ?  false : true
+        backgroundColor = isSelected ? .systemGray5 : UIColor.Palette.background
     }
 }
 

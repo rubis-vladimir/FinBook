@@ -21,5 +21,4 @@ class DateConvertManager {
         
         return stringDate
     }
-    
 }
