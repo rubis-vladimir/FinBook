@@ -148,12 +148,7 @@ extension UIViewController {
         
         startDatePicker.widthAnchor.constraint(equalTo: finishDatePicker.widthAnchor).isActive = true
         
-//        if alert.view.bounds.width > 375 {
-            stackDateRange.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor, constant: 10).isActive = true
-            stackDateRange.trailingAnchor.constraint(equalTo: alert.view.trailingAnchor, constant: -10).isActive = true
-//        } else {
-//            stackDateRange.centerXAnchor.constraint(equalTo: alert.view.centerXAnchor).isActive = true
-//            stackDateRange.widthAnchor.constraint(equalToConstant: 200).isActive = true
-//        }
+        stackDateRange.leadingAnchor.constraint(equalTo: alert.view.leadingAnchor, constant: 10).isActive = true
+        stackDateRange.trailingAnchor.constraint(equalTo: alert.view.trailingAnchor, constant: -10).isActive = true
     }
 }

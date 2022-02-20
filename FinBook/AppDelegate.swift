@@ -15,13 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        NotificationCenter.default.post(Notification(name: Notification.Name("didReceiveNotification")))
+//        NotificationCenter.default.post(Notification(name: Notification.Name("didReceiveNotification")))
         DispatchQueue.main.async {
             Theme.current.setActive()
         }
         return true
-    }
-    internal func applicationDidBecomeActive(_ application: UIApplication) {
-        NotificationCenter.default.post(Notification(name: Notification.Name("didReceiveNotification")))
     }
 }

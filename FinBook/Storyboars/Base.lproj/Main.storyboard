@@ -257,7 +257,7 @@
                                                                         </attributes>
                                                                     </fragment>
                                                                 </attributedString>
-                                                                <imageReference key="image" image="pencil.and.outline" catalog="system" symbolScale="large"/>
+                                                                <imageReference key="image" image="dele" symbolScale="large"/>
                                                             </state>
                                                         </button>
                                                     </subviews>
@@ -731,8 +731,8 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="business card" width="240" height="240"/>
+        <image name="dele" width="128" height="128"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
-        <image name="pencil.and.outline" catalog="system" width="128" height="128"/>
         <image name="pie chart" width="240" height="240"/>
         <image name="plus" width="60" height="60"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>

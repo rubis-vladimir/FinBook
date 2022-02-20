@@ -39,7 +39,7 @@ class StatisticViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func parametersChart() {
-        self.setAlert(isIncome: isIncome,
+        setAlert(isIncome: isIncome,
                       startDate: startDate,
                       finishDate: finishDate) {(isIncome, startDate, finishDate) in
             self.isIncome = isIncome

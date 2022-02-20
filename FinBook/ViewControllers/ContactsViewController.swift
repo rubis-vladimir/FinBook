@@ -10,18 +10,15 @@ import UIKit
 class ContactsViewController: UICollectionViewController {
     
     //MARK: - Properties
-    private let startLabel = UILabel()
     
-    private let developers = Bundle.main.decode([Developer].self, from: "developers.json")
+    private let dataFetcher = DataFetcher()
     
-    //REFACTORING!!!!!!
-    private let sectionInfoIndexPath: IndexPath = [1, 0]
+    private var developers = [Developer]()
     private var defaultIndexPath: IndexPath {
         [0, developers.count + 1]
     }
     private lazy var selectedIndexPath: IndexPath = defaultIndexPath
     private var isSelected: Bool = false
-    private var itemsPerRow: CGFloat = 1
     private let paddingSection: CGFloat = 20
     
     // MARK: - Override functions
@@ -64,7 +61,7 @@ class ContactsViewController: UICollectionViewController {
                 isSelected = true
                 selectedIndexPath = indexPath
             }
-            collectionView.reloadItems(at: [sectionInfoIndexPath])
+            collectionView.reloadItems(at: [[1, 0]])
         }
     }
     
@@ -72,10 +69,11 @@ class ContactsViewController: UICollectionViewController {
     private func setupElements() {
         collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
         collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
-        
-//        startLabel.setupDefaultLabel(view: self.collectionView.sec,
-//                                     title: "Для отображения контактной информации разработчика нажмите на соответствующую карточку")
         collectionView.backgroundColor = UIColor.Palette.background
+        
+        dataFetcher.fetchDevelopers { (developers) in
+            self.developers = developers ?? []
+        }
     }
 }
 
@@ -87,12 +85,12 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var itemsPerRow: CGFloat = 2
+        
         switch indexPath.section {
         case 1:
             itemsPerRow = 1
         default:
-            itemsPerRow = 2
-            
             // change item transporency when selecting
             guard let cell = collectionView.cellForItem(at: indexPath) as? ContactPhotoCell else {
                 return calculateSizeForItem(itemPerRow: itemsPerRow)
@@ -105,23 +103,22 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     
     // the function calculates the dimensions of the item
     private func calculateSizeForItem(itemPerRow: CGFloat) -> CGSize {
-        let paddingWidth = paddingSection * (itemsPerRow + 1)
+        let heightLink: CGFloat = 65
+        let numberOfLinks: CGFloat = 4
+        
+        let paddingWidth = paddingSection * (itemPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingWidth
-        let widthPerItem = availableWidth / itemsPerRow
+        let widthPerItem = availableWidth / itemPerRow
         
-        let heightStackInItem: CGFloat = 65
-        let paddingItem: CGFloat = paddingSection / 2
-        let numberOfDeveloperLink: CGFloat = 4
-        
-        var heightPerItem: CGFloat = widthPerItem + heightStackInItem - 5
-        
+        var heightPerItem: CGFloat = widthPerItem + heightLink
         if itemPerRow == 1 {
-            heightPerItem = heightStackInItem * numberOfDeveloperLink + paddingItem * (numberOfDeveloperLink + 1)
+            heightPerItem = heightLink * numberOfLinks + paddingSection / 2 * (numberOfLinks + 1)
         }
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
 }
 
+// MARK: - Link Navigation
 extension ContactsViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         

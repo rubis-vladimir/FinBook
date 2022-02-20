@@ -46,4 +46,7 @@ class ChartManager {
         return Array(chartTransact.map{(k,v) in (k, v * 100 / summExpenses)})
             .sorted(by:{$0.1 > $1.1})
     }
+    
+    // Нужен ли пустой инициализатор?
+    private init() {}
 }

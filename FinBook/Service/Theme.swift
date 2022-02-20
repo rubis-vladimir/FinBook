@@ -8,29 +8,28 @@
 import UIKit
 
 enum Theme: Int, CaseIterable {
-    case system = 0
-    case light
-    case dark
+    case system, light, dark
 }
 
 extension Theme {
-    
+    // Обертка свойства для сохранения в UserDefaults
     @Persist(key: "app_theme", defaultValue: Theme.system.rawValue)
     private static var appTheme: Int
     
-    // Сохранение темы в UserDefaults
-    func save() {
+    // Сохранение активной темы
+    private func save() {
         Theme.appTheme = self.rawValue
     }
     
-    // Текущая тема приложения
+    // Текущая тема в приложении
     static var current: Theme {
        Theme(rawValue: appTheme) ?? .system
     }
 }
 
+// MARK: - Save and Update theme in App
+
 extension Theme {
-    
     var userInterfaceStyle: UIUserInterfaceStyle {
         switch self {
         case .light: return .light
@@ -39,19 +38,12 @@ extension Theme {
         }
     }
     
-
-    
     func setActive() {
-        // Сохраняем активную тему
         save()
-        
-        NotificationCenter.default.post(Notification(name: Notification.Name("didReceiveNotification")))
         
         // Устанавливаем активную тему для всех окон приложения
         UIApplication.shared.windows
             .forEach { $0.overrideUserInterfaceStyle = userInterfaceStyle }
-        
-        
     }
 }
 

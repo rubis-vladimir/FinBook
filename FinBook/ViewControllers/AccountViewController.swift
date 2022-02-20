@@ -25,7 +25,7 @@ class AccountViewController: UIViewController {
     private var timer: Timer?
     private let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
-        guard let text = searchController.searchBar.text else { return false}
+        guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
     }
     private var isFiltering: Bool {
