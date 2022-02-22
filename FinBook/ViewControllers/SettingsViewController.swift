@@ -23,10 +23,9 @@ class SettingsViewController: UITableViewController {
     }
     
     private func setupElements() {
-        themeSegmentedControl.tintColor = UIColor.Palette.black
         themeSegmentedControl.selectedSegmentIndex = Theme.current.rawValue
         themeSegmentedControl.addTarget(self, action: #selector(selectTheme), for: .valueChanged)
         
-        view.backgroundColor = UIColor.Palette.background
+        view.backgroundColor = Palette.background
     }
 }

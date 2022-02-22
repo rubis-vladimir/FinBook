@@ -32,7 +32,7 @@ class ContactsViewController: UICollectionViewController {
     private func setupElements() {
         collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
         collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
-        collectionView.backgroundColor = UIColor.Palette.background
+        collectionView.backgroundColor = Palette.background
         
         dataFetcher.fetchDevelopers { (developers) in
             self.developers = developers ?? []

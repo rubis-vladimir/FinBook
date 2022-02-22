@@ -15,11 +15,6 @@ extension UIColor {
         }
     }
     
-    static func isDark() -> Bool {
-        let traitCollection = UITraitCollection.current
-        return traitCollection.userInterfaceStyle == .dark ? true : false
-    }
-    
     static func hex(_ hexString: String) -> UIColor {
         
         var hexString: String = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -67,32 +62,4 @@ extension UIColor {
     //        }
     //        return paletteColors
     //    }
-    
-    struct Palette {
-        
-        static let white = UIColor.color(light: .white, dark: .black)
-        static let black = UIColor.color(light: .black, dark: .white)
-        
-        static let background = UIColor.color(light: .white, dark: .hex("1b1b1d"))
-        static let secondaryBackground = UIColor(named: "secondaryBackground") ?? .black
-        static let tabbarBG = UIColor.color(light: .hex("E5E5EA"), dark: .hex("2C2C2E"))
-        
-        static func colorsChart() -> [UIColor] {
-            var osTheme: UIUserInterfaceStyle {
-                return UIScreen.main.traitCollection.userInterfaceStyle
-            }
-            
-            let colors = osTheme == .dark
-            ? PaletteModel.getPalette(model: 0)
-            : PaletteModel.getPalette(model: 1)
-            
-            return UIColor.convertType(colors)
-        }
-        
-        static func cgColor() -> CGColor {
-            return UIColor.Palette.tabbarBG.cgColor
-            }
-        
-        
-    }
 }

@@ -47,7 +47,7 @@ class AccountViewController: UIViewController {
     private func setupElements() {
         button.customizeButton(cradius: button.frame.width / 2)
         transactionTableView.backgroundColor = UIColor.clear
-        view.backgroundColor = UIColor.Palette.background
+        view.backgroundColor = Palette.background
     }
     
     // расчет и вывод баланса кошелька по транзакциям

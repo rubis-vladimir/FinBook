@@ -54,7 +54,7 @@ class StatisticViewController: UIViewController {
         percentageShares = ChartManager.shared.fillteredForChart(startDate: startDate,
                                                                  finishDate: finishDate,
                                                                  isIncome: isIncome)
-        palitreColors = UIColor.Palette.colorsChart()
+        palitreColors = Palette.getChartPalette()
 
         pieChartView.layer.sublayers?.removeAll()
         statisticsTV.reloadData()
@@ -70,7 +70,7 @@ class StatisticViewController: UIViewController {
     }
     
     private func setupElements() {
-        view.backgroundColor = UIColor.Palette.background
+        view.backgroundColor = Palette.background
         statisticsTV.backgroundColor = UIColor.clear
         
         withEmptyChartLabel.setupDefaultLabel(view: view,

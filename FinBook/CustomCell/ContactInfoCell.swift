@@ -47,7 +47,7 @@ class ContactInfoCell: UICollectionViewCell {
     func updateCell(_ isSelected: Bool) {
         defaultLabel.isHidden = isSelected ? true : false
         linksStack.isHidden = isSelected ?  false : true
-        backgroundColor = isSelected ? .systemGray5 : UIColor.Palette.background
+        backgroundColor = isSelected ? .systemGray5 : Palette.background
     }
     
     //MARK: - Private funcs
