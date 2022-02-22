@@ -49,14 +49,15 @@ class StatisticViewController: UIViewController {
         }
     }
     
-    // MARK: - Private function
+    // MARK: - Private funcs
     private func redrawPieChart() {
         percentageShares = ChartManager.shared.fillteredForChart(startDate: startDate,
                                                                  finishDate: finishDate,
                                                                  isIncome: isIncome)
         palitreColors = UIColor.Palette.colorsChart()
-        statisticsTV.reloadData()
+
         pieChartView.layer.sublayers?.removeAll()
+        statisticsTV.reloadData()
         
         if percentageShares.isEmpty {
             withEmptyChartLabel.isHidden = false
@@ -69,13 +70,15 @@ class StatisticViewController: UIViewController {
     }
     
     private func setupElements() {
+        view.backgroundColor = UIColor.Palette.background
         statisticsTV.backgroundColor = UIColor.clear
+        
         withEmptyChartLabel.setupDefaultLabel(view: view,
                                               title: "Отсутствуют данные по операциям за указанный период",
                                               inCenter: true)
-        view.backgroundColor = UIColor.Palette.background
     }
 }
+
 
 //MARK: - UITableViewDataSourse
 extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
@@ -93,6 +96,4 @@ extension StatisticViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 35 }
 }

@@ -165,12 +165,12 @@
         <scene sceneID="9IY-y4-g1B">
             <objects>
                 <tabBarController id="Df6-ib-i8Z" customClass="MainTabBarController" customModule="FinBook" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" tag="2" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="centered" itemWidth="60" id="MeL-FY-TNM" customClass="CustomTabBar" customModule="FinBook" customModuleProvider="target">
+                    <tabBar key="tabBar" tag="2" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" itemPositioning="fill" id="MeL-FY-TNM" customClass="CustomTabBar" customModule="FinBook" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" systemColor="linkColor"/>
-                        <color key="selectedImageTintColor" systemColor="labelColor"/>
+                        <color key="tintColor" systemColor="linkColor"/>
+                        <color key="barTintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="zRa-k1-ipG" kind="relationship" relationship="viewControllers" id="wMe-ud-Na7"/>
@@ -315,18 +315,18 @@
                                 </constraints>
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="chartCell" rowHeight="25" id="pSY-Eo-zgU" customClass="ChartCell" customModule="FinBook" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="328" height="25"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="chartCell" rowHeight="35" id="pSY-Eo-zgU" customClass="ChartCell" customModule="FinBook" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="328" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pSY-Eo-zgU" id="7jK-0Y-AnN">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="25"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="txc-1Q-n5E">
-                                                    <rect key="frame" x="20" y="5" width="288" height="15"/>
+                                                    <rect key="frame" x="20" y="5" width="288" height="25"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c8J-45-6Q6">
-                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="15"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                             <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="25" id="IyB-pg-VSC"/>
@@ -334,7 +334,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzD-2F-Xmt">
-                                                            <rect key="frame" x="32" y="0.0" width="65" height="15"/>
+                                                            <rect key="frame" x="32" y="0.0" width="65" height="25"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="65" placeholder="YES" id="sNe-bP-DVy"/>
                                                             </constraints>
@@ -343,7 +343,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adH-eZ-Hqt">
-                                                            <rect key="frame" x="104" y="0.0" width="184" height="15"/>
+                                                            <rect key="frame" x="104" y="0.0" width="184" height="25"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>

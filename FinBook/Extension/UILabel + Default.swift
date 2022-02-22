@@ -13,17 +13,18 @@ extension UILabel {
         textColor = .systemGray
         textAlignment = .center
         numberOfLines = 0
+        translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(self)
         
         // Setup constraints
-        translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        widthAnchor.constraint(equalToConstant: view.bounds.width * 0.7).isActive = true
+        
         if inCenter {
         topAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         } else {
             topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
         }
-        widthAnchor.constraint(equalToConstant: view.bounds.width * 0.7).isActive = true
     }
 }

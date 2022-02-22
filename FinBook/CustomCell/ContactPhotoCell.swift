@@ -17,7 +17,7 @@ class ContactPhotoCell: UICollectionViewCell {
     let surnameLabel = UILabel()
     let fullNameStack = UIStackView()
     
-    //MARK: Adding elements to view
+    //MARK: - Override init
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -25,22 +25,26 @@ class ContactPhotoCell: UICollectionViewCell {
         setupConstraints()
     }
     
-    //MARK: - Private functions
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Public funcs
+    func configure(with developer: Developer) {
+        nameLabel.text = developer.name
+        surnameLabel.text = developer.surname
+        photoView.image = UIImage(named: developer.photo)
+    }
+    
+    //MARK: - Private funcs
     private func setupElements() {
-        // setup photoView
         photoView.translatesAutoresizingMaskIntoConstraints = false
         photoView.layer.cornerRadius = frame.width / 2 - 10
         photoView.clipsToBounds = true
         
-        // setup labels
-//        let font = UIFont(name: "Avenir", size: 17)
-//        nameLabel.font = font
-//        nameLabel.font = nameLabel.font.withSize(18)
         nameLabel.textAlignment = .center
-//        surnameLabel.font = surnameLabel.font.withSize(18)
         surnameLabel.textAlignment = .center
         
-        // setup stacks
         fullNameStack.addArrangedSubview(surnameLabel)
         fullNameStack.addArrangedSubview(nameLabel)
         
@@ -54,34 +58,18 @@ class ContactPhotoCell: UICollectionViewCell {
         backgroundColor = .systemGray5
         layer.cornerRadius = 10
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: data filling function
-    func configure(with developer: Developer) {
-        nameLabel.text = developer.name
-        surnameLabel.text = developer.surname
-        photoView.image = UIImage(named: developer.photo)
-    }
-}
 
-// MARK: - Setup Constraints
-extension ContactPhotoCell {
-    func setupConstraints() {
+    private func setupConstraints() {
         let padding: CGFloat = 10
         
         addSubview(photoView)
         addSubview(fullNameStack)
         
-        // photoView constraints
         photoView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
         photoView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding).isActive = true
         photoView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
         photoView.heightAnchor.constraint(equalTo: photoView.widthAnchor).isActive = true
         
-        // fullNameStack constraints
         fullNameStack.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: padding).isActive = true
         fullNameStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
         fullNameStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true

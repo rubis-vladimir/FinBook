@@ -44,8 +44,6 @@ class AccountViewController: UIViewController {
     }
     
     // MARK: - Private func
-    
-    
     private func setupElements() {
         button.customizeButton(cradius: button.frame.width / 2)
         transactionTableView.backgroundColor = UIColor.clear

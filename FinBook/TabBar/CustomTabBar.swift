@@ -10,25 +10,34 @@ import UIKit
 class CustomTabBar: UITabBar {
     
     // MARK: - Propeties
-    
     private var tabBarWidth: CGFloat { self.bounds.width }
     private var tabBarHeight: CGFloat { self.bounds.height + 40 }
     private var centerWidth: CGFloat { self.bounds.width / 2 }
 
     private var shapeLayer: CALayer?
     
-    // MARK: - Override draw
+    // MARK: - Override funcs
     override func draw(_ rect: CGRect) {
-        setupTabBar()
-        
         tintColor = UIColor.systemMint
-        itemPositioning = .fill
+        setupTabBarElements()
+    }
+
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let buttonRadius: CGFloat = 30
+        
+        let pointIsInside = super.point(inside: point, with: event)
+        if pointIsInside == true && selectedItem?.tag == 0 {
+            for _ in subviews {
+                if abs(self.center.x - point.x) < buttonRadius && abs(point.y) < buttonRadius {
+                    return false
+                }
+            }
+        }
+        return pointIsInside
     }
     
     // MARK: - Customization TabBar
-    
-    // MARK: Setting TabBar elements
-    private func setupTabBar() {
+    private func setupTabBarElements() {
         let offsetItem = bounds.width / 15
         let horizontalPositionItems: [CGFloat] = [0, -offsetItem , offsetItem , 0]
         
@@ -50,7 +59,6 @@ class CustomTabBar: UITabBar {
         self.shapeLayer = shapeLayer
     }
     
-    // MARK: Outline TabBar
     private func shapePath() -> CGPath {
         let height: CGFloat = 35
         let radius: CGFloat = 15
@@ -70,7 +78,6 @@ class CustomTabBar: UITabBar {
                           controlPoint2: CGPoint(x: (centerWidth + 20), y: 3))
         }
         
-        // complete the rect
         path.addLine(to: CGPoint(x: tabBarWidth - radius, y: 0))
         path.addArc(withCenter: CGPoint(x: tabBarWidth - radius, y: radius),
                     radius: radius,
@@ -87,20 +94,5 @@ class CustomTabBar: UITabBar {
                     clockwise: true)
         path.close()
         return path.cgPath
-    }
-    
-    //MARK: Override point
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        let buttonRadius: CGFloat = 30
-        
-        let pointIsInside = super.point(inside: point, with: event)
-        if pointIsInside == true && selectedItem?.tag == 0 {
-            for _ in subviews {
-                if abs(self.center.x - point.x) < buttonRadius && abs(point.y) < buttonRadius {
-                    return false
-                }
-            }
-        }
-        return pointIsInside
     }
 }

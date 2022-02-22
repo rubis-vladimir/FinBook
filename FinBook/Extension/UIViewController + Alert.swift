@@ -20,7 +20,7 @@ extension UIViewController {
         finishDatePicker.date = finishDate
         chartTypeSwitch.isOn = isIncome
         
-        let alert = UIAlertController(title: nil, message: "\n\n\n\n", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: "\n\n\n\n", preferredStyle: .alert) //!!!!!
         
         overrideAlertWidthConstrants(alert: alert)
         setupAlertElements(alert: alert,
@@ -43,7 +43,8 @@ extension UIViewController {
         chartTypeLabel.text = sender.isOn ? "Доход" : "Расход"
     }
     
-    //MARK: - Setting alert width
+    //MARK: - Private funcs
+    //MARK: Setting alert width
     private func overrideAlertWidthConstrants(alert: UIAlertController!) {
         
         let widthConstraints = alert.view.constraints.filter({return $0.firstAttribute == .width})
@@ -82,7 +83,7 @@ extension UIViewController {
         
     }
     
-    // MARK: - Setting alert view content
+    // MARK: Setting alert view content
     private func setupAlertElements(alert: UIAlertController, startDatePicker: UIDatePicker, finishDatePicker: UIDatePicker, typeSwitch: UISwitch, typeLabel: UILabel) {
         
         let explanationLabel1 = UILabel()
@@ -108,7 +109,6 @@ extension UIViewController {
         finishDatePicker.contentHorizontalAlignment = .center
         finishDatePicker.locale = Locale(identifier: "ru_RU")
         
-        // To dynamically calculate the size and position of our views
         startDatePicker.translatesAutoresizingMaskIntoConstraints = false
         finishDatePicker.translatesAutoresizingMaskIntoConstraints = false
         typeSwitch.translatesAutoresizingMaskIntoConstraints = false
@@ -119,7 +119,7 @@ extension UIViewController {
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         beforeLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        // Adding items to the stack and alert
+        // Adding elements to the stack and alert
         stackDateRange.addArrangedSubview(fromLabel)
         stackDateRange.addArrangedSubview(startDatePicker)
         stackDateRange.addArrangedSubview(beforeLabel)

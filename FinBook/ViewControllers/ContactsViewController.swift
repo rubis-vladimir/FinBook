@@ -10,21 +10,33 @@ import UIKit
 class ContactsViewController: UICollectionViewController {
     
     //MARK: - Properties
-    
     private let dataFetcher = DataFetcher()
     
+    private let paddingSection: CGFloat = 20
+    
     private var developers = [Developer]()
+    private var isSelected: Bool = false
     private var defaultIndexPath: IndexPath {
         [0, developers.count + 1]
     }
     private lazy var selectedIndexPath: IndexPath = defaultIndexPath
-    private var isSelected: Bool = false
-    private let paddingSection: CGFloat = 20
     
-    // MARK: - Override functions
+    
+    // MARK: - Override funcs
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
+    }
+    
+    // MARK: - Private funcs
+    private func setupElements() {
+        collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
+        collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
+        collectionView.backgroundColor = UIColor.Palette.background
+        
+        dataFetcher.fetchDevelopers { (developers) in
+            self.developers = developers ?? []
+        }
     }
     
     // MARK: - UICollectionViewDataSource
@@ -64,18 +76,8 @@ class ContactsViewController: UICollectionViewController {
             collectionView.reloadItems(at: [[1, 0]])
         }
     }
-    
-    // MARK: - Private func
-    private func setupElements() {
-        collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
-        collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
-        collectionView.backgroundColor = UIColor.Palette.background
-        
-        dataFetcher.fetchDevelopers { (developers) in
-            self.developers = developers ?? []
-        }
-    }
 }
+
 
 // MARK: - UICollectionViewFlowLayout
 extension ContactsViewController: UICollectionViewDelegateFlowLayout {
@@ -101,7 +103,6 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
         return calculateSizeForItem(itemPerRow: itemsPerRow)
     }
     
-    // the function calculates the dimensions of the item
     private func calculateSizeForItem(itemPerRow: CGFloat) -> CGSize {
         let heightLink: CGFloat = 65
         let numberOfLinks: CGFloat = 4
@@ -117,6 +118,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
 }
+
 
 // MARK: - Link Navigation
 extension ContactsViewController: UITextViewDelegate {

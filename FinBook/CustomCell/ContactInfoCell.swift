@@ -8,9 +8,7 @@
 import UIKit
 
 enum TypeURL {
-    case email
-    case telegram
-    case browser
+    case email, telegram, browser
 }
 
 class ContactInfoCell: UICollectionViewCell {
@@ -26,14 +24,33 @@ class ContactInfoCell: UICollectionViewCell {
     private let telegramTextView = UITextView()
     private let linksStack = UIStackView()
     
-    //MARK: Adding elements to view
+    //MARK: - Override init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupElements()
         setupConstraints()
     }
     
-    //MARK: - Private functions
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Public funcs
+    func configure(with developer: Developer) {
+        emailTextView.attributedText = getLink(developer.links.email, type: .email)
+        gitHubTextView.attributedText = getLink(developer.links.gitHub, type: .browser)
+        linkedinTextView.attributedText = getLink(developer.links.linkedin, type: .browser)
+        telegramTextView.attributedText = getLink(developer.links.telegram, type: .telegram)
+    }
+    
+    func updateCell(_ isSelected: Bool) {
+        defaultLabel.isHidden = isSelected ? true : false
+        linksStack.isHidden = isSelected ?  false : true
+        backgroundColor = isSelected ? .systemGray5 : UIColor.Palette.background
+    }
+    
+    //MARK: - Private funcs
     private func setupElements() {
         setupStackViewForLink()
         
@@ -72,10 +89,21 @@ class ContactInfoCell: UICollectionViewCell {
         linksStack.layer.cornerRadius = 10
     }
     
+    func setupConstraints() {
+        let padding: CGFloat = 10
+        
+        addSubview(linksStack)
+        
+        linksStack.topAnchor.constraint(equalTo: self.topAnchor, constant: padding).isActive = true
+        linksStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
+        linksStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
+        linksStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding).isActive = true
+    }
     
     private func getLink(_ string: String, type: TypeURL) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: string)
         var startPartURL: String = ""
+        
         switch type {
         case .email:
             startPartURL = "mailto:"
@@ -84,42 +112,10 @@ class ContactInfoCell: UICollectionViewCell {
         default:
             startPartURL = "https://www."
         }
+        
         attributedString.addAttribute(.link,
                                       value: "\(startPartURL)" + "\(string)",
                                       range: NSRange(location: 0, length: string.count))
         return attributedString
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: data filling function
-    func configure(with developer: Developer) {
-        emailTextView.attributedText = getLink(developer.links.email, type: .email)
-        gitHubTextView.attributedText = getLink(developer.links.gitHub, type: .browser)
-        linkedinTextView.attributedText = getLink(developer.links.linkedin, type: .browser)
-        telegramTextView.attributedText = getLink(developer.links.telegram, type: .telegram)
-    }
-    
-    func updateCell(_ isSelected: Bool) {
-        defaultLabel.isHidden = isSelected ? true : false
-        linksStack.isHidden = isSelected ?  false : true
-        backgroundColor = isSelected ? .systemGray5 : UIColor.Palette.background
-    }
-}
-
-// MARK: - Setup Constraints
-extension ContactInfoCell {
-    func setupConstraints() {
-        let padding: CGFloat = 10
-        
-        addSubview(linksStack)
-        
-        // stackLinks constraints
-        linksStack.topAnchor.constraint(equalTo: self.topAnchor, constant: padding).isActive = true
-        linksStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding).isActive = true
-        linksStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding).isActive = true
-        linksStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding).isActive = true
     }
 }

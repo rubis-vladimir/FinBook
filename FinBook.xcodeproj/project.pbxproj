@@ -12,18 +12,16 @@
 		6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */; };
 		688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BA66126A0AE21009F4727 /* TransactionViewController.swift */; };
 		68DAE9082772350D0033CE7A /* DateConvertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DAE9072772350D0033CE7A /* DateConvertManager.swift */; };
-		7D0E84212790BEE700349AD4 /* UIButton + CustomDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */; };
+		7D0E84212790BEE700349AD4 /* UIButton + Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84202790BEE700349AD4 /* UIButton + Customization.swift */; };
 		7D0E842D2794A32100349AD4 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E842C2794A32100349AD4 /* ContactsViewController.swift */; };
 		7D0E842F2795F1F100349AD4 /* LocalDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E842E2795F1F100349AD4 /* LocalDataFetcher.swift */; };
 		7D0E84312798784F00349AD4 /* ContactPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */; };
-		7D39A1AE2799F27F00940EA3 /* LabelWithPaddingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */; };
-		7D39A1D927A6AA7200940EA3 /* CALayer + Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */; };
 		7D39A1DF27A9981500940EA3 /* UILabel + Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A1DE27A9981500940EA3 /* UILabel + Default.swift */; };
 		7D39A20427AFD50F00940EA3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20327AFD50F00940EA3 /* Theme.swift */; };
 		7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20527AFD5B500940EA3 /* Persist.swift */; };
 		7D39A20C27B1B49700940EA3 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */; };
 		7D5CF70B277B80FA00FD5D11 /* PaletteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70A277B80FA00FD5D11 /* PaletteModel.swift */; };
-		7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */; };
+		7D5CF70D277B826A00FD5D11 /* UIView + Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70C277B826900FD5D11 /* UIView + Customization.swift */; };
 		7D5CF70F277B8A6D00FD5D11 /* ContactInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70E277B8A6D00FD5D11 /* ContactInfoCell.swift */; };
 		7D5CF711277B986E00FD5D11 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF710277B986E00FD5D11 /* SettingsViewController.swift */; };
 		7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F641275418C1007C5D66 /* StatisticViewController.swift */; };
@@ -53,18 +51,16 @@
 		6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryPickerModel.swift; path = FinBook/Models/CategoryPickerModel.swift; sourceTree = SOURCE_ROOT; };
 		688BA66126A0AE21009F4727 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		68DAE9072772350D0033CE7A /* DateConvertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConvertManager.swift; sourceTree = "<group>"; };
-		7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + CustomDesign.swift"; sourceTree = "<group>"; };
+		7D0E84202790BEE700349AD4 /* UIButton + Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Customization.swift"; sourceTree = "<group>"; };
 		7D0E842C2794A32100349AD4 /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		7D0E842E2795F1F100349AD4 /* LocalDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataFetcher.swift; sourceTree = "<group>"; };
 		7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPhotoCell.swift; sourceTree = "<group>"; };
-		7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithPaddingText.swift; sourceTree = "<group>"; };
-		7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Customization.swift"; sourceTree = "<group>"; };
 		7D39A1DE27A9981500940EA3 /* UILabel + Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Default.swift"; sourceTree = "<group>"; };
 		7D39A20327AFD50F00940EA3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7D39A20527AFD5B500940EA3 /* Persist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
 		7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 		7D5CF70A277B80FA00FD5D11 /* PaletteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteModel.swift; sourceTree = "<group>"; };
-		7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Gradient.swift"; sourceTree = "<group>"; };
+		7D5CF70C277B826900FD5D11 /* UIView + Customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Customization.swift"; sourceTree = "<group>"; };
 		7D5CF70E277B8A6D00FD5D11 /* ContactInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoCell.swift; sourceTree = "<group>"; };
 		7D5CF710277B986E00FD5D11 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7D66F641275418C1007C5D66 /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
@@ -159,11 +155,10 @@
 		68A6232427933062006240C2 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				7D39A1D827A6AA7200940EA3 /* CALayer + Customization.swift */,
-				7D0E84202790BEE700349AD4 /* UIButton + CustomDesign.swift */,
-				7D5CF70C277B826900FD5D11 /* UIView + Gradient.swift */,
-				7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */,
+				7D0E84202790BEE700349AD4 /* UIButton + Customization.swift */,
+				7D5CF70C277B826900FD5D11 /* UIView + Customization.swift */,
 				7D39A1DE27A9981500940EA3 /* UILabel + Default.swift */,
+				7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */,
 				7D869F9527B44A6B00E2D29C /* UIColor +.swift */,
 			);
 			path = Extension;
@@ -173,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				7D66F643275419AB007C5D66 /* PieChartView.swift */,
-				7D39A1AD2799F27F00940EA3 /* LabelWithPaddingText.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -319,8 +313,7 @@
 				7D39A20C27B1B49700940EA3 /* UIViewController + Alert.swift in Sources */,
 				7D66F6492757BE2B007C5D66 /* ChartCell.swift in Sources */,
 				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
-				7D39A1D927A6AA7200940EA3 /* CALayer + Customization.swift in Sources */,
-				7D0E84212790BEE700349AD4 /* UIButton + CustomDesign.swift in Sources */,
+				7D0E84212790BEE700349AD4 /* UIButton + Customization.swift in Sources */,
 				7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */,
 				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */,
@@ -343,10 +336,9 @@
 				7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */,
 				7D5CF711277B986E00FD5D11 /* SettingsViewController.swift in Sources */,
 				7DF834EA26DC045A009EC940 /* CategoryService.swift in Sources */,
-				7D39A1AE2799F27F00940EA3 /* LabelWithPaddingText.swift in Sources */,
 				7DF571412766840C00ED5FB7 /* DeveloperModel.swift in Sources */,
 				681159D726E93A70009FAA5E /* StorageManager.swift in Sources */,
-				7D5CF70D277B826A00FD5D11 /* UIView + Gradient.swift in Sources */,
+				7D5CF70D277B826A00FD5D11 /* UIView + Customization.swift in Sources */,
 				7D39A20427AFD50F00940EA3 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

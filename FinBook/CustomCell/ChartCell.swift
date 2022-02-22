@@ -1,5 +1,5 @@
 //
-//  ChartTableViewCell.swift
+//  ChartCell.swift
 //  FinBook
 //
 //  Created by Владимир Рубис on 01.12.2021.
