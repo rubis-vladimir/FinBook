@@ -1,5 +1,5 @@
 //
-//  DataFetcher.swift
+//  DataFetcherService.swift
 //  FinBook
 //
 //  Created by Владимир Рубис on 20.02.2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DataFetcher {
+class DataFetcherService {
     
     var localDataFetcher: LocalDataFetcher
     

@@ -22,8 +22,10 @@ class AccountViewController: UIViewController {
     private var transactions = StorageManager.shared.fetchData() // загрузка транзакций
     private var editTransIndexPath: IndexPath? = nil
     private var filteredTransactions: [Transact] = []
-    private var timer: Timer?
+    
     private let searchController = UISearchController(searchResultsController: nil)
+    
+    private var timer: Timer?
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
@@ -38,7 +40,6 @@ class AccountViewController: UIViewController {
         
         setupElements()
         setupSearchBar()
-//        getData()
         reloadWalletBalance()
         reloadTransactArrayToFiltered()
     }
@@ -52,7 +53,7 @@ class AccountViewController: UIViewController {
     
     // расчет и вывод баланса кошелька по транзакциям
     private func reloadWalletBalance() {
-//        self.transactions = transactions.sorted{ $0.date! < $1.date! }
+        //        self.transactions = transactions.sorted{ $0.date! < $1.date! }
         var currentBalance = 0.00
         for transaction in transactions {
             if transaction.incomeTransaction {
@@ -83,13 +84,11 @@ class AccountViewController: UIViewController {
     }
     
     private func transactionToDisplayAt(indexPath: IndexPath) -> Transact {
-            let transaction: Transact
         //        Тернарный оператор
-        //        "transaction" равно "filteredTransactions[indexPath.row]" если "isFiltering = true"
+        //        "filteredTransactions[indexPath.row]" если "isFiltering = true"
         //        иначе "transactions[indexPath.row]"
-                transaction = isFiltering ? filteredTransactions[indexPath.row] : transactions[indexPath.row]
-                    return transaction
-        }
+        return isFiltering ? filteredTransactions[indexPath.row] : transactions[indexPath.row]
+    }
     
     //функция сортировки массивов по дате
     private func sortedByDateTransactArray(array: [Transact]) -> [Transact] {
@@ -99,16 +98,16 @@ class AccountViewController: UIViewController {
             return left > right
         }
         return transactArray
-        }
+    }
     
-// MARK: - Navigation - переход и передача данных на TransactionViewController
+    // MARK: - Navigation - переход и передача данных на TransactionViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let transactionVC = segue.destination as? TransactionViewController else { return }
         
         if segue.identifier == "editTransaction" {
             transactionVC.editTransaction = sender as? Transact
         }
-
+        
         transactionVC.delegate = self // обязательно для передачи транзакции !!!
     }
     
@@ -127,12 +126,12 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! CustomTableViewCell
         
         let transaction = transactionToDisplayAt(indexPath: indexPath)
-
+        
         return CustomTableViewCell.createCustomCell(cell, transaction)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
- 
+        
         let transaction = transactionToDisplayAt(indexPath: indexPath)
         
         let swipeEdit = UIContextualAction(style: .normal, title: "Редактировать") { (action, editView, success) in
@@ -152,14 +151,14 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [swipeDelete, swipeEdit])  // "Редак-ть" и "Удалить" по свайпу
     }
     
-    // MARK: - Table View Delegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 60 }
 }
+
 
 // MARK: - NewTransactionViewControllerDelegate
 extension AccountViewController: NewTransactionViewControllerDelegate {
     func saveTransaction(_ newTransaction: Transact) {
-
+        
         if let selectedIndexPath = editTransIndexPath?.row {          // -------------редактирование существующей транзакции
             
             transactionTableView.deselectRow(at:editTransIndexPath!, animated: true) // убираем выделение с ред. ячейки
@@ -179,7 +178,7 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
             } else {
                 transactions[selectedIndexPath] = newTransaction
             }
-
+            
             
         } else {        //  --------------Если добавляется новая транзакция
             
@@ -195,6 +194,7 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
     }
 }
 
+
 // MARK: - SearchBarDelegate
 extension AccountViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -202,10 +202,9 @@ extension AccountViewController: UISearchBarDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             self.filteredTransactions = self.transactions.filter{ (transaction) -> Bool in
                 
-                
                 return (transaction.category?.lowercased().contains(searchText.lowercased()))! || (transaction.descr?.lowercased().contains(searchText.lowercased()))!
             }
-            DispatchQueue.main.async { self.transactionTableView.reloadData() }
+            self.reloadDataTableView()
         })
     }
 }

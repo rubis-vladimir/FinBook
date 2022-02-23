@@ -10,7 +10,7 @@ import UIKit
 class ContactsViewController: UICollectionViewController {
     
     //MARK: - Properties
-    private let dataFetcher = DataFetcher()
+    private let dataFetcher = DataFetcherService()
     
     private let paddingSection: CGFloat = 20
     
@@ -123,7 +123,6 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Link Navigation
 extension ContactsViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        
         UIApplication.shared.open(URL)
         return false
     }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		681159D726E93A70009FAA5E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681159D626E93A70009FAA5E /* StorageManager.swift */; };
 		6887F41B26DD568200910C4A /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41A26DD568200910C4A /* CategoriesView.swift */; };
 		6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */; };
 		688BA66226A0AE21009F4727 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BA66126A0AE21009F4727 /* TransactionViewController.swift */; };
@@ -27,9 +26,10 @@
 		7D66F644275419AB007C5D66 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F643275419AB007C5D66 /* PieChartView.swift */; };
 		7D66F646275420B0007C5D66 /* ChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F645275420B0007C5D66 /* ChartManager.swift */; };
 		7D66F6492757BE2B007C5D66 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D66F6482757BE2B007C5D66 /* ChartCell.swift */; };
-		7D869F9627B44A6B00E2D29C /* UIColor +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D869F9527B44A6B00E2D29C /* UIColor +.swift */; };
+		7D869F9627B44A6B00E2D29C /* UIColor + Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D869F9527B44A6B00E2D29C /* UIColor + Hex.swift */; };
 		7D90B02226DA59AA00A33930 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */; };
-		7D95391E27C23BB900C02D11 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D95391D27C23BB900C02D11 /* DataFetcher.swift */; };
+		7D95391E27C23BB900C02D11 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D95391D27C23BB900C02D11 /* DataFetcherService.swift */; };
+		7D95392B27C60A0800C02D11 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D95392A27C60A0800C02D11 /* StorageManager.swift */; };
 		7DADB3B0269B478C0041156D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3AF269B478C0041156D /* AppDelegate.swift */; };
 		7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B1269B478C0041156D /* SceneDelegate.swift */; };
 		7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B3269B478C0041156D /* AccountViewController.swift */; };
@@ -45,7 +45,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		681159D626E93A70009FAA5E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StorageManager.swift; path = FinBook/Service/StorageManager.swift; sourceTree = SOURCE_ROOT; };
 		6887F41A26DD568200910C4A /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryPickerModel.swift; path = FinBook/Models/CategoryPickerModel.swift; sourceTree = SOURCE_ROOT; };
 		688BA66126A0AE21009F4727 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
@@ -65,9 +64,10 @@
 		7D66F643275419AB007C5D66 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		7D66F645275420B0007C5D66 /* ChartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartManager.swift; sourceTree = "<group>"; };
 		7D66F6482757BE2B007C5D66 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
-		7D869F9527B44A6B00E2D29C /* UIColor +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor +.swift"; sourceTree = "<group>"; };
+		7D869F9527B44A6B00E2D29C /* UIColor + Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Hex.swift"; sourceTree = "<group>"; };
 		7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		7D95391D27C23BB900C02D11 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		7D95391D27C23BB900C02D11 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
+		7D95392A27C60A0800C02D11 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		7DADB3AC269B478C0041156D /* FinBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DADB3AF269B478C0041156D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DADB3B1269B478C0041156D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6813DEE5269F711000AA408F /* ViewControllers */ = {
+		6813DEE5269F711000AA408F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				7DADB3B3269B478C0041156D /* AccountViewController.swift */,
@@ -103,42 +103,28 @@
 				7D66F641275418C1007C5D66 /* StatisticViewController.swift */,
 				7D0E842C2794A32100349AD4 /* ContactsViewController.swift */,
 				7D5CF710277B986E00FD5D11 /* SettingsViewController.swift */,
+				7DF834EB26DC0828009EC940 /* TabBarController */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		6813DEE626A07C7500AA408F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
 				6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */,
 				7DF571402766840C00ED5FB7 /* DeveloperModel.swift */,
-				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		6887F41C26DD5AEF00910C4A /* CategoriesPickerView */ = {
+		6887F41C26DD5AEF00910C4A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6887F41A26DD568200910C4A /* CategoriesView.swift */,
+				7D95392527C5779600C02D11 /* CustomView */,
+				7D66F6472757BDF6007C5D66 /* Cell */,
 			);
-			path = CategoriesPickerView;
-			sourceTree = "<group>";
-		};
-		6887F41D26DD5B1D00910C4A /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				7DF834E926DC045A009EC940 /* CategoryService.swift */,
-				68DAE9072772350D0033CE7A /* DateConvertManager.swift */,
-				681159D626E93A70009FAA5E /* StorageManager.swift */,
-				7D66F645275420B0007C5D66 /* ChartManager.swift */,
-				7D39A20327AFD50F00940EA3 /* Theme.swift */,
-				7D5CF70A277B80FA00FD5D11 /* Palette.swift */,
-				7D39A20527AFD5B500940EA3 /* Persist.swift */,
-				7D95391D27C23BB900C02D11 /* DataFetcher.swift */,
-				7D0E842E2795F1F100349AD4 /* LocalDataFetcher.swift */,
-			);
-			path = Service;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6887F41E26DD5B9F00910C4A /* Storyboars */ = {
@@ -150,34 +136,61 @@
 			path = Storyboars;
 			sourceTree = "<group>";
 		};
-		68A6232427933062006240C2 /* Extension */ = {
+		7D66F6472757BDF6007C5D66 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */,
+				7D66F6482757BE2B007C5D66 /* ChartCell.swift */,
+				7D5CF70E277B8A6D00FD5D11 /* ContactInfoCell.swift */,
+				7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7D95391F27C572BF00C02D11 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7DADB3BB269B478E0041156D /* Assets.xcassets */,
+				7DADB3C0269B478E0041156D /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7D95392527C5779600C02D11 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				6887F41A26DD568200910C4A /* CategoriesView.swift */,
+				7D66F643275419AB007C5D66 /* PieChartView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		7D95392827C6096C00C02D11 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				7D0E84202790BEE700349AD4 /* UIButton + Customization.swift */,
 				7D39A1DE27A9981500940EA3 /* UILabel + Default.swift */,
 				7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */,
-				7D869F9527B44A6B00E2D29C /* UIColor +.swift */,
+				7D869F9527B44A6B00E2D29C /* UIColor + Hex.swift */,
 			);
-			path = Extension;
+			name = Extensions;
+			path = Extension/Extensions;
 			sourceTree = "<group>";
 		};
-		7D66F64027541843007C5D66 /* CustomElements */ = {
+		7D95392927C6098900C02D11 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				7D66F643275419AB007C5D66 /* PieChartView.swift */,
+				7DF834E926DC045A009EC940 /* CategoryService.swift */,
+				68DAE9072772350D0033CE7A /* DateConvertManager.swift */,
+				7D95392A27C60A0800C02D11 /* StorageManager.swift */,
+				7D66F645275420B0007C5D66 /* ChartManager.swift */,
+				7D39A20327AFD50F00940EA3 /* Theme.swift */,
+				7D5CF70A277B80FA00FD5D11 /* Palette.swift */,
+				7D39A20527AFD5B500940EA3 /* Persist.swift */,
+				7D95391D27C23BB900C02D11 /* DataFetcherService.swift */,
+				7D0E842E2795F1F100349AD4 /* LocalDataFetcher.swift */,
 			);
-			path = CustomElements;
-			sourceTree = "<group>";
-		};
-		7D66F6472757BDF6007C5D66 /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */,
-				7D5CF70E277B8A6D00FD5D11 /* ContactInfoCell.swift */,
-				7D0E84302798784F00349AD4 /* ContactPhotoCell.swift */,
-				7D66F6482757BE2B007C5D66 /* ChartCell.swift */,
-			);
-			path = CustomCell;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		7DADB3A3269B478C0041156D = {
@@ -200,38 +213,34 @@
 			isa = PBXGroup;
 			children = (
 				6887F41E26DD5B9F00910C4A /* Storyboars */,
-				6813DEE5269F711000AA408F /* ViewControllers */,
-				7D66F64027541843007C5D66 /* CustomElements */,
+				6813DEE5269F711000AA408F /* Controllers */,
 				6813DEE626A07C7500AA408F /* Models */,
-				7DF5713D2766738600ED5FB7 /* DataDevelopers */,
-				6887F41D26DD5B1D00910C4A /* Service */,
-				7D66F6472757BDF6007C5D66 /* CustomCell */,
-				6887F41C26DD5AEF00910C4A /* CategoriesPickerView */,
-				68A6232427933062006240C2 /* Extension */,
-				7DF834EB26DC0828009EC940 /* TabBar */,
-				7DADB3BB269B478E0041156D /* Assets.xcassets */,
+				6887F41C26DD5AEF00910C4A /* Views */,
+				7D95392927C6098900C02D11 /* Services */,
+				7DF5713D2766738600ED5FB7 /* JSONData */,
+				7D95392827C6096C00C02D11 /* Extensions */,
+				7D95391F27C572BF00C02D11 /* Supporting Files */,
 				7DADB3AF269B478C0041156D /* AppDelegate.swift */,
 				7DADB3B1269B478C0041156D /* SceneDelegate.swift */,
-				7DADB3C0269B478E0041156D /* Info.plist */,
 			);
 			path = FinBook;
 			sourceTree = "<group>";
 		};
-		7DF5713D2766738600ED5FB7 /* DataDevelopers */ = {
+		7DF5713D2766738600ED5FB7 /* JSONData */ = {
 			isa = PBXGroup;
 			children = (
 				7DF571442766917300ED5FB7 /* developers.json */,
 			);
-			path = DataDevelopers;
+			path = JSONData;
 			sourceTree = "<group>";
 		};
-		7DF834EB26DC0828009EC940 /* TabBar */ = {
+		7DF834EB26DC0828009EC940 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
 				7DADB3CA269D84070041156D /* MainTabBarController.swift */,
 				7DADB3C8269CD19E0041156D /* CustomTabBar.swift */,
 			);
-			path = TabBar;
+			path = TabBarController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,7 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D90B02226DA59AA00A33930 /* CustomTableViewCell.swift in Sources */,
-				7D95391E27C23BB900C02D11 /* DataFetcher.swift in Sources */,
+				7D95391E27C23BB900C02D11 /* DataFetcherService.swift in Sources */,
 				7D39A20C27B1B49700940EA3 /* UIViewController + Alert.swift in Sources */,
 				7D66F6492757BE2B007C5D66 /* ChartCell.swift in Sources */,
 				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
@@ -314,7 +323,7 @@
 				7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */,
 				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */,
-				7D869F9627B44A6B00E2D29C /* UIColor +.swift in Sources */,
+				7D869F9627B44A6B00E2D29C /* UIColor + Hex.swift in Sources */,
 				7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */,
 				7D66F644275419AB007C5D66 /* PieChartView.swift in Sources */,
 				6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */,
@@ -334,8 +343,8 @@
 				7D5CF711277B986E00FD5D11 /* SettingsViewController.swift in Sources */,
 				7DF834EA26DC045A009EC940 /* CategoryService.swift in Sources */,
 				7DF571412766840C00ED5FB7 /* DeveloperModel.swift in Sources */,
-				681159D726E93A70009FAA5E /* StorageManager.swift in Sources */,
 				7D39A20427AFD50F00940EA3 /* Theme.swift in Sources */,
+				7D95392B27C60A0800C02D11 /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +494,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WJM24K3YHR;
-				INFOPLIST_FILE = FinBook/Info.plist;
+				INFOPLIST_FILE = "FinBook/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -507,7 +516,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WJM24K3YHR;
-				INFOPLIST_FILE = FinBook/Info.plist;
+				INFOPLIST_FILE = "FinBook/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

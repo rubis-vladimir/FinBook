@@ -7,8 +7,10 @@
 
 import UIKit
 
-enum TypeURL {
-    case email, telegram, browser
+enum TypeURL: String {
+    case email = "mailto:"
+    case telegram = "https://t.me/"
+    case browser = "https://www."
 }
 
 class ContactInfoCell: UICollectionViewCell {
@@ -102,20 +104,16 @@ class ContactInfoCell: UICollectionViewCell {
     
     private func getLink(_ string: String, type: TypeURL) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: string)
-        var startPartURL: String = ""
+        let startPartURL: String = type.rawValue
         
-        switch type {
-        case .email:
-            startPartURL = "mailto:"
-        case .telegram:
-            startPartURL = "https://t.me/"
-        default:
-            startPartURL = "https://www."
-        }
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 17),
+            .link: "\(startPartURL)" + "\(string)"
+        ]
+        let range = NSRange(location: 0, length: string.count)
         
-        attributedString.addAttribute(.link,
-                                      value: "\(startPartURL)" + "\(string)",
-                                      range: NSRange(location: 0, length: string.count))
+        attributedString.setAttributes(attributes, range: range)
+    
         return attributedString
     }
 }

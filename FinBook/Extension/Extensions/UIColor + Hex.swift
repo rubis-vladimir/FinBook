@@ -9,12 +9,6 @@ import UIKit
 
 extension UIColor {
     
-    static func color(light: UIColor, dark: UIColor) -> UIColor {
-        return UIColor.init { traitCollection in
-            return traitCollection.userInterfaceStyle == .dark ? dark : light
-        }
-    }
-    
     static func hex(_ hexString: String) -> UIColor {
         
         var hexString: String = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -40,26 +34,10 @@ extension UIColor {
         }
         return paletteColors
     }
-    //
-    //    static func createPalitreColors() -> [UIColor] {
-    //        let model = 0
-    //        let hexColors = PaletteModel.getPalette(model: model).chartColors
-    //        var paletteColors: [UIColor] = []
-    //
-    //        for i in hexColors {
-    //            let color = UIColor.hex(i)
-    //            paletteColors.append(color)
-    //        }
-    //        return paletteColors
-    //    }
     
-    //    private func convertType(_ palette: [String]) -> [UIColor] {
-    //        var paletteColors: [UIColor] = []
-    //
-    //        for i in palette {
-    //            let color = UIColor.hex(i)
-    //            paletteColors.append(color)
-    //        }
-    //        return paletteColors
-    //    }
+    static func color(light: UIColor, dark: UIColor) -> UIColor {
+        return UIColor.init { traitCollection in
+            return traitCollection.userInterfaceStyle == .dark ? dark : light
+        }
+    }
 }
