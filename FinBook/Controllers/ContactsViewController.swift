@@ -14,13 +14,19 @@ class ContactsViewController: UICollectionViewController {
     
     private let paddingSection: CGFloat = 20
     
-    private var developers = [Developer]()
     private var isSelected: Bool = false
     private var defaultIndexPath: IndexPath {
         [0, developers.count + 1]
     }
-    private lazy var selectedIndexPath: IndexPath = defaultIndexPath
+    private var developers: [Developer] {
+        var developers: [Developer] = []
+        dataFetcher.fetchDevelopers { (dev) in
+            developers = dev ?? []
+        }
+        return developers
+    }
     
+    private lazy var selectedIndexPath: IndexPath = defaultIndexPath
     
     // MARK: - Override funcs
     override func viewDidLoad() {
@@ -33,10 +39,6 @@ class ContactsViewController: UICollectionViewController {
         collectionView.register(ContactInfoCell.self, forCellWithReuseIdentifier: ContactInfoCell.reuseId)
         collectionView.register(ContactPhotoCell.self, forCellWithReuseIdentifier: ContactPhotoCell.reuseId)
         collectionView.backgroundColor = Palette.background
-        
-        dataFetcher.fetchDevelopers { (developers) in
-            self.developers = developers ?? []
-        }
     }
     
     // MARK: - UICollectionViewDataSource

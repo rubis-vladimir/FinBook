@@ -42,7 +42,7 @@ class ChartManager {
         
         let summTransactions = transactDictionary.map{$1}.reduce(0, +)
         
-        return pairs(from: transactDictionary).map{(k,v) in (k, v * 100 / summTransactions)}
+        return pairs(from: transactDictionary).map{(category,value) in (category, value * 100 / summTransactions)}
     }
     
     private func pairs<Key, Value: Comparable>(from dictionary: [Key: Value]) -> [(Key, Value)] {
