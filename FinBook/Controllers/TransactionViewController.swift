@@ -49,15 +49,8 @@ class TransactionViewController: UIViewController {
 // MARK: - Override func viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryPickerView.dataSource = self
-        categoryPickerView.delegate = self
-        
-        setupCostTextField()
-        setupCategoryPickerView()
-        setupDataTextField()
-        setupDoneToolBar()
-        edittingTransaction()
-        //setupTransactionVC()
+
+        setupTransactionVC()
     }
     
 // MARK: - IBActions
@@ -82,22 +75,35 @@ class TransactionViewController: UIViewController {
     }
     
 // MARK: - Private func
+    private func setupTransactionVC() {
+        categoryPickerView.dataSource = self
+        categoryPickerView.delegate = self
+        
+        doneButton.isEnabled = false
+        
+        setupCostTextField()
+        setupCategoryPickerView()
+        setupDateTextField()
+        setupDoneToolBar()
+        edittingTransactionMode()
+    }
+    
     private func saveAndExit() {
         guard let costPrice = Double(costTextField.text ?? "0.00") else { return }
         guard let description = descriptionTextField.text else { return }
         
-        // присваиваем новой транзакции данные с интерфейса и сохраняем ее
+
         let transaction = StorageManager.shared.createTransact(cost: costPrice,
                                                                description: description,
                                                                category: selectedModel.title,
                                                                date: datePickerView.date,
                                                                note: noteTextField.text ?? "",
                                                                income: isIncome)
-        delegate.saveTransaction(transaction) // передаем новую транзакцию на основной экран
+        delegate.saveTransaction(transaction)
         dismiss(animated: true)
     }
     
-    private func edittingTransaction() {                                    // установки при редактировании транзакции
+    private func edittingTransactionMode() {
         guard let editTransaction = editTransaction else { return }
         if editTransaction.incomeTransaction == true {
             segmentedControl.selectedSegmentIndex = 1
@@ -124,20 +130,18 @@ class TransactionViewController: UIViewController {
     }
     
     private func setupCostTextField() {
-        costTextField.becomeFirstResponder()  // курсор на данном поле
-        costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no // исключаем пробелы
-        doneButton.isEnabled = false  // кнопка выключена
+        costTextField.becomeFirstResponder()
+        costTextField.smartInsertDeleteType = UITextSmartInsertDeleteType.no
         costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
-    private func setupCategoryPickerView() { // настройка текстового поля с категорией
+    private func setupCategoryPickerView() {
         if  editTransaction?.incomeTransaction == isIncome {
             setCategoryEditTransaction() // если редактируем транзакцию то чтобы категория не терялась при смене дох/расх
         } else {
             selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
             setupCategoryTextField()
         }
-        
         categoryTextField.inputView = categoryPickerView
     }
     
@@ -146,7 +150,7 @@ class TransactionViewController: UIViewController {
         categoryImage.image = selectedModel.icon
     }
         
-    private func setupDataTextField() { // настройка текстового поля с датой
+    private func setupDateTextField() { // настройка текстового поля с датой
         dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
         
         dateTextField.inputView = datePickerView
@@ -203,35 +207,14 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
 
 // MARK: - CostTextField Settings
 extension TransactionViewController: UITextFieldDelegate {
-    
-//    Ограничить ввод 15 знаками в строке Стоимости и избежать второй точки
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let textFieldText = textField.text,
-              let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-            return false
-        }
-        if textFieldText.contains(".") && string == "." { return false }
-//        if string == "," {
-//            textField.text = textFieldText + "."
-//            return true }
-
-        let substringToReplace = textFieldText[rangeOfTextToReplace]
-        let count = textFieldText.count - substringToReplace.count + string.count
-        return count <= 30
-    }
-    
-    // Скрыть клавиатуру после редактирования
+     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
     
-    // Чтобы кнопка Done была активна только в когда поле цены заполнено
     @objc private func costTextFieldDidChanged() {
-        guard let costName = costTextField.text else {
-            doneButton.isEnabled = false
-            return
-        }
+        guard let costName = costTextField.text else { return }
         doneButton.isEnabled = !costName.isEmpty ? true : false
     }
     
@@ -239,25 +222,22 @@ extension TransactionViewController: UITextFieldDelegate {
         dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
     }
     
-    //переход на следующее поле по нажатию кнопки "Готово" с Алёртами
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        
-//        switch textField {
-//        case costTextField:
-//            guard costFormatter(cost: costTextField.text) > 0 else {
-//                showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
-//                return false
-//            }
-//            descriptionTextField.becomeFirstResponder()
-//        case descriptionTextField:   categoryTextField.becomeFirstResponder()
-//        case categoryTextField:     dateTextField.becomeFirstResponder()
-//        default: view.endEditing(true)
-//        }
-//        return true
-        
-        
-        if costTextField.isEditing  { //---------------------------------------------------------------------------------------------------
+    @objc private func hideKeyboard() { view.endEditing(true) }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+              let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                  return false
+              }
+        if textFieldText.contains(".") && string == "." { return false }
+        if textFieldText.contains(",") && string == "," { return false }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 30
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {     
+        if costTextField.isEditing  {
             guard costFormatter(cost: costTextField.text) > 0 else {
                 showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
                 return false
@@ -271,7 +251,7 @@ extension TransactionViewController: UITextFieldDelegate {
         return true
     }
         
-    private func costFormatter(cost: String?) -> Double { // корректировка  вводимого числа  если вместо точки запятая
+    private func costFormatter(cost: String?) -> Double {
         let formatter = NumberFormatter()
         var doubCost: Double = 0.00000
         formatter.locale = Locale.current
@@ -281,8 +261,6 @@ extension TransactionViewController: UITextFieldDelegate {
         }
         return doubCost
     }
-    
-    @objc private func hideKeyboard() { view.endEditing(true) }
 }
 
 // MARK: - Alert Controller
