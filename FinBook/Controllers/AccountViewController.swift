@@ -14,7 +14,7 @@ protocol NewTransactionViewControllerDelegate {
 class AccountViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var transactionTableView: UITableView!
     @IBOutlet weak var balanceLabel: UILabel!
     
@@ -46,7 +46,7 @@ class AccountViewController: UIViewController {
     
     // MARK: - Private func
     private func setupElements() {
-        button.customizeButton(cradius: button.frame.width / 2)
+        addButton.customizeButton(cradius: addButton.frame.width / 2)
         transactionTableView.backgroundColor = UIColor.clear
         view.backgroundColor = Palette.background
     }
@@ -84,9 +84,6 @@ class AccountViewController: UIViewController {
     }
     
     private func transactionToDisplayAt(indexPath: IndexPath) -> Transact {
-        //        Тернарный оператор
-        //        "filteredTransactions[indexPath.row]" если "isFiltering = true"
-        //        иначе "transactions[indexPath.row]"
         return isFiltering ? filteredTransactions[indexPath.row] : transactions[indexPath.row]
     }
     
@@ -107,7 +104,6 @@ class AccountViewController: UIViewController {
         if segue.identifier == "editTransaction" {
             transactionVC.editTransaction = sender as? Transact
         }
-        
         transactionVC.delegate = self // обязательно для передачи транзакции !!!
     }
     
@@ -126,7 +122,6 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! CustomTableViewCell
         
         let transaction = transactionToDisplayAt(indexPath: indexPath)
-        
         return CustomTableViewCell.createCustomCell(cell, transaction)
     }
     
