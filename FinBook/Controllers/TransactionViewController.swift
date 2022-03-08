@@ -126,7 +126,7 @@ class TransactionViewController: UIViewController {
                 selectedModel = categoryPickerModels[index]
             }
         }
-        setupCategoryTextField() // установка соответствующих значений в поле
+        setupCategoryTextField()
     }
     
     private func setupCostTextField() {
@@ -137,9 +137,9 @@ class TransactionViewController: UIViewController {
     
     private func setupCategoryPickerView() {
         if  editTransaction?.incomeTransaction == isIncome {
-            setCategoryEditTransaction() // если редактируем транзакцию то чтобы категория не терялась при смене дох/расх
+            setCategoryEditTransaction()
         } else {
-            selectedModel = categoryPickerModels[0]  // чтобы если ничего не выбрали былa первая по дефолту
+            selectedModel = categoryPickerModels[0]
             setupCategoryTextField()
         }
         categoryTextField.inputView = categoryPickerView
@@ -186,15 +186,15 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return categoryPickerModels.count    // количество ячеек (компонента)
+        return categoryPickerModels.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { 20.0 } // высота ячейки (компонента)
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat { 20.0 }
     
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat { 130 } // длина ячейки (компонента)
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat { 130 }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let model = categoryPickerModels[row]  // получаем актуальную модель чтобы передать
+        let model = categoryPickerModels[row]
         return CategoriesView.create(icon: model.icon, title: model.title)
     }
     
