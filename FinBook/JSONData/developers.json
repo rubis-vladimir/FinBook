@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Владимир",
+        "surname": "Рубис",
+        "photo": "rubis",
+        "links": {
+            "email": "rubis-vu@mail.ru",
+            "gitHub": "github.com/rubis-vladimir",
+            "linkedin": "linkedin.com/in/vladimir-rubis",
+            "telegram": "@Rubis_Vladimir"
+        }
+    },
+    {
+        "name": "Никита",
+        "surname": "Сперанский",
+        "photo": "speransky",
+        "links": {
+            "email": "nonamerz5@mail.ru",
+            "gitHub": "github.com/NikitaKelevra",
+            "linkedin": "linkedin.com/in/nikita-kelevra",
+            "telegram": "@Nikita_Kelevra"
+        }
+    }
+]
