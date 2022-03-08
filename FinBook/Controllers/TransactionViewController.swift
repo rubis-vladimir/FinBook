@@ -57,6 +57,7 @@ class TransactionViewController: UIViewController {
         setupDataTextField()
         setupDoneToolBar()
         edittingTransaction()
+        //setupTransactionVC()
     }
     
 // MARK: - IBActions
