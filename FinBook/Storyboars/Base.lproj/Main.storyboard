@@ -151,8 +151,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="Lb1-NK-y9u" id="396-5I-jDJ"/>
                         <outlet property="balanceLabel" destination="aoi-38-Wt9" id="rum-hz-1Ft"/>
+                        <outlet property="button" destination="Lb1-NK-y9u" id="396-5I-jDJ"/>
                         <outlet property="transactionTableView" destination="obQ-uS-wdU" id="0HR-ef-QoL"/>
                         <segue destination="A3i-py-pm1" kind="presentation" identifier="editTransaction" id="tV2-p7-MWX"/>
                     </connections>
@@ -221,9 +221,9 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="NQf-Dg-vho">
+                            <tableViewSection headerTitle="Добавить / удалить категорию" id="NQf-Dg-vho">
                                 <cells>
-                                    <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" rowHeight="50" id="3ey-lz-mGP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" rowHeight="50" id="3ey-lz-mGP">
                                         <rect key="frame" x="0.0" y="161.99999809265137" width="428" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ey-lz-mGP" id="goB-jl-Gzg">

@@ -34,7 +34,7 @@
 		7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B1269B478C0041156D /* SceneDelegate.swift */; };
 		7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B3269B478C0041156D /* AccountViewController.swift */; };
 		7DADB3B7269B478C0041156D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DADB3B5269B478C0041156D /* Main.storyboard */; };
-		7DADB3BA269B478C0041156D /* Transact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B8269B478C0041156D /* Transact.xcdatamodeld */; };
+		7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */; };
 		7DADB3BC269B478E0041156D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DADB3BB269B478E0041156D /* Assets.xcassets */; };
 		7DADB3BF269B478E0041156D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DADB3BD269B478E0041156D /* LaunchScreen.storyboard */; };
 		7DADB3C9269CD19E0041156D /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3C8269CD19E0041156D /* CustomTabBar.swift */; };
@@ -111,7 +111,7 @@
 		6813DEE626A07C7500AA408F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7DADB3B8269B478C0041156D /* Transact.xcdatamodeld */,
+				7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */,
 				6887F41F26DD6DBD00910C4A /* CategoryPickerModel.swift */,
 				7DF571402766840C00ED5FB7 /* DeveloperModel.swift */,
 			);
@@ -321,7 +321,7 @@
 				7D66F642275418C1007C5D66 /* StatisticViewController.swift in Sources */,
 				7D0E84212790BEE700349AD4 /* UIButton + Customization.swift in Sources */,
 				7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */,
-				7DADB3BA269B478C0041156D /* Transact.xcdatamodeld in Sources */,
+				7DADB3BA269B478C0041156D /* FinBook.xcdatamodeld in Sources */,
 				7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */,
 				7D869F9627B44A6B00E2D29C /* UIColor + Hex.swift in Sources */,
 				7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */,
@@ -554,13 +554,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7DADB3B8269B478C0041156D /* Transact.xcdatamodeld */ = {
+		7DADB3B8269B478C0041156D /* FinBook.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				7DADB3B9269B478C0041156D /* FinBook.xcdatamodel */,
 			);
 			currentVersion = 7DADB3B9269B478C0041156D /* FinBook.xcdatamodel */;
-			path = Transact.xcdatamodeld;
+			path = FinBook.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

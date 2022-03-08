@@ -50,13 +50,13 @@ class TransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryPickerView.dataSource = self
-        categoryPickerView.delegate = self
+        categoryPickerView.delegate = self //показываем что есть связь между нашим PV и VC
         
         setupCostTextField()
         setupCategoryPickerView()
         setupDataTextField()
         setupDoneToolBar()
-        edittingTransaction()
+        edittingTransaction() // если редактируем существующую транзакцию
     }
     
 // MARK: - IBActions
