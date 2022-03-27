@@ -9,7 +9,7 @@
 + Архитектура MVC
 + Фреймворк UIKit
 + CoreData - сохранение транзакций на устройстве
-+ UserDefaults - сохранение состояние цветовой темы
++ UserDefaults - сохранение состояния цветовой темы
 + JSON - парсинг данных для карточек разработчиков
 + Делегирование, Singletone
 
@@ -19,7 +19,7 @@ ___
 
 #### Владимир Рубис:
 * [Telegram](t.me/Rubis_Vladimir)  
-* [LinkedIn]()
+* [LinkedIn](https://www.linkedin.com/in/vladimir-rubis/)
 * [GitHub](github.com/rubis-vladimir)
 * E-mail:<a href="mailto:rubis-vu@mail.ru"> rubis-vu@mail.ru</a>
 
