@@ -31,13 +31,14 @@
 ___
 ### Контакты разработчиков:
 
-#### Владимир Рубис:
-* [Telegram](t.me/Rubis_Vladimir)  
-* [LinkedIn](https://www.linkedin.com/in/vladimir-rubis/)
-* [GitHub](github.com/rubis-vladimir)
-* E-mail:<a href="mailto:rubis-vu@mail.ru"> rubis-vu@mail.ru</a>
+| #### Владимир Рубис: | #### Никита Сперанский |
+| --- | --- |
+| * [Telegram](t.me/Rubis_Vladimir)  | |
+| * [LinkedIn](https://www.linkedin.com/in/vladimir-rubis/) | |
+| * [GitHub](github.com/rubis-vladimir)| |
+| * E-mail:<a href="mailto:rubis-vu@mail.ru"> rubis-vu@mail.ru</a>| |
 
-#### Никита Сперанский:
+
 * [Telegram](t.me/Nikita_Kelevra)
 * [LinkedIn](linkedin.com/in/nikita-kelevra/)
 * [GitHub](github.com/NikitaKelevra)  
