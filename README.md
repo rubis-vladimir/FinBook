@@ -39,5 +39,3 @@ ____
   | [LinkedIn](https://www.linkedin.com/in/vladimir-rubis/) | [LinkedIn](linkedin.com/in/nikita-kelevra/) |
   | [GitHub](github.com/rubis-vladimir)| [GitHub](github.com/NikitaKelevra) |
   | <a href="mailto:rubis-vu@mail.ru"> rubis-vu@mail.ru</a>| <a href="mailto:nonamerz5@mail.ru"> nonamerz5@mail.ru</a> |
-
-___
