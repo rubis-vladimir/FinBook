@@ -31,7 +31,7 @@
 ___
 ### Контакты разработчиков:
 
-| Владимир Рубис: | Никита Сперанский |
+| Владимир Рубис | Никита Сперанский |
 | --- | --- |
 | [Telegram](t.me/Rubis_Vladimir)  | [Telegram](t.me/Nikita_Kelevra) |
 | [LinkedIn](https://www.linkedin.com/in/vladimir-rubis/) | [LinkedIn](linkedin.com/in/nikita-kelevra/) |
