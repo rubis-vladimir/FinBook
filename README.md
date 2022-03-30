@@ -1,6 +1,6 @@
 
 # FinBook  ![Untitled-11](https://user-images.githubusercontent.com/84345727/160815002-74bdb22b-7fab-4b47-8d3e-f6102d49d943.svg)
-<div> [Builder test](https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main) </div>
+<div> ![CircleCI](https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main) </div>
 Программа для **ведения личных финансов** (доходов/расходов) с возможностью поиска по названию или категории, построения наглядной диаграммы, сохранению данных на устройстве, а также выбора темной/светлой темы.
 <p></p>
 <div align="center">
