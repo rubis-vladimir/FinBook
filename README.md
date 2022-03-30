@@ -1,4 +1,6 @@
-# Программа FinBook ![Untitled-9](https://user-images.githubusercontent.com/84345727/160813433-7a3fdb63-f57c-49da-802f-78832e3260ef.svg)
+# Программа FinBook ![Untitled-10](https://user-images.githubusercontent.com/84345727/160814366-5177bedd-8c26-453e-a38d-34329f5204a2.svg)
+
+
 
 
 
