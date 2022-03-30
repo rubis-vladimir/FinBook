@@ -3,7 +3,7 @@
 
 # FinBook  
  <a href="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main">
-    <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="50px" align="right" vspace="2px">
+    <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="50px" align="right" vspace="10px">
 </a>
  Используя FinBook, вы можете эффективно <b>вести личные финансы</b> 
   (учет доходов/расходов)
