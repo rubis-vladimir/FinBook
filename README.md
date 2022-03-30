@@ -21,7 +21,7 @@
   ### Примененные технологии:
   + SWIFT 5.0
   + Архитектура MVC 
-  + Фраемворк UIKit  
+  + Фреймворк UIKit  
   + CoreData 
   + UserDefaults 
   + JSON-парсинг данных 
