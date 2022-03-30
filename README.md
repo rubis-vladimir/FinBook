@@ -1,8 +1,9 @@
 
 # FinBook  ![Untitled-11](https://user-images.githubusercontent.com/84345727/160815002-74bdb22b-7fab-4b47-8d3e-f6102d49d943.svg)
 
-![CircleCI](https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main)
-<p></p>
+<a href="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main">
+    <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="6px" align="right" vspace="2px">
+</a>
 
   <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="right" height="500px" hspace="30px" vspace="30px"/>
 
