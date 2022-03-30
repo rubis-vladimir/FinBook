@@ -1,5 +1,5 @@
 # Программа FinBook 
-
+# GitHub Cheat Sheet [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
 Программа для **ведения личных финансов** (доходов/расходов) с возможностью поиска по названию или категории, построения наглядной диаграммы, сохранению данных на устройстве,а также выбора темной/светлой темы.
 
 
