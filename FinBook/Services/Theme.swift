@@ -5,6 +5,9 @@
 //  Created by Владимир Рубис on 06.02.2022.
 //
 
+
+/// Нужно будет все задокументировать
+
 import UIKit
 
 enum Theme: Int, CaseIterable {
