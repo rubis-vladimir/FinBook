@@ -1,5 +1,5 @@
 <div>
-<img src ="https://user-images.githubusercontent.com/84345727/160905439-0d6bfb80-34de-48ce-97f4-4340a073f376.svg" align="left"/>
+<img src ="https://user-images.githubusercontent.com/84345727/160906780-c43d2092-b00c-4d94-af61-5d0fa062702c.svg" align="left" height="80"/>
 
 # FinBook  
  <a href="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main">
