@@ -25,7 +25,7 @@
   + JSON-парсинг данных 
   + Делегирование
   + Singletone
-  
+  + Generics
   
   
 ___
