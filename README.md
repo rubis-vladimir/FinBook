@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html>
- <head>
-  <meta charset="utf-8">
-  <title>font-size</title>
-  <style>
-   h1 {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 250%; 
-   } 
-   p {
-    font-family: Verdana, Arial, Helvetica, sans-serif; 
-    font-size: 11pt; 
-   }
-  </style>
- </head> 
-
-
 
 # FinBook  ![Untitled-11](https://user-images.githubusercontent.com/84345727/160815002-74bdb22b-7fab-4b47-8d3e-f6102d49d943.svg)
 
-  <h1>Программа для</h1> **ведения личных финансов** (доходов/расходов) с возможностью поиска по названию или категории, построения наглядной диаграммы, сохранению данных на устройстве,а также выбора темной/светлой темы.
+Программа для **ведения личных финансов** (доходов/расходов) с возможностью поиска по названию или категории, построения наглядной диаграммы, сохранению данных на устройстве,а также выбора темной/светлой темы.
 <p></p>
 <div align="center">
   <img src ="https://user-images.githubusercontent.com/84345727/160836684-b3640b99-b30b-4d46-a789-463654e57343.gif" />
@@ -50,4 +32,3 @@ ___
 * [GitHub](github.com/NikitaKelevra)  
 * E-mail: <a href="mailto:nonamerz5@mail.ru"> nonamerz5@mail.ru</a>
 ___
-</body>
