@@ -4,11 +4,8 @@
 ![CircleCI](https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main)
 <p></p>
 Программа для **ведения личных финансов** (доходов/расходов) с возможностью поиска по названию или категории, построения наглядной диаграммы, сохранению данных на устройстве, а также выбора темной/светлой темы.
-<p></p>
-<div align="center">
-  <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" height="500px" hspace="30px" vspace="30px"/>
-</div>
-<p></p>
+
+  <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="center" height="500px" hspace="30px" vspace="30px"/>
 
 
 ### Примененные технологии:
