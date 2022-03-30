@@ -7,10 +7,11 @@
     <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="50px" align="right" vspace="10px">
  </a>
  </div>
- Используя ```FinBook```, вы можете эффективно <b>вести личные финансы</b> (учет доходов/расходов)
+ 
+ # Используя `FinBook`, вы можете эффективно <b>вести личные финансы</b> (учет доходов/расходов)
 
-<p></p>
-  <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="right" height="480px" hspace="50px" vspace="20px"/>
+ <p></p>
+ <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="right" height="480px"    hspace="50px" vspace="20px"/>
   
   ### Программа поддерживает:
   + возможность поиска по названию или категории; 
