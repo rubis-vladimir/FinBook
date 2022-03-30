@@ -11,7 +11,10 @@ class ChartManager {
     
     static let shared = ChartManager()
     
+    private init() {}
+    
     // MARK: The function returns a filltered array - (category, percent)
+    
     func fillteredForChart(startDate: Date, finishDate: Date, isIncome: Bool) -> [(String, Double)] {
         
         let transactions = StorageManager.shared.fetchData()
