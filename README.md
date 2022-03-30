@@ -5,7 +5,7 @@
  <a href="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main">
     <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="50px" align="right" vspace="2px">
 </a>
-  Используя `FinBook`, вы можете эффективно **вести личные финансы** 
+ Используя FinBook, вы можете эффективно <big>вести личные финансы</big> 
   (учет доходов/расходов)
 </div>
 
