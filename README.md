@@ -1,16 +1,14 @@
-![Untitled-12](https://user-images.githubusercontent.com/84345727/160905439-0d6bfb80-34de-48ce-97f4-4340a073f376.svg)
-
 <img src ="https://user-images.githubusercontent.com/84345727/160905439-0d6bfb80-34de-48ce-97f4-4340a073f376.svg" align="left"/>
 
 # FinBook  ![Untitled-11](https://user-images.githubusercontent.com/84345727/160815002-74bdb22b-7fab-4b47-8d3e-f6102d49d943.svg)
 
-<a href="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main">
-    <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="50px" align="right" vspace="2px">
-</a>
+
 
   Используя `FinBook`, вы можете эффективно **вести личные финансы** 
   (учет доходов/расходов)
- 
+ <a href="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main">
+    <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="50px" align="right" vspace="2px">
+</a>
   <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="right" height="480px" hspace="50px" vspace="10px"/>
   
   ### Программа поддерживает:
