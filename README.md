@@ -8,7 +8,7 @@
   Используя `FinBook`, вы можете эффективно **вести личные финансы** 
   (учет доходов/расходов)
   
-  <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="right" height="460px" hspace="50px" vspace="10px"/>
+  <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="right" height="480px" hspace="50px" vspace="10px"/>
   
   ### Программа поддерживает:
   + возможность поиска по названию или категории; 
