@@ -9,6 +9,7 @@
   <img src ="https://user-images.githubusercontent.com/84345727/160836684-b3640b99-b30b-4d46-a789-463654e57343.gif" height="280px" hspace="30px" vspace="30px"/>
 </div>
 <p></p>
+![Simulator_Screen_Recording_-_iPhone_11_-_2022-03-30_at_15 27 53](https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif)
 
 
 ### Примененные технологии:
