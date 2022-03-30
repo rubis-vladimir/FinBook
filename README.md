@@ -5,12 +5,12 @@
   <title>font-size</title>
   <style>
    h1 {
-    font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */ 
-    font-size: 250%; /* Размер шрифта в процентах */ 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 250%; 
    } 
    p {
     font-family: Verdana, Arial, Helvetica, sans-serif; 
-    font-size: 11pt; /* Размер шрифта в пунктах */ 
+    font-size: 11pt; 
    }
   </style>
  </head> 
