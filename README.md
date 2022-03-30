@@ -2,7 +2,7 @@
 # FinBook  ![Untitled-11](https://user-images.githubusercontent.com/84345727/160815002-74bdb22b-7fab-4b47-8d3e-f6102d49d943.svg)
 
 <a href="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main">
-    <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="150px" align="right" vspace="2px">
+    <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="50px" align="right" vspace="2px">
 </a>
 
   Используя `FinBook`, вы можете эффективно **вести личные финансы** 
