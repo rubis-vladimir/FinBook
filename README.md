@@ -1,11 +1,11 @@
 <div>
 <img src ="https://user-images.githubusercontent.com/84345727/160906780-c43d2092-b00c-4d94-af61-5d0fa062702c.svg" align="left" height="90"/>
+
+# FinBook  
+ 
  <a href="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main">
     <img src="https://img.shields.io/circleci/build/github/rubis-vladimir/FinBook/main" hspace="50px" align="right" vspace="10px">
 </a>
-# FinBook  
- 
-
  </div>
  Используя FinBook, вы можете эффективно <b>вести личные финансы</b> (учет доходов/расходов)
 
