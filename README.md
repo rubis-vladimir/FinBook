@@ -33,9 +33,9 @@ ___
 
 | Владимир Рубис: | Никита Сперанский |
 | --- | --- |
-| * [Telegram](t.me/Rubis_Vladimir)  | * [Telegram](t.me/Nikita_Kelevra) |
-| * [LinkedIn](https://www.linkedin.com/in/vladimir-rubis/) | * [LinkedIn](linkedin.com/in/nikita-kelevra/) |
-| * [GitHub](github.com/rubis-vladimir)| * [GitHub](github.com/NikitaKelevra) |
-| * E-mail:<a href="mailto:rubis-vu@mail.ru"> rubis-vu@mail.ru</a>| * E-mail: <a href="mailto:nonamerz5@mail.ru"> nonamerz5@mail.ru</a> |
+| [Telegram](t.me/Rubis_Vladimir)  | [Telegram](t.me/Nikita_Kelevra) |
+| [LinkedIn](https://www.linkedin.com/in/vladimir-rubis/) | [LinkedIn](linkedin.com/in/nikita-kelevra/) |
+| [GitHub](github.com/rubis-vladimir)| [GitHub](github.com/NikitaKelevra) |
+| <a href="mailto:rubis-vu@mail.ru"> rubis-vu@mail.ru</a>| <a href="mailto:nonamerz5@mail.ru"> nonamerz5@mail.ru</a> |
 
 ___
