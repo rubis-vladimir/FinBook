@@ -5,8 +5,19 @@
 <p></p>
 Программа для **ведения личных финансов** (доходов/расходов) с возможностью поиска по названию или категории, построения наглядной диаграммы, сохранению данных на устройстве, а также выбора темной/светлой темы.
 
-  <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="center" height="500px" hspace="30px" vspace="30px"/>
+  <img src ="https://user-images.githubusercontent.com/84345727/160895784-44e0774a-7f5d-4b05-af74-78fc0db653d9.gif" align="right" height="500px" hspace="30px" vspace="30px"/>
 
+```Swift
+addConstraint(NSLayoutConstraint(
+    item: button1,
+    attribute: .Right,
+    relatedBy: .Equal,
+    toItem: button2,
+    attribute: .Left,
+    multiplier: 1.0,
+    constant: -12.0
+))
+```
 
 ### Примененные технологии:
 + Язык программирования SWIFT
