@@ -15,6 +15,11 @@
 + Делегирование, Singletone
 
 ![ScreenProg1]()
+
+
+https://user-images.githubusercontent.com/84345727/160834499-29569916-d6c7-4b9b-969f-43c97dc9e14b.mp4
+
+
 ___
 ### Контакты разработчиков:
 
