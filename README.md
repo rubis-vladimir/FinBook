@@ -3,7 +3,9 @@
 
 <div style="text-align:center"><Программа для **ведения личных финансов** (доходов/расходов) с возможностью поиска по названию или категории, построения наглядной диаграммы, сохранению данных на устройстве,а также выбора темной/светлой темы.></div>
 
-<div style="text-align:center"><![Simulator_Screen_Recording_-_iPhone_11_-_2022-03-30_at_15 27 53-6](https://user-images.githubusercontent.com/84345727/160836684-b3640b99-b30b-4d46-a789-463654e57343.gif)" /></div>
+<div style="text-align:center">
+![Simulator_Screen_Recording_-_iPhone_11_-_2022-03-30_at_15 27 53-6](https://user-images.githubusercontent.com/84345727/160836684-b3640b99-b30b-4d46-a789-463654e57343.gif)" /
+</div>
 
 
 
