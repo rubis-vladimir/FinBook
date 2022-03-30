@@ -1,5 +1,4 @@
-![Untitled-5](https://user-images.githubusercontent.com/84345727/160905276-38f6c267-565d-4c91-b295-e9b58e99e12b.svg)
-
+![Untitled-12](https://user-images.githubusercontent.com/84345727/160905439-0d6bfb80-34de-48ce-97f4-4340a073f376.svg)
 
 # FinBook  ![Untitled-11](https://user-images.githubusercontent.com/84345727/160815002-74bdb22b-7fab-4b47-8d3e-f6102d49d943.svg)
 
