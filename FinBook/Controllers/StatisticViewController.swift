@@ -14,13 +14,14 @@ class StatisticViewController: UIViewController {
     @IBOutlet weak var statisticsTV: UITableView!
     
     //MARK: - Properties
+    private let chartManager = DataFilteringService()
     private let withEmptyChartLabel = UILabel()
     
     private var percentageShares: [(String, Double)] = []
     private var palitreColors: [UIColor] = []
     private var isIncome: Bool = false
     private var startDate: Date = Calendar.current.date(byAdding: .day, value: -30, to: Date()) ?? Date()
-    private var finishDate: Date = Date()
+    private var endDate: Date = Date()
     
     //MARK: - Override functions
     override func viewDidLoad() {
@@ -41,19 +42,24 @@ class StatisticViewController: UIViewController {
     @IBAction func parametersChart() {
         setAlert(isIncome: isIncome,
                       startDate: startDate,
-                      finishDate: finishDate) {(isIncome, startDate, finishDate) in
+                      finishDate: endDate) {(isIncome, startDate, finishDate) in
             self.isIncome = isIncome
             self.startDate = startDate
-            self.finishDate = finishDate
+            self.endDate = finishDate
             self.redrawPieChart()
         }
     }
     
     // MARK: - Private funcs
     private func redrawPieChart() {
-        percentageShares = ChartManager.shared.fillteredForChart(startDate: startDate,
-                                                                 finishDate: finishDate,
-                                                                 isIncome: isIncome)
+        
+        /// Получаем массив актуальных транзакции из `CoreData`
+        let transactions = StorageManager.shared.fetchData()
+        
+        percentageShares = chartManager.getDataInPercentage(from: transactions,
+                                                            from: startDate,
+                                                            to: endDate,
+                                                            isIncome: isIncome)
         palitreColors = Palette.getChartPalette()
 
         pieChartView.layer.sublayers?.removeAll()

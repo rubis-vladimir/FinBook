@@ -7,11 +7,11 @@
 
 import UIKit
 
-class PieChartView: UIView {
+final class PieChartView: UIView {
     
     private var circleLayer: CAShapeLayer!
     
-    // Отрисовка диаграммы по секциям
+    /// Отрисовывает диаграмму по секциям
     func draw(percents: [(String, Double)], colors: [UIColor]) {
         
         self.backgroundColor = UIColor.clear
@@ -26,7 +26,11 @@ class PieChartView: UIView {
         }
     }
     
-    // Отрисовка секции для соответствующей категории
+    /// Отрисовывает секцию
+    /// - Parameters:
+    ///   - alpha: начальный угол
+    ///   - betta:
+    ///   - color: цвет
     private func drawSection(alpha: CGFloat, betta: CGFloat, color: UIColor) {
         let arcColor = UIColor.systemGray4
         let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
