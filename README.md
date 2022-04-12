@@ -29,6 +29,7 @@
   + `Delegation`
   + `Singletone`
   + `Generics`
+  + `PropertyWrapper`
   ____
   ### Контакты разработчиков:
 
