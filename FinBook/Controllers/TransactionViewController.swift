@@ -236,7 +236,7 @@ extension TransactionViewController: UITextFieldDelegate {
         return count <= 30
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {     
+   @objc func textFieldShouldReturn() -> Bool {
         if costTextField.isEditing  {
             guard costFormatter(cost: costTextField.text) > 0 else {
                 showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")

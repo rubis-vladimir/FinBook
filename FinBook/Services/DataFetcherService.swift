@@ -5,18 +5,18 @@
 //  Created by Владимир Рубис on 20.02.2022.
 //
 
-import Foundation
-
-class DataFetcherService {
+// MARK: Сервис получения данных
+final class DataFetcherService {
     
-    var localDataFetcher: LocalDataFetcher
+    var dataFetcher: DataFetcherProtocol
     
-    init(localDataFetcher: LocalDataFetcher = LocalDataFetcher()) {
-        self.localDataFetcher = localDataFetcher
+    init(dataFetcher: DataFetcherProtocol = LocalDataFetcher()) {
+        self.dataFetcher = dataFetcher
     }
     
+    /// Возвращает массив [Developer], декодированный из локально расположенного файла JSON
     func fetchDevelopers(completion: @escaping ([Developer]?) -> Void) {
         let localUrl = "developers.json"
-        localDataFetcher.fetchJSONData(from: localUrl, responce: completion)
+        dataFetcher.fetchJSONData(from: localUrl, responce: completion)
     }
 }

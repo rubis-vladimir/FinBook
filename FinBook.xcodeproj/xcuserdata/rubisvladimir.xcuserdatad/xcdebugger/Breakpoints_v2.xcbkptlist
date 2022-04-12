@@ -3,4 +3,322 @@
    uuid = "A67DE253-CA56-4C12-B406-252ADE542D40"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B399C5B-233B-4993-9BF0-138FD53328E7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataFilteringServiceTests/DataFilteringServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "getDateFromString(dateString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4B399C5B-233B-4993-9BF0-138FD53328E7 - f5f8d0a7fa85517e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "4B399C5B-233B-4993-9BF0-138FD53328E7 - f5f8d0a7fa852ebc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "508">
+               </Location>
+               <Location
+                  uuid = "4B399C5B-233B-4993-9BF0-138FD53328E7 - f5f8d0a7fa852f6f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "508">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57D0FD3E-FDF2-4836-9691-60E7565AB540"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataFilteringServiceTests/DataFilteringServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "getDateFromString(dateString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "57D0FD3E-FDF2-4836-9691-60E7565AB540 - f5f8d0a7fa852e9d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  uuid = "57D0FD3E-FDF2-4836-9691-60E7565AB540 - f5f8d0a7fa852ee3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "548">
+               </Location>
+               <Location
+                  uuid = "57D0FD3E-FDF2-4836-9691-60E7565AB540 - f5f8d0a7fa852c8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "548">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5916C014-3F37-4D26-BB39-BE29053A6905"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataFilteringServiceTests/DataFilteringServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "getDateFromString(dateString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5916C014-3F37-4D26-BB39-BE29053A6905 - f5f8d0a7fa852ebc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  uuid = "5916C014-3F37-4D26-BB39-BE29053A6905 - f5f8d0a7fa852e02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "612">
+               </Location>
+               <Location
+                  uuid = "5916C014-3F37-4D26-BB39-BE29053A6905 - f5f8d0a7fa852cad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "612">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "725358E3-EC54-4160-85D3-B97D08823050"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataFilteringServiceTests/DataFilteringServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "getDateFromString(dateString:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "725358E3-EC54-4160-85D3-B97D08823050 - f5f8d0a7fa852ee3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "576">
+               </Location>
+               <Location
+                  uuid = "725358E3-EC54-4160-85D3-B97D08823050 - f5f8d0a7fa852e67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "1444">
+               </Location>
+               <Location
+                  uuid = "725358E3-EC54-4160-85D3-B97D08823050 - f5f8d0a7fa852c12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DataFilteringServiceTests.DataFilteringServiceTests.getDateFromString(dateString: Swift.String) -&gt; Foundation.Date"
+                  moduleName = "DataFilteringServiceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rubisvladimir/Documents/1.%20Swift/9.%20My%20Projects/FinBook/DataFilteringServiceTests/DataFilteringServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "1444">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7531CE68-6863-40EE-8AAF-F59262EF0F7B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataFilteringServiceTests/DataFilteringServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "createTransact(date:category:cost:isIncome:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CFC8E9A3-C813-47DC-AF08-6AF87A22BA5B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataFilteringServiceTests/DataFilteringServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "createTransact(date:category:cost:isIncome:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09DFE99E-8A46-4790-81F8-B93389B22E9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataFilteringServiceTests/DataFilteringServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "createTransact(date:category:cost:isIncome:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CEB6F36C-58E4-451A-AFB3-BE2235E6C416"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DataFilteringServiceTests/DataFilteringServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "createTransact(date:category:cost:isIncome:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -7,9 +7,26 @@
 
 import UIKit
 
-class LocalDataFetcher {
+/// Протокол получения данных
+protocol DataFetcherProtocol {
     
-    func fetchJSONData<T: Decodable>(from file: String, responce: @escaping (T?) -> Void) {
+    /// Получает данные и возвращает значение типа `T`, декодированное из объекта JSON
+    ///  - Parameters:
+    ///     - from: путь к файлу с данными / url
+    ///     - responce: возвращает декодированные данные
+    func fetchJSONData<T:Decodable>(from: String,
+                                    responce: @escaping (T?) -> Void)
+}
+
+// MARK: Класс для получения и декодировки данных из файла JSON, расположенного локально
+final class LocalDataFetcher: DataFetcherProtocol {
+    
+    /// Получает данные и возвращает значение типа `T`, декодированное из объекта JSON
+    ///  - Parameters:
+    ///     - from: путь к файлу
+    ///     - responce: замыкание для захвата данных
+    func fetchJSONData<T: Decodable>(from file: String,
+                                     responce: @escaping (T?) -> Void) {
         guard let url = Bundle.main.url(forResource: file, withExtension: nil) else {
             print("Couldn't find \(file) in bundle.")
             return
