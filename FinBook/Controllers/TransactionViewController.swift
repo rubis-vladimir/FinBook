@@ -112,7 +112,7 @@ class TransactionViewController: UIViewController {
         costTextField.text = String(editTransaction.cost)
         descriptionTextField.text = editTransaction.descr
         datePickerView.date = editTransaction.date ?? datePickerView.date
-        dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
+        dateTextField.text = DateConvertService.convertDateToStr(datePickerView.date)
         noteTextField.text = editTransaction.note
              
         setCategoryEditTransaction()
@@ -151,7 +151,7 @@ class TransactionViewController: UIViewController {
     }
         
     private func setupDateTextField() { // настройка текстового поля с датой
-        dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
+        dateTextField.text = DateConvertService.convertDateToStr(datePickerView.date)
         
         dateTextField.inputView = datePickerView
         datePickerView.preferredDatePickerStyle = .wheels
@@ -219,7 +219,7 @@ extension TransactionViewController: UITextFieldDelegate {
     }
     
     @objc private func dateTextFieldDidChanged() {
-        dateTextField.text = DateConvertManager.convertDateToStr(datePickerView.date)
+        dateTextField.text = DateConvertService.convertDateToStr(datePickerView.date)
     }
     
     @objc private func hideKeyboard() { view.endEditing(true) }

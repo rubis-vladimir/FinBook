@@ -1,5 +1,5 @@
 //
-//  DateManager.swift
+//  DateManagerService.swift
 //  FinBook
 //
 //  Created by Сперанский Никита on 21.12.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DateConvertManager {
+final class DateConvertService {
     
     static func convertDateToStr(_ date: Date?) -> String {
         let dateFormatter = DateFormatter()
