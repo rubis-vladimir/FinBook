@@ -10,11 +10,11 @@ import XCTest
 class FinBookTests: XCTestCase {
 
     override func setUp() {
-        <#code#>
+        super.setUp()
     }
     
     override func tearDown() {
-        <#code#>
+        super.tearDown()
     }
     
 

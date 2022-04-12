@@ -10,11 +10,14 @@
 
 import UIKit
 
+// MARK: - Сохраняет и обновляет цветовую тему приложения
+
 enum Theme: Int, CaseIterable {
     case system, light, dark
 }
 
 extension Theme {
+    
     @Persist(key: "app_theme", defaultValue: Theme.system.rawValue)
     private static var appTheme: Int
     
@@ -27,7 +30,7 @@ extension Theme {
     }
 }
 
-// MARK: - Save and Update theme in App
+
 extension Theme {
     var userInterfaceStyle: UIUserInterfaceStyle {
         switch self {

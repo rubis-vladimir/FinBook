@@ -19,21 +19,22 @@ final class DataFilteringService {
     ///  - Returns: отфильтрованный и отсортированный по `cost`
     ///  массив кортежей (категория, процент от общей стоимости)
     func getDataInPercentage(from transactions: [Transact],
-                 from startDate: Date,
-                 to endDate: Date,
-                 isIncome: Bool) -> [(String, Double)] {
+                             from startDate: Date,
+                             to endDate: Date,
+                             isIncome: Bool) -> [(String, Double)] {
         
         var transactDictionary: [String: Double] = [:]
+        
+        /// Преобразовываем формат дат
+        /// (для корректной фильтрации по дате, без учета времени)
+        let start = changeDateFormat(for: startDate)
+        let end = changeDateFormat(for: endDate)
         
         for transact in transactions {
             /// Пробуем получить дату из транзакции
             guard let dateTransact = transact.date else { continue }
             
-            /// Преобразовываем формат дат
-            /// (для корректной фильтрации по дате, без учета времени)
             let date = changeDateFormat(for: dateTransact)
-            let start = changeDateFormat(for: startDate)
-            let end = changeDateFormat(for: endDate)
             
             /// Фильтруем по типу и дате
             guard transact.incomeTransaction == isIncome,
@@ -67,6 +68,7 @@ final class DataFilteringService {
     private func changeDateFormat(for date: Date) -> Date {
         let calendar = Calendar.current
         let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        print(dateComponents)
         let newDate = calendar.date(from: dateComponents)
         return newDate ?? date
     }

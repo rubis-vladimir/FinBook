@@ -7,7 +7,7 @@
 //
 import Foundation
 
-// MARK: - Saving in UserDefaults
+// MARK: - Обертка свойства для сохранения в UserDefaults
 @propertyWrapper
 struct Persist<T> {
     let key: String
