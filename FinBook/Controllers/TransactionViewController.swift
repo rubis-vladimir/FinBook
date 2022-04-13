@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: VC для ввода новой или редактирования транзакции
 class TransactionViewController: UIViewController {
 
     // MARK: - IBOutlets
@@ -54,6 +55,8 @@ class TransactionViewController: UIViewController {
     }
     
 // MARK: - IBActions
+    
+    /// При переключении элемента SegmentedControl доход/расход изменяет соответствующие категории и некоторые наименования
     @IBAction func incomeStatusOnSegmentedControl(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
@@ -63,18 +66,22 @@ class TransactionViewController: UIViewController {
             categoryLabel.text = "Категория дохода:"
             isIncome = true
         }
-        setupCategoryPickerView()  // установка актуальной категории в поле
+        /// Установка актуальной категории в поле при переключениях
+        setupCategoryPickerView()
     }
     
+    /// Выход из VC при нажатии кнопки "Готово"
     @IBAction func doneButtonAction(_ sender: Any) {
         saveAndExit()
     }
     
+    /// Выход из VC при нажатии кнопки "Отмена"
     @IBAction func cancelButtonAction(_ sender: Any) {
         dismiss(animated: true)
     }
     
 // MARK: - Private func
+    /// Стартовая настройка VC и всех его полей
     private func setupTransactionVC() {
         categoryPickerView.dataSource = self
         categoryPickerView.delegate = self
@@ -88,21 +95,25 @@ class TransactionViewController: UIViewController {
         edittingTransactionMode()
     }
     
+    /// Функция собирающая новую/редактируемую транзакцию из данных с полей
+    /// сохраняющая ее в памяти и отсылающая ее в AccountVC через делегат
     private func saveAndExit() {
         guard let costPrice = Double(costTextField.text ?? "0.00") else { return }
         guard let description = descriptionTextField.text else { return }
         
-
+        /// Собирает и сразу сохраняет в Storage Manager новую транзакцию
         let transaction = StorageManager.shared.createTransact(cost: costPrice,
                                                                description: description,
                                                                category: selectedModel.title,
                                                                date: datePickerView.date,
                                                                note: noteTextField.text ?? "",
                                                                income: isIncome)
+        /// Передает транзакцию в AccountVC через делегат
         delegate.saveTransaction(transaction)
         dismiss(animated: true)
     }
     
+    /// Функция определяет редактируем ли мы транзакцию и заполняет соответствующие поля ее свойствами
     private func edittingTransactionMode() {
         guard let editTransaction = editTransaction else { return }
         if editTransaction.incomeTransaction == true {
@@ -119,6 +130,7 @@ class TransactionViewController: UIViewController {
         doneButton.isEnabled = true
     }
     
+    /// Функция ищет категорию редактируемой тразакции и выставляет ее
     private func setCategoryEditTransaction() {
         for (index, value) in categoryPickerModels.enumerated() {
             if value.title == editTransaction?.category {
@@ -135,6 +147,7 @@ class TransactionViewController: UIViewController {
         costTextField.addTarget(self, action: #selector(costTextFieldDidChanged), for: .editingChanged)
     }
     
+    /// Функция меняет список категорий дохода/расхода или устанавливает категорию редактируемой тразакции в поле
     private func setupCategoryPickerView() {
         if  editTransaction?.incomeTransaction == isIncome {
             setCategoryEditTransaction()
