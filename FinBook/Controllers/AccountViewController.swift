@@ -154,36 +154,44 @@ extension AccountViewController: NewTransactionViewControllerDelegate {
     /// Функция вызывается из TransactionVC через делегата для внесения новой транзакции
     func saveTransaction(_ newTransaction: Transact) {
         /// Проверяем редактировали ли мы транзакцию или пришла новая
-        if let selectedIndexPath = editTransIndexPath?.row {          /// редактирование существующей транзакции
-            transactionTableView.deselectRow(at:editTransIndexPath!, animated: true) /// убираем выделение с ред. ячейки
+        if let selectedIndexPath = editTransIndexPath?.row {
+            /// редактирование существующей транзакции
+            /// убираем выделение с ред. ячейки
+            transactionTableView.deselectRow(at:editTransIndexPath!, animated: true)
             let edittingTransaction = transactionToDisplayAt(indexPath: editTransIndexPath!)
-            StorageManager.shared.deleteTransaction(edittingTransaction) /// удаляем старую версию транзакции
-            
-            if isFiltering {                             /// если редактировали транз-ю в отфильтрованном списке
-                filteredTransactions[selectedIndexPath] = newTransaction   /// находим старую версию транзакции в отфильтрованом списке
+            /// удаляем старую версию транзакции
+            StorageManager.shared.deleteTransaction(edittingTransaction)
+            /// если редактировали транз-ю в отфильтрованном списке
+            if isFiltering {
+                /// находим старую версию транзакции в отфильтрованом списке
+                filteredTransactions[selectedIndexPath] = newTransaction
                 
                 for (index,transaction) in transactions.enumerated() {
                     if transaction == edittingTransaction {
                         transactions[index] = newTransaction
                     }
-                    self.editTransIndexPath = nil   ///обнуляем IndexPath редактируемой строки
+                    /// Обнуляем IndexPath редактируемой строки
+                    self.editTransIndexPath = nil
                 }
             } else {
                 transactions[selectedIndexPath] = newTransaction
             }
             
-        } else {
-            /// Если нас пришла НОВАЯ (а не редактируемая) транзакция
-            self.transactions.append(newTransaction)                /// передача и добавление новой трансакции в массив транзакций
+        } else { /// Если нас пришла НОВАЯ (а не редактируемая) транзакция
+            
+            /// Добавляем новую трансакцию в массив транзакций
+            self.transactions.append(newTransaction)
             self.transactionTableView.insertRows(           /// отображение на экране в TableView
                 at: [IndexPath(row: self.transactions.count - 1, section: 0)],
                 with: .automatic
             )
         }
-        
-        sortedByDateAllTransactArrays() ///сортировка основного массива `transactions` и отфильтрованого `filteredTransactions` по дате
-        reloadDataTableView()           /// Перезагрузка/обновление транзакций отображающихся в TableView параллельно в основном потоке
-        reloadWalletBalance()           /// Расчет и вывод баланса кошелька по текущим транзакциям
+        ///сортировка основного массива `transactions` и отфильтрованого `filteredTransactions` по дате
+        sortedByDateAllTransactArrays()
+        /// Перезагрузка/обновление транзакций отображающихся в TableView параллельно в основном потоке
+        reloadDataTableView()
+        /// Расчет и вывод баланса кошелька по текущим транзакциям
+        reloadWalletBalance()
     }
 }
 
