@@ -23,7 +23,7 @@ class CustomTableViewCell: UITableViewCell {
         cell.descriptionLabel.text = transaction.descr
         cell.categoryLabel.text = transaction.category
         cell.categoryImage.image = getImageFromCategory(transaction: transaction)
-        cell.dataLabel.text = DateConvertManager.convertDateToStr(transaction.date)
+        cell.dataLabel.text = DateConvertService.convertDateToStr(transaction.date)
 //        cell.categoryLabel.text = transaction.note
         
         cell.categoryImage.tintColor =  transaction.incomeTransaction ? .systemGreen : .systemRed
