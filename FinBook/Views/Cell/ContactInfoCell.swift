@@ -7,13 +7,15 @@
 
 import UIKit
 
-enum TypeURL: String {
-    case email = "mailto:"
-    case telegram = "https://t.me/"
-    case browser = "https://www."
-}
-
+// MARK: Класс описывает окно контактной информации в коллекции
 class ContactInfoCell: UICollectionViewCell {
+    
+    /// Типы ссылок
+    private enum TypeURL: String {
+        case email = "mailto:"
+        case telegram = "https://t.me/"
+        case browser = "https://www."
+    }
     
     //MARK: - Properties
     static var reuseId: String = "contactInfoCell"
@@ -39,13 +41,19 @@ class ContactInfoCell: UICollectionViewCell {
     }
     
     //MARK: - Public funcs
+    /// Устанавливает ссылки для текстовых вью
+    ///  - Parameters:
+    ///     - developer: экземпляр модели разработчика
     func configure(with developer: Developer) {
-        emailTextView.attributedText = getLink(developer.links.email, type: .email)
-        gitHubTextView.attributedText = getLink(developer.links.gitHub, type: .browser)
-        linkedinTextView.attributedText = getLink(developer.links.linkedin, type: .browser)
-        telegramTextView.attributedText = getLink(developer.links.telegram, type: .telegram)
+        emailTextView.attributedText = getLink(from: developer.links.email, type: .email)
+        gitHubTextView.attributedText = getLink(from: developer.links.gitHub, type: .browser)
+        linkedinTextView.attributedText = getLink(from: developer.links.linkedin, type: .browser)
+        telegramTextView.attributedText = getLink(from: developer.links.telegram, type: .telegram)
     }
     
+    /// Обновляет `Item`
+    ///  - Parameters:
+    ///     - isSelected: выбран или нет
     func updateCell(_ isSelected: Bool) {
         defaultLabel.isHidden = isSelected ? true : false
         linksStack.isHidden = isSelected ?  false : true
@@ -91,7 +99,7 @@ class ContactInfoCell: UICollectionViewCell {
         linksStack.layer.cornerRadius = 10
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         let padding: CGFloat = 10
         
         addSubview(linksStack)
@@ -102,7 +110,12 @@ class ContactInfoCell: UICollectionViewCell {
         linksStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding).isActive = true
     }
     
-    private func getLink(_ string: String, type: TypeURL) -> NSMutableAttributedString {
+    /// Добавляет в аттрибуты `UITextView` переходы по ссылкам
+    ///   - Parameters:
+    ///     - string: текст ссылки
+    ///     - type: тип ссылки
+    ///   -    Returns: обновленные аттрибуты
+    private func getLink(from string: String, type: TypeURL) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: string)
         let startPartURL: String = type.rawValue
         

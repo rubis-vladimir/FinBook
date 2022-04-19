@@ -19,6 +19,7 @@
 		7D39A20427AFD50F00940EA3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20327AFD50F00940EA3 /* Theme.swift */; };
 		7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20527AFD5B500940EA3 /* Persist.swift */; };
 		7D39A20C27B1B49700940EA3 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */; };
+		7D4BE90E28099A4D008318A5 /* SubclassedUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4BE90D28099A4D008318A5 /* SubclassedUISwitch.swift */; };
 		7D5CF70B277B80FA00FD5D11 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70A277B80FA00FD5D11 /* Palette.swift */; };
 		7D5CF70F277B8A6D00FD5D11 /* ContactInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70E277B8A6D00FD5D11 /* ContactInfoCell.swift */; };
 		7D5CF711277B986E00FD5D11 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF710277B986E00FD5D11 /* SettingsViewController.swift */; };
@@ -76,6 +77,7 @@
 		7D39A20327AFD50F00940EA3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		7D39A20527AFD5B500940EA3 /* Persist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
 		7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
+		7D4BE90D28099A4D008318A5 /* SubclassedUISwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubclassedUISwitch.swift; sourceTree = "<group>"; };
 		7D5CF70A277B80FA00FD5D11 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		7D5CF70E277B8A6D00FD5D11 /* ContactInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoCell.swift; sourceTree = "<group>"; };
 		7D5CF710277B986E00FD5D11 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,25 @@
 			path = Storyboars;
 			sourceTree = "<group>";
 		};
+		7D4BE90F280F1046008318A5 /* ThemeService */ = {
+			isa = PBXGroup;
+			children = (
+				7D39A20327AFD50F00940EA3 /* Theme.swift */,
+				7D5CF70A277B80FA00FD5D11 /* Palette.swift */,
+				7D39A20527AFD5B500940EA3 /* Persist.swift */,
+			);
+			path = ThemeService;
+			sourceTree = "<group>";
+		};
+		7D4BE910280F1069008318A5 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				7D95391D27C23BB900C02D11 /* DataFetcherService.swift */,
+				7D0E842E2795F1F100349AD4 /* LocalDataFetcher.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		7D66F6472757BDF6007C5D66 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +226,7 @@
 		7D95392827C6096C00C02D11 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7D4BE90D28099A4D008318A5 /* SubclassedUISwitch.swift */,
 				7D0E84202790BEE700349AD4 /* UIButton + Customization.swift */,
 				7D39A1DE27A9981500940EA3 /* UILabel + Default.swift */,
 				7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */,
@@ -221,11 +243,8 @@
 				68DAE9072772350D0033CE7A /* DateConvertManager.swift */,
 				7D66F645275420B0007C5D66 /* DataFilteringService.swift */,
 				7D95392A27C60A0800C02D11 /* StorageManager.swift */,
-				7D39A20327AFD50F00940EA3 /* Theme.swift */,
-				7D5CF70A277B80FA00FD5D11 /* Palette.swift */,
-				7D39A20527AFD5B500940EA3 /* Persist.swift */,
-				7D95391D27C23BB900C02D11 /* DataFetcherService.swift */,
-				7D0E842E2795F1F100349AD4 /* LocalDataFetcher.swift */,
+				7D4BE90F280F1046008318A5 /* ThemeService */,
+				7D4BE910280F1069008318A5 /* New Group */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -459,6 +478,7 @@
 				7D869F9627B44A6B00E2D29C /* UIColor + Hex.swift in Sources */,
 				7DADB3CB269D84070041156D /* MainTabBarController.swift in Sources */,
 				7D66F644275419AB007C5D66 /* PieChartView.swift in Sources */,
+				7D4BE90E28099A4D008318A5 /* SubclassedUISwitch.swift in Sources */,
 				6887F42026DD6DBD00910C4A /* CategoryPickerModel.swift in Sources */,
 				7D0E842F2795F1F100349AD4 /* LocalDataFetcher.swift in Sources */,
 				7D5CF70F277B8A6D00FD5D11 /* ContactInfoCell.swift in Sources */,

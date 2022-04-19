@@ -7,20 +7,23 @@
 
 import UIKit
 
+// MARK: Кастомный вью, на котором 
 final class PieChartView: UIView {
     
     private var circleLayer: CAShapeLayer!
     
-    /// Отрисовывает диаграмму по секциям
+    /// Посекционно рисует круговую диаграмму
+    ///  - Parameters:
+    ///   - percents: массив кортежей (категория, процент от общей стоимости)
+    ///   - colors: массив цветов
     func draw(percents: [(String, Double)], colors: [UIColor]) {
-        
-        self.backgroundColor = UIColor.clear
         var alpha = CGFloat(Double.pi / 2)
         var betta = alpha
         
         for (persent, color) in zip(percents, colors) {
             let radian = 2 * Double.pi * persent.1 / 100
             betta += CGFloat(radian)
+            
             drawSection(alpha: alpha, betta: betta, color: color)
             alpha = betta
         }
@@ -29,8 +32,8 @@ final class PieChartView: UIView {
     /// Отрисовывает секцию
     /// - Parameters:
     ///   - alpha: начальный угол
-    ///   - betta:
-    ///   - color: цвет
+    ///   - betta: конечный угол
+    ///   - color: цвет секции
     private func drawSection(alpha: CGFloat, betta: CGFloat, color: UIColor) {
         let arcColor = UIColor.systemGray4
         let center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)

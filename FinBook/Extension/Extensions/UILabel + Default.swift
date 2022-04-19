@@ -7,7 +7,14 @@
 
 import UIKit
 
+// MARK: Рвсширение для UILabel
 extension UILabel {
+    
+    /// Настраивает лейбл
+    ///   - Parameters:
+    ///     - view: вью
+    ///     - title: текст лейбла
+    ///     - isCenter: в центре/смещено
     func setupDefaultLabel(view: UIView, title: String, inCenter: Bool) {
         text = title
         textColor = .systemGray
@@ -17,7 +24,7 @@ extension UILabel {
         
         view.addSubview(self)
         
-        // Setup constraints
+        /// Настройка констрейнтов
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         widthAnchor.constraint(equalToConstant: view.bounds.width * 0.7).isActive = true
         

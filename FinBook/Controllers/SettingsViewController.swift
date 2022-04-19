@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: Класс описывает меню настроек
 class SettingsViewController: UITableViewController {
 
     @IBOutlet weak var themeSegmentedControl: UISegmentedControl!
@@ -17,6 +18,7 @@ class SettingsViewController: UITableViewController {
         setupElements()
     }
     
+    /// Изменение цветовой темы приложения
     @objc func selectTheme() {
         guard let theme = Theme(rawValue: themeSegmentedControl.selectedSegmentIndex) else { return }
         theme.setActive()

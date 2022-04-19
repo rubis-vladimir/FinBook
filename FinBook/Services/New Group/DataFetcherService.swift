@@ -14,7 +14,8 @@ final class DataFetcherService {
         self.dataFetcher = dataFetcher
     }
     
-    /// Возвращает массив [Developer], декодированный из локально расположенного файла JSON
+    /// Возвращает массив данных разработчиков, декодированный
+    /// из локально расположенного файла JSON
     func fetchDevelopers(completion: @escaping ([Developer]?) -> Void) {
         let localUrl = "developers.json"
         dataFetcher.fetchJSONData(from: localUrl, responce: completion)

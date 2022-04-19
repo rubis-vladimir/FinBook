@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: Класс описывает пользовательский TabBar
 class CustomTabBar: UITabBar {
     
     // MARK: - Propeties
@@ -18,14 +19,14 @@ class CustomTabBar: UITabBar {
     
     // MARK: - Override funcs
     override func draw(_ rect: CGRect) {
-        tintColor = UIColor.systemMint
         setupTabBarElements()
     }
 
+    /// Переопределяем область взаимодействия с `tabBar` для основного экрана
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         let buttonRadius: CGFloat = 30
-        
         let pointIsInside = super.point(inside: point, with: event)
+        
         if pointIsInside == true && selectedItem?.tag == 0 {
             for _ in subviews {
                 if abs(self.center.x - point.x) < buttonRadius && abs(point.y) < buttonRadius {
@@ -56,42 +57,45 @@ class CustomTabBar: UITabBar {
         for (item, offset) in zip(items!, horizontalPositionItems) {
             item.titlePositionAdjustment.horizontal = selectedItem?.tag == 0 ? offset : 0
         }
+        
         self.shapeLayer = shapeLayer
+        self.tintColor = .systemMint
     }
     
+    /// Рисует контур `TabBar`
     private func shapePath() -> CGPath {
         let height: CGFloat = 35
         let radius: CGFloat = 15
         
         let path = UIBezierPath()
-        path.move(to: CGPoint(x: radius, y: 0)) // start top left
-        path.addLine(to: CGPoint(x: (centerWidth - height * 2), y: 0)) // the beginning of the trough
+        path.move(to: CGPoint(x: radius, y: 0)) /// start top-  left with offset
+        path.addLine(to: CGPoint(x: (centerWidth - height * 2), y: 0)) /// the beginning of the trough
         
         if selectedItem?.tag == 0 {
-            // first curve down
+            /// first curve down
             path.addCurve(to: CGPoint(x: centerWidth, y: height),
                           controlPoint1: CGPoint(x: (centerWidth - 20), y: 3),
                           controlPoint2: CGPoint(x: centerWidth - 38, y: height - 3))
-            //  second curve up
+            ///  second curve up
             path.addCurve(to: CGPoint(x: (centerWidth + height * 2), y: 0),
                           controlPoint1: CGPoint(x: centerWidth + 38, y: height - 3),
                           controlPoint2: CGPoint(x: (centerWidth + 20), y: 3))
         }
         
-        path.addLine(to: CGPoint(x: tabBarWidth - radius, y: 0))
+        path.addLine(to: CGPoint(x: tabBarWidth - radius, y: 0)) /// top - right with offset
         path.addArc(withCenter: CGPoint(x: tabBarWidth - radius, y: radius),
                     radius: radius,
                     startAngle:  3 * .pi / 2,
                     endAngle:  0,
-                    clockwise: true)
-        path.addLine(to: CGPoint(x: tabBarWidth, y: tabBarHeight))
-        path.addLine(to: CGPoint(x: 0, y: tabBarHeight))
-        path.addLine(to: CGPoint(x: 0, y: radius))
+                    clockwise: true) /// arc 90 down
+        path.addLine(to: CGPoint(x: tabBarWidth, y: tabBarHeight)) /// bottom - right
+        path.addLine(to: CGPoint(x: 0, y: tabBarHeight)) /// bottom - left
+        path.addLine(to: CGPoint(x: 0, y: radius)) /// top with offset - left
         path.addArc(withCenter: CGPoint(x: radius, y: radius),
                     radius: radius,
                     startAngle: .pi,
                     endAngle:  3 * .pi / 2,
-                    clockwise: true)
+                    clockwise: true) /// arc 90 up
         path.close()
         return path.cgPath
     }

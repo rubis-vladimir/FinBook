@@ -7,24 +7,22 @@
 
 import UIKit
 
-/// Протокол получения данных
+// MARK: Протокол получения данных
 protocol DataFetcherProtocol {
     
     /// Получает данные и возвращает значение типа `T`, декодированное из объекта JSON
     ///  - Parameters:
     ///     - from: путь к файлу с данными / url
-    ///     - responce: возвращает декодированные данные
+    ///     - responce: замыкание для захвата данных
     func fetchJSONData<T:Decodable>(from: String,
                                     responce: @escaping (T?) -> Void)
 }
 
-// MARK: Класс для получения и декодировки данных из файла JSON, расположенного локально
+// MARK: Класс для получения и декодировки данных из расположенного локально файла
 final class LocalDataFetcher: DataFetcherProtocol {
     
-    /// Получает данные и возвращает значение типа `T`, декодированное из объекта JSON
-    ///  - Parameters:
-    ///     - from: путь к файлу
-    ///     - responce: замыкание для захвата данных
+    /// Получает данные из объекта JSON из`file`
+    /// Декодирует их в значение типа `T`
     func fetchJSONData<T: Decodable>(from file: String,
                                      responce: @escaping (T?) -> Void) {
         guard let url = Bundle.main.url(forResource: file, withExtension: nil) else {

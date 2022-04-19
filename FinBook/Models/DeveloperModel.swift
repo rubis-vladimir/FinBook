@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: Модель разработчика
 struct Developer: Decodable {
     var name: String
     var surname: String
