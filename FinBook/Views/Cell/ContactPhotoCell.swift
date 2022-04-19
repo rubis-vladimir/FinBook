@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: Класс описывает иконку разработчика в коллекции
 class ContactPhotoCell: UICollectionViewCell {
     
     //MARK: - Properties
@@ -30,6 +31,9 @@ class ContactPhotoCell: UICollectionViewCell {
     }
     
     //MARK: - Public funcs
+    /// Настраивает информацию о разработчиках
+    ///  - Parameters:
+    ///     - developer: экземпляр модели разработчика
     func configure(with developer: Developer) {
         nameLabel.text = developer.name
         surnameLabel.text = developer.surname

@@ -7,8 +7,10 @@
 
 import UIKit
 
+// MARK: Расширение для UIButton
 extension UIButton {
     
+    /// Кастомизирует кнопку
     func customizeButton(cradius: CGFloat) {
         layer.cornerRadius = cradius
         layer.borderColor = UIColor.gray.cgColor
@@ -18,5 +20,3 @@ extension UIButton {
         titleLabel?.font = UIFont(name: "Avenir Heavy", size: 20)
     }
 }
-
-// hex("7DB2A5")

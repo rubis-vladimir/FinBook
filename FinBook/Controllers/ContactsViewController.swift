@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: Класс описывает экран контактов
 class ContactsViewController: UICollectionViewController {
     
     //MARK: - Properties
@@ -52,11 +53,14 @@ class ContactsViewController: UICollectionViewController {
         let developer = collectionView.indexPathsForSelectedItems!.isEmpty ? developers[indexPath.row] : developers[selectedIndexPath.row]
         
         switch indexPath.section {
+            /// для окна контактной информации
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactInfoCell.reuseId, for: indexPath) as! ContactInfoCell
             cell.configure(with: developer)
             cell.updateCell(isSelected)
             return cell
+            
+            /// для иконки разработчика
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ContactPhotoCell.reuseId, for: indexPath) as! ContactPhotoCell
             cell.configure(with: developer)
@@ -66,14 +70,21 @@ class ContactsViewController: UICollectionViewController {
     
     // MARK: - UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        /// при нажатии на иконку разработчика
         if indexPath.section == 0 {
-            if selectedIndexPath == indexPath {
+            
+            /// Обновляем элементы, если:
+            /// иконка `была не выделена` - выделяется
+            /// и отображается окно контактной информации
+            /// иконка `была выделена` - снимается выделение
+            /// и скрывается окно контактной информации
+            if selectedIndexPath != indexPath {
+                isSelected = true
+                selectedIndexPath = indexPath
+            } else {
                 isSelected = false
                 collectionView.deselectItem(at: indexPath, animated: true)
                 selectedIndexPath = defaultIndexPath
-            } else {
-                isSelected = true
-                selectedIndexPath = indexPath
             }
             collectionView.reloadItems(at: [[1, 0]])
         }
@@ -92,19 +103,27 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
         var itemsPerRow: CGFloat = 2
         
         switch indexPath.section {
+            /// для окна контактной информации
         case 1:
             itemsPerRow = 1
+            
+            /// для иконки разработчика
         default:
-            // change item transporency when selecting
             guard let cell = collectionView.cellForItem(at: indexPath) as? ContactPhotoCell else {
-                return calculateSizeForItem(itemPerRow: itemsPerRow)
-            }
+                break }
+            
+            /// изменяем прозрачность иконки разработчика
+            /// при нажатии на иконку другого разработчика
             cell.photoView.alpha = collectionView.indexPathsForSelectedItems?.first == indexPath ||
             collectionView.indexPathsForSelectedItems?.isEmpty == true ? 1 : 0.3
         }
         return calculateSizeForItem(itemPerRow: itemsPerRow)
     }
     
+    /// Рассчитывает ширину и высоту `Item`
+    ///  - Parameters:
+    ///     - itemPerRow: количество `Item` на строке
+    ///  - Returns: размеры
     private func calculateSizeForItem(itemPerRow: CGFloat) -> CGSize {
         let heightLink: CGFloat = 65
         let numberOfLinks: CGFloat = 4
@@ -122,7 +141,7 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
-// MARK: - Link Navigation
+// MARK: - UITextViewDelegate. Link Navigation
 extension ContactsViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         UIApplication.shared.open(URL)
