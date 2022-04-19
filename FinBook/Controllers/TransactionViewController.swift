@@ -13,8 +13,7 @@ class TransactionViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var costTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
-    
+    @IBOutlet weak var descriptionTextField: UITextField!   
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var categoryImage: UIImageView!
@@ -32,9 +31,9 @@ class TransactionViewController: UIViewController {
     private var selectedModel: CategoryPickerModel!
     private let categoryPickerView = UIPickerView()
     private let datePickerView = UIDatePicker()
-
+    /// переменная расхода/дохода транзакции
     private var isIncome = false
-    
+    ///массив моделей категорий для categoryPickerView
     private var categoryPickerModels: [CategoryPickerModel] {
         get {
             var categories: [CategoryPickerModel] = []
@@ -54,7 +53,6 @@ class TransactionViewController: UIViewController {
     }
     
 // MARK: - IBActions
-    
     /// При переключении элемента `SegmentedControl` доход/расход изменяет соответствующие категории и некоторые наименования
     @IBAction func incomeStatusOnSegmentedControl(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
@@ -73,7 +71,7 @@ class TransactionViewController: UIViewController {
     @IBAction func doneButtonAction(_ sender: Any) {
         saveAndExit()
     }
-    
+
     /// Выход из VC при нажатии кнопки `Отмена`
     @IBAction func cancelButtonAction(_ sender: Any) {
         dismiss(animated: true)
@@ -96,8 +94,12 @@ class TransactionViewController: UIViewController {
     
     /// Собираем, сохраняем и передаем транзакцию в AccountVC
     private func saveAndExit() {
+        /// Проверяем введенные данные  в поля `costTextField` и `descriptionTextField`
         guard let costPrice = Double(costTextField.text ?? "0.00") else { return }
-        guard let description = descriptionTextField.text else { return }
+        guard let description = descriptionTextField.text else {
+            showAlert(title: "Описание транзакции введено некорректно.", message: "Попробуйте другое описание.")
+            return
+        }
         
         /// Собираем транзакцию и сразу сохраняем в Storage Manager
         let transaction = StorageManager.shared.createTransact(cost: costPrice,
@@ -195,7 +197,7 @@ class TransactionViewController: UIViewController {
                                             action: nil)
         let doneButton = UIBarButtonItem(title: "Далее", style: .done,
                                          target: self,
-                                         action: #selector(textFieldShouldReturn))
+                                         action: #selector(textFieldShouldReturn(_:)))
         doneToolbar.items = [hideKeyboardButton, flexibleSpace, doneButton]
         doneToolbar.sizeToFit()
         costTextField.inputAccessoryView = doneToolbar
@@ -236,12 +238,9 @@ extension TransactionViewController: UITextFieldDelegate {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-
     /// Прячем клавиатуру по нажатии кнопки `Скрыть` на `Toolbar`
     @objc private func hideKeyboard() { view.endEditing(true) }
-    
-    
-    /// Функция отслеживает входные данные в КАЖДЫЙ `textField` в текущем времени для оперативной корректировки
+    /// Функция отслеживает входные данные в КАЖДЫЙ `textField` (являющийся делегатом) в текущем времени для оперативной корректировки
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text,
               let rangeOfText = Range(range, in: textFieldText) else { return false }
@@ -267,10 +266,8 @@ extension TransactionViewController: UITextFieldDelegate {
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 30
     }
-    
-    
-    ///Действие при нажатии кнопки `return button` на клавиатуре - переходим на следующее поле  или скрываем её если последнее поле
-   @objc func textFieldShouldReturn() -> Bool {
+    ///Действие при нажатии кнопки `return button` на клавиатуре - переходим на следующее поле или скрываем её если последнее поле
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if costTextField.isEditing  {
             guard costFormatter(cost: costTextField.text) > 0 else {
                 showAlert(title: "Сумма введена не корректно", message: "Введите сумму больше нуля")
@@ -296,7 +293,6 @@ extension TransactionViewController: UITextFieldDelegate {
         return doubCost
     }
 }
-
 // MARK: - Alert Controller
 extension TransactionViewController {
     /// Выводим сообщение об ошибке в `Alert Controller`
