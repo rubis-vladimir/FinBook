@@ -53,7 +53,8 @@ class TransactionViewController: UIViewController {
     }
     
 // MARK: - IBActions
-    /// При переключении элемента `SegmentedControl` доход/расход изменяет соответствующие категории и некоторые наименования
+    /// При переключении элемента `SegmentedControl` доход/расход
+    /// изменяет соответствующие категории и наименования categoryLabel
     @IBAction func incomeStatusOnSegmentedControl(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
@@ -238,34 +239,43 @@ extension TransactionViewController: UITextFieldDelegate {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
+    
     /// Прячем клавиатуру по нажатии кнопки `Скрыть` на `Toolbar`
     @objc private func hideKeyboard() { view.endEditing(true) }
+    
     /// Функция отслеживает входные данные в КАЖДЫЙ `textField` (являющийся делегатом) в текущем времени для оперативной корректировки
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text,
               let rangeOfText = Range(range, in: textFieldText) else { return false }
+        
         /// Исключаем возможность ввода лишних символов  в `costTextField`
         if textField == costTextField {
             let allowedChars = ["1","2", "3", "4", "5", "6", "7", "8", "9", "0", ".", ",", ""]
             if !allowedChars.contains(string) { return false }
             if textFieldText.contains(".") && string == "." || textFieldText.contains(",") && string == "," { return false }
+            if textFieldText.contains(".") && string == "," || textFieldText.contains(",") && string == "." { return false }
             if textFieldText.isEmpty && string == "," || textFieldText.isEmpty && string == "." { return false }
         }
+        
         /// Запрещаем ввод лишних данных в поля `categoryTextField`
         if textField == categoryTextField {
             setupCategoryTextField()
             return false
         }
+        
         /// Запрещаем ввод лишних данных в поля `dateTextField`
         if textField == dateTextField {
             dateTextField.text = DateConvertService.convertDateToStr(datePickerView.date)
             return false
         }
+        
         /// Ограничиваем количество символов во  всех `textField`
         let substringToReplace = textFieldText[rangeOfText]
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 30
     }
+    
+    
     ///Действие при нажатии кнопки `return button` на клавиатуре - переходим на следующее поле или скрываем её если последнее поле
     @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if costTextField.isEditing  {
@@ -281,6 +291,7 @@ extension TransactionViewController: UITextFieldDelegate {
         } else { view.endEditing(true) }
         return true
     }
+    
     /// Переводим значение  из `String` в `Double` (исп-ся в `costTextField`) и формирует точку или запятую в зависимости от региона
     private func costFormatter(cost: String?) -> Double {
         let formatter = NumberFormatter()
@@ -293,6 +304,7 @@ extension TransactionViewController: UITextFieldDelegate {
         return doubCost
     }
 }
+
 // MARK: - Alert Controller
 extension TransactionViewController {
     /// Выводим сообщение об ошибке в `Alert Controller`
