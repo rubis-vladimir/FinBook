@@ -20,6 +20,7 @@
 		7D39A20627AFD5B500940EA3 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20527AFD5B500940EA3 /* Persist.swift */; };
 		7D39A20C27B1B49700940EA3 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */; };
 		7D4BE90E28099A4D008318A5 /* SubclassedUISwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4BE90D28099A4D008318A5 /* SubclassedUISwitch.swift */; };
+		7D4BE9302810730E008318A5 /* ThemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4BE92F2810730E008318A5 /* ThemeTests.swift */; };
 		7D5CF70B277B80FA00FD5D11 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70A277B80FA00FD5D11 /* Palette.swift */; };
 		7D5CF70F277B8A6D00FD5D11 /* ContactInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF70E277B8A6D00FD5D11 /* ContactInfoCell.swift */; };
 		7D5CF711277B986E00FD5D11 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5CF710277B986E00FD5D11 /* SettingsViewController.swift */; };
@@ -31,8 +32,7 @@
 		7D90B02226DA59AA00A33930 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D90B02126DA59AA00A33930 /* CustomTableViewCell.swift */; };
 		7D95391E27C23BB900C02D11 /* DataFetcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D95391D27C23BB900C02D11 /* DataFetcherService.swift */; };
 		7D95392B27C60A0800C02D11 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D95392A27C60A0800C02D11 /* StorageManager.swift */; };
-		7DAD7E6727F8B585009AE1BD /* FinBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAD7E6627F8B585009AE1BD /* FinBookTests.swift */; };
-		7DAD7E7427F8E26E009AE1BD /* DataFilteringServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAD7E7327F8E26E009AE1BD /* DataFilteringServiceTests.swift */; };
+		7DAD7E6727F8B585009AE1BD /* DataFilteringServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DAD7E6627F8B585009AE1BD /* DataFilteringServiceTests.swift */; };
 		7DADB3B0269B478C0041156D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3AF269B478C0041156D /* AppDelegate.swift */; };
 		7DADB3B2269B478C0041156D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B1269B478C0041156D /* SceneDelegate.swift */; };
 		7DADB3B4269B478C0041156D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADB3B3269B478C0041156D /* AccountViewController.swift */; };
@@ -55,13 +55,6 @@
 			remoteGlobalIDString = 7DADB3AB269B478C0041156D;
 			remoteInfo = FinBook;
 		};
-		7DAD7E7527F8E26E009AE1BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7DADB3A4269B478C0041156D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7DADB3AB269B478C0041156D;
-			remoteInfo = FinBook;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +71,7 @@
 		7D39A20527AFD5B500940EA3 /* Persist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
 		7D39A20B27B1B49700940EA3 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 		7D4BE90D28099A4D008318A5 /* SubclassedUISwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubclassedUISwitch.swift; sourceTree = "<group>"; };
+		7D4BE92F2810730E008318A5 /* ThemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTests.swift; sourceTree = "<group>"; };
 		7D5CF70A277B80FA00FD5D11 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		7D5CF70E277B8A6D00FD5D11 /* ContactInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoCell.swift; sourceTree = "<group>"; };
 		7D5CF710277B986E00FD5D11 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -90,9 +84,7 @@
 		7D95391D27C23BB900C02D11 /* DataFetcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcherService.swift; sourceTree = "<group>"; };
 		7D95392A27C60A0800C02D11 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		7DAD7E6427F8B584009AE1BD /* FinBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7DAD7E6627F8B585009AE1BD /* FinBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinBookTests.swift; sourceTree = "<group>"; };
-		7DAD7E7127F8E26E009AE1BD /* DataFilteringServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataFilteringServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7DAD7E7327F8E26E009AE1BD /* DataFilteringServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFilteringServiceTests.swift; sourceTree = "<group>"; };
+		7DAD7E6627F8B585009AE1BD /* DataFilteringServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFilteringServiceTests.swift; sourceTree = "<group>"; };
 		7DADB3AC269B478C0041156D /* FinBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DADB3AF269B478C0041156D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DADB3B1269B478C0041156D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,13 +103,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		7DAD7E6127F8B584009AE1BD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7DAD7E6E27F8E26E009AE1BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -178,20 +163,37 @@
 		7D4BE90F280F1046008318A5 /* ThemeService */ = {
 			isa = PBXGroup;
 			children = (
-				7D39A20327AFD50F00940EA3 /* Theme.swift */,
 				7D5CF70A277B80FA00FD5D11 /* Palette.swift */,
 				7D39A20527AFD5B500940EA3 /* Persist.swift */,
+				7D39A20327AFD50F00940EA3 /* Theme.swift */,
 			);
 			path = ThemeService;
 			sourceTree = "<group>";
 		};
-		7D4BE910280F1069008318A5 /* New Group */ = {
+		7D4BE910280F1069008318A5 /* DataFetcherService */ = {
 			isa = PBXGroup;
 			children = (
 				7D95391D27C23BB900C02D11 /* DataFetcherService.swift */,
 				7D0E842E2795F1F100349AD4 /* LocalDataFetcher.swift */,
 			);
-			path = "New Group";
+			path = DataFetcherService;
+			sourceTree = "<group>";
+		};
+		7D4BE92028102B33008318A5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7DAD7E6627F8B585009AE1BD /* DataFilteringServiceTests.swift */,
+				7D4BE921281072A6008318A5 /* ThemeService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7D4BE921281072A6008318A5 /* ThemeService */ = {
+			isa = PBXGroup;
+			children = (
+				7D4BE92F2810730E008318A5 /* ThemeTests.swift */,
+			);
+			path = ThemeService;
 			sourceTree = "<group>";
 		};
 		7D66F6472757BDF6007C5D66 /* Cell */ = {
@@ -244,7 +246,7 @@
 				7D66F645275420B0007C5D66 /* DataFilteringService.swift */,
 				7D95392A27C60A0800C02D11 /* StorageManager.swift */,
 				7D4BE90F280F1046008318A5 /* ThemeService */,
-				7D4BE910280F1069008318A5 /* New Group */,
+				7D4BE910280F1069008318A5 /* DataFetcherService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -252,17 +254,9 @@
 		7DAD7E6527F8B585009AE1BD /* FinBookTests */ = {
 			isa = PBXGroup;
 			children = (
-				7DAD7E6627F8B585009AE1BD /* FinBookTests.swift */,
+				7D4BE92028102B33008318A5 /* Services */,
 			);
 			path = FinBookTests;
-			sourceTree = "<group>";
-		};
-		7DAD7E7227F8E26E009AE1BD /* DataFilteringServiceTests */ = {
-			isa = PBXGroup;
-			children = (
-				7DAD7E7327F8E26E009AE1BD /* DataFilteringServiceTests.swift */,
-			);
-			path = DataFilteringServiceTests;
 			sourceTree = "<group>";
 		};
 		7DADB3A3269B478C0041156D = {
@@ -270,7 +264,6 @@
 			children = (
 				7DADB3AE269B478C0041156D /* FinBook */,
 				7DAD7E6527F8B585009AE1BD /* FinBookTests */,
-				7DAD7E7227F8E26E009AE1BD /* DataFilteringServiceTests */,
 				7DADB3AD269B478C0041156D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -280,7 +273,6 @@
 			children = (
 				7DADB3AC269B478C0041156D /* FinBook.app */,
 				7DAD7E6427F8B584009AE1BD /* FinBookTests.xctest */,
-				7DAD7E7127F8E26E009AE1BD /* DataFilteringServiceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -340,24 +332,6 @@
 			productReference = 7DAD7E6427F8B584009AE1BD /* FinBookTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7DAD7E7027F8E26E009AE1BD /* DataFilteringServiceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7DAD7E7727F8E26E009AE1BD /* Build configuration list for PBXNativeTarget "DataFilteringServiceTests" */;
-			buildPhases = (
-				7DAD7E6D27F8E26E009AE1BD /* Sources */,
-				7DAD7E6E27F8E26E009AE1BD /* Frameworks */,
-				7DAD7E6F27F8E26E009AE1BD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7DAD7E7627F8E26E009AE1BD /* PBXTargetDependency */,
-			);
-			name = DataFilteringServiceTests;
-			productName = DataFilteringServiceTests;
-			productReference = 7DAD7E7127F8E26E009AE1BD /* DataFilteringServiceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		7DADB3AB269B478C0041156D /* FinBook */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DADB3C3269B478E0041156D /* Build configuration list for PBXNativeTarget "FinBook" */;
@@ -388,10 +362,6 @@
 						CreatedOnToolsVersion = 13.3;
 						TestTargetID = 7DADB3AB269B478C0041156D;
 					};
-					7DAD7E7027F8E26E009AE1BD = {
-						CreatedOnToolsVersion = 13.3;
-						TestTargetID = 7DADB3AB269B478C0041156D;
-					};
 					7DADB3AB269B478C0041156D = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -412,20 +382,12 @@
 			targets = (
 				7DADB3AB269B478C0041156D /* FinBook */,
 				7DAD7E6327F8B584009AE1BD /* FinBookTests */,
-				7DAD7E7027F8E26E009AE1BD /* DataFilteringServiceTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7DAD7E6227F8B584009AE1BD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7DAD7E6F27F8E26E009AE1BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -450,15 +412,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DAD7E6727F8B585009AE1BD /* FinBookTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7DAD7E6D27F8E26E009AE1BD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7DAD7E7427F8E26E009AE1BD /* DataFilteringServiceTests.swift in Sources */,
+				7DAD7E6727F8B585009AE1BD /* DataFilteringServiceTests.swift in Sources */,
+				7D4BE9302810730E008318A5 /* ThemeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,11 +463,6 @@
 			isa = PBXTargetDependency;
 			target = 7DADB3AB269B478C0041156D /* FinBook */;
 			targetProxy = 7DAD7E6827F8B585009AE1BD /* PBXContainerItemProxy */;
-		};
-		7DAD7E7627F8E26E009AE1BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7DADB3AB269B478C0041156D /* FinBook */;
-			targetProxy = 7DAD7E7527F8E26E009AE1BD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -568,46 +518,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Rubis-Vladimir.FinBookTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinBook.app/FinBook";
-			};
-			name = Release;
-		};
-		7DAD7E7827F8E26E009AE1BD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WJM24K3YHR;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Rubis-Vladimir.DataFilteringServiceTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinBook.app/FinBook";
-			};
-			name = Debug;
-		};
-		7DAD7E7927F8E26E009AE1BD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WJM24K3YHR;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Rubis-Vladimir.DataFilteringServiceTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -784,15 +694,6 @@
 			buildConfigurations = (
 				7DAD7E6A27F8B585009AE1BD /* Debug */,
 				7DAD7E6B27F8B585009AE1BD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7DAD7E7727F8E26E009AE1BD /* Build configuration list for PBXNativeTarget "DataFilteringServiceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7DAD7E7827F8E26E009AE1BD /* Debug */,
-				7DAD7E7927F8E26E009AE1BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
